@@ -17,6 +17,20 @@
       "icon": null
     },
     {
+      "id": "Terraria/GoldBroadsword",
+      "internalName": "GoldBroadsword",
+      "displayName": "Gold Broadsword",
+      "category": "weapon",
+      "icon": null
+    },
+    {
+      "id": "Terraria/HermesBoots",
+      "internalName": "HermesBoots",
+      "displayName": "Hermes Boots",
+      "category": "accessory",
+      "icon": null
+    },
+    {
       "id": "Terraria/IronBar",
       "internalName": "IronBar",
       "displayName": "Iron Bar",

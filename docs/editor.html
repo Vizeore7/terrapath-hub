@@ -16,54 +16,80 @@
       </div>
     </nav>
     <main class="workspace workspace--editor">
-      <section class="panel">
-        <p class="eyebrow">Early prototype</p>
+      <section class="panel panel--editor">
+        <p class="eyebrow">Structured authoring</p>
         <h1>Guide Editor</h1>
-        <p class="muted">This first editor creates a minimal TerraPath JSON guide. Full stage and item editing will be added next.</p>
-        <form id="guideForm" class="form">
+        <p class="muted">
+          Build a TerraPath guide with progression stages, grouped item picks,
+          boss references, notes, and a live preview. Drafts are autosaved in
+          your browser.
+        </p>
+        <p id="supportStatus" class="support-status muted">Loading supported content index...</p>
+
+        <section class="field-grid">
           <label class="field">
             <span>Title</span>
-            <input name="title" required minlength="3" placeholder="Calamity Summoner Progression">
+            <input id="titleInput" minlength="3" placeholder="Calamity Summoner Progression">
           </label>
           <label class="field">
             <span>Author</span>
-            <input name="author" required minlength="2" placeholder="Your name">
+            <input id="authorInput" minlength="2" placeholder="Your name">
           </label>
           <label class="field">
             <span>Language</span>
-            <input name="language" required value="en-US" placeholder="en-US">
+            <input id="languageInput" value="en-US" placeholder="en-US">
           </label>
           <label class="field">
-            <span>Class tag</span>
-            <input name="classTag" required value="melee" placeholder="melee">
+            <span>Required mods</span>
+            <input id="requiredModsInput" value="Terraria" placeholder="Terraria, CalamityMod">
           </label>
           <label class="field">
-            <span>Required mod</span>
-            <input name="requiredMod" required value="Terraria" placeholder="Terraria">
+            <span>Class tags</span>
+            <input id="classTagsInput" value="melee" placeholder="melee, summoner">
           </label>
           <label class="field">
+            <span>Guide tags</span>
+            <input id="guideTagsInput" value="draft, starter" placeholder="starter, prehardmode">
+          </label>
+          <label class="field field--wide">
             <span>Summary</span>
-            <textarea name="summary" required minlength="10" rows="4" placeholder="Short catalog description"></textarea>
+            <textarea id="summaryInput" rows="4" placeholder="Short catalog description"></textarea>
           </label>
-          <label class="field">
-            <span>First stage title</span>
-            <input name="stageTitle" required value="Getting Started" placeholder="Getting Started">
-          </label>
-          <label class="field">
-            <span>First stage description</span>
-            <textarea name="stageDescription" rows="5" placeholder="Explain what the player should focus on."></textarea>
-          </label>
-          <div class="actions">
-            <button class="button button--primary" type="submit">Generate JSON</button>
-            <button class="button" id="downloadButton" type="button" disabled>Download guide.json</button>
+        </section>
+
+        <div class="toolbar">
+          <button class="button button--primary" id="addStageButton" type="button">Add stage</button>
+          <button class="button" id="downloadButton" type="button" disabled>Download guide.json</button>
+          <button class="button button--quiet" id="resetDraftButton" type="button">Reset draft</button>
+        </div>
+
+        <section class="editor-block">
+          <div class="editor-block__header">
+            <h2>Stages</h2>
+            <p class="muted">
+              Each stage can describe goals, bosses, notes, and categorized item picks.
+              You can type manual IDs like <code>ModName/InternalName</code> or use the built-in suggestions.
+            </p>
           </div>
-        </form>
+          <div id="stageList" class="stage-list"></div>
+        </section>
+
+        <datalist id="itemSuggestions"></datalist>
+        <datalist id="bossSuggestions"></datalist>
       </section>
-      <section class="panel panel--preview">
-        <p class="eyebrow">Output</p>
-        <h2>guide.json</h2>
-        <pre id="jsonPreview" class="json-preview">{}</pre>
-      </section>
+
+      <div class="preview-stack">
+        <section class="panel panel--preview">
+          <p class="eyebrow">Guide preview</p>
+          <h2>Rendered guide page</h2>
+          <div id="guidePreview" class="guide-preview"></div>
+        </section>
+        <section class="panel panel--preview">
+          <p class="eyebrow">JSON output</p>
+          <h2>guide.json</h2>
+          <pre id="jsonPreview" class="json-preview">{}</pre>
+        </section>
+      </div>
     </main>
   </body>
 </html>

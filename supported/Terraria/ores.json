@@ -3,6 +3,12 @@
   "contentType": "ores",
   "ores": [
     {
+      "id": "Terraria/CopperOre",
+      "internalName": "CopperOre",
+      "displayName": "Copper Ore",
+      "icon": null
+    },
+    {
       "id": "Terraria/IronOre",
       "internalName": "IronOre",
       "displayName": "Iron Ore",
