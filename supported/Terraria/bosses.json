@@ -6,7 +6,8 @@
       "id": "Terraria/EyeofCthulhu",
       "internalName": "EyeofCthulhu",
       "displayName": "Eye of Cthulhu",
-      "icon": "assets/icons/terraria/bosses/eye-of-cthulhu.svg"
+      "assetPath": "Images/NPC_4",
+      "icon": "assets/icons/terraria/bosses/eye-of-cthulhu.png"
     }
   ]
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Guide Editor - TerraPath</title>
+    <title>Guide Builder - TerraPath</title>
     <link rel="stylesheet" href="assets/styles.css">
     <script src="assets/editor.js" defer></script>
   </head>
@@ -12,86 +12,183 @@
       <a class="brand" href="index.html">TerraPath</a>
       <div class="nav__links">
         <a href="browse.html">Browse</a>
-        <a href="editor.html">Editor</a>
+        <a href="editor.html">Builder</a>
       </div>
     </nav>
-    <main class="workspace workspace--editor">
-      <section class="panel panel--editor">
-        <p class="eyebrow">Structured authoring</p>
-        <h1>Guide Editor</h1>
+
+    <main class="wizard-layout">
+      <aside class="panel wizard-rail">
+        <p class="eyebrow">Step-by-step authoring</p>
+        <h1>Guide Builder</h1>
         <p class="muted">
-          Build a TerraPath guide with guided controls instead of raw IDs. Drafts
-          are autosaved in your browser, and curated supported content can be
-          picked from fixed options.
+          Create a TerraPath guide one section at a time. Title, tags, stages,
+          and export each get their own space so the screen stays readable.
         </p>
-        <p id="supportStatus" class="support-status muted">Loading supported content index...</p>
 
-        <section class="field-grid">
-          <label class="field">
-            <span>Title</span>
-            <input id="titleInput" minlength="3" placeholder="Calamity Summoner Progression">
-          </label>
-          <label class="field">
-            <span>Author</span>
-            <input id="authorInput" minlength="2" placeholder="Your name">
-          </label>
-          <label class="field">
-            <span>Language</span>
-            <select id="languageSelect"></select>
-          </label>
-          <div class="field field--wide">
-            <span>Required mods</span>
-            <div id="requiredModOptions" class="choice-grid" aria-label="Required mods"></div>
-          </div>
-          <div class="field field--wide">
-            <span>Class tags</span>
-            <div id="classTagOptions" class="choice-grid" aria-label="Class tags"></div>
-          </div>
-          <div class="field field--wide">
-            <span>Guide tags</span>
-            <div id="guideTagOptions" class="choice-grid" aria-label="Guide tags"></div>
-          </div>
-          <label class="field field--wide">
-            <span>Summary</span>
-            <textarea id="summaryInput" rows="4" placeholder="Short catalog description"></textarea>
-          </label>
-        </section>
-
-        <div class="toolbar">
-          <button class="button button--primary" id="addStageButton" type="button">Add stage</button>
-          <button class="button" id="copyJsonButton" type="button">Copy JSON</button>
-          <button class="button" id="downloadButton" type="button" disabled>Download guide.json</button>
-          <button class="button" id="openIssueButton" type="button">Open GitHub issue</button>
-          <button class="button button--quiet" id="resetDraftButton" type="button">Reset draft</button>
+        <div id="supportStatus" class="notice notice--soft">
+          Loading curated Terraria content...
         </div>
-        <p id="submissionStatus" class="muted submission-status">
-          Copy the generated JSON, then open a TerraPath GitHub issue to submit the guide for review.
-        </p>
 
-        <section class="editor-block">
-          <div class="editor-block__header">
-            <h2>Stages</h2>
+        <ol id="wizardSteps" class="wizard-steps"></ol>
+
+        <section class="snapshot-card">
+          <div class="section-copy">
+            <h2>Guide snapshot</h2>
             <p class="muted">
-              Bosses and items are selected from the curated support index so the
-              editor stays consistent and easier to use.
+              A quick summary of what players will see in the catalog.
             </p>
           </div>
-          <div id="stageList" class="stage-list"></div>
+          <div id="guideSnapshot" class="snapshot-grid"></div>
         </section>
-      </section>
+      </aside>
 
-      <div class="preview-stack">
-        <section class="panel panel--preview">
-          <p class="eyebrow">Guide preview</p>
-          <h2>Rendered guide page</h2>
-          <div id="guidePreview" class="guide-preview"></div>
+      <section class="panel wizard-body">
+        <header class="wizard-header">
+          <p id="stepEyebrow" class="eyebrow">Step 1 of 4</p>
+          <h2 id="stepTitle">Basics</h2>
+          <p id="stepDescription" class="muted">
+            Set the title, author, language, and short catalog summary.
+          </p>
+        </header>
+
+        <section class="wizard-panel" data-step-panel="0">
+          <div class="form-layout">
+            <label class="field">
+              <span>Guide title</span>
+              <input id="titleInput" minlength="3" placeholder="Calamity Summoner Progression">
+            </label>
+
+            <label class="field">
+              <span>Author</span>
+              <input id="authorInput" minlength="2" placeholder="Your name">
+            </label>
+
+            <label class="field">
+              <span>Language</span>
+              <select id="languageSelect"></select>
+            </label>
+
+            <label class="field field--wide">
+              <span>Catalog summary</span>
+              <textarea id="summaryInput" rows="5" placeholder="Short description shown in the guide list."></textarea>
+            </label>
+          </div>
+
+          <div class="callout">
+            <div class="section-copy">
+              <h3>What appears in the list</h3>
+              <p class="muted">
+                The list view is meant to stay compact: title, class, popularity,
+                language, and a short summary should explain the guide at a glance.
+              </p>
+            </div>
+            <ul class="line-list">
+              <li>Use a clear build name, not a long paragraph.</li>
+              <li>Keep the summary focused on progression or playstyle.</li>
+              <li>Language should match the text inside the guide.</li>
+            </ul>
+          </div>
         </section>
-        <section class="panel panel--preview">
-          <p class="eyebrow">JSON output</p>
-          <h2>guide.json</h2>
-          <pre id="jsonPreview" class="json-preview">{}</pre>
+
+        <section class="wizard-panel" data-step-panel="1" hidden>
+          <div class="stack">
+            <div class="section-copy">
+              <h3>Required mods</h3>
+              <p class="muted">
+                Pick the content packs this guide depends on. Players can still see
+                the guide without them, but the game can flag missing content.
+              </p>
+            </div>
+            <div id="requiredModOptions" class="choice-grid" aria-label="Required mods"></div>
+
+            <div class="section-copy">
+              <h3>Class tags</h3>
+              <p class="muted">
+                These tags drive filtering in the guide browser and in-game list.
+              </p>
+            </div>
+            <div id="classTagOptions" class="choice-grid" aria-label="Class tags"></div>
+
+            <div class="section-copy">
+              <h3>Guide tags</h3>
+              <p class="muted">
+                Use broad, reusable tags like progression, bossing, pre-hardmode,
+                or starter. Keep them general so search stays useful.
+              </p>
+            </div>
+            <div id="guideTagOptions" class="choice-grid" aria-label="Guide tags"></div>
+          </div>
         </section>
-      </div>
+
+        <section class="wizard-panel" data-step-panel="2" hidden>
+          <div class="stages-shell">
+            <aside class="stage-sidebar">
+              <div class="stage-sidebar__header">
+                <div class="section-copy">
+                  <h3>Stages</h3>
+                  <p class="muted">
+                    Split the guide into progression checkpoints instead of one long wall of text.
+                  </p>
+                </div>
+                <button class="button button--primary" id="addStageButton" type="button">Add stage</button>
+              </div>
+              <div id="stageNav" class="stage-nav"></div>
+            </aside>
+
+            <div id="stageEditor" class="stage-editor"></div>
+          </div>
+        </section>
+
+        <section class="wizard-panel" data-step-panel="3" hidden>
+          <div class="review-stack">
+            <section class="review-card">
+              <div class="section-copy">
+                <h3>Submission actions</h3>
+                <p class="muted">
+                  Review the rendered page first, then copy or download the JSON and open a GitHub issue.
+                </p>
+              </div>
+              <div class="toolbar">
+                <button class="button" id="copyJsonButton" type="button">Copy JSON</button>
+                <button class="button" id="downloadButton" type="button">Download guide.json</button>
+                <button class="button button--primary" id="openIssueButton" type="button">Open GitHub issue</button>
+                <button class="button button--quiet" id="resetDraftButton" type="button">Reset draft</button>
+              </div>
+              <p id="submissionStatus" class="muted submission-status">
+                Drafts are saved locally. Use the buttons above when this preview looks ready.
+              </p>
+            </section>
+
+            <section class="review-card">
+              <div class="section-copy">
+                <h3>Rendered guide preview</h3>
+                <p class="muted">
+                  This is the full reading experience a player would get after opening the guide page.
+                </p>
+              </div>
+              <div id="guidePreview" class="guide-preview"></div>
+            </section>
+
+            <section class="review-card">
+              <div class="section-copy">
+                <h3>guide.json</h3>
+                <p class="muted">
+                  Structured output used by validation, catalog building, and in-game loading.
+                </p>
+              </div>
+              <pre id="jsonPreview" class="json-preview">{}</pre>
+            </section>
+          </div>
+        </section>
+
+        <footer class="wizard-footer">
+          <button class="button button--quiet" id="prevStepButton" type="button">Back</button>
+          <p id="autosaveStatus" class="muted autosave-status">
+            Draft autosaves in this browser.
+          </p>
+          <button class="button button--primary" id="nextStepButton" type="button">Next step</button>
+        </footer>
+      </section>
     </main>
   </body>
 </html>

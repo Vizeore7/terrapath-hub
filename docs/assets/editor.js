@@ -1,4 +1,11 @@
-const STORAGE_KEY = "terrapath-editor-draft-v3";
+const STORAGE_KEY = "terrapath-editor-draft-v4";
+
+const STEP_DEFINITIONS = [
+  { title: "Basics", description: "Set the title, author, language, and short catalog summary." },
+  { title: "Scope", description: "Pick the supported mods, class tags, and broad guide tags." },
+  { title: "Stages", description: "Build the progression path stage by stage with bosses, items, goals, and notes." },
+  { title: "Review", description: "Check the rendered guide and export the final JSON." }
+];
 
 const LANGUAGE_OPTIONS = [
   { value: "en-US", label: "English (US)" },
@@ -6,24 +13,9 @@ const LANGUAGE_OPTIONS = [
 ];
 
 const SUPPORTED_MOD_OPTIONS = [
-  {
-    value: "Terraria",
-    label: "Terraria",
-    description: "Vanilla progression and content",
-    availableInEditor: true
-  },
-  {
-    value: "CalamityMod",
-    label: "Calamity Mod",
-    description: "Guide metadata can mention it; curated item support comes later",
-    availableInEditor: false
-  },
-  {
-    value: "ThoriumMod",
-    label: "Thorium Mod",
-    description: "Guide metadata can mention it; curated item support comes later",
-    availableInEditor: false
-  }
+  { value: "Terraria", label: "Terraria", description: "Vanilla progression and curated content are ready now." },
+  { value: "CalamityMod", label: "Calamity Mod", description: "Metadata support is ready. Curated pickers come next." },
+  { value: "ThoriumMod", label: "Thorium Mod", description: "Metadata support is ready. Curated pickers come next." }
 ];
 
 const CLASS_TAG_OPTIONS = [
@@ -65,25 +57,43 @@ const CATEGORY_LABELS = {
 
 const CATEGORY_OPTIONS = Object.keys(CATEGORY_LABELS);
 
+const wizardSteps = document.querySelector("#wizardSteps");
 const supportStatus = document.querySelector("#supportStatus");
+const guideSnapshot = document.querySelector("#guideSnapshot");
+const stepEyebrow = document.querySelector("#stepEyebrow");
+const stepTitle = document.querySelector("#stepTitle");
+const stepDescription = document.querySelector("#stepDescription");
+const stepPanels = Array.from(document.querySelectorAll("[data-step-panel]"));
+const prevStepButton = document.querySelector("#prevStepButton");
+const nextStepButton = document.querySelector("#nextStepButton");
+const autosaveStatus = document.querySelector("#autosaveStatus");
+
 const titleInput = document.querySelector("#titleInput");
 const authorInput = document.querySelector("#authorInput");
 const languageSelect = document.querySelector("#languageSelect");
+const summaryInput = document.querySelector("#summaryInput");
+
 const requiredModOptions = document.querySelector("#requiredModOptions");
 const classTagOptions = document.querySelector("#classTagOptions");
 const guideTagOptions = document.querySelector("#guideTagOptions");
-const summaryInput = document.querySelector("#summaryInput");
+
 const addStageButton = document.querySelector("#addStageButton");
+const stageNav = document.querySelector("#stageNav");
+const stageEditor = document.querySelector("#stageEditor");
+
 const copyJsonButton = document.querySelector("#copyJsonButton");
-const resetDraftButton = document.querySelector("#resetDraftButton");
 const downloadButton = document.querySelector("#downloadButton");
 const openIssueButton = document.querySelector("#openIssueButton");
+const resetDraftButton = document.querySelector("#resetDraftButton");
 const submissionStatus = document.querySelector("#submissionStatus");
-const stageList = document.querySelector("#stageList");
 const guidePreview = document.querySelector("#guidePreview");
 const jsonPreview = document.querySelector("#jsonPreview");
 
-let latestJson = "{}";
+let currentStep = 0;
+let selectedStageIndex = 0;
+let latestJson = "{}\n";
+let lastSavedAt = null;
+
 let supportIndex = {
   items: [],
   bosses: [],
@@ -102,26 +112,26 @@ function createDefaultState() {
     requiredMods: ["Terraria"],
     classTags: ["melee"],
     guideTags: ["starter", "progression", "vanilla", "draft"],
-    summary: "A structured melee progression path that shows how TerraPath guides can be authored and previewed.",
+    summary: "A structured melee progression path that shows how TerraPath guides can be authored and reviewed.",
     stages: [
       createStage({
         title: "First Night",
-        description: "Collect movement accessories, set up an arena, and prepare a reliable early weapon.",
+        description: "Collect movement accessories, build a simple arena, and prepare a reliable early melee option.",
         goalsText: "Find a mobility accessory\nPrepare a simple wooden arena\nCraft or loot a stronger melee option",
         notesText: "This is still an example draft.",
         bossRefs: ["Terraria/EyeofCthulhu"],
         items: [
           {
+            itemId: "Terraria/CloudinaBottle",
+            category: "accessory",
+            priority: 85,
+            note: "Early movement is almost always worth prioritizing."
+          },
+          {
             itemId: "Terraria/EnchantedBoomerang",
             category: "weapon",
             priority: 70,
             note: "A safe ranged melee option for early exploration."
-          },
-          {
-            itemId: "Terraria/CloudinaBottle",
-            category: "accessory",
-            priority: 85,
-            note: "Early movement is always worth prioritizing."
           }
         ]
       })
@@ -155,6 +165,10 @@ function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function nowTimeLabel() {
+  return new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" }).format(new Date());
+}
+
 function slugify(value) {
   return String(value || "")
     .trim()
@@ -169,15 +183,6 @@ function splitLines(value) {
     .split(/\r?\n/)
     .map((item) => item.trim())
     .filter(Boolean);
-}
-
-function splitCommaSeparated(value) {
-  return Array.from(new Set(
-    String(value || "")
-      .split(",")
-      .map((item) => item.trim())
-      .filter(Boolean)
-  ));
 }
 
 function uniqueValues(values) {
@@ -208,6 +213,7 @@ function initials(label) {
 
 function saveDraft() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  lastSavedAt = nowTimeLabel();
 }
 
 function loadDraft() {
@@ -227,71 +233,19 @@ function normalizeState(raw) {
     return createDefaultState();
   }
 
-  const requiredMods = Array.isArray(raw.requiredMods)
-    ? raw.requiredMods
-    : splitCommaSeparated(raw.requiredModsText || "Terraria");
-  const classTags = Array.isArray(raw.classTags)
-    ? raw.classTags
-    : splitCommaSeparated(raw.classTagsText || "melee").map((tag) => tag.toLowerCase());
-  const guideTags = Array.isArray(raw.guideTags)
-    ? raw.guideTags
-    : splitCommaSeparated(raw.guideTagsText || "draft").map((tag) => tag.toLowerCase());
-
   return {
     createdAt: typeof raw.createdAt === "string" ? raw.createdAt : today(),
     title: String(raw.title || ""),
     author: String(raw.author || ""),
     language: String(raw.language || "en-US"),
-    requiredMods: uniqueValues(requiredMods),
-    classTags: uniqueValues(classTags),
-    guideTags: uniqueValues(guideTags),
+    requiredMods: uniqueValues(Array.isArray(raw.requiredMods) ? raw.requiredMods : ["Terraria"]),
+    classTags: uniqueValues(Array.isArray(raw.classTags) ? raw.classTags : ["other"]),
+    guideTags: uniqueValues(Array.isArray(raw.guideTags) ? raw.guideTags : ["draft"]),
     summary: String(raw.summary || ""),
     stages: Array.isArray(raw.stages) && raw.stages.length
       ? raw.stages.map((stage) => createStage(stage))
       : [createStage()]
   };
-}
-
-function buildChoiceMarkup(option, group, selectedValues) {
-  const checked = selectedValues.includes(option.value) ? "checked" : "";
-  const disabled = option.disabled ? "disabled" : "";
-  const unavailable = option.availableInEditor === false ? "choice-chip--muted" : "";
-
-  return `
-    <label class="choice-chip ${unavailable}">
-      <input
-        type="checkbox"
-        data-choice-group="${group}"
-        value="${escapeHtml(option.value)}"
-        ${checked}
-        ${disabled}>
-      <span class="choice-chip__label">${escapeHtml(option.label)}</span>
-      <span class="choice-chip__description">${escapeHtml(option.description || "")}</span>
-    </label>
-  `;
-}
-
-function renderChoiceGroups() {
-  requiredModOptions.innerHTML = SUPPORTED_MOD_OPTIONS.map((option) =>
-    buildChoiceMarkup(option, "required-mods", state.requiredMods)).join("");
-  classTagOptions.innerHTML = CLASS_TAG_OPTIONS.map((option) =>
-    buildChoiceMarkup(option, "class-tags", state.classTags)).join("");
-  guideTagOptions.innerHTML = GUIDE_TAG_OPTIONS.map((option) =>
-    buildChoiceMarkup(option, "guide-tags", state.guideTags)).join("");
-}
-
-function renderLanguageOptions() {
-  languageSelect.innerHTML = LANGUAGE_OPTIONS.map((option) => `
-    <option value="${option.value}">${escapeHtml(option.label)}</option>
-  `).join("");
-}
-
-function syncMetadataInputs() {
-  titleInput.value = state.title;
-  authorInput.value = state.author;
-  languageSelect.value = state.language;
-  summaryInput.value = state.summary;
-  renderChoiceGroups();
 }
 
 function buildGuide() {
@@ -300,16 +254,10 @@ function buildGuide() {
   const stages = state.stages.map((stage, index) => {
     const title = stage.title.trim() || `Stage ${index + 1}`;
     const baseId = slugify(title).slice(0, 40) || `stage-${index + 1}`;
-    let stageId = baseId;
-    const seenCount = usedStageIds.get(baseId) || 0;
-    if (seenCount > 0) {
-      stageId = `${baseId}-${seenCount + 1}`.slice(0, 40);
-    }
-    usedStageIds.set(baseId, seenCount + 1);
+    const usedCount = usedStageIds.get(baseId) || 0;
+    const stageId = usedCount ? `${baseId}-${usedCount + 1}`.slice(0, 40) : baseId;
+    usedStageIds.set(baseId, usedCount + 1);
 
-    const bossRefs = uniqueValues(stage.bossRefs.map((value) => value.trim()).filter(Boolean));
-    const goals = splitLines(stage.goalsText);
-    const notes = splitLines(stage.notesText);
     const items = stage.items
       .map((item) => ({
         itemId: item.itemId.trim(),
@@ -319,26 +267,20 @@ function buildGuide() {
       }))
       .filter((item) => item.itemId)
       .map((item) => {
-        const output = {
-          itemId: item.itemId,
-          category: item.category
-        };
-
+        const output = { itemId: item.itemId, category: item.category };
         if (item.priority !== 50) {
           output.priority = item.priority;
         }
         if (item.note) {
           output.note = item.note;
         }
-
         return output;
       });
 
-    const output = {
-      id: stageId,
-      title,
-      items
-    };
+    const output = { id: stageId, title, items };
+    const bossRefs = uniqueValues(stage.bossRefs.map((value) => value.trim()).filter(Boolean));
+    const goals = splitLines(stage.goalsText);
+    const notes = splitLines(stage.notesText);
 
     if (stage.description.trim()) {
       output.description = stage.description.trim();
@@ -393,7 +335,6 @@ function iconMarkup(entry, label) {
   if (entry?.icon) {
     return `<img class="content-icon" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
   }
-
   return `<span class="content-token">${escapeHtml(initials(label))}</span>`;
 }
 
@@ -408,8 +349,287 @@ function buildContentBadge(contentId, map) {
   `;
 }
 
+function completionForStep(stepIndex) {
+  switch (stepIndex) {
+    case 0:
+      return Boolean(state.title.trim() && state.author.trim() && state.summary.trim());
+    case 1:
+      return Boolean(state.requiredMods.length && state.classTags.length);
+    case 2:
+      return state.stages.some((stage) => stage.title.trim() && stage.items.some((item) => item.itemId));
+    default:
+      return false;
+  }
+}
+
+function renderWizardSteps() {
+  wizardSteps.innerHTML = STEP_DEFINITIONS.map((step, index) => {
+    const isCurrent = index === currentStep;
+    const isComplete = completionForStep(index);
+    const stateLabel = isCurrent ? "Current" : isComplete ? "Ready" : "Pending";
+
+    return `
+      <li class="wizard-step ${isCurrent ? "wizard-step--current" : ""} ${isComplete ? "wizard-step--complete" : ""}">
+        <button class="wizard-step__button" type="button" data-step-target="${index}">
+          <span class="wizard-step__count">${index + 1}</span>
+          <span class="wizard-step__body">
+            <strong>${escapeHtml(step.title)}</strong>
+            <span>${escapeHtml(step.description)}</span>
+          </span>
+          <span class="wizard-step__state">${stateLabel}</span>
+        </button>
+      </li>
+    `;
+  }).join("");
+}
+
+function renderSnapshot() {
+  const stageCount = state.stages.length;
+  const itemCount = state.stages.reduce((count, stage) => count + stage.items.filter((item) => item.itemId).length, 0);
+
+  guideSnapshot.innerHTML = `
+    <article class="snapshot-metric"><span class="snapshot-metric__label">Title</span><strong>${escapeHtml(state.title || "Untitled guide")}</strong></article>
+    <article class="snapshot-metric"><span class="snapshot-metric__label">Author</span><strong>${escapeHtml(state.author || "Unknown author")}</strong></article>
+    <article class="snapshot-metric"><span class="snapshot-metric__label">Language</span><strong>${escapeHtml(state.language || "en-US")}</strong></article>
+    <article class="snapshot-metric"><span class="snapshot-metric__label">Stages</span><strong>${stageCount}</strong></article>
+    <article class="snapshot-metric"><span class="snapshot-metric__label">Item picks</span><strong>${itemCount}</strong></article>
+    <article class="snapshot-metric"><span class="snapshot-metric__label">Classes</span><strong>${escapeHtml(state.classTags.join(", ") || "other")}</strong></article>
+  `;
+}
+
+function renderLanguageOptions() {
+  languageSelect.innerHTML = LANGUAGE_OPTIONS.map((option) => `
+    <option value="${option.value}">${escapeHtml(option.label)}</option>
+  `).join("");
+}
+
+function buildChoiceMarkup(option, groupName, selectedValues) {
+  const checked = selectedValues.includes(option.value) ? "checked" : "";
+  return `
+    <label class="choice-card">
+      <input type="checkbox" data-choice-group="${groupName}" value="${escapeHtml(option.value)}" ${checked}>
+      <span class="choice-card__copy">
+        <span class="choice-card__title">${escapeHtml(option.label)}</span>
+        <span class="choice-card__description">${escapeHtml(option.description || "")}</span>
+      </span>
+    </label>
+  `;
+}
+
+function renderChoiceGroups() {
+  requiredModOptions.innerHTML = SUPPORTED_MOD_OPTIONS.map((option) =>
+    buildChoiceMarkup(option, "required-mods", state.requiredMods)).join("");
+  classTagOptions.innerHTML = CLASS_TAG_OPTIONS.map((option) =>
+    buildChoiceMarkup(option, "class-tags", state.classTags)).join("");
+  guideTagOptions.innerHTML = GUIDE_TAG_OPTIONS.map((option) =>
+    buildChoiceMarkup(option, "guide-tags", state.guideTags)).join("");
+}
+
+function syncMetadataInputs() {
+  titleInput.value = state.title;
+  authorInput.value = state.author;
+  languageSelect.value = state.language;
+  summaryInput.value = state.summary;
+}
+
+function groupEntriesByMod(entries) {
+  const grouped = new Map();
+  for (const entry of entries) {
+    const modName = String(entry.id || "").split("/")[0] || "Other";
+    const existing = grouped.get(modName) || [];
+    existing.push(entry);
+    grouped.set(modName, existing);
+  }
+  return grouped;
+}
+
+function buildSelectOptions(entries, selectedValue, placeholderLabel) {
+  const entryMap = new Map(entries.map((entry) => [entry.id, entry]));
+  let markup = `<option value="">${escapeHtml(placeholderLabel)}</option>`;
+
+  if (selectedValue && !entryMap.has(selectedValue)) {
+    markup += `<option value="${escapeHtml(selectedValue)}" selected>Unavailable: ${escapeHtml(selectedValue)}</option>`;
+  }
+
+  for (const [modName, modEntries] of groupEntriesByMod(entries)) {
+    const options = modEntries
+      .slice()
+      .sort((left, right) => left.displayName.localeCompare(right.displayName))
+      .map((entry) => `
+        <option value="${escapeHtml(entry.id)}" ${entry.id === selectedValue ? "selected" : ""}>${escapeHtml(entry.displayName)}</option>
+      `).join("");
+
+    markup += `<optgroup label="${escapeHtml(modName)}">${options}</optgroup>`;
+  }
+
+  return markup;
+}
+
+function renderStageNav() {
+  stageNav.innerHTML = state.stages.map((stage, index) => {
+    const selected = index === selectedStageIndex;
+    const stageItemCount = stage.items.filter((item) => item.itemId).length;
+
+    return `
+      <article class="stage-tab ${selected ? "stage-tab--selected" : ""}">
+        <button class="stage-tab__select" type="button" data-action="select-stage" data-stage-index="${index}">
+          <span class="stage-tab__index">Stage ${index + 1}</span>
+          <strong>${escapeHtml(stage.title || `Stage ${index + 1}`)}</strong>
+          <span>${stageItemCount} item picks</span>
+        </button>
+        <div class="stage-tab__actions">
+          <button class="button button--quiet button--tiny" type="button" data-action="move-stage-up" data-stage-index="${index}" ${index === 0 ? "disabled" : ""}>Up</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="move-stage-down" data-stage-index="${index}" ${index === state.stages.length - 1 ? "disabled" : ""}>Down</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="remove-stage" data-stage-index="${index}" ${state.stages.length === 1 ? "disabled" : ""}>Delete</button>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderBossEditors(stage, stageIndex) {
+  if (!stage.bossRefs.length) {
+    return `<p class="empty-state">No boss milestones yet.</p>`;
+  }
+
+  return stage.bossRefs.map((bossRef, bossIndex) => {
+    const entry = resolveEntry(bossRef, supportIndex.bossMap);
+    const label = resolveEntryName(bossRef, supportIndex.bossMap);
+
+    return `
+      <article class="pick-card">
+        <div class="pick-card__head">
+          <span class="pick-card__media">${iconMarkup(entry, label)}</span>
+          <div class="pick-card__copy">
+            <label class="field">
+              <span>Boss milestone</span>
+              <select data-role="boss-id" data-stage-index="${stageIndex}" data-boss-index="${bossIndex}">
+                ${buildSelectOptions(supportIndex.bosses, bossRef, "Choose a boss")}
+              </select>
+            </label>
+          </div>
+          <button class="button button--quiet button--tiny" type="button" data-action="remove-boss" data-stage-index="${stageIndex}" data-boss-index="${bossIndex}">Remove</button>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderItemEditors(stage, stageIndex) {
+  if (!stage.items.length) {
+    return `<p class="empty-state">No item picks yet.</p>`;
+  }
+
+  return stage.items.map((item, itemIndex) => {
+    const entry = resolveEntry(item.itemId, supportIndex.itemMap);
+    const label = resolveEntryName(item.itemId, supportIndex.itemMap);
+
+    return `
+      <article class="pick-card">
+        <div class="pick-card__head">
+          <span class="pick-card__media">${iconMarkup(entry, label)}</span>
+          <div class="pick-card__copy">
+            <label class="field">
+              <span>Item</span>
+              <select data-role="item-id" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">
+                ${buildSelectOptions(supportIndex.items, item.itemId, "Choose an item")}
+              </select>
+            </label>
+          </div>
+          <button class="button button--quiet button--tiny" type="button" data-action="remove-item" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">Remove</button>
+        </div>
+        <div class="pick-card__grid">
+          <label class="field">
+            <span>Category</span>
+            <select data-role="item-category" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">
+              ${CATEGORY_OPTIONS.map((category) => `
+                <option value="${category}" ${category === item.category ? "selected" : ""}>${titleCaseCategory(category)}</option>
+              `).join("")}
+            </select>
+          </label>
+          <label class="field">
+            <span>Priority</span>
+            <input data-role="item-priority" data-stage-index="${stageIndex}" data-item-index="${itemIndex}" type="number" min="0" max="100" value="${Number(item.priority)}">
+          </label>
+        </div>
+        <label class="field">
+          <span>Optional note</span>
+          <textarea data-role="item-note" data-stage-index="${stageIndex}" data-item-index="${itemIndex}" rows="3" placeholder="Why this item matters here.">${escapeHtml(item.note)}</textarea>
+        </label>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderStageEditor() {
+  const stage = state.stages[selectedStageIndex];
+
+  if (!stage) {
+    stageEditor.innerHTML = `<p class="empty-state">No stage selected.</p>`;
+    return;
+  }
+
+  stageEditor.innerHTML = `
+    <section class="stage-panel">
+      <div class="section-copy">
+        <h3>${escapeHtml(stage.title || `Stage ${selectedStageIndex + 1}`)}</h3>
+        <p class="muted">Keep stages narrow and actionable. One stage should feel like one chunk of progression.</p>
+      </div>
+
+      <div class="form-layout">
+        <label class="field">
+          <span>Stage title</span>
+          <input data-role="stage-title" data-stage-index="${selectedStageIndex}" value="${escapeHtml(stage.title)}" placeholder="Early gear setup">
+        </label>
+
+        <label class="field field--wide">
+          <span>Description</span>
+          <textarea data-role="stage-description" data-stage-index="${selectedStageIndex}" rows="4" placeholder="Explain what this part of progression is about.">${escapeHtml(stage.description)}</textarea>
+        </label>
+
+        <label class="field field--wide">
+          <span>Goals, one per line</span>
+          <textarea data-role="stage-goals" data-stage-index="${selectedStageIndex}" rows="4" placeholder="Build an arena&#10;Craft movement gear">${escapeHtml(stage.goalsText)}</textarea>
+        </label>
+
+        <label class="field field--wide">
+          <span>Notes, one per line</span>
+          <textarea data-role="stage-notes" data-stage-index="${selectedStageIndex}" rows="4" placeholder="Optional reminders or route notes">${escapeHtml(stage.notesText)}</textarea>
+        </label>
+      </div>
+
+      <section class="subpanel">
+        <div class="subpanel__header">
+          <div class="section-copy">
+            <h4>Boss milestones</h4>
+            <p class="muted">Reference bosses that define this stage or mark the transition out of it.</p>
+          </div>
+          <button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${selectedStageIndex}">Add boss</button>
+        </div>
+        <div class="stack compact-stack">
+          ${renderBossEditors(stage, selectedStageIndex)}
+        </div>
+      </section>
+
+      <section class="subpanel">
+        <div class="subpanel__header">
+          <div class="section-copy">
+            <h4>Item picks</h4>
+            <p class="muted">Pick curated Terraria entries with real in-game icons and place them into categories.</p>
+          </div>
+          <button class="button button--quiet button--tiny" type="button" data-action="add-item" data-stage-index="${selectedStageIndex}">Add item</button>
+        </div>
+        <div class="stack compact-stack">
+          ${renderItemEditors(stage, selectedStageIndex)}
+        </div>
+      </section>
+    </section>
+  `;
+}
+
 function renderStagePreview(stage) {
   const groupedItems = new Map();
+
   for (const item of stage.items) {
     const key = item.category || "other";
     const existing = groupedItems.get(key) || [];
@@ -490,7 +710,7 @@ function renderGuidePreview(guide) {
 
   guidePreview.innerHTML = `
     <header class="guide-preview__header">
-      <h2>${escapeHtml(guide.title)}</h2>
+      <h2 class="guide-title">${escapeHtml(guide.title)}</h2>
       <p>${escapeHtml(guide.summary)}</p>
       <div class="chip-row">
         ${metaPills.map((pill) => `<span class="meta-pill">${escapeHtml(pill)}</span>`).join("")}
@@ -502,13 +722,302 @@ function renderGuidePreview(guide) {
   `;
 }
 
-function updateOutput() {
+function renderReview() {
   const guide = buildGuide();
   latestJson = `${JSON.stringify(guide, null, 2)}\n`;
   jsonPreview.textContent = latestJson;
   renderGuidePreview(guide);
   downloadButton.disabled = false;
+}
+
+function renderStepMeta() {
+  const definition = STEP_DEFINITIONS[currentStep];
+  stepEyebrow.textContent = `Step ${currentStep + 1} of ${STEP_DEFINITIONS.length}`;
+  stepTitle.textContent = definition.title;
+  stepDescription.textContent = definition.description;
+}
+
+function renderPanels() {
+  for (const panel of stepPanels) {
+    panel.hidden = Number(panel.dataset.stepPanel) !== currentStep;
+  }
+}
+
+function renderFooter() {
+  prevStepButton.disabled = currentStep === 0;
+
+  if (currentStep === STEP_DEFINITIONS.length - 1) {
+    nextStepButton.textContent = "Stay on review";
+    nextStepButton.disabled = true;
+  } else {
+    nextStepButton.textContent = currentStep === STEP_DEFINITIONS.length - 2 ? "Go to review" : "Next step";
+    nextStepButton.disabled = false;
+  }
+
+  autosaveStatus.textContent = lastSavedAt
+    ? `Draft autosaved at ${lastSavedAt}.`
+    : "Draft autosaves in this browser.";
+}
+
+function clampStageSelection() {
+  selectedStageIndex = Math.max(0, Math.min(selectedStageIndex, state.stages.length - 1));
+}
+
+function renderAll() {
+  clampStageSelection();
+  syncMetadataInputs();
+  renderChoiceGroups();
+  renderWizardSteps();
+  renderSnapshot();
+  renderStepMeta();
+  renderPanels();
+  renderStageNav();
+  renderStageEditor();
+  renderReview();
+  renderFooter();
+}
+
+function persistAndRender() {
   saveDraft();
+  renderAll();
+}
+
+function refreshDerivedViews(rerenderStageEditor = false) {
+  renderWizardSteps();
+  renderSnapshot();
+  renderStageNav();
+  if (rerenderStageEditor) {
+    renderStageEditor();
+  }
+  renderReview();
+  renderFooter();
+}
+
+function swapStages(fromIndex, toIndex) {
+  const next = [...state.stages];
+  const [moved] = next.splice(fromIndex, 1);
+  next.splice(toIndex, 0, moved);
+  state.stages = next;
+}
+
+function toggleArrayValue(array, value) {
+  return array.includes(value)
+    ? array.filter((entry) => entry !== value)
+    : [...array, value];
+}
+
+function moveStep(offset) {
+  currentStep = Math.max(0, Math.min(STEP_DEFINITIONS.length - 1, currentStep + offset));
+  renderAll();
+}
+
+function openStep(stepIndex) {
+  currentStep = Math.max(0, Math.min(STEP_DEFINITIONS.length - 1, stepIndex));
+  renderAll();
+}
+
+function handleMetadataChoiceChange(event) {
+  const input = event.target;
+  if (!(input instanceof HTMLInputElement)) {
+    return;
+  }
+
+  const group = input.dataset.choiceGroup;
+  if (!group) {
+    return;
+  }
+
+  if (group === "required-mods") {
+    state.requiredMods = toggleArrayValue(state.requiredMods, input.value);
+    if (!state.requiredMods.length) {
+      state.requiredMods = ["Terraria"];
+    }
+  }
+
+  if (group === "class-tags") {
+    state.classTags = toggleArrayValue(state.classTags, input.value);
+    if (!state.classTags.length) {
+      state.classTags = ["other"];
+    }
+  }
+
+  if (group === "guide-tags") {
+    state.guideTags = toggleArrayValue(state.guideTags, input.value);
+  }
+
+  persistAndRender();
+}
+
+function handleStageNavClick(event) {
+  const button = event.target.closest("button[data-action]");
+  if (!button) {
+    return;
+  }
+
+  const action = button.dataset.action;
+  const stageIndex = Number(button.dataset.stageIndex);
+
+  switch (action) {
+    case "select-stage":
+      selectedStageIndex = stageIndex;
+      renderAll();
+      return;
+    case "move-stage-up":
+      if (stageIndex > 0) {
+        swapStages(stageIndex, stageIndex - 1);
+        selectedStageIndex = stageIndex - 1;
+      }
+      break;
+    case "move-stage-down":
+      if (stageIndex < state.stages.length - 1) {
+        swapStages(stageIndex, stageIndex + 1);
+        selectedStageIndex = stageIndex + 1;
+      }
+      break;
+    case "remove-stage":
+      if (state.stages.length > 1) {
+        state.stages.splice(stageIndex, 1);
+        selectedStageIndex = Math.max(0, Math.min(selectedStageIndex, state.stages.length - 1));
+      }
+      break;
+    default:
+      return;
+  }
+
+  persistAndRender();
+}
+
+function handleStageEditorClick(event) {
+  const button = event.target.closest("button[data-action]");
+  if (!button) {
+    return;
+  }
+
+  const action = button.dataset.action;
+  const stageIndex = Number(button.dataset.stageIndex);
+  const itemIndex = Number(button.dataset.itemIndex);
+  const bossIndex = Number(button.dataset.bossIndex);
+  const stage = state.stages[stageIndex];
+
+  if (!stage) {
+    return;
+  }
+
+  switch (action) {
+    case "add-boss":
+      stage.bossRefs.push("");
+      break;
+    case "remove-boss":
+      stage.bossRefs.splice(bossIndex, 1);
+      break;
+    case "add-item":
+      stage.items.push(createItem());
+      break;
+    case "remove-item":
+      stage.items.splice(itemIndex, 1);
+      break;
+    default:
+      return;
+  }
+
+  persistAndRender();
+}
+
+function handleStageEditorInput(event) {
+  const target = event.target;
+  const role = target.dataset.role;
+  if (!role) {
+    return;
+  }
+
+  const stageIndex = Number(target.dataset.stageIndex);
+  const itemIndex = Number(target.dataset.itemIndex);
+  const bossIndex = Number(target.dataset.bossIndex);
+  const stage = state.stages[stageIndex];
+
+  if (!stage) {
+    return;
+  }
+
+  switch (role) {
+    case "stage-title":
+      stage.title = target.value;
+      {
+        const heading = stageEditor.querySelector(".stage-panel .section-copy h3");
+        if (heading) {
+          heading.textContent = target.value.trim() || `Stage ${stageIndex + 1}`;
+        }
+      }
+      saveDraft();
+      refreshDerivedViews(false);
+      break;
+    case "stage-description":
+      stage.description = target.value;
+      saveDraft();
+      refreshDerivedViews(false);
+      break;
+    case "stage-goals":
+      stage.goalsText = target.value;
+      saveDraft();
+      refreshDerivedViews(false);
+      break;
+    case "stage-notes":
+      stage.notesText = target.value;
+      saveDraft();
+      refreshDerivedViews(false);
+      break;
+    case "boss-id":
+      stage.bossRefs[bossIndex] = target.value;
+      saveDraft();
+      refreshDerivedViews(true);
+      break;
+    case "item-id": {
+      stage.items[itemIndex].itemId = target.value;
+      const entry = resolveEntry(target.value, supportIndex.itemMap);
+      if (entry?.category) {
+        stage.items[itemIndex].category = entry.category;
+      }
+      saveDraft();
+      refreshDerivedViews(true);
+      break;
+    }
+    case "item-category":
+      stage.items[itemIndex].category = target.value;
+      saveDraft();
+      refreshDerivedViews(true);
+      break;
+    case "item-priority":
+      stage.items[itemIndex].priority = Math.max(0, Math.min(100, Number(target.value) || 0));
+      saveDraft();
+      refreshDerivedViews(false);
+      break;
+    case "item-note":
+      stage.items[itemIndex].note = target.value;
+      saveDraft();
+      refreshDerivedViews(false);
+      break;
+    default:
+      return;
+  }
+}
+
+async function copyJson() {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(latestJson);
+      submissionStatus.textContent = "guide.json copied. Open the GitHub issue form and paste the JSON there.";
+      return;
+    }
+  } catch {
+    // Continue to selection fallback.
+  }
+
+  const selection = window.getSelection();
+  const range = document.createRange();
+  range.selectNodeContents(jsonPreview);
+  selection.removeAllRanges();
+  selection.addRange(range);
+  submissionStatus.textContent = "Clipboard access was blocked, so the JSON preview has been selected for manual copy.";
 }
 
 function downloadJson() {
@@ -519,25 +1028,6 @@ function downloadJson() {
   link.download = "guide.json";
   link.click();
   URL.revokeObjectURL(url);
-}
-
-async function copyJson() {
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(latestJson);
-      submissionStatus.textContent = "guide.json copied. Open a GitHub issue and paste the JSON into the submission form.";
-      return;
-    }
-  } catch {
-    // Fall through to selection fallback.
-  }
-
-  const selection = window.getSelection();
-  const range = document.createRange();
-  range.selectNodeContents(jsonPreview);
-  selection.removeAllRanges();
-  selection.addRange(range);
-  submissionStatus.textContent = "Clipboard access was blocked. The JSON preview was selected for manual copy.";
 }
 
 function detectRepositoryUrl() {
@@ -564,195 +1054,26 @@ function detectRepositoryUrl() {
 function openIssuePage() {
   const repositoryUrl = detectRepositoryUrl();
   if (!repositoryUrl) {
-    submissionStatus.textContent = "Repository URL was not detected here. Open your TerraPath GitHub repository and create a new guide submission issue manually.";
+    submissionStatus.textContent = "Repository URL was not detected here. Open your TerraPath repository and create a guide submission issue manually.";
     return;
   }
 
   window.open(`${repositoryUrl}/issues/new`, "_blank", "noopener");
-  submissionStatus.textContent = "GitHub issues opened in a new tab. Choose the guide submission form and paste the copied JSON.";
+  submissionStatus.textContent = "GitHub opened in a new tab. Choose the guide submission form and paste the copied JSON.";
 }
 
-function groupEntriesByMod(entries) {
-  const grouped = new Map();
-  for (const entry of entries) {
-    const modName = String(entry.id || "").split("/")[0] || "Other";
-    const group = grouped.get(modName) || [];
-    group.push(entry);
-    grouped.set(modName, group);
-  }
-  return grouped;
-}
-
-function buildSelectOptions(entries, selectedValue, placeholderLabel) {
-  const entryMap = new Map(entries.map((entry) => [entry.id, entry]));
-  let markup = `<option value="">${escapeHtml(placeholderLabel)}</option>`;
-
-  if (selectedValue && !entryMap.has(selectedValue)) {
-    markup += `<option value="${escapeHtml(selectedValue)}" selected>Unavailable: ${escapeHtml(selectedValue)}</option>`;
+function resetDraft() {
+  if (!confirm("Reset the current TerraPath draft?")) {
+    return;
   }
 
-  for (const [modName, modEntries] of groupEntriesByMod(entries)) {
-    const options = modEntries
-      .slice()
-      .sort((left, right) => left.displayName.localeCompare(right.displayName))
-      .map((entry) => `
-        <option value="${escapeHtml(entry.id)}" ${entry.id === selectedValue ? "selected" : ""}>
-          ${escapeHtml(entry.displayName)}
-        </option>
-      `).join("");
-
-    markup += `<optgroup label="${escapeHtml(modName)}">${options}</optgroup>`;
-  }
-
-  return markup;
-}
-
-function renderBossRows(stage, stageIndex) {
-  if (!stage.bossRefs.length) {
-    return `<p class="empty-state">No boss references yet.</p>`;
-  }
-
-  return stage.bossRefs.map((bossRef, bossIndex) => {
-    const entry = resolveEntry(bossRef, supportIndex.bossMap);
-    const label = resolveEntryName(bossRef, supportIndex.bossMap);
-
-    return `
-      <div class="inline-row inline-row--boss">
-        <span class="inline-row__media">${iconMarkup(entry, label)}</span>
-        <select
-          class="inline-row__fill"
-          data-role="boss-id"
-          data-stage-index="${stageIndex}"
-          data-boss-index="${bossIndex}">
-          ${buildSelectOptions(supportIndex.bosses, bossRef, "Choose a boss")}
-        </select>
-        <button
-          class="button button--quiet button--tiny"
-          type="button"
-          data-action="remove-boss"
-          data-stage-index="${stageIndex}"
-          data-boss-index="${bossIndex}">
-          Remove
-        </button>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderItemRows(stage, stageIndex) {
-  if (!stage.items.length) {
-    return `<p class="empty-state">No item picks yet.</p>`;
-  }
-
-  return stage.items.map((item, itemIndex) => {
-    const entry = resolveEntry(item.itemId, supportIndex.itemMap);
-    const label = resolveEntryName(item.itemId, supportIndex.itemMap);
-
-    return `
-      <div class="inline-row inline-row--item">
-        <span class="inline-row__media">${iconMarkup(entry, label)}</span>
-        <select
-          class="inline-row__fill"
-          data-role="item-id"
-          data-stage-index="${stageIndex}"
-          data-item-index="${itemIndex}">
-          ${buildSelectOptions(supportIndex.items, item.itemId, "Choose an item")}
-        </select>
-        <select
-          data-role="item-category"
-          data-stage-index="${stageIndex}"
-          data-item-index="${itemIndex}">
-          ${CATEGORY_OPTIONS.map((category) => `
-            <option value="${category}" ${category === item.category ? "selected" : ""}>${titleCaseCategory(category)}</option>
-          `).join("")}
-        </select>
-        <input
-          data-role="item-priority"
-          data-stage-index="${stageIndex}"
-          data-item-index="${itemIndex}"
-          type="number"
-          min="0"
-          max="100"
-          value="${Number(item.priority)}"
-          placeholder="50">
-        <input
-          class="inline-row__fill"
-          data-role="item-note"
-          data-stage-index="${stageIndex}"
-          data-item-index="${itemIndex}"
-          value="${escapeHtml(item.note)}"
-          placeholder="Optional explanation">
-        <button
-          class="button button--quiet button--tiny"
-          type="button"
-          data-action="remove-item"
-          data-stage-index="${stageIndex}"
-          data-item-index="${itemIndex}">
-          Remove
-        </button>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderStages() {
-  stageList.innerHTML = state.stages.map((stage, stageIndex) => `
-    <article class="stage-card">
-      <div class="stage-card__header">
-        <div>
-          <p class="eyebrow">Stage ${stageIndex + 1}</p>
-          <h3>${escapeHtml(stage.title || `Stage ${stageIndex + 1}`)}</h3>
-        </div>
-        <div class="stage-card__actions">
-          <button class="button button--quiet button--tiny" type="button" data-action="move-stage-up" data-stage-index="${stageIndex}" ${stageIndex === 0 ? "disabled" : ""}>Up</button>
-          <button class="button button--quiet button--tiny" type="button" data-action="move-stage-down" data-stage-index="${stageIndex}" ${stageIndex === state.stages.length - 1 ? "disabled" : ""}>Down</button>
-          <button class="button button--quiet button--tiny" type="button" data-action="remove-stage" data-stage-index="${stageIndex}" ${state.stages.length === 1 ? "disabled" : ""}>Delete</button>
-        </div>
-      </div>
-      <div class="field-grid field-grid--stage">
-        <label class="field">
-          <span>Stage title</span>
-          <input data-role="stage-title" data-stage-index="${stageIndex}" value="${escapeHtml(stage.title)}" placeholder="Getting Started">
-        </label>
-        <label class="field field--wide">
-          <span>Description</span>
-          <textarea data-role="stage-description" data-stage-index="${stageIndex}" rows="4" placeholder="Explain this progression step.">${escapeHtml(stage.description)}</textarea>
-        </label>
-        <label class="field field--wide">
-          <span>Goals, one per line</span>
-          <textarea data-role="stage-goals" data-stage-index="${stageIndex}" rows="4" placeholder="Build an arena&#10;Craft mobility items">${escapeHtml(stage.goalsText)}</textarea>
-        </label>
-        <label class="field field--wide">
-          <span>Notes, one per line</span>
-          <textarea data-role="stage-notes" data-stage-index="${stageIndex}" rows="3" placeholder="Optional reminders and tips">${escapeHtml(stage.notesText)}</textarea>
-        </label>
-      </div>
-      <section class="subsection">
-        <div class="subsection__header">
-          <div>
-            <h4>Boss references</h4>
-            <p class="muted">Choose boss milestones from the curated support index.</p>
-          </div>
-          <button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${stageIndex}">Add boss</button>
-        </div>
-        <div class="row-list">
-          ${renderBossRows(stage, stageIndex)}
-        </div>
-      </section>
-      <section class="subsection">
-        <div class="subsection__header">
-          <div>
-            <h4>Item picks</h4>
-            <p class="muted">Choose curated entries and place them into guide categories.</p>
-          </div>
-          <button class="button button--quiet button--tiny" type="button" data-action="add-item" data-stage-index="${stageIndex}">Add item</button>
-        </div>
-        <div class="row-list">
-          ${renderItemRows(stage, stageIndex)}
-        </div>
-      </section>
-    </article>
-  `).join("");
+  localStorage.removeItem(STORAGE_KEY);
+  state = createDefaultState();
+  currentStep = 0;
+  selectedStageIndex = 0;
+  lastSavedAt = null;
+  submissionStatus.textContent = "Draft reset. A fresh example guide has been loaded.";
+  renderAll();
 }
 
 async function tryFetchJson(paths) {
@@ -791,230 +1112,78 @@ async function loadSupportIndex() {
       bossMap: new Map(bossEntries.map((entry) => [entry.id, entry]))
     };
 
-    supportStatus.textContent = `Curated editor support loaded: ${itemEntries.length} Terraria item and ore entries, ${bossEntries.length} Terraria boss entries. Metadata can already mention planned mods such as Calamity and Thorium, while their curated content pickers are still upcoming.`;
+    supportStatus.textContent = `Curated Terraria support loaded: ${itemEntries.length} item and ore entries, ${bossEntries.length} boss entry, all using extracted in-game vanilla icons.`;
   } catch (error) {
-    supportStatus.textContent = "Curated support data could not be loaded. The editor still shows saved draft data, but content selectors may be empty.";
+    supportStatus.textContent = "Curated support data could not be loaded. The editor still works, but curated content pickers may be empty.";
     console.error(error);
   }
 
-  renderStages();
-  updateOutput();
+  renderAll();
 }
 
-function swapStages(fromIndex, toIndex) {
-  const next = [...state.stages];
-  const [moved] = next.splice(fromIndex, 1);
-  next.splice(toIndex, 0, moved);
-  state.stages = next;
-}
-
-function toggleArrayValue(array, value) {
-  return array.includes(value)
-    ? array.filter((entry) => entry !== value)
-    : [...array, value];
-}
-
-function handleMetadataChoiceChange(event) {
-  const input = event.target;
-  if (!(input instanceof HTMLInputElement)) {
-    return;
-  }
-
-  const group = input.dataset.choiceGroup;
-  if (!group) {
-    return;
-  }
-
-  if (group === "required-mods") {
-    state.requiredMods = toggleArrayValue(state.requiredMods, input.value);
-    if (!state.requiredMods.length) {
-      state.requiredMods = ["Terraria"];
-      renderChoiceGroups();
-    }
-  }
-
-  if (group === "class-tags") {
-    state.classTags = toggleArrayValue(state.classTags, input.value);
-    if (!state.classTags.length) {
-      state.classTags = ["other"];
-      renderChoiceGroups();
-    }
-  }
-
-  if (group === "guide-tags") {
-    state.guideTags = toggleArrayValue(state.guideTags, input.value);
-  }
-
-  updateOutput();
-}
-
-function handleStageAction(event) {
-  const button = event.target.closest("button[data-action]");
-  if (!button) {
-    return;
-  }
-
-  const action = button.dataset.action;
-  const stageIndex = Number(button.dataset.stageIndex);
-  const itemIndex = Number(button.dataset.itemIndex);
-  const bossIndex = Number(button.dataset.bossIndex);
-  const stage = state.stages[stageIndex];
-
-  switch (action) {
-    case "move-stage-up":
-      if (stageIndex > 0) {
-        swapStages(stageIndex, stageIndex - 1);
-      }
-      break;
-    case "move-stage-down":
-      if (stageIndex < state.stages.length - 1) {
-        swapStages(stageIndex, stageIndex + 1);
-      }
-      break;
-    case "remove-stage":
-      if (state.stages.length > 1) {
-        state.stages.splice(stageIndex, 1);
-      }
-      break;
-    case "add-boss":
-      stage.bossRefs.push("");
-      break;
-    case "remove-boss":
-      stage.bossRefs.splice(bossIndex, 1);
-      break;
-    case "add-item":
-      stage.items.push(createItem());
-      break;
-    case "remove-item":
-      stage.items.splice(itemIndex, 1);
-      break;
-    default:
-      return;
-  }
-
-  renderStages();
-  updateOutput();
-}
-
-function updateStageHeading(target, title) {
-  const card = target.closest(".stage-card");
-  const heading = card?.querySelector("h3");
-  if (heading) {
-    heading.textContent = title;
-  }
-}
-
-function handleStageInput(event) {
-  const target = event.target;
-  const role = target.dataset.role;
-  if (!role) {
-    return;
-  }
-
-  const stageIndex = Number(target.dataset.stageIndex);
-  const itemIndex = Number(target.dataset.itemIndex);
-  const bossIndex = Number(target.dataset.bossIndex);
-  const stage = state.stages[stageIndex];
-
-  switch (role) {
-    case "stage-title":
-      stage.title = target.value;
-      updateStageHeading(target, target.value.trim() || `Stage ${stageIndex + 1}`);
-      break;
-    case "stage-description":
-      stage.description = target.value;
-      break;
-    case "stage-goals":
-      stage.goalsText = target.value;
-      break;
-    case "stage-notes":
-      stage.notesText = target.value;
-      break;
-    case "boss-id":
-      stage.bossRefs[bossIndex] = target.value;
-      renderStages();
-      break;
-    case "item-id": {
-      stage.items[itemIndex].itemId = target.value;
-      const entry = resolveEntry(target.value, supportIndex.itemMap);
-      if (entry?.category) {
-        stage.items[itemIndex].category = entry.category;
-      }
-      renderStages();
-      break;
-    }
-    case "item-category":
-      stage.items[itemIndex].category = target.value;
-      break;
-    case "item-priority":
-      stage.items[itemIndex].priority = Math.max(0, Math.min(100, Number(target.value) || 0));
-      break;
-    case "item-note":
-      stage.items[itemIndex].note = target.value;
-      break;
-    default:
-      return;
-  }
-
-  updateOutput();
-}
-
-function bindMetadataInputs() {
+function bindBasicInputs() {
   titleInput.addEventListener("input", () => {
     state.title = titleInput.value;
-    updateOutput();
+    saveDraft();
+    refreshDerivedViews(false);
   });
 
   authorInput.addEventListener("input", () => {
     state.author = authorInput.value;
-    updateOutput();
+    saveDraft();
+    refreshDerivedViews(false);
   });
 
   languageSelect.addEventListener("change", () => {
     state.language = languageSelect.value;
-    updateOutput();
+    saveDraft();
+    refreshDerivedViews(false);
   });
 
   summaryInput.addEventListener("input", () => {
     state.summary = summaryInput.value;
-    updateOutput();
+    saveDraft();
+    refreshDerivedViews(false);
+  });
+}
+
+function init() {
+  renderLanguageOptions();
+  bindBasicInputs();
+
+  wizardSteps.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-step-target]");
+    if (!button) {
+      return;
+    }
+
+    openStep(Number(button.dataset.stepTarget));
   });
 
   requiredModOptions.addEventListener("change", handleMetadataChoiceChange);
   classTagOptions.addEventListener("change", handleMetadataChoiceChange);
   guideTagOptions.addEventListener("change", handleMetadataChoiceChange);
-}
 
-function resetDraft() {
-  if (!confirm("Reset the current TerraPath draft?")) {
-    return;
-  }
-
-  localStorage.removeItem(STORAGE_KEY);
-  state = createDefaultState();
-  syncMetadataInputs();
-  renderStages();
-  updateOutput();
-}
-
-function init() {
-  renderLanguageOptions();
-  syncMetadataInputs();
-  renderStages();
-  bindMetadataInputs();
-  stageList.addEventListener("click", handleStageAction);
-  stageList.addEventListener("input", handleStageInput);
-  stageList.addEventListener("change", handleStageInput);
   addStageButton.addEventListener("click", () => {
     state.stages.push(createStage({ title: `Stage ${state.stages.length + 1}` }));
-    renderStages();
-    updateOutput();
+    selectedStageIndex = state.stages.length - 1;
+    persistAndRender();
   });
+
+  stageNav.addEventListener("click", handleStageNavClick);
+  stageEditor.addEventListener("click", handleStageEditorClick);
+  stageEditor.addEventListener("input", handleStageEditorInput);
+  stageEditor.addEventListener("change", handleStageEditorInput);
+
+  prevStepButton.addEventListener("click", () => moveStep(-1));
+  nextStepButton.addEventListener("click", () => moveStep(1));
+
   copyJsonButton.addEventListener("click", copyJson);
+  downloadButton.addEventListener("click", downloadJson);
   openIssueButton.addEventListener("click", openIssuePage);
   resetDraftButton.addEventListener("click", resetDraft);
-  downloadButton.addEventListener("click", downloadJson);
-  updateOutput();
+
+  renderAll();
   loadSupportIndex();
 }
 
