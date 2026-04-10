@@ -433,13 +433,14 @@ function applySupportEnhancements() {
 
 function visibleSearchItems() {
   return [...support.itemMap.values()]
-    .filter((entry) => !entry.pickerHidden)
+    .filter((entry) => !entry.pickerHidden && entry.icon)
     .sort((left, right) => localizedDisplayName(left).localeCompare(localizedDisplayName(right), undefined, { sensitivity: "base" }));
 }
 
 function inferItemCategory(entry, groupKey) {
-  if (entry?.category && entry.category !== "other") return entry.category;
   const group = GROUPS.find((item) => item.key === groupKey) || GROUPS[0];
+  if (groupKey) return group.cats[0];
+  if (entry?.category && entry.category !== "other") return entry.category;
   return group.cats[0];
 }
 
@@ -798,15 +799,14 @@ function stageSummary(stage) {
 }
 
 function previewSubStage(stage) {
-  const stats = stageStats(stage);
-  return `<article class="guide-substage"><section class="guide-substage__main"><div class="guide-substage__header"><h3>${renderRichText(stage.title)}</h3><span class="meta-pill">${esc(s("itemCount", { count: stats.items }))}</span></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}${previewBosses(stage)}</section><section class="guide-substage__loadout">${previewGroups(stage.items)}</section></article>`;
+  return `<article class="guide-substage"><section class="guide-substage__main"><div class="guide-substage__header"><h3>${renderRichText(stage.title)}</h3></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}${previewBosses(stage)}</section><section class="guide-substage__loadout">${previewGroups(stage.items)}</section></article>`;
 }
 
 function renderPreview() {
   const guide = buildGuide();
   latestJson = `${JSON.stringify(guide, null, 2)}\n`;
   refs.json.textContent = latestJson;
-  refs.preview.innerHTML = `<header class="guide-reader__header"><h2 class="guide-title">${esc(guide.title)}</h2><p>${esc(guide.summary)}</p><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelClass")}: ${classList(guide.classTags)}`)}</span><span class="meta-pill">${esc(`${t("common.labelLanguage")}: ${guideLanguageLabel(guide.language)}`)}</span><span class="meta-pill">${esc(`${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`)}</span><span class="meta-pill">${esc(`${guide.stages.length} ${t("common.labelStages").toLowerCase()}`)}</span></div></header><div class="guide-reader__eras">${stagesByEra(guide.stages).map((eraGroup) => `<section class="guide-era"><header class="guide-era__header"><h2>${esc(eraLabel(eraGroup.eraId))}</h2><span class="meta-pill">${esc(`${eraGroup.stages.length} ${lang() === "ru" ? "\u043f\u043e\u0434-\u044d\u0442\u0430\u043f\u043e\u0432" : "sub-stages"}`)}</span></header><div class="guide-era__list">${eraGroup.stages.map(previewSubStage).join("")}</div></section>`).join("")}</div>`;
+  refs.preview.innerHTML = `<header class="guide-reader__header"><h2 class="guide-title">${esc(guide.title)}</h2><p>${esc(guide.summary)}</p><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelClass")}: ${classList(guide.classTags)}`)}</span><span class="meta-pill">${esc(`${t("common.labelLanguage")}: ${guideLanguageLabel(guide.language)}`)}</span><span class="meta-pill">${esc(`${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`)}</span></div></header><div class="guide-reader__eras">${stagesByEra(guide.stages).map((eraGroup) => `<section class="guide-era"><header class="guide-era__header"><h2>${esc(eraLabel(eraGroup.eraId))}</h2></header><div class="guide-era__list">${eraGroup.stages.map(previewSubStage).join("")}</div></section>`).join("")}</div>`;
 }
 
 function renderSubmissionGuide() {

@@ -67,7 +67,7 @@ The `Review guide submissions` workflow:
 - updates a bot comment with the current moderation status.
 
 If a guide issue was created before the moderation workflows were fixed, edit the
-issue body or toggle any label once to trigger the review workflow again.
+issue body and save it once to trigger the review workflow again.
 
 ### On approval
 

@@ -203,6 +203,7 @@ sealed class ExportGame : Game
     TerrariaAssetExport.DumpSearchItems(
       content,
       _itemIdMap,
+      _tmlAssemblyPath,
       Path.Combine(_repoRoot, "supported", "Terraria", "search-items.json"),
       Path.Combine(_repoRoot, "docs", "assets", "icons", "terraria", "search-items"),
       _jsonOptions,

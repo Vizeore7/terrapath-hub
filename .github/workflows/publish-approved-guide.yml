@@ -12,6 +12,9 @@ permissions:
 jobs:
   publish:
     if: github.event.label.name == 'approved' && contains(github.event.issue.labels.*.name, 'guide-submission')
+    concurrency:
+      group: publish-guide-${{ github.event.issue.number }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -132,15 +135,23 @@ jobs:
               issue_number: issueNumber,
               per_page: 100
             });
-            const existing = comments.find((comment) => comment.user.type === 'Bot' && comment.body.includes(marker));
+            const existing = comments.filter((comment) => comment.user.type === 'Bot' && comment.body.includes(marker));
 
-            if (existing) {
+            if (existing.length) {
               await github.rest.issues.updateComment({
                 owner,
                 repo,
-                comment_id: existing.id,
+                comment_id: existing[0].id,
                 body
               });
+
+              for (const duplicate of existing.slice(1)) {
+                await github.rest.issues.deleteComment({
+                  owner,
+                  repo,
+                  comment_id: duplicate.id
+                });
+              }
             } else {
               await github.rest.issues.createComment({
                 owner,

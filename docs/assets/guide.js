@@ -252,7 +252,7 @@ function renderBosses(stage) {
 }
 
 function renderStageEntry(stage) {
-  return `<article class="guide-substage"><section class="guide-substage__main"><div class="guide-substage__header"><h3>${renderRichText(stage.title)}</h3><span class="meta-pill">${escapeHtml(t("guide.itemPicks", { count: (stage.items || []).length }))}</span></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}${renderBosses(stage)}</section><section class="guide-substage__loadout">${renderItemGroups(stage.items)}</section></article>`;
+  return `<article class="guide-substage"><section class="guide-substage__main"><div class="guide-substage__header"><h3>${renderRichText(stage.title)}</h3></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}${renderBosses(stage)}</section><section class="guide-substage__loadout">${renderItemGroups(stage.items)}</section></article>`;
 }
 
 function renderGuide(guide) {
@@ -263,7 +263,7 @@ function renderGuide(guide) {
     `${(guide.stages || []).length} ${t("common.labelStages").toLowerCase()}`
   ];
 
-  guidePage.innerHTML = `<header class="guide-reader__header"><h1 class="guide-title">${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.summary || "")}</p><div class="chip-row">${metaPills.map((pill) => `<span class="meta-pill">${escapeHtml(pill)}</span>`).join("")}</div></header><div class="guide-reader__eras">${stagesByEra(guide.stages).map((eraGroup) => `<section class="guide-era"><header class="guide-era__header"><h2>${escapeHtml(eraLabel(eraGroup.eraId))}</h2><span class="meta-pill">${escapeHtml(`${eraGroup.stages.length} ${language() === "ru" ? "\u043f\u043e\u0434-\u044d\u0442\u0430\u043f\u043e\u0432" : "sub-stages"}`)}</span></header><div class="guide-era__list">${eraGroup.stages.map(renderStageEntry).join("")}</div></section>`).join("")}</div>`;
+  guidePage.innerHTML = `<header class="guide-reader__header"><h1 class="guide-title">${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.summary || "")}</p><div class="chip-row">${metaPills.map((pill) => `<span class="meta-pill">${escapeHtml(pill)}</span>`).join("")}</div></header><div class="guide-reader__eras">${stagesByEra(guide.stages).map((eraGroup) => `<section class="guide-era"><header class="guide-era__header"><h2>${escapeHtml(eraLabel(eraGroup.eraId))}</h2></header><div class="guide-era__list">${eraGroup.stages.map(renderStageEntry).join("")}</div></section>`).join("")}</div>`;
 }
 
 async function init() {

@@ -1,6 +1,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Reflection;
+using System.Runtime.Loader;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Microsoft.Xna.Framework.Content;
@@ -137,6 +138,7 @@ static class TerrariaAssetExport
   public static void DumpSearchItems(
     ContentManager content,
     IReadOnlyDictionary<string, int> idMap,
+    string assemblyPath,
     string jsonPath,
     string outputFolder,
     JsonSerializerOptions jsonOptions,
@@ -144,6 +146,7 @@ static class TerrariaAssetExport
     IReadOnlyDictionary<string, string> localizedNamesRu)
   {
     Directory.CreateDirectory(outputFolder);
+    var categoryInspector = new ItemCategoryInspector(assemblyPath);
     var sortedItems = idMap
       .Where(pair => pair.Value > 0)
       .OrderBy(pair => pair.Value)
@@ -169,6 +172,12 @@ static class TerrariaAssetExport
         ["displayName"] = englishName,
         ["displayNameRu"] = russianName
       };
+
+      var category = categoryInspector.Infer(assetId);
+      if (!string.IsNullOrWhiteSpace(category))
+      {
+        itemNode["category"] = category;
+      }
 
       if (TryExportTexture(content, $"Images/Item_{assetId}", outputPath))
       {
@@ -271,5 +280,140 @@ static class TerrariaAssetExport
       "-",
       new string(chars)
         .Split('-', StringSplitOptions.RemoveEmptyEntries));
+  }
+
+  private sealed class ItemCategoryInspector
+  {
+    private readonly object? _itemInstance;
+    private readonly MethodInfo? _setDefaultsMethod;
+    private readonly Type? _itemType;
+
+    public ItemCategoryInspector(string assemblyPath)
+    {
+      try
+      {
+        var assembly = AssemblyLoadContext.Default.Assemblies.FirstOrDefault((candidate) =>
+          string.Equals(Path.GetFullPath(candidate.Location), Path.GetFullPath(assemblyPath), StringComparison.OrdinalIgnoreCase))
+          ?? AssemblyLoadContext.Default.LoadFromAssemblyPath(assemblyPath);
+
+        _itemType = assembly.GetType("Terraria.Item");
+        if (_itemType is null)
+        {
+          return;
+        }
+
+        _itemInstance = Activator.CreateInstance(_itemType);
+        _setDefaultsMethod = _itemType
+          .GetMethods(BindingFlags.Public | BindingFlags.Instance)
+          .FirstOrDefault((method) =>
+          {
+            if (!string.Equals(method.Name, "SetDefaults", StringComparison.Ordinal)) return false;
+            var parameters = method.GetParameters();
+            return parameters.Length > 0 && parameters[0].ParameterType == typeof(int);
+          });
+      }
+      catch
+      {
+        _itemType = null;
+        _itemInstance = null;
+        _setDefaultsMethod = null;
+      }
+    }
+
+    public string? Infer(int itemId)
+    {
+      if (_itemInstance is null || _setDefaultsMethod is null)
+      {
+        return null;
+      }
+
+      try
+      {
+        var parameters = _setDefaultsMethod.GetParameters();
+        var args = new object?[parameters.Length];
+        args[0] = itemId;
+
+        for (var index = 1; index < parameters.Length; index += 1)
+        {
+          args[index] = parameters[index].HasDefaultValue
+            ? parameters[index].DefaultValue
+            : (parameters[index].ParameterType.IsValueType ? Activator.CreateInstance(parameters[index].ParameterType) : null);
+        }
+
+        _setDefaultsMethod.Invoke(_itemInstance, args);
+
+        var accessory = ReadBool("accessory");
+        var headSlot = ReadInt("headSlot", -1);
+        var bodySlot = ReadInt("bodySlot", -1);
+        var legSlot = ReadInt("legSlot", -1);
+        var ammo = ReadInt("ammo", 0);
+        var buffType = ReadInt("buffType", 0);
+        var healLife = ReadInt("healLife", 0);
+        var healMana = ReadInt("healMana", 0);
+        var damage = ReadInt("damage", 0);
+        var pick = ReadInt("pick", 0);
+        var axe = ReadInt("axe", 0);
+        var hammer = ReadInt("hammer", 0);
+        var fishingPole = ReadInt("fishingPole", 0);
+        var consumable = ReadBool("consumable");
+        var potion = ReadBool("potion");
+        var defense = ReadInt("defense", 0);
+
+        if (accessory)
+        {
+          return "accessory";
+        }
+
+        if (headSlot >= 0 || bodySlot >= 0 || legSlot >= 0 || defense > 0)
+        {
+          return "armor";
+        }
+
+        if (ammo > 0 || buffType > 0 || healLife > 0 || healMana > 0 || potion || consumable && (healLife > 0 || healMana > 0))
+        {
+          return "buff";
+        }
+
+        if (damage > 0 || pick > 0 || axe > 0 || hammer > 0 || fishingPole > 0)
+        {
+          return "weapon";
+        }
+      }
+      catch
+      {
+        return null;
+      }
+
+      return null;
+    }
+
+    private bool ReadBool(string name)
+    {
+      var value = ReadMember(name);
+      return value is bool boolean && boolean;
+    }
+
+    private int ReadInt(string name, int fallback)
+    {
+      var value = ReadMember(name);
+      return value is int integer ? integer : fallback;
+    }
+
+    private object? ReadMember(string name)
+    {
+      if (_itemType is null || _itemInstance is null)
+      {
+        return null;
+      }
+
+      var field = _itemType.GetField(name, BindingFlags.Public | BindingFlags.Instance);
+      if (field is not null)
+      {
+        return field.GetValue(_itemInstance);
+      }
+
+      var property = _itemType.GetProperty(name, BindingFlags.Public | BindingFlags.Instance);
+      return property?.GetValue(_itemInstance);
+    }
   }
 }
