@@ -45,6 +45,29 @@
       "stageCount": 2,
       "path": "guides/ru-RU/terraria-melee/guide.json",
       "popularity": 0
+    },
+    {
+      "id": "terraria-ranged",
+      "title": "\u0412\u0442\u043e\u0440\u043e\u0439",
+      "author": "\u044b\u044b\u044b\u044b\u044b\u044b\u044b\u044b\u044b",
+      "language": "ru-RU",
+      "summary": "\u0417\u0430\u0432\u043e\u0437\u0438\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a",
+      "requiredMods": [
+        "Terraria"
+      ],
+      "classTags": [
+        "ranged"
+      ],
+      "guideTags": [
+        "starter",
+        "progression",
+        "vanilla",
+        "draft"
+      ],
+      "updatedAt": "2026-04-10",
+      "stageCount": 3,
+      "path": "guides/ru-RU/terraria-ranged/guide.json",
+      "popularity": 0
     }
   ]
 }

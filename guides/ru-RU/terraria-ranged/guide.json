@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "terraria-ranged",
+  "title": "Второй",
+  "author": "ыыыыыыыыы",
+  "language": "ru-RU",
+  "summary": "Завозикккккккккккккккккк",
+  "requiredMods": [
+    "Terraria"
+  ],
+  "classTags": [
+    "ranged"
+  ],
+  "createdAt": "2026-04-10",
+  "updatedAt": "2026-04-10",
+  "stages": [
+    {
+      "id": "guide",
+      "title": "Пре-боссы{{icon:Terraria/KingSlime}}{{icon:Terraria/EyeofCthulhu}}",
+      "era": "prehardmode",
+      "items": [
+        {
+          "itemId": "Terraria/TendonBow",
+          "category": "weapon"
+        },
+        {
+          "itemId": "Terraria/GoldHelmet",
+          "category": "armor"
+        },
+        {
+          "itemId": "Terraria/SniperScope",
+          "category": "weapon"
+        },
+        {
+          "itemId": "Terraria/LavaCharm",
+          "category": "accessory",
+          "subgroup": "Защита"
+        },
+        {
+          "itemId": "Terraria/AmmoBox",
+          "category": "weapon"
+        },
+        {
+          "itemId": "Terraria/SniperScope",
+          "category": "weapon"
+        }
+      ],
+      "description": "Лутаем сундуки под землей и копаем руду{{icon:Terraria/BloodFishingRod}}",
+      "bossRefs": [
+        "Terraria/KingSlime",
+        "Terraria/EyeofCthulhu"
+      ]
+    },
+    {
+      "id": "guide-2",
+      "title": "Пре пожиратель{{icon:Terraria/EaterofWorldsHead}}",
+      "era": "prehardmode",
+      "items": [
+        {
+          "itemId": "Terraria/Zenith",
+          "category": "weapon"
+        }
+      ],
+      "description": "Крафтим",
+      "bossRefs": [
+        "Terraria/QueenBee"
+      ]
+    },
+    {
+      "id": "guide-3",
+      "title": "Плантера{{icon:Terraria/Plantera}}",
+      "era": "hardmode",
+      "items": [
+        {
+          "itemId": "Terraria/Zenith",
+          "category": "weapon"
+        },
+        {
+          "itemId": "Terraria/VortexHelmet",
+          "category": "armor"
+        },
+        {
+          "itemId": "Terraria/LavaCharm",
+          "category": "accessory"
+        },
+        {
+          "itemId": "Terraria/AmmoBox",
+          "category": "weapon"
+        }
+      ],
+      "description": "Убиваем дуру{{icon:Terraria/Cutlass}}",
+      "bossRefs": [
+        "Terraria/Plantera"
+      ]
+    }
+  ],
+  "guideTags": [
+    "starter",
+    "progression",
+    "vanilla",
+    "draft"
+  ]
+}
