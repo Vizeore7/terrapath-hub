@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "id": "terraria-ranged",
-  "title": "Третий",
+  "title": "Пятый",
   "author": "ыыыыыыыыы",
   "language": "ru-RU",
-  "summary": "Завозикккккккккккккккккк",
+  "summary": "ХАЮХАЙ С ВАМИ ИВАНГАЙ",
   "requiredMods": [
     "Terraria"
   ],
@@ -12,7 +12,7 @@
     "ranged"
   ],
   "createdAt": "2026-04-10",
-  "updatedAt": "2026-04-10",
+  "updatedAt": "2026-04-10T17:02:00Z",
   "stages": [
     {
       "id": "guide",
@@ -49,12 +49,21 @@
         {
           "itemId": "Terraria/VortexHelmet",
           "category": "armor"
+        },
+        {
+          "itemId": "Terraria/Zenith",
+          "category": "weapon"
+        },
+        {
+          "itemId": "Terraria/BattlePotion",
+          "category": "buff"
         }
       ],
       "description": "Лутаем сундуки под землей и копаем руду{{icon:Terraria/BloodFishingRod}}{{icon:Terraria/GolfPainting3}}",
       "bossRefs": [
         "Terraria/KingSlime",
-        "Terraria/EyeofCthulhu"
+        "Terraria/EyeofCthulhu",
+        "Terraria/QueenBee"
       ]
     },
     {

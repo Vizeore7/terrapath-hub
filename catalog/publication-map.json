@@ -1,4 +1,11 @@
 {
   "schemaVersion": 1,
-  "issues": {}
+  "issues": {
+    "12": {
+      "guideId": "terraria-ranged",
+      "language": "ru-RU",
+      "path": "guides/ru-RU/terraria-ranged/guide.json",
+      "updatedAt": "2026-04-10T17:02:00Z"
+    }
+  }
 }

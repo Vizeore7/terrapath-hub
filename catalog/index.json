@@ -48,10 +48,10 @@
     },
     {
       "id": "terraria-ranged",
-      "title": "\u0422\u0440\u0435\u0442\u0438\u0439",
+      "title": "\u041f\u044f\u0442\u044b\u0439",
       "author": "\u044b\u044b\u044b\u044b\u044b\u044b\u044b\u044b\u044b",
       "language": "ru-RU",
-      "summary": "\u0417\u0430\u0432\u043e\u0437\u0438\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a\u043a",
+      "summary": "\u0425\u0410\u042e\u0425\u0410\u0419 \u0421 \u0412\u0410\u041c\u0418 \u0418\u0412\u0410\u041d\u0413\u0410\u0419",
       "requiredMods": [
         "Terraria"
       ],
@@ -64,7 +64,7 @@
         "vanilla",
         "draft"
       ],
-      "updatedAt": "2026-04-10",
+      "updatedAt": "2026-04-10T17:02:00Z",
       "stageCount": 3,
       "path": "guides/ru-RU/terraria-ranged/guide.json",
       "popularity": 0
