@@ -10,18 +10,35 @@ permissions:
 
 jobs:
   review:
-    if: contains(github.event.issue.labels.*.name, 'guide-submission')
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Detect guide submission
+        id: detect
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = context.payload.issue.title || '';
+            const body = context.payload.issue.body || '';
+            const labels = context.payload.issue.labels.map((label) => label.name);
+            const isSubmission =
+              labels.includes('guide-submission') ||
+              title.startsWith('[Guide]:') ||
+              body.includes('```json') ||
+              body.includes('guide.json');
+
+            core.setOutput('is_submission', isSubmission ? 'true' : 'false');
+
       - name: Set up Python
+        if: steps.detect.outputs.is_submission == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
       - name: Ensure moderation labels exist
+        if: steps.detect.outputs.is_submission == 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -52,7 +69,28 @@ jobs:
               }
             }
 
+      - name: Mark issue as guide submission
+        if: steps.detect.outputs.is_submission == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issueNumber = context.issue.number;
+            const existingLabels = context.payload.issue.labels.map((label) => label.name);
+            const missing = ['guide-submission', 'needs-review'].filter((label) => !existingLabels.includes(label));
+
+            if (missing.length) {
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: issueNumber,
+                labels: missing
+              });
+            }
+
       - name: Validate issue payload
+        if: steps.detect.outputs.is_submission == 'true'
         id: validate
         continue-on-error: true
         env:
@@ -60,6 +98,7 @@ jobs:
         run: python tools/issue_submission.py validate-issue
 
       - name: Sync moderation labels and comment
+        if: steps.detect.outputs.is_submission == 'true'
         uses: actions/github-script@v7
         env:
           VALIDATION_RESULT: ${{ steps.validate.outcome }}
