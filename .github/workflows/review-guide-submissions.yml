@@ -118,7 +118,7 @@ jobs:
                   'Next step for a moderator:',
                   '1. Read the guide in the issue.',
                   '2. Check progression quality and naming.',
-                  '3. Add the `approved` label when the guide is ready for publication.'
+                  '3. In the right sidebar, open Labels and add the `approved` label when the guide is ready for publication.'
                 ].join('\n')
               : [
                   marker,

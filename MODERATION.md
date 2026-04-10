@@ -28,7 +28,7 @@ This repository uses a lightweight issue-based moderation flow for community gui
 2. Check that the issue has the `validated` label.
 3. Read the guide for progression quality, naming, clarity, and supported content.
 4. Ask for edits in the issue if the guide is not ready.
-5. Add the `approved` label when the guide is ready to publish.
+5. In the issue page right sidebar, open `Labels` and add the `approved` label when the guide is ready to publish.
 6. Review the automatically created pull request.
 7. Merge the pull request into `main`.
 
@@ -42,6 +42,9 @@ The `Review guide submissions` workflow:
 - validates it with `tools/issue_submission.py` and `tools/validate_guides.py`;
 - adds either `validated` or `validation-failed`;
 - updates a bot comment with the current moderation status.
+
+If a guide issue was created before the moderation workflows were fixed, edit the
+issue body or toggle any label once to trigger the review workflow again.
 
 ### On approval
 
