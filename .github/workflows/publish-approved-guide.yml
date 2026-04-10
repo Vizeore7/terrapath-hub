@@ -64,6 +64,7 @@ jobs:
 
       - name: Create publication pull request
         id: cpr
+        continue-on-error: true
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "Publish guide from issue #${{ github.event.issue.number }}"
@@ -84,13 +85,31 @@ jobs:
         uses: actions/github-script@v7
         env:
           PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+          BRANCH_NAME: publish/issue-${{ github.event.issue.number }}
+          CPR_OUTCOME: ${{ steps.cpr.outcome }}
+          SERVER_URL: ${{ github.server_url }}
+          REPOSITORY: ${{ github.repository }}
         with:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const issueNumber = context.issue.number;
             const marker = '<!-- terrapath-publication-status -->';
-            const body = process.env.PR_URL
+            const branchUrl = `${process.env.SERVER_URL}/${process.env.REPOSITORY}/tree/${process.env.BRANCH_NAME}`;
+            const body = process.env.CPR_OUTCOME === 'failure'
+              ? [
+                  marker,
+                  '',
+                  'Publication branch was pushed, but GitHub Actions could not create the pull request automatically.',
+                  '',
+                  `Branch: ${branchUrl}`,
+                  '',
+                  'Most common fix:',
+                  '1. Open `Settings -> Actions -> General` in the repository.',
+                  '2. In `Workflow permissions`, enable `Allow GitHub Actions to create and approve pull requests`.',
+                  '3. Re-run this workflow, or open a pull request manually from the branch above.'
+                ].join('\n')
+              : process.env.PR_URL
               ? [
                   marker,
                   '',
@@ -130,3 +149,11 @@ jobs:
                 body
               });
             }
+
+      - name: Fail if GitHub blocked pull request creation
+        if: steps.cpr.outcome == 'failure'
+        run: |
+          echo "Automatic pull request creation failed."
+          echo "Enable 'Allow GitHub Actions to create and approve pull requests' in Settings -> Actions -> General."
+          echo "You can also open a manual PR from branch publish/issue-${{ github.event.issue.number }}."
+          exit 1

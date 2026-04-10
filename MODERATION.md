@@ -32,6 +32,29 @@ This repository uses a lightweight issue-based moderation flow for community gui
 6. Review the automatically created pull request.
 7. Merge the pull request into `main`.
 
+## If publication fails at pull request creation
+
+Sometimes the export branch is pushed successfully, but GitHub does not allow Actions to open the pull request itself.
+
+### Fix the repository setting
+
+1. Open the repository on GitHub.
+2. Go to `Settings`.
+3. Open `Actions` -> `General`.
+4. Scroll to `Workflow permissions`.
+5. Enable `Allow GitHub Actions to create and approve pull requests`.
+6. Save the setting.
+7. Re-run the failed `Publish approved guide` workflow.
+
+### Manual fallback
+
+If the workflow still says the branch was pushed:
+
+1. Open the branch link from the bot comment on the issue.
+2. Click `Compare & pull request`.
+3. Create the pull request manually.
+4. Merge it into `main`.
+
 ## What automation does
 
 ### On issue submission or edit
