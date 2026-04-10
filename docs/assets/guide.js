@@ -303,7 +303,7 @@ function renderBosses(stage) {
 }
 
 function renderStageEntry(stage) {
-  return `<article class="guide-substage"><section class="guide-substage__main"><div class="guide-substage__header"><h3>${renderRichText(stage.title)}</h3></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}</section>${renderLoadout(stage.items)}${renderBosses(stage)}</article>`;
+  return `<article class="guide-substage"><section class="guide-substage__main"><div class="guide-substage__header"><h3>${renderRichText(stage.title)}</h3></div>${stage.description ? `<p class="stage-description">${renderRichText(stage.description)}</p>` : ""}</section>${renderLoadout(stage.items)}${renderBosses(stage)}</article>`;
 }
 
 function renderGuide(guide) {

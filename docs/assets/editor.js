@@ -846,7 +846,7 @@ function stageSummary(stage) {
 }
 
 function previewSubStage(stage) {
-  return `<article class="guide-substage"><section class="guide-substage__main"><div class="guide-substage__header"><h3>${renderRichText(stage.title)}</h3></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}${previewBosses(stage)}</section><section class="guide-substage__loadout">${previewGroups(stage.items)}</section></article>`;
+  return `<article class="guide-substage"><section class="guide-substage__main"><div class="guide-substage__header"><h3>${renderRichText(stage.title)}</h3></div>${stage.description ? `<p class="stage-description">${renderRichText(stage.description)}</p>` : ""}${previewBosses(stage)}</section><section class="guide-substage__loadout">${previewGroups(stage.items)}</section></article>`;
 }
 
 function renderPreview() {
