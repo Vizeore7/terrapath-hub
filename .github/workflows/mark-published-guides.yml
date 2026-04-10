@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   mark-published:
-    if: contains(join(github.event.issue.labels.*.name, ','), 'guide-submission') && contains(join(github.event.issue.labels.*.name, ','), 'approved')
+    if: contains(github.event.issue.labels.*.name, 'guide-submission') && contains(github.event.issue.labels.*.name, 'approved')
     runs-on: ubuntu-latest
     steps:
       - name: Mark issue as published

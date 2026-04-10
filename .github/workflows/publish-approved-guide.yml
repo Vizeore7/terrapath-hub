@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   publish:
-    if: github.event.label.name == 'approved' && contains(join(github.event.issue.labels.*.name, ','), 'guide-submission')
+    if: github.event.label.name == 'approved' && contains(github.event.issue.labels.*.name, 'guide-submission')
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
