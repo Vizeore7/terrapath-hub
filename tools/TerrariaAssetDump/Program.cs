@@ -51,6 +51,25 @@ static IReadOnlyDictionary<string, int> LoadConstantMap(string assemblyPath, str
     }
   }
 
+  if (values.Count == 0)
+  {
+    var searchField = type.GetField("Search", BindingFlags.Public | BindingFlags.Static);
+    var search = searchField?.GetValue(null);
+    var nameToIdField = search?.GetType().GetField("_nameToId", BindingFlags.NonPublic | BindingFlags.Instance);
+    var nameToId = nameToIdField?.GetValue(search) as System.Collections.IDictionary;
+
+    if (nameToId is not null)
+    {
+      foreach (System.Collections.DictionaryEntry entry in nameToId)
+      {
+        if (entry.Key is string name && entry.Value is int id)
+        {
+          values[name] = id;
+        }
+      }
+    }
+  }
+
   return values;
 }
 

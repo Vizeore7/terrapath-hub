@@ -3,11 +3,112 @@
   "contentType": "bosses",
   "bosses": [
     {
+      "id": "Terraria/KingSlime",
+      "internalName": "KingSlime",
+      "displayName": "King Slime",
+      "icon": "assets/icons/terraria/bosses/king-slime.png"
+    },
+    {
       "id": "Terraria/EyeofCthulhu",
       "internalName": "EyeofCthulhu",
       "displayName": "Eye of Cthulhu",
-      "assetPath": "Images/NPC_4",
       "icon": "assets/icons/terraria/bosses/eye-of-cthulhu.png"
+    },
+    {
+      "id": "Terraria/EaterofWorldsHead",
+      "internalName": "EaterofWorldsHead",
+      "displayName": "Eater of Worlds",
+      "icon": "assets/icons/terraria/bosses/eater-of-worlds.png"
+    },
+    {
+      "id": "Terraria/BrainofCthulhu",
+      "internalName": "BrainofCthulhu",
+      "displayName": "Brain of Cthulhu",
+      "icon": "assets/icons/terraria/bosses/brain-of-cthulhu.png"
+    },
+    {
+      "id": "Terraria/QueenBee",
+      "internalName": "QueenBee",
+      "displayName": "Queen Bee",
+      "icon": "assets/icons/terraria/bosses/queen-bee.png"
+    },
+    {
+      "id": "Terraria/SkeletronHead",
+      "internalName": "SkeletronHead",
+      "displayName": "Skeletron",
+      "icon": "assets/icons/terraria/bosses/skeletron.png"
+    },
+    {
+      "id": "Terraria/Deerclops",
+      "internalName": "Deerclops",
+      "displayName": "Deerclops",
+      "icon": "assets/icons/terraria/bosses/deerclops.png"
+    },
+    {
+      "id": "Terraria/WallofFlesh",
+      "internalName": "WallofFlesh",
+      "displayName": "Wall of Flesh",
+      "icon": "assets/icons/terraria/bosses/wall-of-flesh.png"
+    },
+    {
+      "id": "Terraria/QueenSlimeBoss",
+      "internalName": "QueenSlimeBoss",
+      "displayName": "Queen Slime",
+      "icon": "assets/icons/terraria/bosses/queen-slime.png"
+    },
+    {
+      "id": "Terraria/TheDestroyer",
+      "internalName": "TheDestroyer",
+      "displayName": "The Destroyer",
+      "icon": "assets/icons/terraria/bosses/the-destroyer.png"
+    },
+    {
+      "id": "Terraria/Retinazer",
+      "internalName": "Retinazer",
+      "displayName": "The Twins",
+      "icon": "assets/icons/terraria/bosses/the-twins.png"
+    },
+    {
+      "id": "Terraria/SkeletronPrime",
+      "internalName": "SkeletronPrime",
+      "displayName": "Skeletron Prime",
+      "icon": "assets/icons/terraria/bosses/skeletron-prime.png"
+    },
+    {
+      "id": "Terraria/Plantera",
+      "internalName": "Plantera",
+      "displayName": "Plantera",
+      "icon": "assets/icons/terraria/bosses/plantera.png"
+    },
+    {
+      "id": "Terraria/Golem",
+      "internalName": "Golem",
+      "displayName": "Golem",
+      "icon": "assets/icons/terraria/bosses/golem.png"
+    },
+    {
+      "id": "Terraria/DukeFishron",
+      "internalName": "DukeFishron",
+      "displayName": "Duke Fishron",
+      "icon": "assets/icons/terraria/bosses/duke-fishron.png"
+    },
+    {
+      "id": "Terraria/HallowBoss",
+      "internalName": "HallowBoss",
+      "displayName": "Empress of Light",
+      "icon": "assets/icons/terraria/bosses/empress-of-light.png"
+    },
+    {
+      "id": "Terraria/CultistBoss",
+      "internalName": "CultistBoss",
+      "displayName": "Lunatic Cultist",
+      "icon": "assets/icons/terraria/bosses/lunatic-cultist.png"
+    },
+    {
+      "id": "Terraria/MoonLordCore",
+      "internalName": "MoonLordCore",
+      "displayName": "Moon Lord",
+      "icon": "assets/icons/terraria/bosses/moon-lord.png"
     }
   ]
 }

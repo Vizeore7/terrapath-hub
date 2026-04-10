@@ -148,9 +148,10 @@ function resolveName(contentId, map) {
   return String(contentId || "").split("/").pop() || contentId;
 }
 
-function iconMarkup(entry, label) {
+function iconMarkup(entry, label, kind = "item") {
   if (entry?.icon) {
-    return `<img class="content-icon" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
+    const className = kind === "boss" ? "content-icon content-icon--boss" : "content-icon";
+    return `<img class="${className}" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
   }
 
   return `<span class="content-token">${escapeHtml(initials(label))}</span>`;
@@ -161,7 +162,7 @@ function chip(contentId, map) {
   const label = resolveName(contentId, map);
   return `
     <div class="content-chip">
-      <span class="content-chip__media">${iconMarkup(entry, label)}</span>
+      <span class="content-chip__media">${iconMarkup(entry, label, "boss")}</span>
       <span>${escapeHtml(label)}</span>
     </div>
   `;

@@ -6,15 +6,73 @@
       "id": "Terraria/CopperOre",
       "internalName": "CopperOre",
       "displayName": "Copper Ore",
-      "assetId": 12,
       "icon": "assets/icons/terraria/ores/copper-ore.png"
     },
     {
       "id": "Terraria/IronOre",
       "internalName": "IronOre",
       "displayName": "Iron Ore",
-      "assetId": 11,
       "icon": "assets/icons/terraria/ores/iron-ore.png"
+    },
+    {
+      "id": "Terraria/SilverOre",
+      "internalName": "SilverOre",
+      "displayName": "Silver Ore",
+      "icon": "assets/icons/terraria/ores/silver-ore.png"
+    },
+    {
+      "id": "Terraria/GoldOre",
+      "internalName": "GoldOre",
+      "displayName": "Gold Ore",
+      "icon": "assets/icons/terraria/ores/gold-ore.png"
+    },
+    {
+      "id": "Terraria/DemoniteOre",
+      "internalName": "DemoniteOre",
+      "displayName": "Demonite Ore",
+      "icon": "assets/icons/terraria/ores/demonite-ore.png"
+    },
+    {
+      "id": "Terraria/CrimtaneOre",
+      "internalName": "CrimtaneOre",
+      "displayName": "Crimtane Ore",
+      "icon": "assets/icons/terraria/ores/crimtane-ore.png"
+    },
+    {
+      "id": "Terraria/Hellstone",
+      "internalName": "Hellstone",
+      "displayName": "Hellstone",
+      "icon": "assets/icons/terraria/ores/hellstone.png"
+    },
+    {
+      "id": "Terraria/CobaltOre",
+      "internalName": "CobaltOre",
+      "displayName": "Cobalt Ore",
+      "icon": "assets/icons/terraria/ores/cobalt-ore.png"
+    },
+    {
+      "id": "Terraria/MythrilOre",
+      "internalName": "MythrilOre",
+      "displayName": "Mythril Ore",
+      "icon": "assets/icons/terraria/ores/mythril-ore.png"
+    },
+    {
+      "id": "Terraria/AdamantiteOre",
+      "internalName": "AdamantiteOre",
+      "displayName": "Adamantite Ore",
+      "icon": "assets/icons/terraria/ores/adamantite-ore.png"
+    },
+    {
+      "id": "Terraria/ChlorophyteOre",
+      "internalName": "ChlorophyteOre",
+      "displayName": "Chlorophyte Ore",
+      "icon": "assets/icons/terraria/ores/chlorophyte-ore.png"
+    },
+    {
+      "id": "Terraria/LunarOre",
+      "internalName": "LunarOre",
+      "displayName": "Luminite",
+      "icon": "assets/icons/terraria/ores/luminite.png"
     }
   ]
 }

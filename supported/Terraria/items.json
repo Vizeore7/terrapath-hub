@@ -7,40 +7,300 @@
       "internalName": "CloudinaBottle",
       "displayName": "Cloud in a Bottle",
       "category": "accessory",
-      "assetId": 53,
       "icon": "assets/icons/terraria/items/cloud-in-a-bottle.png"
-    },
-    {
-      "id": "Terraria/EnchantedBoomerang",
-      "internalName": "EnchantedBoomerang",
-      "displayName": "Enchanted Boomerang",
-      "category": "weapon",
-      "assetId": 55,
-      "icon": "assets/icons/terraria/items/enchanted-boomerang.png"
-    },
-    {
-      "id": "Terraria/GoldBroadsword",
-      "internalName": "GoldBroadsword",
-      "displayName": "Gold Broadsword",
-      "category": "weapon",
-      "assetId": 3520,
-      "icon": "assets/icons/terraria/items/gold-broadsword.png"
     },
     {
       "id": "Terraria/HermesBoots",
       "internalName": "HermesBoots",
       "displayName": "Hermes Boots",
       "category": "accessory",
-      "assetId": 54,
       "icon": "assets/icons/terraria/items/hermes-boots.png"
+    },
+    {
+      "id": "Terraria/BandofRegeneration",
+      "internalName": "BandofRegeneration",
+      "displayName": "Band of Regeneration",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/band-of-regeneration.png"
+    },
+    {
+      "id": "Terraria/Shackle",
+      "internalName": "Shackle",
+      "displayName": "Shackle",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/shackle.png"
+    },
+    {
+      "id": "Terraria/FeralClaws",
+      "internalName": "FeralClaws",
+      "displayName": "Feral Claws",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/feral-claws.png"
+    },
+    {
+      "id": "Terraria/ShieldofCthulhu",
+      "internalName": "ShieldofCthulhu",
+      "displayName": "Shield of Cthulhu",
+      "category": "accessory"
+    },
+    {
+      "id": "Terraria/CobaltShield",
+      "internalName": "CobaltShield",
+      "displayName": "Cobalt Shield",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/cobalt-shield.png"
+    },
+    {
+      "id": "Terraria/ObsidianShield",
+      "internalName": "ObsidianShield",
+      "displayName": "Obsidian Shield",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/obsidian-shield.png"
+    },
+    {
+      "id": "Terraria/SpectreBoots",
+      "internalName": "SpectreBoots",
+      "displayName": "Spectre Boots",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/spectre-boots.png"
+    },
+    {
+      "id": "Terraria/LightningBoots",
+      "internalName": "LightningBoots",
+      "displayName": "Lightning Boots",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/lightning-boots.png"
+    },
+    {
+      "id": "Terraria/EnchantedBoomerang",
+      "internalName": "EnchantedBoomerang",
+      "displayName": "Enchanted Boomerang",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/enchanted-boomerang.png"
+    },
+    {
+      "id": "Terraria/Starfury",
+      "internalName": "Starfury",
+      "displayName": "Starfury",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/starfury.png"
+    },
+    {
+      "id": "Terraria/GoldBroadsword",
+      "internalName": "GoldBroadsword",
+      "displayName": "Gold Broadsword",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/gold-broadsword.png"
+    },
+    {
+      "id": "Terraria/BladeofGrass",
+      "internalName": "BladeofGrass",
+      "displayName": "Blade of Grass",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/blade-of-grass.png"
+    },
+    {
+      "id": "Terraria/NightsEdge",
+      "internalName": "NightsEdge",
+      "displayName": "Night\u0027s Edge",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/night-s-edge.png"
+    },
+    {
+      "id": "Terraria/MoltenFury",
+      "internalName": "MoltenFury",
+      "displayName": "Molten Fury",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/molten-fury.png"
+    },
+    {
+      "id": "Terraria/Minishark",
+      "internalName": "Minishark",
+      "displayName": "Minishark",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/minishark.png"
+    },
+    {
+      "id": "Terraria/SpaceGun",
+      "internalName": "SpaceGun",
+      "displayName": "Space Gun",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/space-gun.png"
+    },
+    {
+      "id": "Terraria/BeeGun",
+      "internalName": "BeeGun",
+      "displayName": "Bee Gun",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/bee-gun.png"
+    },
+    {
+      "id": "Terraria/PhoenixBlaster",
+      "internalName": "PhoenixBlaster",
+      "displayName": "Phoenix Blaster",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/phoenix-blaster.png"
+    },
+    {
+      "id": "Terraria/BallOHurt",
+      "internalName": "BallOHurt",
+      "displayName": "Ball O\u0027 Hurt",
+      "category": "weapon",
+      "icon": "assets/icons/terraria/items/ball-o-hurt.png"
+    },
+    {
+      "id": "Terraria/MagicMirror",
+      "internalName": "MagicMirror",
+      "displayName": "Magic Mirror",
+      "category": "tool",
+      "icon": "assets/icons/terraria/items/magic-mirror.png"
+    },
+    {
+      "id": "Terraria/MoltenPickaxe",
+      "internalName": "MoltenPickaxe",
+      "displayName": "Molten Pickaxe",
+      "category": "tool",
+      "icon": "assets/icons/terraria/items/molten-pickaxe.png"
+    },
+    {
+      "id": "Terraria/IronHelmet",
+      "internalName": "IronHelmet",
+      "displayName": "Iron Helmet",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/iron-helmet.png"
+    },
+    {
+      "id": "Terraria/IronChainmail",
+      "internalName": "IronChainmail",
+      "displayName": "Iron Chainmail",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/iron-chainmail.png"
+    },
+    {
+      "id": "Terraria/IronGreaves",
+      "internalName": "IronGreaves",
+      "displayName": "Iron Greaves",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/iron-greaves.png"
+    },
+    {
+      "id": "Terraria/MoltenHelmet",
+      "internalName": "MoltenHelmet",
+      "displayName": "Molten Helmet",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/molten-helmet.png"
+    },
+    {
+      "id": "Terraria/MoltenBreastplate",
+      "internalName": "MoltenBreastplate",
+      "displayName": "Molten Breastplate",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/molten-breastplate.png"
+    },
+    {
+      "id": "Terraria/MoltenGreaves",
+      "internalName": "MoltenGreaves",
+      "displayName": "Molten Greaves",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/molten-greaves.png"
+    },
+    {
+      "id": "Terraria/NecroHelmet",
+      "internalName": "NecroHelmet",
+      "displayName": "Necro Helmet",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/necro-helmet.png"
+    },
+    {
+      "id": "Terraria/NecroBreastplate",
+      "internalName": "NecroBreastplate",
+      "displayName": "Necro Breastplate",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/necro-breastplate.png"
+    },
+    {
+      "id": "Terraria/NecroGreaves",
+      "internalName": "NecroGreaves",
+      "displayName": "Necro Greaves",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/necro-greaves.png"
+    },
+    {
+      "id": "Terraria/JungleHat",
+      "internalName": "JungleHat",
+      "displayName": "Jungle Hat",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/jungle-hat.png"
+    },
+    {
+      "id": "Terraria/JungleShirt",
+      "internalName": "JungleShirt",
+      "displayName": "Jungle Shirt",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/jungle-shirt.png"
+    },
+    {
+      "id": "Terraria/JunglePants",
+      "internalName": "JunglePants",
+      "displayName": "Jungle Pants",
+      "category": "armor",
+      "icon": "assets/icons/terraria/items/jungle-pants.png"
     },
     {
       "id": "Terraria/IronBar",
       "internalName": "IronBar",
       "displayName": "Iron Bar",
       "category": "material",
-      "assetId": 22,
       "icon": "assets/icons/terraria/items/iron-bar.png"
+    },
+    {
+      "id": "Terraria/HellstoneBar",
+      "internalName": "HellstoneBar",
+      "displayName": "Hellstone Bar",
+      "category": "material",
+      "icon": "assets/icons/terraria/items/hellstone-bar.png"
+    },
+    {
+      "id": "Terraria/DemoniteBar",
+      "internalName": "DemoniteBar",
+      "displayName": "Demonite Bar",
+      "category": "material",
+      "icon": "assets/icons/terraria/items/demonite-bar.png"
+    },
+    {
+      "id": "Terraria/CrimtaneBar",
+      "internalName": "CrimtaneBar",
+      "displayName": "Crimtane Bar",
+      "category": "material",
+      "icon": "assets/icons/terraria/items/crimtane-bar.png"
+    },
+    {
+      "id": "Terraria/WarriorEmblem",
+      "internalName": "WarriorEmblem",
+      "displayName": "Warrior Emblem",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/warrior-emblem.png"
+    },
+    {
+      "id": "Terraria/RangerEmblem",
+      "internalName": "RangerEmblem",
+      "displayName": "Ranger Emblem",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/ranger-emblem.png"
+    },
+    {
+      "id": "Terraria/SorcererEmblem",
+      "internalName": "SorcererEmblem",
+      "displayName": "Sorcerer Emblem",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/sorcerer-emblem.png"
+    },
+    {
+      "id": "Terraria/SummonerEmblem",
+      "internalName": "SummonerEmblem",
+      "displayName": "Summoner Emblem",
+      "category": "accessory",
+      "icon": "assets/icons/terraria/items/summoner-emblem.png"
     }
   ]
 }

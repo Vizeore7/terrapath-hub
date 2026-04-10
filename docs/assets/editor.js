@@ -114,7 +114,6 @@ const summaryInput = document.querySelector("#summaryInput");
 
 const requiredModOptions = document.querySelector("#requiredModOptions");
 const classTagOptions = document.querySelector("#classTagOptions");
-const guideTagOptions = document.querySelector("#guideTagOptions");
 
 const addStageButton = document.querySelector("#addStageButton");
 const stageNav = document.querySelector("#stageNav");
@@ -251,7 +250,7 @@ function createDefaultState() {
     language: "en-US",
     requiredMods: ["Terraria"],
     classTags: ["melee"],
-    guideTags: ["starter", "progression", "vanilla", "draft"],
+    guideTags: [],
     summary: "A structured melee progression path that shows how TerraPath guides can be authored and reviewed.",
     stages: [
       createStage({
@@ -293,7 +292,7 @@ function normalizeState(raw) {
     language: String(raw.language || "en-US"),
     requiredMods: uniqueValues(Array.isArray(raw.requiredMods) ? raw.requiredMods : ["Terraria"]),
     classTags: uniqueValues(Array.isArray(raw.classTags) ? raw.classTags : ["other"]),
-    guideTags: uniqueValues(Array.isArray(raw.guideTags) ? raw.guideTags : ["draft"]),
+    guideTags: uniqueValues(Array.isArray(raw.guideTags) ? raw.guideTags : []),
     summary: String(raw.summary || ""),
     stages: Array.isArray(raw.stages) && raw.stages.length
       ? raw.stages.map((stage) => createStage(stage))
@@ -330,9 +329,10 @@ function resolveEntryName(contentId, map) {
   return String(contentId || "").split("/").pop() || localText("Unknown entry", "Неизвестная запись");
 }
 
-function iconMarkup(entry, label) {
+function iconMarkup(entry, label, kind = "item") {
   if (entry?.icon) {
-    return `<img class="content-icon" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
+    const className = kind === "boss" ? "content-icon content-icon--boss" : "content-icon";
+    return `<img class="${className}" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
   }
   return `<span class="content-token">${escapeHtml(initials(label))}</span>`;
 }
@@ -540,7 +540,6 @@ function buildChoiceMarkup(option, groupName, selectedValues) {
 function renderChoiceGroups() {
   requiredModOptions.innerHTML = SUPPORTED_MOD_OPTIONS.map((option) => buildChoiceMarkup(option, "required-mods", state.requiredMods)).join("");
   classTagOptions.innerHTML = CLASS_TAG_OPTIONS.map((option) => buildChoiceMarkup(option, "class-tags", state.classTags)).join("");
-  guideTagOptions.innerHTML = GUIDE_TAG_OPTIONS.map((option) => buildChoiceMarkup(option, "guide-tags", state.guideTags)).join("");
 }
 
 function syncMetadataInputs() {
@@ -655,7 +654,7 @@ function renderBossEditors(stage, stageIndex) {
     return `
       <article class="pick-card">
         <div class="pick-card__head">
-          <span class="pick-card__media">${iconMarkup(entry, label)}</span>
+          <span class="pick-card__media">${iconMarkup(entry, label, "boss")}</span>
           <div class="pick-card__copy">
             <strong>${escapeHtml(label)}</strong>
             <label class="field">
@@ -814,7 +813,7 @@ function buildContentBadge(contentId, map) {
   const label = resolveEntryName(contentId, map);
   return `
     <div class="content-chip">
-      <span class="content-chip__media">${iconMarkup(entry, label)}</span>
+      <span class="content-chip__media">${iconMarkup(entry, label, "boss")}</span>
       <span>${escapeHtml(label)}</span>
     </div>
   `;
@@ -1037,10 +1036,6 @@ function handleMetadataChoiceChange(event) {
     if (!state.classTags.length) {
       state.classTags = ["other"];
     }
-  }
-
-  if (group === "guide-tags") {
-    state.guideTags = toggleArrayValue(state.guideTags, input.value);
   }
 
   persistAndRender();
@@ -1389,7 +1384,6 @@ function init() {
 
   requiredModOptions.addEventListener("change", handleMetadataChoiceChange);
   classTagOptions.addEventListener("change", handleMetadataChoiceChange);
-  guideTagOptions.addEventListener("change", handleMetadataChoiceChange);
 
   addStageButton.addEventListener("click", () => {
     state.stages.push(createStage({ title: `${localText("Stage", "Этап")} ${state.stages.length + 1}` }));

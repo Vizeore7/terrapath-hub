@@ -33,8 +33,10 @@ static class TerrariaAssetExport
       var slug = BuildSlug(itemNode["displayName"]?.GetValue<string>() ?? internalName ?? "entry");
       var relativePath = $"assets/icons/terraria/{arrayName}/{slug}.png";
       var outputPath = Path.Combine(outputFolder, $"{slug}.png");
-      ExportTexture(content, $"Images/Item_{assetId.Value}", outputPath);
-      itemNode["icon"] = relativePath.Replace("\\", "/");
+      if (TryExportTexture(content, $"Images/Item_{assetId.Value}", outputPath))
+      {
+        itemNode["icon"] = relativePath.Replace("\\", "/");
+      }
     }
 
     File.WriteAllText(jsonPath, node.ToJsonString(jsonOptions));
@@ -73,33 +75,84 @@ static class TerrariaAssetExport
       var relativePath = $"assets/icons/terraria/bosses/{slug}.png";
       var outputPath = Path.Combine(outputFolder, $"{slug}.png");
 
-      ExportTexture(content, assetPath, outputPath);
-
-      bossNode["icon"] = relativePath.Replace("\\", "/");
+      if (TryExportTexture(content, assetPath, outputPath, cropBossFrame: true))
+      {
+        bossNode["icon"] = relativePath.Replace("\\", "/");
+      }
     }
 
     File.WriteAllText(jsonPath, node.ToJsonString(jsonOptions));
   }
 
-  private static void ExportTexture(ContentManager content, string assetName, string outputPath)
+  private static bool TryExportTexture(ContentManager content, string assetName, string outputPath, bool cropBossFrame = false)
   {
-    content.Unload();
-    var texture = content.Load<Texture2D>(assetName);
-    var pixels = new Microsoft.Xna.Framework.Color[texture.Width * texture.Height];
-    texture.GetData(pixels);
-
-    using var bitmap = new Bitmap(texture.Width, texture.Height, PixelFormat.Format32bppArgb);
-
-    for (var y = 0; y < texture.Height; y += 1)
+    try
     {
-      for (var x = 0; x < texture.Width; x += 1)
+      content.Unload();
+      var texture = content.Load<Texture2D>(assetName);
+      var frameHeight = texture.Height;
+
+      if (cropBossFrame && texture.Height > texture.Width * 2)
       {
-        var pixel = pixels[y * texture.Width + x];
-        bitmap.SetPixel(x, y, Color.FromArgb(pixel.A, pixel.R, pixel.G, pixel.B));
+        var estimatedFrames = Math.Max(1, (int)Math.Round((double)texture.Height / texture.Width));
+        frameHeight = Math.Max(1, texture.Height / estimatedFrames);
+      }
+
+      var pixels = new Microsoft.Xna.Framework.Color[texture.Width * frameHeight];
+      texture.GetData(0, new Microsoft.Xna.Framework.Rectangle(0, 0, texture.Width, frameHeight), pixels, 0, pixels.Length);
+
+      using var bitmap = new Bitmap(texture.Width, frameHeight, PixelFormat.Format32bppArgb);
+
+      for (var y = 0; y < frameHeight; y += 1)
+      {
+        for (var x = 0; x < texture.Width; x += 1)
+        {
+          var pixel = pixels[y * texture.Width + x];
+          bitmap.SetPixel(x, y, Color.FromArgb(pixel.A, pixel.R, pixel.G, pixel.B));
+        }
+      }
+
+      using var trimmed = TrimTransparentBounds(bitmap);
+      trimmed.Save(outputPath, ImageFormat.Png);
+      return true;
+    }
+    catch (Exception exception)
+    {
+      Console.WriteLine($"Failed to export {assetName}: {exception.Message}");
+      return false;
+    }
+  }
+
+  private static Bitmap TrimTransparentBounds(Bitmap source)
+  {
+    var minX = source.Width;
+    var minY = source.Height;
+    var maxX = -1;
+    var maxY = -1;
+
+    for (var y = 0; y < source.Height; y += 1)
+    {
+      for (var x = 0; x < source.Width; x += 1)
+      {
+        if (source.GetPixel(x, y).A <= 10)
+        {
+          continue;
+        }
+
+        minX = Math.Min(minX, x);
+        minY = Math.Min(minY, y);
+        maxX = Math.Max(maxX, x);
+        maxY = Math.Max(maxY, y);
       }
     }
 
-    bitmap.Save(outputPath, ImageFormat.Png);
+    if (maxX < minX || maxY < minY)
+    {
+      return (Bitmap)source.Clone();
+    }
+
+    var rectangle = new Rectangle(minX, minY, maxX - minX + 1, maxY - minY + 1);
+    return source.Clone(rectangle, PixelFormat.Format32bppArgb);
   }
 
   private static string BuildSlug(string value)

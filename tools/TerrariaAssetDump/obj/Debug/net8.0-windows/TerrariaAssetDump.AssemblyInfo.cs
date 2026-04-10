@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TerrariaAssetDump")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57c999583783e53163b97bf8abb664fc4a6551f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+122da9c1e53ab6158ef3e9a616b684913d75ac35")]
 [assembly: System.Reflection.AssemblyProductAttribute("TerrariaAssetDump")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TerrariaAssetDump")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
