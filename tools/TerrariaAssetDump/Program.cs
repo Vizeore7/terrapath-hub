@@ -14,6 +14,7 @@ var jsonOptions = new JsonSerializerOptions
 var repoRoot = FindRepoRoot();
 var terrariaRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Steam", "steamapps", "common", "Terraria");
 var tmlRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Steam", "steamapps", "common", "tModLoader");
+var tmlAssemblyPath = Path.Combine(tmlRoot, "tModLoader.dll");
 var nativeRoot = Path.Combine(tmlRoot, "Libraries", "Native", "Windows");
 
 EnsurePath(terrariaRoot, "Terraria installation");
@@ -29,10 +30,10 @@ Environment.SetEnvironmentVariable(
 
 RegisterResolvers(tmlRoot);
 
-var itemIdMap = LoadConstantMap(Path.Combine(tmlRoot, "tModLoader.dll"), "Terraria.ID.ItemID");
-var npcIdMap = LoadConstantMap(Path.Combine(tmlRoot, "tModLoader.dll"), "Terraria.ID.NPCID");
+var itemIdMap = LoadConstantMap(tmlAssemblyPath, "Terraria.ID.ItemID");
+var npcIdMap = LoadConstantMap(tmlAssemblyPath, "Terraria.ID.NPCID");
 
-using var game = new ExportGame(repoRoot, terrariaRoot, itemIdMap, npcIdMap, jsonOptions);
+using var game = new ExportGame(repoRoot, terrariaRoot, tmlAssemblyPath, itemIdMap, npcIdMap, jsonOptions);
 game.Run();
 
 Console.WriteLine("Terraria assets exported successfully.");
@@ -132,12 +133,14 @@ sealed class ExportGame : Game
   public ExportGame(
     string repoRoot,
     string terrariaRoot,
+    string tmlAssemblyPath,
     IReadOnlyDictionary<string, int> itemIdMap,
     IReadOnlyDictionary<string, int> npcIdMap,
     JsonSerializerOptions jsonOptions)
   {
     _repoRoot = repoRoot;
     _terrariaRoot = terrariaRoot;
+    _tmlAssemblyPath = tmlAssemblyPath;
     _itemIdMap = itemIdMap;
     _npcIdMap = npcIdMap;
     _jsonOptions = jsonOptions;
@@ -152,6 +155,7 @@ sealed class ExportGame : Game
   private readonly GraphicsDeviceManager _graphics;
   private readonly string _repoRoot;
   private readonly string _terrariaRoot;
+  private readonly string _tmlAssemblyPath;
   private readonly IReadOnlyDictionary<string, int> _itemIdMap;
   private readonly IReadOnlyDictionary<string, int> _npcIdMap;
   private readonly JsonSerializerOptions _jsonOptions;
@@ -166,13 +170,18 @@ sealed class ExportGame : Game
   protected override void LoadContent()
   {
     using var content = new ContentManager(Services, Path.Combine(_terrariaRoot, "Content"));
+    var itemNamesEn = TerrariaAssetExport.LoadLocalizationMap(_tmlAssemblyPath, "Terraria.Localization.Content.en_US.Items.json", "ItemName");
+    var itemNamesRu = TerrariaAssetExport.LoadLocalizationMap(_tmlAssemblyPath, "Terraria.Localization.Content.ru_RU.Items.json", "ItemName");
+    var npcNamesRu = TerrariaAssetExport.LoadLocalizationMap(_tmlAssemblyPath, "Terraria.Localization.Content.ru_RU.NPCs.json", "NPCName");
 
     TerrariaAssetExport.DumpItems(
       content,
       _itemIdMap,
       Path.Combine(_repoRoot, "supported", "Terraria", "items.json"),
       Path.Combine(_repoRoot, "docs", "assets", "icons", "terraria", "items"),
-      _jsonOptions);
+      _jsonOptions,
+      "items",
+      itemNamesRu);
 
     TerrariaAssetExport.DumpItems(
       content,
@@ -180,14 +189,25 @@ sealed class ExportGame : Game
       Path.Combine(_repoRoot, "supported", "Terraria", "ores.json"),
       Path.Combine(_repoRoot, "docs", "assets", "icons", "terraria", "ores"),
       _jsonOptions,
-      "ores");
+      "ores",
+      itemNamesRu);
 
     TerrariaAssetExport.DumpBosses(
       content,
       _npcIdMap,
       Path.Combine(_repoRoot, "supported", "Terraria", "bosses.json"),
       Path.Combine(_repoRoot, "docs", "assets", "icons", "terraria", "bosses"),
-      _jsonOptions);
+      _jsonOptions,
+      npcNamesRu);
+
+    TerrariaAssetExport.DumpSearchItems(
+      content,
+      _itemIdMap,
+      Path.Combine(_repoRoot, "supported", "Terraria", "search-items.json"),
+      Path.Combine(_repoRoot, "docs", "assets", "icons", "terraria", "search-items"),
+      _jsonOptions,
+      itemNamesEn,
+      itemNamesRu);
 
     Exit();
   }

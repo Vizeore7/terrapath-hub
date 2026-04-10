@@ -108,5 +108,20 @@
         </footer>
       </section>
     </main>
+
+    <section class="picker-modal" id="contentPicker" hidden>
+      <div class="picker-modal__backdrop" data-picker-close></div>
+      <div class="picker-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
+        <div class="picker-modal__header">
+          <h2 id="pickerTitle">Select content</h2>
+          <button class="button button--quiet button--tiny" id="pickerCloseButton" type="button">Close</button>
+        </div>
+        <label class="field">
+          <span id="pickerSearchLabel">Search</span>
+          <input id="pickerSearchInput" type="search" placeholder="Search">
+        </label>
+        <div id="pickerResults" class="picker-results"></div>
+      </div>
+    </section>
   </body>
 </html>

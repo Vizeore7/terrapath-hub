@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Microsoft.Xna.Framework.Content;
@@ -7,13 +8,44 @@ using Microsoft.Xna.Framework.Graphics;
 
 static class TerrariaAssetExport
 {
+  public static IReadOnlyDictionary<string, string> LoadLocalizationMap(
+    string assemblyPath,
+    string resourceName,
+    string sectionName)
+  {
+    var assembly = Assembly.LoadFrom(assemblyPath);
+    using var stream = assembly.GetManifestResourceStream(resourceName)
+      ?? throw new InvalidOperationException($"Resource was not found: {resourceName}");
+    using var reader = new StreamReader(stream);
+    using var document = JsonDocument.Parse(
+      reader.ReadToEnd(),
+      new JsonDocumentOptions
+      {
+        AllowTrailingCommas = true
+      });
+
+    if (!document.RootElement.TryGetProperty(sectionName, out var section) || section.ValueKind != JsonValueKind.Object)
+    {
+      throw new InvalidOperationException($"Section {sectionName} was not found in {resourceName}");
+    }
+
+    var values = new Dictionary<string, string>(StringComparer.Ordinal);
+    foreach (var property in section.EnumerateObject())
+    {
+      values[property.Name] = property.Value.GetString() ?? string.Empty;
+    }
+
+    return values;
+  }
+
   public static void DumpItems(
     ContentManager content,
     IReadOnlyDictionary<string, int> idMap,
     string jsonPath,
     string outputFolder,
     JsonSerializerOptions jsonOptions,
-    string arrayName = "items")
+    string arrayName = "items",
+    IReadOnlyDictionary<string, string>? localizedNamesRu = null)
   {
     Directory.CreateDirectory(outputFolder);
     var node = JsonNode.Parse(File.ReadAllText(jsonPath))!.AsObject();
@@ -28,6 +60,14 @@ static class TerrariaAssetExport
       if (assetId is null)
       {
         continue;
+      }
+
+      if (!string.IsNullOrWhiteSpace(internalName) &&
+          itemNode["displayNameRu"] is null &&
+          localizedNamesRu is not null &&
+          localizedNamesRu.TryGetValue(internalName, out var localizedName))
+      {
+        itemNode["displayNameRu"] = localizedName;
       }
 
       var slug = BuildSlug(itemNode["displayName"]?.GetValue<string>() ?? internalName ?? "entry");
@@ -47,7 +87,8 @@ static class TerrariaAssetExport
     IReadOnlyDictionary<string, int> idMap,
     string jsonPath,
     string outputFolder,
-    JsonSerializerOptions jsonOptions)
+    JsonSerializerOptions jsonOptions,
+    IReadOnlyDictionary<string, string>? localizedNamesRu = null)
   {
     Directory.CreateDirectory(outputFolder);
     var node = JsonNode.Parse(File.ReadAllText(jsonPath))!.AsObject();
@@ -57,6 +98,15 @@ static class TerrariaAssetExport
     {
       var assetPath = bossNode["assetPath"]?.GetValue<string>();
       var internalName = bossNode["internalName"]?.GetValue<string>();
+
+      if (!string.IsNullOrWhiteSpace(internalName) &&
+          bossNode["displayNameRu"] is null &&
+          localizedNamesRu is not null &&
+          localizedNamesRu.TryGetValue(internalName, out var localizedName))
+      {
+        bossNode["displayNameRu"] = localizedName;
+      }
+
       if (string.IsNullOrWhiteSpace(assetPath))
       {
         var npcId = !string.IsNullOrWhiteSpace(internalName) && idMap.TryGetValue(internalName, out var resolvedId)
@@ -82,6 +132,60 @@ static class TerrariaAssetExport
     }
 
     File.WriteAllText(jsonPath, node.ToJsonString(jsonOptions));
+  }
+
+  public static void DumpSearchItems(
+    ContentManager content,
+    IReadOnlyDictionary<string, int> idMap,
+    string jsonPath,
+    string outputFolder,
+    JsonSerializerOptions jsonOptions,
+    IReadOnlyDictionary<string, string> localizedNamesEn,
+    IReadOnlyDictionary<string, string> localizedNamesRu)
+  {
+    Directory.CreateDirectory(outputFolder);
+    var sortedItems = idMap
+      .Where(pair => pair.Value > 0)
+      .OrderBy(pair => pair.Value)
+      .ThenBy(pair => pair.Key, StringComparer.Ordinal);
+
+    var items = new JsonArray();
+
+    foreach (var (internalName, assetId) in sortedItems)
+    {
+      var englishName = localizedNamesEn.TryGetValue(internalName, out var enName) && !string.IsNullOrWhiteSpace(enName)
+        ? enName
+        : internalName;
+      var russianName = localizedNamesRu.TryGetValue(internalName, out var ruName) && !string.IsNullOrWhiteSpace(ruName)
+        ? ruName
+        : englishName;
+      var slug = BuildSlug(internalName);
+      var relativePath = $"assets/icons/terraria/search-items/{slug}.png";
+      var outputPath = Path.Combine(outputFolder, $"{slug}.png");
+      var itemNode = new JsonObject
+      {
+        ["id"] = $"Terraria/{internalName}",
+        ["internalName"] = internalName,
+        ["displayName"] = englishName,
+        ["displayNameRu"] = russianName
+      };
+
+      if (TryExportTexture(content, $"Images/Item_{assetId}", outputPath))
+      {
+        itemNode["icon"] = relativePath.Replace("\\", "/");
+      }
+
+      items.Add(itemNode);
+    }
+
+    var root = new JsonObject
+    {
+      ["mod"] = "Terraria",
+      ["contentType"] = "search-items",
+      ["items"] = items
+    };
+
+    File.WriteAllText(jsonPath, root.ToJsonString(jsonOptions));
   }
 
   private static bool TryExportTexture(ContentManager content, string assetName, string outputPath, bool cropBossFrame = false)

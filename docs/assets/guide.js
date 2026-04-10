@@ -6,17 +6,25 @@ const site = window.terraPathSite;
 const progression = window.terraPathProgression;
 
 const GROUPS = [
-  { key: "weapon", en: "Weapons", ru: "Оружие", cats: ["weapon"] },
-  { key: "armor", en: "Armor", ru: "Броня", cats: ["armor"] },
-  { key: "accessory", en: "Accessories", ru: "Аксессуары", cats: ["accessory"] },
-  { key: "buff", en: "Buffs / Consumables", ru: "Баффы / Расходники", cats: ["buff", "ammo"] },
-  { key: "material", en: "Materials / Ores", ru: "Материалы / Руды", cats: ["material", "ore"] },
-  { key: "tool", en: "Tools / Utility", ru: "Инструменты / Утилити", cats: ["tool", "mount", "pet", "furniture"] },
-  { key: "other", en: "Other", ru: "Другое", cats: ["other"] }
+  { key: "weapon", cats: ["weapon"], en: "Weapons", ru: "\u041e\u0440\u0443\u0436\u0438\u0435" },
+  { key: "armor", cats: ["armor"], en: "Armor", ru: "\u0411\u0440\u043e\u043d\u044f" },
+  { key: "accessory", cats: ["accessory"], en: "Accessories", ru: "\u0410\u043a\u0441\u0435\u0441\u0441\u0443\u0430\u0440\u044b" },
+  { key: "buff", cats: ["buff", "ammo"], en: "Buffs / Consumables", ru: "\u0411\u0430\u0444\u0444\u044b / \u0420\u0430\u0441\u0445\u043e\u0434\u043d\u0438\u043a\u0438" },
+  { key: "material", cats: ["material", "ore"], en: "Materials / Ores", ru: "\u041c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u044b / \u0420\u0443\u0434\u044b" },
+  { key: "tool", cats: ["tool", "mount", "pet", "furniture"], en: "Tools / Utility", ru: "\u0418\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b / \u0423\u0442\u0438\u043b\u0438\u0442\u0438" },
+  { key: "other", cats: ["other"], en: "Other", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" }
 ];
 
 const supportIndex = { itemMap: new Map(), bossMap: new Map() };
 let currentGuide = null;
+
+function language() {
+  return site?.getLanguage?.() === "ru" ? "ru" : "en";
+}
+
+function t(key, variables = {}) {
+  return site?.t?.(key, variables) ?? key;
+}
 
 function escapeHtml(value) {
   return String(value || "")
@@ -27,21 +35,15 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-function initials(label) {
-  return String(label || "?")
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part[0] || "")
-    .join("")
-    .toUpperCase();
+function initials(value) {
+  return String(value || "?").split(/\s+/).slice(0, 2).map((part) => part[0] || "").join("").toUpperCase();
 }
 
-function language() {
-  return site?.getLanguage?.() === "ru" ? "ru" : "en";
-}
-
-function t(key, variables = {}) {
-  return site?.t?.(key, variables) ?? key;
+function localizedDisplayName(entry) {
+  if (!entry) return "";
+  return language() === "ru"
+    ? (entry.displayNameRu || entry.displayName || entry.internalName || "")
+    : (entry.displayName || entry.displayNameRu || entry.internalName || "");
 }
 
 function guideLanguageLabel(code) {
@@ -50,13 +52,13 @@ function guideLanguageLabel(code) {
 
 function classLabel(tag) {
   const labels = {
-    melee: { en: "Melee", ru: "Воин" },
-    ranged: { en: "Ranged", ru: "Стрелок" },
-    magic: { en: "Magic", ru: "Маг" },
-    summoner: { en: "Summoner", ru: "Призыватель" },
-    rogue: { en: "Rogue", ru: "Разбойник" },
-    bard: { en: "Bard", ru: "Бард" },
-    other: { en: "Other", ru: "Другое" }
+    melee: { en: "Melee", ru: "\u0412\u043e\u0438\u043d" },
+    ranged: { en: "Ranged", ru: "\u0421\u0442\u0440\u0435\u043b\u043e\u043a" },
+    magic: { en: "Magic", ru: "\u041c\u0430\u0433" },
+    summoner: { en: "Summoner", ru: "\u041f\u0440\u0438\u0437\u044b\u0432\u0430\u0442\u0435\u043b\u044c" },
+    rogue: { en: "Rogue", ru: "\u0420\u0430\u0437\u0431\u043e\u0439\u043d\u0438\u043a" },
+    bard: { en: "Bard", ru: "\u0411\u0430\u0440\u0434" },
+    other: { en: "Other", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" }
   };
   return labels[tag]?.[language()] || tag;
 }
@@ -70,21 +72,11 @@ function params() {
   return new URLSearchParams(window.location.search);
 }
 
-function repoAwarePaths(path) {
-  return [path, `../${path}`];
-}
-
-function preferredPath(path) {
-  return window.location.protocol === "file:" ? `../${path}` : path;
-}
-
 async function fetchJson(path) {
-  for (const attempt of repoAwarePaths(path)) {
+  for (const attempt of [path, `../${path}`]) {
     try {
       const response = await fetch(attempt, { cache: "no-store" });
-      if (response.ok) {
-        return response.json();
-      }
+      if (response.ok) return response.json();
     } catch {}
   }
   throw new Error(`Could not load ${path}`);
@@ -96,6 +88,7 @@ async function loadCatalog() {
 
 async function tryLoadSupport(modName) {
   const files = [
+    { path: `supported/${modName}/search-items.json`, key: "items", target: supportIndex.itemMap },
     { path: `supported/${modName}/items.json`, key: "items", target: supportIndex.itemMap },
     { path: `supported/${modName}/ores.json`, key: "ores", target: supportIndex.itemMap },
     { path: `supported/${modName}/bosses.json`, key: "bosses", target: supportIndex.bossMap }
@@ -105,97 +98,77 @@ async function tryLoadSupport(modName) {
     try {
       const data = await fetchJson(file.path);
       for (const entry of data[file.key] || []) {
-        file.target.set(entry.id, entry);
+        file.target.set(entry.id, { ...file.target.get(entry.id), ...entry });
       }
     } catch {}
   }
 }
 
 function resolveName(contentId, map) {
-  const entry = map.get(contentId);
-  if (entry?.displayName) {
-    return entry.displayName;
-  }
-  return String(contentId || "").split("/").pop() || contentId;
+  return localizedDisplayName(map.get(contentId)) || String(contentId || "").split("/").pop() || contentId;
 }
 
 function iconMarkup(entry, label, kind = "item") {
   if (entry?.icon) {
-    const className = kind === "boss" ? "content-icon content-icon--boss" : "content-icon";
-    return `<img class="${className}" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
+    return `<img class="${kind === "boss" ? "content-icon content-icon--boss" : "content-icon"}" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
   }
   return `<span class="content-token">${escapeHtml(initials(label))}</span>`;
 }
 
-function chip(contentId, map) {
-  const entry = map.get(contentId);
-  const label = resolveName(contentId, map);
-  return `<div class="content-chip"><span class="content-chip__media">${iconMarkup(entry, label, "boss")}</span><span>${escapeHtml(label)}</span></div>`;
+function renderRichText(textValue) {
+  const tokenPattern = /\{\{icon:([^}]+)\}\}/g;
+  const source = String(textValue || "");
+  const parts = [];
+  let lastIndex = 0;
+
+  for (const match of source.matchAll(tokenPattern)) {
+    const index = match.index ?? 0;
+    const contentId = match[1];
+    if (index > lastIndex) parts.push(escapeHtml(source.slice(lastIndex, index)).replace(/\n/g, "<br>"));
+    const itemEntry = supportIndex.itemMap.get(contentId);
+    const bossEntry = supportIndex.bossMap.get(contentId);
+    const entry = itemEntry || bossEntry;
+    const label = resolveName(contentId, itemEntry ? supportIndex.itemMap : supportIndex.bossMap);
+    parts.push(`<span class="inline-icon-token">${iconMarkup(entry, label, bossEntry ? "boss" : "item")}<span>${escapeHtml(label)}</span></span>`);
+    lastIndex = index + match[0].length;
+  }
+
+  if (lastIndex < source.length) parts.push(escapeHtml(source.slice(lastIndex)).replace(/\n/g, "<br>"));
+  return parts.join("");
 }
 
 function renderItemGroups(items) {
-  if (!(items || []).length) {
-    return `<p class="empty-state">${escapeHtml(t("guide.noItems"))}</p>`;
-  }
+  if (!(items || []).length) return `<p class="empty-state">${escapeHtml(t("guide.noItems"))}</p>`;
 
   return GROUPS.map((group) => {
     const entries = (items || []).filter((entry) => group.cats.includes(entry.category || "other"));
-    if (!entries.length) {
-      return "";
-    }
+    if (!entries.length) return "";
 
-    return `
-      <section class="category-block">
-        <h4>${escapeHtml(groupLabel(group.key))}</h4>
-        <div class="content-grid">
-          ${entries.map((entry) => {
-            const label = resolveName(entry.itemId, supportIndex.itemMap);
-            const supportEntry = supportIndex.itemMap.get(entry.itemId);
-            return `
-              <article class="content-card">
-                <div class="content-card__head">
-                  <span class="content-card__media">${iconMarkup(supportEntry, label)}</span>
-                  <div>
-                    <strong>${escapeHtml(label)}</strong>
-                  </div>
-                </div>
-              </article>
-            `;
-          }).join("")}
-        </div>
-      </section>
-    `;
+    return `<section class="category-block"><h4>${escapeHtml(groupLabel(group.key))}</h4><div class="content-grid">${entries.map((entry) => {
+      const label = resolveName(entry.itemId, supportIndex.itemMap);
+      const supportEntry = supportIndex.itemMap.get(entry.itemId);
+      return `<article class="content-card"><div class="content-card__head"><span class="content-card__media">${iconMarkup(supportEntry, label)}</span><div><strong>${escapeHtml(label)}</strong></div></div></article>`;
+    }).join("")}</div></section>`;
   }).join("");
 }
 
 function renderProgressionMarkers(stage) {
-  const markerIds = stage.progressionMarkers || [];
-  if (!markerIds.length) {
-    return "";
-  }
+  if (!(stage.progressionMarkers || []).length) return "";
 
-  return `
-    <section class="preview-block">
-      <h4>${escapeHtml(t("common.labelMarkers"))}</h4>
-      <div class="marker-preview-grid">
-        ${markerIds.map((markerId) => {
-          const marker = progression?.getMarker?.(markerId);
-          if (!marker) {
-            return "";
-          }
-          return `
-            <article class="marker-preview-card">
-              <img class="content-icon" src="${escapeHtml(marker.icon)}" alt="${escapeHtml(progression.markerTitle(markerId, language()))}" loading="lazy">
-              <div>
-                <strong>${escapeHtml(progression.markerTitle(markerId, language()))}</strong>
-                <p>${escapeHtml(progression.markerDescription(markerId, language()))}</p>
-              </div>
-            </article>
-          `;
-        }).join("")}
-      </div>
-    </section>
-  `;
+  return `<section class="preview-block"><h4>${escapeHtml(t("common.labelMarkers"))}</h4><div class="marker-preview-grid">${stage.progressionMarkers.map((markerId) => {
+    const marker = progression?.getMarker?.(markerId);
+    if (!marker) return "";
+    return `<article class="marker-preview-card"><img class="content-icon" src="${escapeHtml(marker.icon)}" alt="${escapeHtml(progression.markerTitle(markerId, language()))}" loading="lazy"><div><strong>${escapeHtml(progression.markerTitle(markerId, language()))}</strong><p>${escapeHtml(progression.markerDescription(markerId, language()))}</p></div></article>`;
+  }).join("")}</div></section>`;
+}
+
+function renderBosses(stage) {
+  if (!(stage.bossRefs || []).length) return "";
+  return `<section class="preview-block"><h4>${escapeHtml(t("common.labelBosses"))}</h4><div class="chip-row">${stage.bossRefs.map((bossRef) => {
+    const entry = supportIndex.bossMap.get(bossRef);
+    const label = resolveName(bossRef, supportIndex.bossMap);
+    return `<div class="content-chip"><span class="content-chip__media">${iconMarkup(entry, label, "boss")}</span><span>${escapeHtml(label)}</span></div>`;
+  }).join("")}</div></section>`;
 }
 
 function renderGuide(guide) {
@@ -206,46 +179,13 @@ function renderGuide(guide) {
     `${(guide.stages || []).length} ${t("common.labelStages").toLowerCase()}`
   ];
 
-  guidePage.innerHTML = `
-    <header class="guide-preview__header">
-      <h1 class="guide-title">${escapeHtml(guide.title)}</h1>
-      <p>${escapeHtml(guide.summary || "")}</p>
-      <div class="chip-row">
-        ${metaPills.map((pill) => `<span class="meta-pill">${escapeHtml(pill)}</span>`).join("")}
-      </div>
-    </header>
-    <div class="guide-preview__stages">
-      ${(guide.stages || []).map((stage) => `
-        <article class="stage-preview">
-          <div class="stage-preview__header">
-            <h3>${escapeHtml(stage.title)}</h3>
-            <span class="meta-pill">${escapeHtml(t("guide.itemPicks", { count: (stage.items || []).length }))}</span>
-          </div>
-          <div class="chip-row">
-            <span class="meta-pill">${escapeHtml(t("common.labelEra"))}: ${escapeHtml(progression?.eraLabel?.(stage.era || "prehardmode", language()) || stage.era || "")}</span>
-          </div>
-          ${stage.description ? `<p>${escapeHtml(stage.description)}</p>` : ""}
-          ${renderProgressionMarkers(stage)}
-          ${stage.bossRefs?.length ? `
-            <section class="preview-block">
-              <h4>${escapeHtml(t("common.labelBosses"))}</h4>
-              <div class="chip-row">
-                ${stage.bossRefs.map((bossRef) => chip(bossRef, supportIndex.bossMap)).join("")}
-              </div>
-            </section>
-          ` : ""}
-          ${renderItemGroups(stage.items)}
-        </article>
-      `).join("")}
-    </div>
-  `;
+  guidePage.innerHTML = `<header class="guide-preview__header"><h1 class="guide-title">${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.summary || "")}</p><div class="chip-row">${metaPills.map((pill) => `<span class="meta-pill">${escapeHtml(pill)}</span>`).join("")}</div></header><div class="guide-preview__stages">${(guide.stages || []).map((stage) => `<article class="stage-preview"><section class="stage-overview"><div class="stage-preview__header"><h3>${escapeHtml(stage.title)}</h3><span class="meta-pill">${escapeHtml(t("guide.itemPicks", { count: (stage.items || []).length }))}</span></div><div class="chip-row"><span class="meta-pill">${escapeHtml(t("common.labelEra"))}: ${escapeHtml(progression?.eraLabel?.(stage.era || "prehardmode", language()) || stage.era || "")}</span></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}${renderProgressionMarkers(stage)}${renderBosses(stage)}</section><section class="stage-loadout">${renderItemGroups(stage.items)}</section></article>`).join("")}</div>`;
 }
 
 async function init() {
   const id = params().get("id");
   const catalog = await loadCatalog();
   const catalogEntry = (catalog.guides || []).find((guide) => guide.id === id) || catalog.guides?.[0];
-
   if (!catalogEntry) {
     guidePageStatus.textContent = t("guide.noGuides");
     rawGuideLink.hidden = true;
@@ -258,7 +198,7 @@ async function init() {
 
   const guide = await fetchJson(catalogEntry.path);
   currentGuide = guide;
-  rawGuideLink.href = preferredPath(catalogEntry.path);
+  rawGuideLink.href = window.location.protocol === "file:" ? `../${catalogEntry.path}` : catalogEntry.path;
   backToBrowse.href = id ? `browse.html?selected=${encodeURIComponent(id)}` : "browse.html";
   guidePageStatus.textContent = "";
   renderGuide(guide);
@@ -271,7 +211,5 @@ init().catch((error) => {
 });
 
 site?.onChange?.(() => {
-  if (currentGuide) {
-    renderGuide(currentGuide);
-  }
+  if (currentGuide) renderGuide(currentGuide);
 });
