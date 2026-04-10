@@ -47,6 +47,24 @@
       "popularity": 0
     },
     {
+      "id": "terraria-melee-vanilla-melee-starter-path",
+      "title": "Vanilla Melee Starter Path",
+      "author": "TerraPath Team",
+      "language": "ru-RU",
+      "summary": "A simple vanilla melee progression guide.",
+      "requiredMods": [
+        "Terraria"
+      ],
+      "classTags": [
+        "melee"
+      ],
+      "guideTags": [],
+      "updatedAt": "2026-04-10T17:05:32Z",
+      "stageCount": 3,
+      "path": "guides/ru-RU/terraria-melee-vanilla-melee-starter-path/guide.json",
+      "popularity": 0
+    },
+    {
       "id": "terraria-ranged",
       "title": "\u041f\u044f\u0442\u044b\u0439",
       "author": "\u044b\u044b\u044b\u044b\u044b\u044b\u044b\u044b\u044b",

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "terraria-melee-vanilla-melee-starter-path",
+  "title": "Vanilla Melee Starter Path",
+  "author": "TerraPath Team",
+  "language": "ru-RU",
+  "summary": "A simple vanilla melee progression guide.",
+  "requiredMods": [
+    "Terraria"
+  ],
+  "classTags": [
+    "melee"
+  ],
+  "createdAt": "2026-04-10",
+  "updatedAt": "2026-04-10T17:05:32Z",
+  "stages": [
+    {
+      "id": "first-night",
+      "title": "First Night",
+      "era": "prehardmode",
+      "items": [
+        {
+          "itemId": "Terraria/EnchantedBoomerang",
+          "category": "weapon"
+        },
+        {
+          "itemId": "Terraria/CloudinaBottle",
+          "category": "accessory",
+          "subgroup": "Mobility"
+        }
+      ],
+      "description": "{{icon:Terraria/AviatorSunglasses}}Collect movement items, prepare a basic arena, and secure a reliable early weapon.{{icon:Terraria/Cutlass}}",
+      "bossRefs": [
+        "Terraria/EyeofCthulhu",
+        "Terraria/EaterofWorldsHead"
+      ]
+    },
+    {
+      "id": "early-hardmode",
+      "title": "Early Hardmode",
+      "era": "hardmode",
+      "items": [
+        {
+          "itemId": "Terraria/CobaltHelmet",
+          "category": "armor"
+        },
+        {
+          "itemId": "Terraria/WarriorEmblem",
+          "category": "accessory",
+          "subgroup": "Damage"
+        }
+      ],
+      "description": "Upgrade mobility, collect your first hardmode armor set, and prepare for the mechanical bosses.",
+      "bossRefs": [
+        "Terraria/TheDestroyer"
+      ]
+    },
+    {
+      "id": "after-moon-lord",
+      "title": "After Moon Lord",
+      "era": "postmoonlord",
+      "items": [
+        {
+          "itemId": "Terraria/SolarFlareHelmet",
+          "category": "armor"
+        }
+      ],
+      "description": "Switch into the final endgame loadout and collect the last upgrades for this class."
+    }
+  ]
+}
