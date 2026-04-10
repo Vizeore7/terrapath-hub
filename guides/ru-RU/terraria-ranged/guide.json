@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "terraria-ranged",
-  "title": "Второй",
+  "title": "Третий",
   "author": "ыыыыыыыыы",
   "language": "ru-RU",
   "summary": "Завозикккккккккккккккккк",
@@ -28,24 +28,26 @@
           "category": "armor"
         },
         {
-          "itemId": "Terraria/SniperScope",
-          "category": "weapon"
-        },
-        {
           "itemId": "Terraria/LavaCharm",
           "category": "accessory",
           "subgroup": "Защита"
         },
         {
           "itemId": "Terraria/AmmoBox",
-          "category": "weapon"
+          "category": "buff"
+        },
+        {
+          "itemId": "Terraria/RifleScope",
+          "category": "accessory",
+          "subgroup": "Урон"
         },
         {
           "itemId": "Terraria/SniperScope",
-          "category": "weapon"
+          "category": "accessory",
+          "subgroup": "Урон"
         }
       ],
-      "description": "Лутаем сундуки под землей и копаем руду{{icon:Terraria/BloodFishingRod}}",
+      "description": "Лутаем сундуки под землей и копаем руду{{icon:Terraria/BloodFishingRod}}{{icon:Terraria/GolfPainting3}}",
       "bossRefs": [
         "Terraria/KingSlime",
         "Terraria/EyeofCthulhu"
