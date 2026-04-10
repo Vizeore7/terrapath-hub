@@ -268,8 +268,7 @@ function buildGuide() {
         .filter((itemEntry) => itemEntry.itemId)
         .map((itemEntry) => ({
           itemId: itemEntry.itemId,
-          category: itemEntry.category || "other",
-          ...(itemEntry.note.trim() ? { note: itemEntry.note.trim() } : {})
+          category: itemEntry.category || "other"
         }))
     };
 
@@ -278,8 +277,6 @@ function buildGuide() {
     if (markers.length) output.progressionMarkers = markers;
     const bosses = uniq((stage.bossRefs || []).map((entry) => String(entry || "").trim()).filter(Boolean));
     if (bosses.length) output.bossRefs = bosses;
-    const notes = split(stage.notesText);
-    if (notes.length) output.notes = notes;
     return output;
   });
 
@@ -328,7 +325,7 @@ function previewGroups(items) {
     return `<section class="category-block"><h4>${esc(entry[lang()])}</h4><div class="content-grid">${rows.map((itemEntry) => {
       const iconEntry = support.itemMap.get(itemEntry.itemId);
       const label = pickLabel(itemEntry.itemId, support.itemMap);
-      return `<article class="content-card"><div class="content-card__head"><span class="content-card__media">${icon(iconEntry, label)}</span><div><strong>${esc(label)}</strong><div class="content-card__meta">${esc(itemEntry.itemId)}</div></div></div>${itemEntry.note ? `<p class="content-card__note">${esc(itemEntry.note)}</p>` : ""}</article>`;
+      return `<article class="content-card"><div class="content-card__head"><span class="content-card__media">${icon(iconEntry, label)}</span><div><strong>${esc(label)}</strong></div></div></article>`;
     }).join("")}</div></section>`;
   }).filter(Boolean);
 
@@ -357,7 +354,7 @@ function renderPreview() {
   const guide = buildGuide();
   latestJson = `${JSON.stringify(guide, null, 2)}\n`;
   refs.json.textContent = latestJson;
-  refs.preview.innerHTML = `<header class="guide-preview__header"><h2 class="guide-title">${esc(guide.title)}</h2><p>${esc(guide.summary)}</p><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelClass")}: ${classList(guide.classTags)}`)}</span><span class="meta-pill">${esc(`${t("common.labelLanguage")}: ${guideLang(guide.language)}`)}</span><span class="meta-pill">${esc(`${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`)}</span><span class="meta-pill">${esc(`${guide.stages.length} ${t("common.labelStages").toLowerCase()}`)}</span></div></header><div class="guide-preview__stages">${guide.stages.map((stage) => `<article class="stage-preview"><div class="stage-preview__header"><h3>${esc(stage.title)}</h3><span class="meta-pill">${esc(s("itemCount", { count: (stage.items || []).length }))}</span></div><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelEra")}: ${progression?.eraLabel?.(stage.era, lang()) || stage.era}`)}</span></div>${stage.description ? `<p>${esc(stage.description)}</p>` : ""}${previewMarkers(stage)}${previewBosses(stage)}${previewGroups(stage.items)}${stage.notes?.length ? `<section class="preview-block"><h4>${esc(t("common.labelNotes"))}</h4><ul class="line-list">${stage.notes.map((note) => `<li>${esc(note)}</li>`).join("")}</ul></section>` : ""}</article>`).join("")}</div>`;
+  refs.preview.innerHTML = `<header class="guide-preview__header"><h2 class="guide-title">${esc(guide.title)}</h2><p>${esc(guide.summary)}</p><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelClass")}: ${classList(guide.classTags)}`)}</span><span class="meta-pill">${esc(`${t("common.labelLanguage")}: ${guideLang(guide.language)}`)}</span><span class="meta-pill">${esc(`${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`)}</span><span class="meta-pill">${esc(`${guide.stages.length} ${t("common.labelStages").toLowerCase()}`)}</span></div></header><div class="guide-preview__stages">${guide.stages.map((stage) => `<article class="stage-preview"><div class="stage-preview__header"><h3>${esc(stage.title)}</h3><span class="meta-pill">${esc(s("itemCount", { count: (stage.items || []).length }))}</span></div><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelEra")}: ${progression?.eraLabel?.(stage.era, lang()) || stage.era}`)}</span></div>${stage.description ? `<p>${esc(stage.description)}</p>` : ""}${previewMarkers(stage)}${previewBosses(stage)}${previewGroups(stage.items)}</article>`).join("")}</div>`;
 }
 
 function bossRows(stage, stageIndex) {
@@ -374,12 +371,12 @@ function itemGroupRows(stage, stageIndex, groupEntry) {
   (stage.items || []).forEach((itemEntry, itemIndex) => {
     if (groupEntry.cats.includes(itemEntry.category || "other")) rows.push({ itemEntry, itemIndex });
   });
-  const entries = support.items.filter((itemEntry) => groupEntry.cats.includes(itemEntry.category || "other"));
+  const entries = support.items.filter((itemEntry) => groupEntry.cats.includes(itemEntry.category || "other") && !itemEntry.pickerHidden);
 
   return `<section class="item-group"><div class="item-group__header"><h4>${esc(groupEntry[lang()])}</h4><button class="button button--quiet button--tiny" type="button" data-action="add-item" data-stage-index="${stageIndex}" data-group-key="${esc(groupEntry.key)}">+</button></div>${rows.length ? rows.map(({ itemEntry, itemIndex }) => {
     const entry = support.itemMap.get(itemEntry.itemId);
     const label = pickLabel(itemEntry.itemId, support.itemMap);
-    return `<div class="picker-row item-row"><span class="picker-row__media">${icon(entry, label)}</span><select data-role="item-id" data-stage-index="${stageIndex}" data-item-index="${itemIndex}" data-group-key="${esc(groupEntry.key)}">${selectOptions(entries, itemEntry.itemId, s("chooseItem"))}</select><input data-role="item-note" data-stage-index="${stageIndex}" data-item-index="${itemIndex}" value="${esc(itemEntry.note)}" placeholder="${esc(s("notePlaceholder"))}"><button class="button button--quiet button--tiny" type="button" data-action="remove-item" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">${esc(s("remove"))}</button></div>`;
+    return `<div class="picker-row item-row"><span class="picker-row__media">${icon(entry, label)}</span><select data-role="item-id" data-stage-index="${stageIndex}" data-item-index="${itemIndex}" data-group-key="${esc(groupEntry.key)}">${selectOptions(entries, itemEntry.itemId, s("chooseItem"))}</select><button class="button button--quiet button--tiny" type="button" data-action="remove-item" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">${esc(s("remove"))}</button></div>`;
   }).join("") : `<p class="empty-state">${esc(s("noItems"))}</p>`}</section>`;
 }
 
@@ -389,7 +386,7 @@ function stageBody(stage, stageIndex) {
     return `<button class="marker-card ${selected ? "marker-card--selected" : ""}" type="button" data-action="toggle-marker" data-stage-index="${stageIndex}" data-marker-id="${esc(marker.id)}"><img class="content-icon" src="${esc(marker.icon)}" alt="${esc(marker.title?.[lang()] || marker.title?.en || marker.id)}" loading="lazy"><span class="marker-card__body"><strong>${esc(marker.title?.[lang()] || marker.title?.en || marker.id)}</strong><span>${esc(marker.description?.[lang()] || marker.description?.en || "")}</span></span></button>`;
   }).join("");
 
-  return `<div class="field-grid"><label class="field"><span>${esc(s("stageTitle"))}</span><input data-role="stage-title" data-stage-index="${stageIndex}" value="${esc(stage.title)}"></label><label class="field"><span>${esc(s("era"))}</span><select data-role="stage-era" data-stage-index="${stageIndex}">${(progression?.eras || []).map((era) => `<option value="${esc(era.id)}" ${era.id === stage.era ? "selected" : ""}>${esc(era.label?.[lang()] || era.label?.en || era.id)}</option>`).join("")}</select></label></div><label class="field"><span>${esc(s("description"))}</span><textarea data-role="stage-description" data-stage-index="${stageIndex}" rows="3" placeholder="${esc(s("descriptionPlaceholder"))}">${esc(stage.description)}</textarea></label><section class="stage-section"><div class="section-heading"><h3>${esc(s("markers"))}</h3></div><div class="marker-grid">${markers}</div></section><section class="stage-section"><div class="section-heading section-heading--with-action"><h3>${esc(s("bosses"))}</h3><button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${stageIndex}">${esc(s("addBoss"))}</button></div><div class="stage-stack">${bossRows(stage, stageIndex)}</div></section><section class="stage-section"><div class="section-heading"><h3>${esc(s("items"))}</h3></div><div class="item-group-list">${GROUPS.map((entry) => itemGroupRows(stage, stageIndex, entry)).join("")}</div></section><label class="field"><span>${esc(s("notes"))}</span><textarea data-role="stage-notes" data-stage-index="${stageIndex}" rows="3" placeholder="${esc(s("notesPlaceholder"))}">${esc(stage.notesText)}</textarea></label>`;
+  return `<div class="field-grid"><label class="field"><span>${esc(s("stageTitle"))}</span><input data-role="stage-title" data-stage-index="${stageIndex}" value="${esc(stage.title)}"></label><label class="field"><span>${esc(s("era"))}</span><select data-role="stage-era" data-stage-index="${stageIndex}">${(progression?.eras || []).map((era) => `<option value="${esc(era.id)}" ${era.id === stage.era ? "selected" : ""}>${esc(era.label?.[lang()] || era.label?.en || era.id)}</option>`).join("")}</select></label></div><label class="field"><span>${esc(s("description"))}</span><textarea data-role="stage-description" data-stage-index="${stageIndex}" rows="3" placeholder="${esc(s("descriptionPlaceholder"))}">${esc(stage.description)}</textarea></label><section class="stage-section"><div class="section-heading"><h3>${esc(s("markers"))}</h3></div><div class="marker-grid">${markers}</div></section><section class="stage-section"><div class="section-heading section-heading--with-action"><h3>${esc(s("bosses"))}</h3><button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${stageIndex}">${esc(s("addBoss"))}</button></div><div class="stage-stack">${bossRows(stage, stageIndex)}</div></section><section class="stage-section"><div class="section-heading"><h3>${esc(s("items"))}</h3></div><div class="item-group-list">${GROUPS.map((entry) => itemGroupRows(stage, stageIndex, entry)).join("")}</div></section>`;
 }
 
 function stageCard(stage, stageIndex) {
@@ -724,8 +721,6 @@ refs.accordion.addEventListener("input", (event) => {
 
   if (role === "stage-title") stage.title = target.value;
   if (role === "stage-description") stage.description = target.value;
-  if (role === "stage-notes") stage.notesText = target.value;
-  if (role === "item-note") stage.items[Number(target.dataset.itemIndex)].note = target.value;
   saveAndRender(false);
 });
 

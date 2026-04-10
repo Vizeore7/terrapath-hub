@@ -919,6 +919,10 @@ select:focus,
   grid-template-columns: auto minmax(0, 1fr) auto;
 }
 
+.item-row {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
 .picker-row__media {
   align-items: center;
   display: inline-flex;

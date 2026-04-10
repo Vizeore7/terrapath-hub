@@ -5,26 +5,17 @@ const backToBrowse = document.querySelector("#backToBrowse");
 const site = window.terraPathSite;
 const progression = window.terraPathProgression;
 
-const CATEGORY_LABELS = {
-  weapon: "Weapons",
-  armor: "Armor",
-  accessory: "Accessories",
-  ammo: "Ammo",
-  tool: "Tools",
-  mount: "Mounts",
-  pet: "Pets",
-  buff: "Buffs",
-  material: "Materials",
-  ore: "Ores",
-  furniture: "Furniture",
-  other: "Other"
-};
+const GROUPS = [
+  { key: "weapon", en: "Weapons", ru: "Оружие", cats: ["weapon"] },
+  { key: "armor", en: "Armor", ru: "Броня", cats: ["armor"] },
+  { key: "accessory", en: "Accessories", ru: "Аксессуары", cats: ["accessory"] },
+  { key: "buff", en: "Buffs / Consumables", ru: "Баффы / Расходники", cats: ["buff", "ammo"] },
+  { key: "material", en: "Materials / Ores", ru: "Материалы / Руды", cats: ["material", "ore"] },
+  { key: "tool", en: "Tools / Utility", ru: "Инструменты / Утилити", cats: ["tool", "mount", "pet", "furniture"] },
+  { key: "other", en: "Other", ru: "Другое", cats: ["other"] }
+];
 
-const supportIndex = {
-  itemMap: new Map(),
-  bossMap: new Map()
-};
-
+const supportIndex = { itemMap: new Map(), bossMap: new Map() };
 let currentGuide = null;
 
 function escapeHtml(value) {
@@ -45,26 +36,8 @@ function initials(label) {
     .toUpperCase();
 }
 
-function titleCaseCategory(category) {
-  const labels = {
-    en: CATEGORY_LABELS,
-    ru: {
-      weapon: "Оружие",
-      armor: "Броня",
-      accessory: "Аксессуары",
-      ammo: "Боеприпасы",
-      tool: "Инструменты",
-      mount: "Маунты",
-      pet: "Питомцы",
-      buff: "Баффы",
-      material: "Материалы",
-      ore: "Руды",
-      furniture: "Мебель",
-      other: "Другое"
-    }
-  };
-  const language = site?.getLanguage?.() === "ru" ? "ru" : "en";
-  return labels[language]?.[category] || CATEGORY_LABELS[category] || category;
+function language() {
+  return site?.getLanguage?.() === "ru" ? "ru" : "en";
 }
 
 function t(key, variables = {}) {
@@ -85,8 +58,12 @@ function classLabel(tag) {
     bard: { en: "Bard", ru: "Бард" },
     other: { en: "Other", ru: "Другое" }
   };
-  const language = site?.getLanguage?.() === "ru" ? "ru" : "en";
-  return labels[tag]?.[language] || tag;
+  return labels[tag]?.[language()] || tag;
+}
+
+function groupLabel(category) {
+  const group = GROUPS.find((entry) => entry.key === category) || GROUPS.find((entry) => entry.cats.includes(category));
+  return group?.[language()] || group?.en || category;
 }
 
 function params() {
@@ -102,18 +79,14 @@ function preferredPath(path) {
 }
 
 async function fetchJson(path) {
-  const attempts = repoAwarePaths(path);
-  for (const attempt of attempts) {
+  for (const attempt of repoAwarePaths(path)) {
     try {
       const response = await fetch(attempt, { cache: "no-store" });
       if (response.ok) {
         return response.json();
       }
-    } catch {
-      // Ignore and continue to fallback path.
-    }
+    } catch {}
   }
-
   throw new Error(`Could not load ${path}`);
 }
 
@@ -134,9 +107,7 @@ async function tryLoadSupport(modName) {
       for (const entry of data[file.key] || []) {
         file.target.set(entry.id, entry);
       }
-    } catch {
-      // Optional support files are allowed to be missing.
-    }
+    } catch {}
   }
 }
 
@@ -153,38 +124,29 @@ function iconMarkup(entry, label, kind = "item") {
     const className = kind === "boss" ? "content-icon content-icon--boss" : "content-icon";
     return `<img class="${className}" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
   }
-
   return `<span class="content-token">${escapeHtml(initials(label))}</span>`;
 }
 
 function chip(contentId, map) {
   const entry = map.get(contentId);
   const label = resolveName(contentId, map);
-  return `
-    <div class="content-chip">
-      <span class="content-chip__media">${iconMarkup(entry, label, "boss")}</span>
-      <span>${escapeHtml(label)}</span>
-    </div>
-  `;
+  return `<div class="content-chip"><span class="content-chip__media">${iconMarkup(entry, label, "boss")}</span><span>${escapeHtml(label)}</span></div>`;
 }
 
 function renderItemGroups(items) {
-  const groups = new Map();
-  for (const item of items || []) {
-    const group = groups.get(item.category) || [];
-    group.push(item);
-    groups.set(item.category, group);
-  }
-
-  if (!groups.size) {
+  if (!(items || []).length) {
     return `<p class="empty-state">${escapeHtml(t("guide.noItems"))}</p>`;
   }
 
-  return Array.from(groups.entries())
-    .sort(([left], [right]) => titleCaseCategory(left).localeCompare(titleCaseCategory(right)))
-    .map(([category, entries]) => `
+  return GROUPS.map((group) => {
+    const entries = (items || []).filter((entry) => group.cats.includes(entry.category || "other"));
+    if (!entries.length) {
+      return "";
+    }
+
+    return `
       <section class="category-block">
-        <h4>${escapeHtml(titleCaseCategory(category))}</h4>
+        <h4>${escapeHtml(groupLabel(group.key))}</h4>
         <div class="content-grid">
           ${entries.map((entry) => {
             const label = resolveName(entry.itemId, supportIndex.itemMap);
@@ -195,17 +157,15 @@ function renderItemGroups(items) {
                   <span class="content-card__media">${iconMarkup(supportEntry, label)}</span>
                   <div>
                     <strong>${escapeHtml(label)}</strong>
-                    <div class="content-card__meta">${escapeHtml(entry.itemId)}</div>
                   </div>
                 </div>
-                ${entry.note ? `<p class="content-card__note">${escapeHtml(entry.note)}</p>` : ""}
               </article>
             `;
           }).join("")}
         </div>
       </section>
-    `)
-    .join("");
+    `;
+  }).join("");
 }
 
 function renderProgressionMarkers(stage) {
@@ -225,10 +185,10 @@ function renderProgressionMarkers(stage) {
           }
           return `
             <article class="marker-preview-card">
-              <img class="content-icon" src="${escapeHtml(marker.icon)}" alt="${escapeHtml(progression.markerTitle(markerId, site?.getLanguage?.() || "en"))}" loading="lazy">
+              <img class="content-icon" src="${escapeHtml(marker.icon)}" alt="${escapeHtml(progression.markerTitle(markerId, language()))}" loading="lazy">
               <div>
-                <strong>${escapeHtml(progression.markerTitle(markerId, site?.getLanguage?.() || "en"))}</strong>
-                <p>${escapeHtml(progression.markerDescription(markerId, site?.getLanguage?.() || "en"))}</p>
+                <strong>${escapeHtml(progression.markerTitle(markerId, language()))}</strong>
+                <p>${escapeHtml(progression.markerDescription(markerId, language()))}</p>
               </div>
             </article>
           `;
@@ -262,7 +222,7 @@ function renderGuide(guide) {
             <span class="meta-pill">${escapeHtml(t("guide.itemPicks", { count: (stage.items || []).length }))}</span>
           </div>
           <div class="chip-row">
-            <span class="meta-pill">${escapeHtml(t("common.labelEra"))}: ${escapeHtml(progression?.eraLabel?.(stage.era || "prehardmode", site?.getLanguage?.() || "en") || stage.era || "")}</span>
+            <span class="meta-pill">${escapeHtml(t("common.labelEra"))}: ${escapeHtml(progression?.eraLabel?.(stage.era || "prehardmode", language()) || stage.era || "")}</span>
           </div>
           ${stage.description ? `<p>${escapeHtml(stage.description)}</p>` : ""}
           ${renderProgressionMarkers(stage)}
@@ -274,23 +234,7 @@ function renderGuide(guide) {
               </div>
             </section>
           ` : ""}
-          ${stage.goals?.length ? `
-            <section class="preview-block">
-              <h4>${escapeHtml(t("common.labelGoals"))}</h4>
-              <ul class="line-list">
-                ${stage.goals.map((goal) => `<li>${escapeHtml(goal)}</li>`).join("")}
-              </ul>
-            </section>
-          ` : ""}
           ${renderItemGroups(stage.items)}
-          ${stage.notes?.length ? `
-            <section class="preview-block">
-              <h4>${escapeHtml(t("common.labelNotes"))}</h4>
-              <ul class="line-list">
-                ${stage.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}
-              </ul>
-            </section>
-          ` : ""}
         </article>
       `).join("")}
     </div>
