@@ -1,28 +1,22 @@
-# Supported Mods
+# Supported Content
 
-TerraPath uses curated content indexes for the web editor.
+TerraPath Hub uses curated content indexes for web search, validation, and icon
+display. The website only guarantees the entries listed here.
 
-The in-game mod can resolve real item and NPC icons from installed mods, but the
-web editor only knows about mods that are listed here and indexed in `supported/`.
+The in-game mod can eventually resolve more content from installed mods than the
+website can display, but the public editor stays limited to supported web data.
 
-## Support levels
+## Support Matrix
 
-| Level | Meaning |
-| --- | --- |
-| Official | Searchable in the editor, validated in guide submissions, intended to have icons. |
-| Metadata-only | Searchable by internal ID and display name, icons may be missing. |
-| Unsupported | Manual references only; guide validation may warn or fail. |
+| Source | Internal name | Web support | Notes |
+| --- | --- | --- | --- |
+| Terraria | `Terraria` | Official | Search, validation, and curated vanilla icons are available. |
+| Calamity Mod | `CalamityMod` | Metadata-only | Required-mod metadata works; richer web pickers are planned later. |
+| Thorium Mod | `ThoriumMod` | Metadata-only | Required-mod metadata works; richer web pickers are planned later. |
 
-## Initial list
+## Asset Policy
 
-| Mod | Internal mod name | Status |
-| --- | --- | --- |
-| Terraria | `Terraria` | Metadata-only starter index |
-| Calamity Mod | `CalamityMod` | Planned |
-| Thorium Mod | `ThoriumMod` | Planned |
-
-## Asset note
-
-Third-party mod icons should only be published here when TerraPath has permission
-or when the asset's license allows redistribution. Until then, the web editor can
-show placeholders and the in-game mod can use textures from installed mods.
+- Third-party icons should only be published here when redistribution is allowed.
+- Until then, unsupported or partially supported web content may use placeholders.
+- TerraPath should prefer local installed mod assets in-game over republishing
+  third-party web assets when permission is unclear.

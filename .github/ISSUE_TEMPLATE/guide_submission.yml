@@ -6,13 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Submit one guide per issue.
-
-        Moderation flow:
-        1. Paste the exported `guide.json` below.
-        2. Wait for the automatic validation comment.
-        3. A maintainer reviews the guide and adds `approved` when it is ready.
-        4. TerraPath creates a publication pull request automatically.
+        Submit one exported `guide.json` per issue. TerraPath validates it automatically and a maintainer reviews it before publication.
   - type: textarea
     id: guide_json
     attributes:

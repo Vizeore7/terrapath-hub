@@ -1,35 +1,37 @@
-# Contributing to TerraPath
+# Contributing to TerraPath Hub
 
-Thanks for helping improve Terraria and tModLoader guides.
+Use this document if you want to submit a guide, report a content problem, or
+request support for a new content source.
 
-## Current contribution paths
+## For Guide Authors
 
-- Report guide mistakes through a GitHub issue.
-- Request support for a mod through a GitHub issue.
-- Submit guide JSON through the guide submission issue form.
-- Use the web editor on GitHub Pages and paste the exported `guide.json`.
-- Follow the repository moderation flow documented in [MODERATION.md](MODERATION.md).
+1. Open the published editor on GitHub Pages.
+2. Build your guide and check the preview carefully.
+3. Export `guide.json`.
+4. Open one `Guide submission` issue per guide.
+5. Paste the exported JSON exactly as the editor generated it.
+6. Update the same issue if a moderator asks for changes.
 
-## Guide requirements
+## Guide Rules
 
-- Guides must match `schema/guide.schema.json`.
-- Every guide must have a unique `id`.
-- Item, NPC, boss, and ore references should use stable IDs, not display names.
-- Modded references should use `ModName/InternalName`.
-- Guides should not include executable code, HTML, tracking scripts, or remote images.
+- The guide must validate against `schema/guide.schema.json`.
+- Each guide must use a unique `id`.
+- Use stable content IDs, not display names, for items, bosses, ores, and other references.
+- Modded references must use `ModName/InternalName`.
+- Do not include executable code, HTML, remote images, or tracking content.
+- Keep the title and catalog summary concise and useful in the guide list.
 
-## Language policy
+## Language Policy
 
-Repository documentation, issue templates, and schema keys are written in English.
+- Repository documentation, issue templates, and schema keys are English-only.
+- Guides themselves can be written in any supported locale.
+- Published guides are grouped by locale under `guides/`.
 
-Guides can be written in any supported locale and are grouped by locale in `guides/`.
+## Review Expectations
 
-## Review policy
+- TerraPath only publishes guides that are valid, readable, and useful to players.
+- Moderators may ask for naming, structure, or progression changes before approval.
+- Approved submission issues become pull requests automatically.
 
-TerraPath is designed for community guides, but published catalog data should be
-valid, readable, and useful to players. Maintainers may ask for edits before a
-guide is added to the public catalog.
-
-Approved guide issues are turned into pull requests automatically. Maintainers
-should review and merge those pull requests instead of committing guide files
-directly to `main`.
+For label meanings, review steps, and publication fallback instructions, use
+[MODERATION.md](MODERATION.md).

@@ -6,7 +6,7 @@
     en: {
       common: {
         navBrowse: "Browse",
-        navBuilder: "Builder",
+        navBuilder: "Editor",
         langEn: "EN",
         langRu: "RU",
         labelClass: "Class",
@@ -25,10 +25,11 @@
       home: {
         title: "TerraPath Hub",
         eyebrow: "Community progression guides for Terraria",
-        heading: "Pick a path before you enter the world.",
-        lede: "TerraPath turns class guides into structured stages, item groups, boss goals, notes, filters, and in-game recommendations.",
-        ctaBuilder: "Open guide builder",
-        ctaBrowse: "Browse catalog",
+        heading: "TerraPath Hub",
+        lede: "Public catalog, guide editor, and submission tools for TerraPath guides.",
+        ctaBuilder: "Open editor",
+        ctaBrowse: "Browse guides",
+        ctaSubmit: "Submit guide",
         stagesTitle: "Structured stages",
         stagesBody: "Split a guide into progression steps with optional descriptions, goals, boss references, and notes.",
         itemsTitle: "Item categories",
@@ -69,9 +70,9 @@
         itemPicks: "{count} item picks"
       },
       editor: {
-        title: "Guide Builder - TerraPath",
+        title: "Guide Editor - TerraPath",
         eyebrow: "Step-by-step authoring",
-        heading: "Guide Builder",
+        heading: "Guide Editor",
         intro: "Create a TerraPath guide one section at a time. Title, tags, stages, and export each get their own space so the screen stays readable.",
         loadingSupport: "Loading curated Terraria content...",
         snapshotTitle: "Guide snapshot",
@@ -197,10 +198,11 @@
       home: {
         title: "TerraPath Hub",
         eyebrow: "Сообщество руководств по прогрессии Terraria",
-        heading: "Выберите путь еще до входа в мир.",
-        lede: "TerraPath превращает гайды по классам в структурированные этапы, списки предметов, цели по боссам, заметки, фильтры и будущие игровые подсказки.",
+        heading: "TerraPath Hub",
+        lede: "Публичный каталог, редактор и отправка TerraPath-гайдов.",
         ctaBuilder: "Открыть редактор",
         ctaBrowse: "Открыть каталог",
+        ctaSubmit: "Отправить гайд",
         stagesTitle: "Структурные этапы",
         stagesBody: "Разделяйте гайд на шаги прогрессии с описаниями, целями, ссылками на боссов и заметками.",
         itemsTitle: "Категории предметов",
@@ -243,7 +245,7 @@
       editor: {
         title: "Редактор руководств - TerraPath",
         eyebrow: "Пошаговое создание",
-        heading: "Редактор руководств",
+        heading: "Редактор гайдов",
         intro: "Создавайте TerraPath-гайд по шагам. Название, теги, этапы и экспорт разделены по отдельным экранам, чтобы интерфейс оставался понятным.",
         loadingSupport: "Загрузка curated Terraria-контента...",
         snapshotTitle: "Краткая сводка",
@@ -402,9 +404,43 @@
     }
   }
 
+  function getRepositoryUrl() {
+    const { hostname, pathname } = window.location;
+
+    if (hostname.endsWith(".github.io")) {
+      const owner = hostname.slice(0, hostname.indexOf(".github.io"));
+      const repo = pathname.split("/").filter(Boolean)[0];
+      if (owner && repo) {
+        return `https://github.com/${owner}/${repo}`;
+      }
+    }
+
+    if (hostname === "github.com") {
+      const parts = pathname.split("/").filter(Boolean);
+      const owner = parts[0];
+      const repo = parts[1];
+      if (owner && repo) {
+        return `https://github.com/${owner}/${repo}`;
+      }
+    }
+
+    return "https://github.com/Vizeore7/terrapath-hub";
+  }
+
+  function getGuideSubmissionUrl() {
+    return `${getRepositoryUrl()}/issues/new?template=guide_submission.yml`;
+  }
+
+  function applySubmissionLinks() {
+    document.querySelectorAll("[data-submission-link]").forEach((element) => {
+      element.setAttribute("href", getGuideSubmissionUrl());
+    });
+  }
+
   function notify() {
     applyStaticTranslations();
     renderLanguageToggle();
+    applySubmissionLinks();
     for (const listener of listeners) {
       listener(getLanguage());
     }
@@ -438,6 +474,8 @@
     t,
     onChange,
     applyStaticTranslations,
-    getGuideLanguageLabel
+    getGuideLanguageLabel,
+    getRepositoryUrl,
+    getGuideSubmissionUrl
   };
 })();
