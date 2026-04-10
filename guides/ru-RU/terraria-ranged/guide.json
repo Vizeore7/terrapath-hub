@@ -45,6 +45,10 @@
           "itemId": "Terraria/SniperScope",
           "category": "accessory",
           "subgroup": "Урон"
+        },
+        {
+          "itemId": "Terraria/VortexHelmet",
+          "category": "armor"
         }
       ],
       "description": "Лутаем сундуки под землей и копаем руду{{icon:Terraria/BloodFishingRod}}{{icon:Terraria/GolfPainting3}}",
