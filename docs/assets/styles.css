@@ -112,27 +112,27 @@ p {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(10, 14, 19, 0.92);
+  background: rgba(13, 18, 23, 0.96);
   border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
 }
 
 .nav {
   align-items: center;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 1rem;
-  justify-content: space-between;
+  grid-template-columns: auto 1fr auto;
   margin: 0 auto;
-  padding: 0.9rem 0;
-  width: min(1180px, calc(100% - 2rem));
+  padding: 0.7rem 0;
+  width: min(1360px, calc(100% - 1.5rem));
 }
 
 .brand {
   color: var(--text);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -142,18 +142,34 @@ p {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.45rem;
+}
+
+.nav__links {
+  justify-content: center;
+}
+
+.nav__tools {
+  justify-content: flex-end;
 }
 
 .nav__links a {
   color: var(--muted);
   font-weight: 600;
+  padding: 0.4rem 0.65rem;
+  border-radius: 10px;
   text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav__links a:hover {
+  background: var(--surface-muted);
+  color: var(--text);
 }
 
 .lang-switch {
   align-items: center;
-  background: var(--surface-muted);
+  background: #18212b;
   border: 1px solid var(--border);
   border-radius: 999px;
   display: inline-flex;
@@ -167,7 +183,8 @@ p {
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 700;
-  padding: 0.4rem 0.75rem;
+  min-width: 2.8rem;
+  padding: 0.38rem 0.72rem;
 }
 
 .lang-switch__button--active {
@@ -633,11 +650,11 @@ select:focus,
   background: #0f151c;
   border: 1px solid var(--border);
   border-radius: 10px;
-  height: 40px;
-  image-rendering: pixelated;
+  height: 42px;
+  image-rendering: auto;
   object-fit: contain;
-  padding: 4px;
-  width: 40px;
+  padding: 3px;
+  width: 42px;
 }
 
 .content-icon--boss {
@@ -1301,7 +1318,7 @@ select:focus,
 
 .workspace--editor,
 .workspace--guide {
-  width: min(1320px, calc(100% - 1.5rem));
+  width: min(1360px, calc(100% - 1.5rem));
 }
 
 .editor-panel {
@@ -1500,17 +1517,17 @@ select:focus,
 
 .guide-reader__header,
 .guide-era {
-  padding: 1rem;
+  padding: 0.95rem 1rem;
 }
 
 .guide-reader__header {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.55rem;
 }
 
 .guide-era {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .guide-era__header {
@@ -1531,15 +1548,21 @@ select:focus,
   border: 1px solid var(--border);
   border-radius: 12px;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-  padding: 0.9rem;
+  gap: 0.85rem;
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+  padding: 0.85rem;
+  align-items: start;
 }
 
 .guide-substage__main,
 .guide-substage__loadout {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.55rem;
+}
+
+.guide-substage__loadout {
+  align-content: start;
+  min-width: 300px;
 }
 
 .guide-substage__header {
@@ -1551,14 +1574,16 @@ select:focus,
 
 .guide-substage__header h3 {
   font-size: 1.16rem;
-  line-height: 1.35;
+  line-height: 1.3;
   text-wrap: pretty;
+  overflow-wrap: anywhere;
 }
 
 .stage-description {
-  line-height: 1.7;
+  line-height: 1.62;
   overflow-wrap: anywhere;
   text-wrap: pretty;
+  max-width: 62ch;
 }
 
 .wiki-group {
@@ -1566,17 +1591,17 @@ select:focus,
   border: 1px solid var(--border);
   border-radius: 10px;
   display: grid;
-  gap: 0.55rem;
-  padding: 0.75rem 0.8rem;
+  gap: 0.45rem;
+  padding: 0.68rem 0.75rem;
 }
 
 .guide-substage__loadout {
-  gap: 0.7rem;
+  gap: 0.6rem;
 }
 
 .loadout-grid {
   align-content: start;
-  gap: 0.8rem;
+  gap: 0.65rem;
 }
 
 .wiki-group h4,
@@ -1609,7 +1634,7 @@ select:focus,
 
 .wiki-items {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.35rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1618,7 +1643,7 @@ select:focus,
 .wiki-item {
   align-items: center;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.45rem;
   grid-template-columns: auto minmax(0, 1fr);
 }
 
@@ -1632,18 +1657,28 @@ select:focus,
   overflow-wrap: anywhere;
 }
 
+.inline-flow-media {
+  display: inline-flex;
+  line-height: 1;
+  margin: 0 0.08em;
+  vertical-align: -0.18em;
+  white-space: nowrap;
+}
+
 .inline-flow-icon {
   background: none !important;
   border: 0 !important;
   border-radius: 0 !important;
-  display: inline-block !important;
-  height: 1.2em;
-  image-rendering: pixelated;
-  margin: 0 0.12em;
+  box-shadow: none !important;
+  display: block !important;
+  height: 1.52em;
+  image-rendering: auto;
+  margin: 0;
   object-fit: contain;
   padding: 0 !important;
-  vertical-align: -0.18em;
-  width: 1.2em;
+  vertical-align: middle;
+  width: 1.52em;
+  overflow: visible;
 }
 
 .inline-flow-icon--boss {
@@ -1654,25 +1689,25 @@ select:focus,
 .inline-flow-token {
   color: var(--gold);
   display: inline-flex;
-  font-size: 0.82em;
+  font-size: 1em;
   font-weight: 700;
-  height: 1.1em;
+  height: 1.34em;
   justify-content: center;
-  margin: 0 0.12em;
-  vertical-align: -0.1em;
-  width: 1.1em;
+  margin: 0;
+  vertical-align: middle;
+  width: 1.34em;
 }
 
 .outline-stage__select .inline-flow-icon,
 .stage-detail-card__header .inline-flow-icon,
 .guide-substage__header .inline-flow-icon {
-  height: 1.28em;
-  width: 1.28em;
+  height: 1.68em;
+  width: 1.68em;
 }
 
 .stage-description .inline-flow-icon {
-  height: 1.18em;
-  width: 1.18em;
+  height: 1.52em;
+  width: 1.52em;
 }
 
 .empty-stage-detail {
@@ -1684,8 +1719,7 @@ select:focus,
 
 @media (max-width: 1120px) {
   .stage-builder,
-  .stage-detail-card__grid,
-  .guide-substage {
+  .stage-detail-card__grid {
     grid-template-columns: 1fr;
   }
 
@@ -1694,10 +1728,30 @@ select:focus,
   }
 }
 
+@media (max-width: 980px) {
+  .guide-substage {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-substage__loadout {
+    min-width: 0;
+  }
+}
+
 @media (max-width: 760px) {
   .workspace--editor,
   .workspace--guide {
     width: min(1320px, calc(100% - 1rem));
+  }
+
+  .nav {
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav__links {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    padding-bottom: 0.15rem;
   }
 
   .outline-era__header,

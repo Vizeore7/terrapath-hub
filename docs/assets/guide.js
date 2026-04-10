@@ -176,9 +176,9 @@ function iconMarkup(entry, label, kind = "item") {
 
 function inlineIconMarkup(entry, label, kind = "item") {
   if (entry?.icon) {
-    return `<img class="inline-flow-icon ${kind === "boss" ? "inline-flow-icon--boss" : ""}" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" title="${escapeHtml(label)}" loading="lazy">`;
+    return `<span class="inline-flow-media" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"><img class="inline-flow-icon ${kind === "boss" ? "inline-flow-icon--boss" : ""}" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" title="${escapeHtml(label)}" loading="lazy"></span>`;
   }
-  return `<span class="inline-flow-token" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">${escapeHtml(initials(label).slice(0, 1) || "?")}</span>`;
+  return `<span class="inline-flow-media" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"><span class="inline-flow-token">${escapeHtml(initials(label).slice(0, 1) || "?")}</span></span>`;
 }
 
 function renderRichText(textValue) {
@@ -259,11 +259,10 @@ function renderGuide(guide) {
   const metaPills = [
     `${t("common.labelClass")}: ${(guide.classTags || []).map(classLabel).join(", ")}`,
     `${t("common.labelLanguage")}: ${guideLanguageLabel(guide.language)}`,
-    `${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`,
-    `${(guide.stages || []).length} ${t("common.labelStages").toLowerCase()}`
-  ];
+    `${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`
+  ].filter((value) => !value.endsWith(": "));
 
-  guidePage.innerHTML = `<header class="guide-reader__header"><h1 class="guide-title">${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.summary || "")}</p><div class="chip-row">${metaPills.map((pill) => `<span class="meta-pill">${escapeHtml(pill)}</span>`).join("")}</div></header><div class="guide-reader__eras">${stagesByEra(guide.stages).map((eraGroup) => `<section class="guide-era"><header class="guide-era__header"><h2>${escapeHtml(eraLabel(eraGroup.eraId))}</h2></header><div class="guide-era__list">${eraGroup.stages.map(renderStageEntry).join("")}</div></section>`).join("")}</div>`;
+  guidePage.innerHTML = `<header class="guide-reader__header"><h1 class="guide-title">${escapeHtml(guide.title)}</h1>${guide.summary ? `<p>${escapeHtml(guide.summary)}</p>` : ""}${metaPills.length ? `<div class="chip-row">${metaPills.map((pill) => `<span class="meta-pill">${escapeHtml(pill)}</span>`).join("")}</div>` : ""}</header><div class="guide-reader__eras">${stagesByEra(guide.stages).map((eraGroup) => `<section class="guide-era"><header class="guide-era__header"><h2>${escapeHtml(eraLabel(eraGroup.eraId))}</h2></header><div class="guide-era__list">${eraGroup.stages.map(renderStageEntry).join("")}</div></section>`).join("")}</div>`;
 }
 
 async function init() {

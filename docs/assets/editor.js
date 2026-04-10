@@ -327,9 +327,9 @@ function iconMarkup(entry, label, boss = false) {
 
 function inlineIconMarkup(entry, label, boss = false) {
   if (entry?.icon) {
-    return `<img class="inline-flow-icon ${boss ? "inline-flow-icon--boss" : ""}" src="${esc(entry.icon)}" alt="${esc(label)}" title="${esc(label)}" loading="lazy">`;
+    return `<span class="inline-flow-media" title="${esc(label)}" aria-label="${esc(label)}"><img class="inline-flow-icon ${boss ? "inline-flow-icon--boss" : ""}" src="${esc(entry.icon)}" alt="${esc(label)}" title="${esc(label)}" loading="lazy"></span>`;
   }
-  return `<span class="inline-flow-token" title="${esc(label)}" aria-label="${esc(label)}">${esc(initials(label).slice(0, 1) || "?")}</span>`;
+  return `<span class="inline-flow-media" title="${esc(label)}" aria-label="${esc(label)}"><span class="inline-flow-token">${esc(initials(label).slice(0, 1) || "?")}</span></span>`;
 }
 
 function classLabel(value) {
@@ -883,9 +883,16 @@ function stageBody(stage, stageIndex) {
   return `<article class="stage-detail-card"><header class="stage-detail-card__header"><div><p class="eyebrow">${esc(eraLabel(stage.era || "prehardmode"))}</p><h3>${renderRichText(stage.title || `${s("stage")} ${stageIndex + 1}`)}</h3></div><div class="stage-detail-card__meta"><span class="meta-pill">${esc(s("itemCount", { count: stats.items }))}</span><span class="meta-pill">${esc(lang() === "ru" ? `${stats.bosses} \u0431\u043e\u0441\u0441.` : `${stats.bosses} bosses`)}</span></div></header><div class="stage-detail-card__grid"><section class="stage-detail-card__main"><label class="field"><span class="field-label-with-action"><span>${esc(s("stageTitle"))}</span><button class="button button--quiet button--tiny" type="button" data-action="open-title-picker" data-stage-index="${stageIndex}">${esc(s("insertIcon"))}</button></span><input data-role="stage-title" data-stage-index="${stageIndex}" value="${esc(stage.title)}"></label><label class="field"><span>${esc(s("era"))}</span><select data-role="stage-era" data-stage-index="${stageIndex}">${(progression?.eras || []).map((era) => `<option value="${esc(era.id)}" ${era.id === stage.era ? "selected" : ""}>${esc(era.label?.[lang()] || era.label?.en || era.id)}</option>`).join("")}</select></label><label class="field"><span class="field-label-with-action"><span>${esc(s("description"))}</span><button class="button button--quiet button--tiny" type="button" data-action="open-description-picker" data-stage-index="${stageIndex}">${esc(s("insertIcon"))}</button></span><textarea data-role="stage-description" data-stage-index="${stageIndex}" rows="9" placeholder="${esc(s("descriptionPlaceholder"))}">${esc(stage.description)}</textarea></label><section class="stage-section stage-section--compact"><div class="section-heading section-heading--with-action"><h3>${esc(s("bosses"))}</h3><button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${stageIndex}">${esc(s("addBoss"))}</button></div><div class="stage-stack">${bossRows(stage, stageIndex)}</div></section></section><aside class="stage-detail-card__side"><section class="stage-section stage-section--loadout"><div class="section-heading"><h3>${esc(s("items"))}</h3></div><div class="loadout-grid">${GROUPS.map((group) => group.key === "accessory" ? accessoryGroupRows(stage, stageIndex) : itemRows(stage, stageIndex, group)).join("")}</div></section></aside></div></article>`;
 }
 
+function outlineStageSummary(stage) {
+  const stats = stageStats(stage);
+  return lang() === "ru"
+    ? `${stats.items} предмет. - ${stats.bosses} босс.`
+    : `${stats.items} items - ${stats.bosses} bosses`;
+}
+
 function outlineStageRow(stage, stageIndex) {
   const selected = stageIndex === openStage;
-  return `<article class="outline-stage ${selected ? "outline-stage--active" : ""}"><button class="outline-stage__select" type="button" data-action="select-stage" data-stage-index="${stageIndex}"><strong>${renderRichText(stage.title || `${s("stage")} ${stageIndex + 1}`)}</strong><span class="muted">${esc(stageSummary(stage))}</span></button><div class="outline-stage__actions"><button class="button button--quiet button--tiny" type="button" data-action="move-stage-up" data-stage-index="${stageIndex}" ${previousStageIndexInEra(stageIndex) === -1 ? "disabled" : ""}>${esc(s("moveUp"))}</button><button class="button button--quiet button--tiny" type="button" data-action="move-stage-down" data-stage-index="${stageIndex}" ${nextStageIndexInEra(stageIndex) === -1 ? "disabled" : ""}>${esc(s("moveDown"))}</button><button class="button button--quiet button--tiny" type="button" data-action="remove-stage" data-stage-index="${stageIndex}" ${state.stages.length === 1 ? "disabled" : ""}>${esc(s("delete"))}</button></div></article>`;
+  return `<article class="outline-stage ${selected ? "outline-stage--active" : ""}"><button class="outline-stage__select" type="button" data-action="select-stage" data-stage-index="${stageIndex}"><strong>${renderRichText(stage.title || `${s("stage")} ${stageIndex + 1}`)}</strong><span class="muted">${esc(outlineStageSummary(stage))}</span></button><div class="outline-stage__actions"><button class="button button--quiet button--tiny" type="button" data-action="move-stage-up" data-stage-index="${stageIndex}" ${previousStageIndexInEra(stageIndex) === -1 ? "disabled" : ""}>${esc(s("moveUp"))}</button><button class="button button--quiet button--tiny" type="button" data-action="move-stage-down" data-stage-index="${stageIndex}" ${nextStageIndexInEra(stageIndex) === -1 ? "disabled" : ""}>${esc(s("moveDown"))}</button><button class="button button--quiet button--tiny" type="button" data-action="remove-stage" data-stage-index="${stageIndex}" ${state.stages.length === 1 ? "disabled" : ""}>${esc(s("delete"))}</button></div></article>`;
 }
 
 function renderOutline() {
