@@ -84,16 +84,31 @@ function renderGuide(guide) {
     <div class="guide-card__head">
       <div>
         <h2><a class="guide-card__link" href="guide.html?id=${encodeURIComponent(guide.id)}">${escapeHtml(guide.title)}</a></h2>
-        <p>${escapeHtml(guide.summary)}</p>
+        <p class="guide-card__summary">${escapeHtml(guide.summary)}</p>
       </div>
       <a class="button button--quiet button--tiny" href="guide.html?id=${encodeURIComponent(guide.id)}">${escapeHtml(t("browse.openGuide"))}</a>
     </div>
     <div class="guide-card__meta">
-      <span>${escapeHtml(t("common.labelClass"))}: ${escapeHtml((guide.classTags || []).map(classLabel).join(", "))}</span>
-      <span>${escapeHtml(t("common.labelLanguage"))}: ${escapeHtml(guideLanguageLabel(guide.language))}</span>
-      <span>${escapeHtml(t("common.labelPopularity"))}: ${Number(guide.popularity || 0)}</span>
-      <span>${escapeHtml(t("common.labelStages"))}: ${Number(guide.stageCount || 0)}</span>
-      <span>${escapeHtml(t("common.labelMods"))}: ${escapeHtml((guide.requiredMods || []).join(", "))}</span>
+      <div class="guide-card__metric">
+        <span>${escapeHtml(t("common.labelClass"))}</span>
+        <strong>${escapeHtml((guide.classTags || []).map(classLabel).join(", "))}</strong>
+      </div>
+      <div class="guide-card__metric">
+        <span>${escapeHtml(t("common.labelLanguage"))}</span>
+        <strong>${escapeHtml(guideLanguageLabel(guide.language))}</strong>
+      </div>
+      <div class="guide-card__metric">
+        <span>${escapeHtml(t("common.labelPopularity"))}</span>
+        <strong>${Number(guide.popularity || 0)}</strong>
+      </div>
+      <div class="guide-card__metric">
+        <span>${escapeHtml(t("common.labelStages"))}</span>
+        <strong>${Number(guide.stageCount || 0)}</strong>
+      </div>
+      <div class="guide-card__metric">
+        <span>${escapeHtml(t("common.labelMods"))}</span>
+        <strong>${escapeHtml((guide.requiredMods || []).join(", "))}</strong>
+      </div>
     </div>
   `;
   return card;

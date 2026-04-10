@@ -1,4 +1,4 @@
-const STORAGE_KEY = "terrapath-editor-draft-v4";
+const STORAGE_KEY = "terrapath-editor-draft-v5";
 const site = window.terraPathSite;
 const progression = window.terraPathProgression;
 
@@ -15,9 +15,30 @@ const LANGUAGE_OPTIONS = [
 ];
 
 const SUPPORTED_MOD_OPTIONS = [
-  { value: "Terraria", label: "Terraria", description: { en: "Vanilla progression and curated content are ready now.", ru: "Vanilla-прогрессия и curated-контент уже готовы." } },
-  { value: "CalamityMod", label: "Calamity Mod", description: { en: "Metadata support is ready. Curated pickers come next.", ru: "Метаданные уже поддерживаются. Curated-подборки предметов будут добавлены позже." } },
-  { value: "ThoriumMod", label: "Thorium Mod", description: { en: "Metadata support is ready. Curated pickers come next.", ru: "Метаданные уже поддерживаются. Curated-подборки предметов будут добавлены позже." } }
+  {
+    value: "Terraria",
+    label: "Terraria",
+    description: {
+      en: "Ready now with curated item, ore, and boss pickers.",
+      ru: "Уже доступен с готовыми списками предметов, руд и боссов."
+    }
+  },
+  {
+    value: "CalamityMod",
+    label: "Calamity Mod",
+    description: {
+      en: "Metadata can already mention Calamity. Curated item support comes later.",
+      ru: "Метаданные уже могут ссылаться на Calamity. Полная подборка предметов появится позже."
+    }
+  },
+  {
+    value: "ThoriumMod",
+    label: "Thorium Mod",
+    description: {
+      en: "Metadata can already mention Thorium. Curated item support comes later.",
+      ru: "Метаданные уже могут ссылаться на Thorium. Полная подборка предметов появится позже."
+    }
+  }
 ];
 
 const CLASS_TAG_OPTIONS = [
@@ -43,21 +64,37 @@ const GUIDE_TAG_OPTIONS = [
 ];
 
 const CATEGORY_LABELS = {
-  weapon: "Weapons",
-  armor: "Armor",
-  accessory: "Accessories",
-  ammo: "Ammo",
-  tool: "Tools",
-  mount: "Mounts",
-  pet: "Pets",
-  buff: "Buffs",
-  material: "Materials",
-  ore: "Ores",
-  furniture: "Furniture",
-  other: "Other"
+  en: {
+    weapon: "Weapons",
+    armor: "Armor",
+    accessory: "Accessories",
+    ammo: "Ammo",
+    tool: "Tools",
+    mount: "Mounts",
+    pet: "Pets",
+    buff: "Buffs",
+    material: "Materials",
+    ore: "Ores",
+    furniture: "Furniture",
+    other: "Other"
+  },
+  ru: {
+    weapon: "Оружие",
+    armor: "Броня",
+    accessory: "Аксессуары",
+    ammo: "Боеприпасы",
+    tool: "Инструменты",
+    mount: "Маунты",
+    pet: "Питомцы",
+    buff: "Баффы",
+    material: "Материалы",
+    ore: "Руды",
+    furniture: "Мебель",
+    other: "Другое"
+  }
 };
 
-const CATEGORY_OPTIONS = Object.keys(CATEGORY_LABELS);
+const CATEGORY_OPTIONS = Object.keys(CATEGORY_LABELS.en);
 
 const wizardSteps = document.querySelector("#wizardSteps");
 const supportStatus = document.querySelector("#supportStatus");
@@ -113,6 +150,10 @@ function t(key, variables = {}) {
   return site?.t?.(key, variables) ?? key;
 }
 
+function localText(en, ru) {
+  return uiLanguage() === "ru" ? ru : en;
+}
+
 function localized(value) {
   if (value && typeof value === "object" && !Array.isArray(value)) {
     return value[uiLanguage()] ?? value.en ?? "";
@@ -122,6 +163,84 @@ function localized(value) {
 
 function guideLanguageLabel(code) {
   return site?.getGuideLanguageLabel?.(code) ?? code;
+}
+
+function categoryLabel(category) {
+  return CATEGORY_LABELS[uiLanguage()]?.[category] || CATEGORY_LABELS.en[category] || category;
+}
+
+function classLabel(tag) {
+  return localized(CLASS_TAG_OPTIONS.find((option) => option.value === tag)?.label || tag);
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("\"", "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function initials(label) {
+  return String(label || "?")
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0] || "")
+    .join("")
+    .toUpperCase();
+}
+
+function slugify(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80) || "new-guide";
+}
+
+function splitLines(value) {
+  return String(value || "")
+    .split(/\r?\n/)
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
+function uniqueValues(values) {
+  return Array.from(new Set((values || []).filter(Boolean)));
+}
+
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function nowTimeLabel() {
+  return new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" }).format(new Date());
+}
+
+function createItem(seed = {}) {
+  return {
+    itemId: seed.itemId || "",
+    category: seed.category || "weapon",
+    priority: Number.isFinite(seed.priority) ? seed.priority : 50,
+    note: seed.note || ""
+  };
+}
+
+function createStage(seed = {}) {
+  return {
+    title: seed.title || localText("New Stage", "Новый этап"),
+    era: seed.era || "prehardmode",
+    progressionMarkers: Array.isArray(seed.progressionMarkers) ? [...seed.progressionMarkers] : [],
+    description: seed.description || "",
+    goalsText: seed.goalsText || "",
+    notesText: seed.notesText || "",
+    bossRefs: Array.isArray(seed.bossRefs) ? [...seed.bossRefs] : [],
+    items: Array.isArray(seed.items) && seed.items.length
+      ? seed.items.map((item) => createItem(item))
+      : [createItem()]
+  };
 }
 
 function createDefaultState() {
@@ -162,114 +281,6 @@ function createDefaultState() {
   };
 }
 
-function createStage(seed = {}) {
-  return {
-    title: seed.title || "New Stage",
-    era: seed.era || "prehardmode",
-    progressionMarkers: Array.isArray(seed.progressionMarkers) ? [...seed.progressionMarkers] : [],
-    description: seed.description || "",
-    goalsText: seed.goalsText || "",
-    notesText: seed.notesText || "",
-    bossRefs: Array.isArray(seed.bossRefs) ? [...seed.bossRefs] : [],
-    items: Array.isArray(seed.items) && seed.items.length
-      ? seed.items.map((item) => createItem(item))
-      : [createItem()]
-  };
-}
-
-function createItem(seed = {}) {
-  return {
-    itemId: seed.itemId || "",
-    category: seed.category || "weapon",
-    priority: Number.isFinite(seed.priority) ? seed.priority : 50,
-    note: seed.note || ""
-  };
-}
-
-function today() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-function nowTimeLabel() {
-  return new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" }).format(new Date());
-}
-
-function slugify(value) {
-  return String(value || "")
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 80) || "new-guide";
-}
-
-function splitLines(value) {
-  return String(value || "")
-    .split(/\r?\n/)
-    .map((item) => item.trim())
-    .filter(Boolean);
-}
-
-function uniqueValues(values) {
-  return Array.from(new Set((values || []).filter(Boolean)));
-}
-
-function escapeHtml(value) {
-  return String(value || "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll("\"", "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-function titleCaseCategory(category) {
-  const labels = {
-    en: CATEGORY_LABELS,
-    ru: {
-      weapon: "Оружие",
-      armor: "Броня",
-      accessory: "Аксессуары",
-      ammo: "Боеприпасы",
-      tool: "Инструменты",
-      mount: "Маунты",
-      pet: "Питомцы",
-      buff: "Баффы",
-      material: "Материалы",
-      ore: "Руды",
-      furniture: "Мебель",
-      other: "Другое"
-    }
-  };
-  return labels[uiLanguage()]?.[category] || CATEGORY_LABELS[category] || category;
-}
-
-function initials(label) {
-  return String(label || "?")
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part[0] || "")
-    .join("")
-    .toUpperCase();
-}
-
-function saveDraft() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  lastSavedAt = nowTimeLabel();
-}
-
-function loadDraft() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      return null;
-    }
-    return normalizeState(JSON.parse(raw));
-  } catch {
-    return null;
-  }
-}
-
 function normalizeState(raw) {
   if (!raw || typeof raw !== "object") {
     return createDefaultState();
@@ -290,46 +301,116 @@ function normalizeState(raw) {
   };
 }
 
+function loadDraft() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      return null;
+    }
+    return normalizeState(JSON.parse(raw));
+  } catch {
+    return null;
+  }
+}
+
+function saveDraft() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  lastSavedAt = nowTimeLabel();
+}
+
+function resolveEntry(contentId, map) {
+  return map.get(contentId) || null;
+}
+
+function resolveEntryName(contentId, map) {
+  const entry = resolveEntry(contentId, map);
+  if (entry?.displayName) {
+    return entry.displayName;
+  }
+  return String(contentId || "").split("/").pop() || localText("Unknown entry", "Неизвестная запись");
+}
+
+function iconMarkup(entry, label) {
+  if (entry?.icon) {
+    return `<img class="content-icon" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
+  }
+  return `<span class="content-token">${escapeHtml(initials(label))}</span>`;
+}
+
+function buildSelectOptions(entries, selectedValue, placeholderLabel) {
+  const sortedEntries = [...entries].sort((left, right) => left.displayName.localeCompare(right.displayName));
+  let markup = `<option value="">${escapeHtml(placeholderLabel)}</option>`;
+
+  if (selectedValue && !entries.some((entry) => entry.id === selectedValue)) {
+    markup += `<option value="${escapeHtml(selectedValue)}" selected>${escapeHtml(selectedValue)}</option>`;
+  }
+
+  const byMod = new Map();
+  for (const entry of sortedEntries) {
+    const modName = String(entry.id || "").split("/")[0] || "Other";
+    const bucket = byMod.get(modName) || [];
+    bucket.push(entry);
+    byMod.set(modName, bucket);
+  }
+
+  for (const [modName, modEntries] of byMod) {
+    markup += `
+      <optgroup label="${escapeHtml(modName)}">
+        ${modEntries.map((entry) => `
+          <option value="${escapeHtml(entry.id)}" ${entry.id === selectedValue ? "selected" : ""}>
+            ${escapeHtml(entry.displayName)}
+          </option>
+        `).join("")}
+      </optgroup>
+    `;
+  }
+
+  return markup;
+}
+
 function buildGuide() {
   const usedStageIds = new Map();
-
   const stages = state.stages.map((stage, index) => {
-    const title = stage.title.trim() || `Stage ${index + 1}`;
+    const title = stage.title.trim() || `${localText("Stage", "Этап")} ${index + 1}`;
     const baseId = slugify(title).slice(0, 40) || `stage-${index + 1}`;
     const usedCount = usedStageIds.get(baseId) || 0;
     const stageId = usedCount ? `${baseId}-${usedCount + 1}`.slice(0, 40) : baseId;
     usedStageIds.set(baseId, usedCount + 1);
 
-    const items = stage.items
-      .map((item) => ({
-        itemId: item.itemId.trim(),
-        category: item.category,
-        priority: Number.isFinite(item.priority) ? item.priority : 50,
-        note: item.note.trim()
-      }))
-      .filter((item) => item.itemId)
-      .map((item) => {
-        const output = { itemId: item.itemId, category: item.category };
-        if (item.priority !== 50) {
-          output.priority = item.priority;
-        }
-        if (item.note) {
-          output.note = item.note;
-        }
-        return output;
-      });
+    const output = {
+      id: stageId,
+      title,
+      era: stage.era || "prehardmode",
+      items: stage.items
+        .map((item) => ({
+          itemId: String(item.itemId || "").trim(),
+          category: item.category || "other",
+          priority: Number.isFinite(item.priority) ? item.priority : 50,
+          note: String(item.note || "").trim()
+        }))
+        .filter((item) => item.itemId)
+        .map((item) => {
+          const next = { itemId: item.itemId, category: item.category };
+          if (item.priority !== 50) {
+            next.priority = item.priority;
+          }
+          if (item.note) {
+            next.note = item.note;
+          }
+          return next;
+        })
+    };
 
-    const output = { id: stageId, title, era: stage.era || "prehardmode", items };
-    const bossRefs = uniqueValues(stage.bossRefs.map((value) => value.trim()).filter(Boolean));
-    const progressionMarkers = uniqueValues((stage.progressionMarkers || []).filter(Boolean));
+    const markerIds = uniqueValues(stage.progressionMarkers || []);
+    const bossRefs = uniqueValues((stage.bossRefs || []).map((value) => String(value || "").trim()).filter(Boolean));
     const goals = splitLines(stage.goalsText);
     const notes = splitLines(stage.notesText);
 
-    if (progressionMarkers.length) {
-      output.progressionMarkers = progressionMarkers;
-    }
     if (stage.description.trim()) {
       output.description = stage.description.trim();
+    }
+    if (markerIds.length) {
+      output.progressionMarkers = markerIds;
     }
     if (bossRefs.length) {
       output.bossRefs = bossRefs;
@@ -347,10 +428,10 @@ function buildGuide() {
   const guide = {
     schemaVersion: 1,
     id: slugify(`${state.requiredMods[0] || "guide"}-${state.classTags[0] || "path"}-${state.title}`),
-    title: state.title.trim() || "Untitled Guide",
-    author: state.author.trim() || "Unknown Author",
+    title: state.title.trim() || localText("Untitled Guide", "Руководство без названия"),
+    author: state.author.trim() || localText("Unknown Author", "Неизвестный автор"),
     language: state.language || "en-US",
-    summary: state.summary.trim() || "Draft guide.",
+    summary: state.summary.trim() || localText("Draft guide.", "Черновик руководства."),
     requiredMods: state.requiredMods.length ? state.requiredMods : ["Terraria"],
     classTags: state.classTags.length ? state.classTags : ["other"],
     createdAt: state.createdAt,
@@ -363,36 +444,6 @@ function buildGuide() {
   }
 
   return guide;
-}
-
-function resolveEntry(contentId, map) {
-  return map.get(contentId) || null;
-}
-
-function resolveEntryName(contentId, map) {
-  const entry = resolveEntry(contentId, map);
-  if (entry?.displayName) {
-    return entry.displayName;
-  }
-  return String(contentId || "").split("/").pop() || contentId;
-}
-
-function iconMarkup(entry, label) {
-  if (entry?.icon) {
-    return `<img class="content-icon" src="${escapeHtml(entry.icon)}" alt="${escapeHtml(label)}" loading="lazy">`;
-  }
-  return `<span class="content-token">${escapeHtml(initials(label))}</span>`;
-}
-
-function buildContentBadge(contentId, map) {
-  const entry = resolveEntry(contentId, map);
-  const label = resolveEntryName(contentId, map);
-  return `
-    <div class="content-chip">
-      <span class="content-chip__media">${iconMarkup(entry, label)}</span>
-      <span>${escapeHtml(label)}</span>
-    </div>
-  `;
 }
 
 function completionForStep(stepIndex) {
@@ -411,18 +462,22 @@ function completionForStep(stepIndex) {
 function renderWizardSteps() {
   wizardSteps.innerHTML = STEP_DEFINITIONS.map((step, index) => {
     const isCurrent = index === currentStep;
-    const isComplete = completionForStep(index);
-    const stateLabel = isCurrent ? t("editor.current") : isComplete ? t("editor.ready") : t("editor.pending");
+    const isReady = completionForStep(index);
+    const stateLabel = isCurrent
+      ? t("editor.current")
+      : isReady
+        ? t("editor.ready")
+        : t("editor.pending");
 
     return `
-      <li class="wizard-step ${isCurrent ? "wizard-step--current" : ""} ${isComplete ? "wizard-step--complete" : ""}">
+      <li class="wizard-step ${isCurrent ? "wizard-step--current" : ""} ${isReady ? "wizard-step--complete" : ""}">
         <button class="wizard-step__button" type="button" data-step-target="${index}">
           <span class="wizard-step__count">${index + 1}</span>
           <span class="wizard-step__body">
             <strong>${escapeHtml(t(step.titleKey))}</strong>
             <span>${escapeHtml(t(step.descriptionKey))}</span>
           </span>
-          <span class="wizard-step__state">${stateLabel}</span>
+          <span class="wizard-step__state">${escapeHtml(stateLabel)}</span>
         </button>
       </li>
     `;
@@ -430,16 +485,33 @@ function renderWizardSteps() {
 }
 
 function renderSnapshot() {
-  const stageCount = state.stages.length;
   const itemCount = state.stages.reduce((count, stage) => count + stage.items.filter((item) => item.itemId).length, 0);
 
   guideSnapshot.innerHTML = `
-    <article class="snapshot-metric"><span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotTitle"))}</span><strong>${escapeHtml(state.title || "Untitled guide")}</strong></article>
-    <article class="snapshot-metric"><span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotAuthor"))}</span><strong>${escapeHtml(state.author || "Unknown author")}</strong></article>
-    <article class="snapshot-metric"><span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotLanguage"))}</span><strong>${escapeHtml(guideLanguageLabel(state.language || "en-US"))}</strong></article>
-    <article class="snapshot-metric"><span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotStages"))}</span><strong>${stageCount}</strong></article>
-    <article class="snapshot-metric"><span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotItems"))}</span><strong>${itemCount}</strong></article>
-    <article class="snapshot-metric"><span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotClasses"))}</span><strong>${escapeHtml((state.classTags.map((tag) => localized(CLASS_TAG_OPTIONS.find((option) => option.value === tag)?.label || tag))).join(", ") || "other")}</strong></article>
+    <article class="snapshot-metric">
+      <span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotTitle"))}</span>
+      <strong>${escapeHtml(state.title || localText("Untitled guide", "Руководство без названия"))}</strong>
+    </article>
+    <article class="snapshot-metric">
+      <span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotAuthor"))}</span>
+      <strong>${escapeHtml(state.author || localText("Unknown author", "Неизвестный автор"))}</strong>
+    </article>
+    <article class="snapshot-metric">
+      <span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotLanguage"))}</span>
+      <strong>${escapeHtml(guideLanguageLabel(state.language))}</strong>
+    </article>
+    <article class="snapshot-metric">
+      <span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotStages"))}</span>
+      <strong>${state.stages.length}</strong>
+    </article>
+    <article class="snapshot-metric">
+      <span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotItems"))}</span>
+      <strong>${itemCount}</strong>
+    </article>
+    <article class="snapshot-metric">
+      <span class="snapshot-metric__label">${escapeHtml(t("editor.stageSnapshotClasses"))}</span>
+      <strong>${escapeHtml((state.classTags || []).map(classLabel).join(", ") || localText("Other", "Другое"))}</strong>
+    </article>
   `;
 }
 
@@ -451,11 +523,12 @@ function renderLanguageOptions() {
 
 function buildChoiceMarkup(option, groupName, selectedValues) {
   const checked = selectedValues.includes(option.value) ? "checked" : "";
-  const title = option.labelKey ? t(option.labelKey) : localized(option.label ?? option.value);
+  const title = option.label ? localized(option.label) : t(option.labelKey);
   const description = localized(option.description || "");
+
   return `
     <label class="choice-card">
-      <input type="checkbox" data-choice-group="${groupName}" value="${escapeHtml(option.value)}" ${checked}>
+      <input type="checkbox" value="${escapeHtml(option.value)}" data-choice-group="${groupName}" ${checked}>
       <span class="choice-card__copy">
         <span class="choice-card__title">${escapeHtml(title)}</span>
         <span class="choice-card__description">${escapeHtml(description)}</span>
@@ -465,12 +538,9 @@ function buildChoiceMarkup(option, groupName, selectedValues) {
 }
 
 function renderChoiceGroups() {
-  requiredModOptions.innerHTML = SUPPORTED_MOD_OPTIONS.map((option) =>
-    buildChoiceMarkup(option, "required-mods", state.requiredMods)).join("");
-  classTagOptions.innerHTML = CLASS_TAG_OPTIONS.map((option) =>
-    buildChoiceMarkup(option, "class-tags", state.classTags)).join("");
-  guideTagOptions.innerHTML = GUIDE_TAG_OPTIONS.map((option) =>
-    buildChoiceMarkup(option, "guide-tags", state.guideTags)).join("");
+  requiredModOptions.innerHTML = SUPPORTED_MOD_OPTIONS.map((option) => buildChoiceMarkup(option, "required-mods", state.requiredMods)).join("");
+  classTagOptions.innerHTML = CLASS_TAG_OPTIONS.map((option) => buildChoiceMarkup(option, "class-tags", state.classTags)).join("");
+  guideTagOptions.innerHTML = GUIDE_TAG_OPTIONS.map((option) => buildChoiceMarkup(option, "guide-tags", state.guideTags)).join("");
 }
 
 function syncMetadataInputs() {
@@ -480,58 +550,29 @@ function syncMetadataInputs() {
   summaryInput.value = state.summary;
 }
 
-function groupEntriesByMod(entries) {
-  const grouped = new Map();
-  for (const entry of entries) {
-    const modName = String(entry.id || "").split("/")[0] || "Other";
-    const existing = grouped.get(modName) || [];
-    existing.push(entry);
-    grouped.set(modName, existing);
-  }
-  return grouped;
-}
-
-function buildSelectOptions(entries, selectedValue, placeholderLabel) {
-  const entryMap = new Map(entries.map((entry) => [entry.id, entry]));
-  let markup = `<option value="">${escapeHtml(placeholderLabel)}</option>`;
-
-  if (selectedValue && !entryMap.has(selectedValue)) {
-    markup += `<option value="${escapeHtml(selectedValue)}" selected>Unavailable: ${escapeHtml(selectedValue)}</option>`;
-  }
-
-  for (const [modName, modEntries] of groupEntriesByMod(entries)) {
-    const options = modEntries
-      .slice()
-      .sort((left, right) => left.displayName.localeCompare(right.displayName))
-      .map((entry) => `
-        <option value="${escapeHtml(entry.id)}" ${entry.id === selectedValue ? "selected" : ""}>${escapeHtml(entry.displayName)}</option>
-      `).join("");
-
-    markup += `<optgroup label="${escapeHtml(modName)}">${options}</optgroup>`;
-  }
-
-  return markup;
-}
-
 function eraOptionsMarkup(selectedEra) {
   return (progression?.eras || []).map((era) => `
-    <option value="${era.id}" ${era.id === selectedEra ? "selected" : ""}>${escapeHtml(progression.eraLabel(era.id, uiLanguage()))}</option>
+    <option value="${era.id}" ${era.id === selectedEra ? "selected" : ""}>
+      ${escapeHtml(progression.eraLabel(era.id, uiLanguage()))}
+    </option>
   `).join("");
 }
 
 function renderProgressionMarkerSelector(stage, stageIndex) {
-  const eraMarkers = progression?.markersForEra?.(stage.era || "prehardmode") || [];
-  if (!eraMarkers.length) {
-    return `<p class="empty-state">No detailed markers are available for this era yet.</p>`;
+  const markers = progression?.markersForEra?.(stage.era || "prehardmode") || [];
+  if (!markers.length) {
+    return `<p class="empty-state">${escapeHtml(localText("No detailed markers are available for this era yet.", "Для этого периода игры пока нет подробных мини-этапов."))}</p>`;
   }
 
   return `
     <div class="marker-grid">
-      ${eraMarkers.map((marker) => {
+      ${markers.map((marker) => {
         const selected = (stage.progressionMarkers || []).includes(marker.id);
         return `
           <button class="marker-card ${selected ? "marker-card--selected" : ""}" type="button" data-action="toggle-marker" data-stage-index="${stageIndex}" data-marker-id="${marker.id}">
-            <span class="marker-card__media"><img class="content-icon" src="${escapeHtml(marker.icon)}" alt="${escapeHtml(progression.markerTitle(marker.id, uiLanguage()))}" loading="lazy"></span>
+            <span class="pick-card__media">
+              <img class="content-icon" src="${escapeHtml(marker.icon)}" alt="${escapeHtml(progression.markerTitle(marker.id, uiLanguage()))}" loading="lazy">
+            </span>
             <span class="marker-card__body">
               <strong>${escapeHtml(progression.markerTitle(marker.id, uiLanguage()))}</strong>
               <span>${escapeHtml(progression.markerDescription(marker.id, uiLanguage()))}</span>
@@ -558,6 +599,7 @@ function renderSelectedMarkers(stage) {
           if (!marker) {
             return "";
           }
+
           return `
             <article class="marker-preview-card">
               <img class="content-icon" src="${escapeHtml(marker.icon)}" alt="${escapeHtml(progression.markerTitle(markerId, uiLanguage()))}" loading="lazy">
@@ -574,22 +616,27 @@ function renderSelectedMarkers(stage) {
 }
 
 function renderStageNav() {
+  const upLabel = localText("Up", "Вверх");
+  const downLabel = localText("Down", "Вниз");
+  const deleteLabel = localText("Delete", "Удалить");
+
   stageNav.innerHTML = state.stages.map((stage, index) => {
     const selected = index === selectedStageIndex;
     const stageItemCount = stage.items.filter((item) => item.itemId).length;
     const eraLabel = progression?.eraLabel?.(stage.era || "prehardmode", uiLanguage()) || stage.era || "";
+    const summary = `${eraLabel} / ${t("editor.stageItemPicks", { count: stageItemCount })}`;
 
     return `
       <article class="stage-tab ${selected ? "stage-tab--selected" : ""}">
         <button class="stage-tab__select" type="button" data-action="select-stage" data-stage-index="${index}">
           <span class="stage-tab__index">${escapeHtml(t("editor.stageCounter", { index: index + 1 }))}</span>
-          <strong>${escapeHtml(stage.title || `Stage ${index + 1}`)}</strong>
-          <span>${escapeHtml(eraLabel)} • ${escapeHtml(t("editor.stageItemPicks", { count: stageItemCount }))}</span>
+          <strong>${escapeHtml(stage.title || `${localText("Stage", "Этап")} ${index + 1}`)}</strong>
+          <span>${escapeHtml(summary)}</span>
         </button>
         <div class="stage-tab__actions">
-          <button class="button button--quiet button--tiny" type="button" title="Move stage up" data-action="move-stage-up" data-stage-index="${index}" ${index === 0 ? "disabled" : ""}>↑</button>
-          <button class="button button--quiet button--tiny" type="button" title="Move stage down" data-action="move-stage-down" data-stage-index="${index}" ${index === state.stages.length - 1 ? "disabled" : ""}>↓</button>
-          <button class="button button--quiet button--tiny" type="button" title="Delete stage" data-action="remove-stage" data-stage-index="${index}" ${state.stages.length === 1 ? "disabled" : ""}>×</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="move-stage-up" data-stage-index="${index}" title="${escapeHtml(upLabel)}" ${index === 0 ? "disabled" : ""}>${escapeHtml(upLabel)}</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="move-stage-down" data-stage-index="${index}" title="${escapeHtml(downLabel)}" ${index === state.stages.length - 1 ? "disabled" : ""}>${escapeHtml(downLabel)}</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="remove-stage" data-stage-index="${index}" title="${escapeHtml(deleteLabel)}" ${state.stages.length === 1 ? "disabled" : ""}>${escapeHtml(deleteLabel)}</button>
         </div>
       </article>
     `;
@@ -610,6 +657,7 @@ function renderBossEditors(stage, stageIndex) {
         <div class="pick-card__head">
           <span class="pick-card__media">${iconMarkup(entry, label)}</span>
           <div class="pick-card__copy">
+            <strong>${escapeHtml(label)}</strong>
             <label class="field">
               <span>${escapeHtml(t("editor.bossMilestoneLabel"))}</span>
               <select data-role="boss-id" data-stage-index="${stageIndex}" data-boss-index="${bossIndex}">
@@ -617,7 +665,9 @@ function renderBossEditors(stage, stageIndex) {
               </select>
             </label>
           </div>
-          <button class="button button--quiet button--tiny" type="button" data-action="remove-boss" data-stage-index="${stageIndex}" data-boss-index="${bossIndex}">${escapeHtml(t("editor.remove"))}</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="remove-boss" data-stage-index="${stageIndex}" data-boss-index="${bossIndex}">
+            ${escapeHtml(t("editor.remove"))}
+          </button>
         </div>
       </article>
     `;
@@ -638,6 +688,7 @@ function renderItemEditors(stage, stageIndex) {
         <div class="pick-card__head">
           <span class="pick-card__media">${iconMarkup(entry, label)}</span>
           <div class="pick-card__copy">
+            <strong>${escapeHtml(label)}</strong>
             <label class="field">
               <span>${escapeHtml(t("editor.itemLabel"))}</span>
               <select data-role="item-id" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">
@@ -645,14 +696,16 @@ function renderItemEditors(stage, stageIndex) {
               </select>
             </label>
           </div>
-          <button class="button button--quiet button--tiny" type="button" data-action="remove-item" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">${escapeHtml(t("editor.remove"))}</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="remove-item" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">
+            ${escapeHtml(t("editor.remove"))}
+          </button>
         </div>
         <div class="pick-card__grid">
           <label class="field">
             <span>${escapeHtml(t("editor.categoryLabel"))}</span>
             <select data-role="item-category" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">
               ${CATEGORY_OPTIONS.map((category) => `
-                <option value="${category}" ${category === item.category ? "selected" : ""}>${titleCaseCategory(category)}</option>
+                <option value="${category}" ${category === item.category ? "selected" : ""}>${escapeHtml(categoryLabel(category))}</option>
               `).join("")}
             </select>
           </label>
@@ -672,7 +725,6 @@ function renderItemEditors(stage, stageIndex) {
 
 function renderStageEditor() {
   const stage = state.stages[selectedStageIndex];
-
   if (!stage) {
     stageEditor.innerHTML = `<p class="empty-state">${escapeHtml(t("editor.noSelectedStage"))}</p>`;
     return;
@@ -681,14 +733,14 @@ function renderStageEditor() {
   stageEditor.innerHTML = `
     <section class="stage-panel">
       <div class="section-copy">
-        <h3>${escapeHtml(stage.title || `Stage ${selectedStageIndex + 1}`)}</h3>
+        <h3>${escapeHtml(stage.title || `${localText("Stage", "Этап")} ${selectedStageIndex + 1}`)}</h3>
         <p class="muted">${escapeHtml(t("editor.stageIntro"))}</p>
       </div>
 
       <div class="form-layout">
         <label class="field">
           <span>${escapeHtml(t("editor.stageTitleLabel"))}</span>
-          <input data-role="stage-title" data-stage-index="${selectedStageIndex}" value="${escapeHtml(stage.title)}" placeholder="Early gear setup">
+          <input data-role="stage-title" data-stage-index="${selectedStageIndex}" value="${escapeHtml(stage.title)}" placeholder="${escapeHtml(localText("Early gear setup", "Подготовка стартового снаряжения"))}">
         </label>
 
         <label class="field">
@@ -730,7 +782,9 @@ function renderStageEditor() {
             <h4>${escapeHtml(t("editor.bossMilestonesTitle"))}</h4>
             <p class="muted">${escapeHtml(t("editor.bossMilestonesBody"))}</p>
           </div>
-          <button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${selectedStageIndex}">${escapeHtml(t("editor.addBoss"))}</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${selectedStageIndex}">
+            ${escapeHtml(t("editor.addBoss"))}
+          </button>
         </div>
         <div class="stack compact-stack">
           ${renderBossEditors(stage, selectedStageIndex)}
@@ -743,7 +797,9 @@ function renderStageEditor() {
             <h4>${escapeHtml(t("editor.itemPicksTitle"))}</h4>
             <p class="muted">${escapeHtml(t("editor.itemPicksBody"))}</p>
           </div>
-          <button class="button button--quiet button--tiny" type="button" data-action="add-item" data-stage-index="${selectedStageIndex}">${escapeHtml(t("editor.addItem"))}</button>
+          <button class="button button--quiet button--tiny" type="button" data-action="add-item" data-stage-index="${selectedStageIndex}">
+            ${escapeHtml(t("editor.addItem"))}
+          </button>
         </div>
         <div class="stack compact-stack">
           ${renderItemEditors(stage, selectedStageIndex)}
@@ -753,21 +809,31 @@ function renderStageEditor() {
   `;
 }
 
+function buildContentBadge(contentId, map) {
+  const entry = resolveEntry(contentId, map);
+  const label = resolveEntryName(contentId, map);
+  return `
+    <div class="content-chip">
+      <span class="content-chip__media">${iconMarkup(entry, label)}</span>
+      <span>${escapeHtml(label)}</span>
+    </div>
+  `;
+}
+
 function renderStagePreview(stage) {
   const groupedItems = new Map();
-
-  for (const item of stage.items) {
+  for (const item of stage.items || []) {
     const key = item.category || "other";
-    const existing = groupedItems.get(key) || [];
-    existing.push(item);
-    groupedItems.set(key, existing);
+    const group = groupedItems.get(key) || [];
+    group.push(item);
+    groupedItems.set(key, group);
   }
 
-  const groups = Array.from(groupedItems.entries())
-    .sort(([left], [right]) => titleCaseCategory(left).localeCompare(titleCaseCategory(right)))
+  const groupsMarkup = Array.from(groupedItems.entries())
+    .sort(([left], [right]) => categoryLabel(left).localeCompare(categoryLabel(right)))
     .map(([category, items]) => `
       <section class="category-block">
-        <h4>${escapeHtml(titleCaseCategory(category))}</h4>
+        <h4>${escapeHtml(categoryLabel(category))}</h4>
         <div class="content-grid">
           ${items.map((item) => {
             const entry = resolveEntry(item.itemId, supportIndex.itemMap);
@@ -794,7 +860,7 @@ function renderStagePreview(stage) {
     <article class="stage-preview">
       <div class="stage-preview__header">
         <h3>${escapeHtml(stage.title)}</h3>
-        <span class="meta-pill">${escapeHtml(t("editor.stageItemPicks", { count: stage.items.length }))}</span>
+        <span class="meta-pill">${escapeHtml(t("editor.stageItemPicks", { count: (stage.items || []).length }))}</span>
       </div>
       <div class="chip-row">
         <span class="meta-pill">${escapeHtml(t("common.labelEra"))}: ${escapeHtml(progression?.eraLabel?.(stage.era || "prehardmode", uiLanguage()) || stage.era || "")}</span>
@@ -817,7 +883,7 @@ function renderStagePreview(stage) {
           </ul>
         </section>
       ` : ""}
-      ${groups || `<p class="empty-state">${escapeHtml(t("editor.noItemsPreview"))}</p>`}
+      ${groupsMarkup || `<p class="empty-state">${escapeHtml(t("editor.noItemsPreview"))}</p>`}
       ${stage.notes?.length ? `
         <section class="preview-block">
           <h4>${escapeHtml(t("common.labelNotes"))}</h4>
@@ -832,10 +898,10 @@ function renderStagePreview(stage) {
 
 function renderGuidePreview(guide) {
   const metaPills = [
-    `${t("common.labelClass")}: ${guide.classTags.map((tag) => localized(CLASS_TAG_OPTIONS.find((option) => option.value === tag)?.label || tag)).join(", ")}`,
+    `${t("common.labelClass")}: ${(guide.classTags || []).map(classLabel).join(", ")}`,
     `${t("common.labelLanguage")}: ${guideLanguageLabel(guide.language)}`,
-    `${t("common.labelMods")}: ${guide.requiredMods.join(", ")}`,
-    `${guide.stages.length} ${t("common.labelStages").toLowerCase()}`
+    `${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`,
+    `${(guide.stages || []).length} ${t("common.labelStages").toLowerCase()}`
   ];
 
   guidePreview.innerHTML = `
@@ -847,7 +913,7 @@ function renderGuidePreview(guide) {
       </div>
     </header>
     <div class="guide-preview__stages">
-      ${guide.stages.map((stage) => renderStagePreview(stage)).join("")}
+      ${(guide.stages || []).map((stage) => renderStagePreview(stage)).join("")}
     </div>
   `;
 }
@@ -881,7 +947,9 @@ function renderFooter() {
     nextStepButton.textContent = t("editor.stayOnReview");
     nextStepButton.disabled = true;
   } else {
-    nextStepButton.textContent = currentStep === STEP_DEFINITIONS.length - 2 ? t("editor.goToReview") : t("editor.nextStep");
+    nextStepButton.textContent = currentStep === STEP_DEFINITIONS.length - 2
+      ? t("editor.goToReview")
+      : t("editor.nextStep");
     nextStepButton.disabled = false;
   }
 
@@ -924,6 +992,12 @@ function refreshDerivedViews(rerenderStageEditor = false) {
   renderFooter();
 }
 
+function toggleArrayValue(values, value) {
+  return values.includes(value)
+    ? values.filter((entry) => entry !== value)
+    : [...values, value];
+}
+
 function swapStages(fromIndex, toIndex) {
   const next = [...state.stages];
   const [moved] = next.splice(fromIndex, 1);
@@ -931,20 +1005,13 @@ function swapStages(fromIndex, toIndex) {
   state.stages = next;
 }
 
-function toggleArrayValue(array, value) {
-  return array.includes(value)
-    ? array.filter((entry) => entry !== value)
-    : [...array, value];
-}
-
-function moveStep(offset) {
-  currentStep = Math.max(0, Math.min(STEP_DEFINITIONS.length - 1, currentStep + offset));
-  renderAll();
-}
-
 function openStep(stepIndex) {
   currentStep = Math.max(0, Math.min(STEP_DEFINITIONS.length - 1, stepIndex));
   renderAll();
+}
+
+function moveStep(offset) {
+  openStep(currentStep + offset);
 }
 
 function handleMetadataChoiceChange(event) {
@@ -988,34 +1055,31 @@ function handleStageNavClick(event) {
   const action = button.dataset.action;
   const stageIndex = Number(button.dataset.stageIndex);
 
-  switch (action) {
-    case "select-stage":
-      selectedStageIndex = stageIndex;
-      renderAll();
-      return;
-    case "move-stage-up":
-      if (stageIndex > 0) {
-        swapStages(stageIndex, stageIndex - 1);
-        selectedStageIndex = stageIndex - 1;
-      }
-      break;
-    case "move-stage-down":
-      if (stageIndex < state.stages.length - 1) {
-        swapStages(stageIndex, stageIndex + 1);
-        selectedStageIndex = stageIndex + 1;
-      }
-      break;
-    case "remove-stage":
-      if (state.stages.length > 1) {
-        state.stages.splice(stageIndex, 1);
-        selectedStageIndex = Math.max(0, Math.min(selectedStageIndex, state.stages.length - 1));
-      }
-      break;
-    default:
-      return;
+  if (action === "select-stage") {
+    selectedStageIndex = stageIndex;
+    renderAll();
+    return;
   }
 
-  persistAndRender();
+  if (action === "move-stage-up" && stageIndex > 0) {
+    swapStages(stageIndex, stageIndex - 1);
+    selectedStageIndex = stageIndex - 1;
+    persistAndRender();
+    return;
+  }
+
+  if (action === "move-stage-down" && stageIndex < state.stages.length - 1) {
+    swapStages(stageIndex, stageIndex + 1);
+    selectedStageIndex = stageIndex + 1;
+    persistAndRender();
+    return;
+  }
+
+  if (action === "remove-stage" && state.stages.length > 1) {
+    state.stages.splice(stageIndex, 1);
+    selectedStageIndex = Math.max(0, Math.min(selectedStageIndex, state.stages.length - 1));
+    persistAndRender();
+  }
 }
 
 function handleStageEditorClick(event) {
@@ -1034,35 +1098,44 @@ function handleStageEditorClick(event) {
     return;
   }
 
-  switch (action) {
-    case "add-boss":
-      stage.bossRefs.push("");
-      break;
-    case "remove-boss":
-      stage.bossRefs.splice(bossIndex, 1);
-      break;
-    case "add-item":
-      stage.items.push(createItem());
-      break;
-    case "remove-item":
-      stage.items.splice(itemIndex, 1);
-      break;
-    case "toggle-marker": {
-      const markerId = button.dataset.markerId;
-      const next = new Set(stage.progressionMarkers || []);
-      if (next.has(markerId)) {
-        next.delete(markerId);
-      } else {
-        next.add(markerId);
-      }
-      stage.progressionMarkers = Array.from(next);
-      break;
-    }
-    default:
-      return;
+  if (action === "add-boss") {
+    stage.bossRefs.push("");
+    persistAndRender();
+    return;
   }
 
-  persistAndRender();
+  if (action === "remove-boss") {
+    stage.bossRefs.splice(bossIndex, 1);
+    persistAndRender();
+    return;
+  }
+
+  if (action === "add-item") {
+    stage.items.push(createItem());
+    persistAndRender();
+    return;
+  }
+
+  if (action === "remove-item") {
+    stage.items.splice(itemIndex, 1);
+    if (!stage.items.length) {
+      stage.items.push(createItem());
+    }
+    persistAndRender();
+    return;
+  }
+
+  if (action === "toggle-marker") {
+    const markerId = button.dataset.markerId;
+    const next = new Set(stage.progressionMarkers || []);
+    if (next.has(markerId)) {
+      next.delete(markerId);
+    } else {
+      next.add(markerId);
+    }
+    stage.progressionMarkers = Array.from(next);
+    persistAndRender();
+  }
 }
 
 function handleStageEditorInput(event) {
@@ -1076,78 +1149,83 @@ function handleStageEditorInput(event) {
   const itemIndex = Number(target.dataset.itemIndex);
   const bossIndex = Number(target.dataset.bossIndex);
   const stage = state.stages[stageIndex];
-
   if (!stage) {
     return;
   }
 
-  switch (role) {
-    case "stage-title":
-      stage.title = target.value;
-      {
-        const heading = stageEditor.querySelector(".stage-panel .section-copy h3");
-        if (heading) {
-          heading.textContent = target.value.trim() || `Stage ${stageIndex + 1}`;
-        }
-      }
-      saveDraft();
-      refreshDerivedViews(false);
-      break;
-    case "stage-era": {
-      stage.era = target.value;
-      const allowedMarkerIds = new Set((progression?.markersForEra?.(stage.era) || []).map((marker) => marker.id));
-      stage.progressionMarkers = (stage.progressionMarkers || []).filter((markerId) => allowedMarkerIds.has(markerId));
-      saveDraft();
-      refreshDerivedViews(true);
-      break;
+  if (role === "stage-title") {
+    stage.title = target.value;
+    saveDraft();
+    refreshDerivedViews(true);
+    return;
+  }
+
+  if (role === "stage-era") {
+    stage.era = target.value;
+    const allowedIds = new Set((progression?.markersForEra?.(stage.era) || []).map((marker) => marker.id));
+    stage.progressionMarkers = (stage.progressionMarkers || []).filter((markerId) => allowedIds.has(markerId));
+    saveDraft();
+    refreshDerivedViews(true);
+    return;
+  }
+
+  if (role === "stage-description") {
+    stage.description = target.value;
+    saveDraft();
+    refreshDerivedViews(false);
+    return;
+  }
+
+  if (role === "stage-goals") {
+    stage.goalsText = target.value;
+    saveDraft();
+    refreshDerivedViews(false);
+    return;
+  }
+
+  if (role === "stage-notes") {
+    stage.notesText = target.value;
+    saveDraft();
+    refreshDerivedViews(false);
+    return;
+  }
+
+  if (role === "boss-id") {
+    stage.bossRefs[bossIndex] = target.value;
+    saveDraft();
+    refreshDerivedViews(true);
+    return;
+  }
+
+  if (role === "item-id") {
+    stage.items[itemIndex].itemId = target.value;
+    const entry = resolveEntry(target.value, supportIndex.itemMap);
+    if (entry?.category) {
+      stage.items[itemIndex].category = entry.category;
     }
-    case "stage-description":
-      stage.description = target.value;
-      saveDraft();
-      refreshDerivedViews(false);
-      break;
-    case "stage-goals":
-      stage.goalsText = target.value;
-      saveDraft();
-      refreshDerivedViews(false);
-      break;
-    case "stage-notes":
-      stage.notesText = target.value;
-      saveDraft();
-      refreshDerivedViews(false);
-      break;
-    case "boss-id":
-      stage.bossRefs[bossIndex] = target.value;
-      saveDraft();
-      refreshDerivedViews(true);
-      break;
-    case "item-id": {
-      stage.items[itemIndex].itemId = target.value;
-      const entry = resolveEntry(target.value, supportIndex.itemMap);
-      if (entry?.category) {
-        stage.items[itemIndex].category = entry.category;
-      }
-      saveDraft();
-      refreshDerivedViews(true);
-      break;
-    }
-    case "item-category":
-      stage.items[itemIndex].category = target.value;
-      saveDraft();
-      refreshDerivedViews(true);
-      break;
-    case "item-priority":
-      stage.items[itemIndex].priority = Math.max(0, Math.min(100, Number(target.value) || 0));
-      saveDraft();
-      refreshDerivedViews(false);
-      break;
-    case "item-note":
-      stage.items[itemIndex].note = target.value;
-      saveDraft();
-      refreshDerivedViews(false);
-      break;
-    default:
-      return;
+    saveDraft();
+    refreshDerivedViews(true);
+    return;
+  }
+
+  if (role === "item-category") {
+    stage.items[itemIndex].category = target.value;
+    saveDraft();
+    refreshDerivedViews(true);
+    return;
+  }
+
+  if (role === "item-priority") {
+    stage.items[itemIndex].priority = Math.max(0, Math.min(100, Number(target.value) || 0));
+    saveDraft();
+    refreshDerivedViews(false);
+    return;
+  }
+
+  if (role === "item-note") {
+    stage.items[itemIndex].note = target.value;
+    saveDraft();
+    refreshDerivedViews(false);
   }
 }
 
@@ -1234,11 +1312,11 @@ async function tryFetchJson(paths) {
         return response.json();
       }
     } catch {
-      // Ignore and continue to fallback path.
+      // Continue to fallback path.
     }
   }
 
-  throw new Error("Unable to load support index.");
+  throw new Error("Unable to load JSON.");
 }
 
 async function loadSupportIndex() {
@@ -1251,7 +1329,7 @@ async function loadSupportIndex() {
 
     const itemEntries = [
       ...(itemsData.items || []),
-      ...((oresData.ores || []).map((ore) => ({ ...ore, category: "ore" })))
+      ...((oresData.ores || []).map((entry) => ({ ...entry, category: "ore" })))
     ];
     const bossEntries = bossesData.bosses || [];
 
@@ -1306,7 +1384,6 @@ function init() {
     if (!button) {
       return;
     }
-
     openStep(Number(button.dataset.stepTarget));
   });
 
@@ -1315,7 +1392,7 @@ function init() {
   guideTagOptions.addEventListener("change", handleMetadataChoiceChange);
 
   addStageButton.addEventListener("click", () => {
-    state.stages.push(createStage({ title: `Stage ${state.stages.length + 1}` }));
+    state.stages.push(createStage({ title: `${localText("Stage", "Этап")} ${state.stages.length + 1}` }));
     selectedStageIndex = state.stages.length - 1;
     persistAndRender();
   });
@@ -1332,6 +1409,7 @@ function init() {
   downloadButton.addEventListener("click", downloadJson);
   openIssueButton.addEventListener("click", openIssuePage);
   resetDraftButton.addEventListener("click", resetDraft);
+
   site?.onChange?.(() => {
     renderLanguageOptions();
     supportStatus.textContent = supportIndex.items.length
