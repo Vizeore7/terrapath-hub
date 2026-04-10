@@ -982,9 +982,9 @@ select:focus,
 }
 
 .stage-description {
-  display: grid;
-  gap: 0.6rem;
+  display: block;
   line-height: 1.7;
+  white-space: normal;
 }
 
 .era-editor-section,
