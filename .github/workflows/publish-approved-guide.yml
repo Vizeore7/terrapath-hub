@@ -57,6 +57,7 @@ jobs:
         id: export
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: python tools/issue_submission.py export-issue
 
       - name: Validate guides

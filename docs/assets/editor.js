@@ -445,8 +445,26 @@ function inferItemCategory(entry, groupKey) {
 }
 
 function normalizeRichTextSource(value) {
-  return String(value || "")
-    .replace(/\r\n?/g, "\n")
+  const iconOnlyLine = /^\s*(?:\{\{icon:[^}]+\}\}\s*)+$/;
+  const lines = [];
+
+  for (const rawLine of String(value || "").replace(/\r\n?/g, "\n").split("\n")) {
+    const trimmed = rawLine.trim();
+    if (trimmed && iconOnlyLine.test(trimmed)) {
+      let targetIndex = lines.length - 1;
+      while (targetIndex >= 0 && !String(lines[targetIndex] || "").trim()) targetIndex -= 1;
+      if (targetIndex >= 0) {
+        lines[targetIndex] = `${String(lines[targetIndex]).replace(/[ \t]+$/g, "")} ${trimmed}`;
+      } else {
+        lines.push(trimmed);
+      }
+      continue;
+    }
+
+    lines.push(rawLine);
+  }
+
+  return lines.join("\n")
     .replace(/[ \t]*\n+[ \t]*(\{\{icon:[^}]+\}\})/g, " $1")
     .replace(/(\{\{icon:[^}]+\}\})[ \t]*\n+[ \t]*/g, "$1 ");
 }

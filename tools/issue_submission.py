@@ -2,7 +2,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import date
+from datetime import datetime, timezone
 from pathlib import Path
 
 from validate_guides import ROOT, validate_guide
@@ -68,15 +68,43 @@ def guide_repo_path(guide: dict) -> Path:
     return ROOT / "guides" / guide["language"] / guide["id"] / "guide.json"
 
 
+def publication_map_path() -> Path:
+    return ROOT / "catalog" / "publication-map.json"
+
+
+def load_publication_map() -> dict:
+    path = publication_map_path()
+    if not path.exists():
+        return {"schemaVersion": 1, "issues": {}}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def write_publication_map(data: dict) -> None:
+    path = publication_map_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=True, indent=2) + "\n", encoding="utf-8")
+
+
+def remove_empty_guide_dirs(path: Path) -> None:
+    guides_root = ROOT / "guides"
+    current = path.parent
+    while current != guides_root and current.is_relative_to(guides_root):
+        try:
+            current.rmdir()
+        except OSError:
+            break
+        current = current.parent
+
+
 def stamp_guide_dates(guide: dict, target_path: Path) -> dict:
-    today = date.today().isoformat()
+    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     stamped = dict(guide)
     if target_path.exists():
         existing = json.loads(target_path.read_text(encoding="utf-8"))
-        stamped["createdAt"] = existing.get("createdAt", stamped.get("createdAt", today))
+        stamped["createdAt"] = existing.get("createdAt", stamped.get("createdAt", now))
     else:
-        stamped["createdAt"] = stamped.get("createdAt", today)
-    stamped["updatedAt"] = today
+        stamped["createdAt"] = stamped.get("createdAt", now)
+    stamped["updatedAt"] = now
     return stamped
 
 
@@ -104,9 +132,32 @@ def export_issue(args: argparse.Namespace) -> int:
     body = load_issue_body(args.issue_body_file)
     guide = parse_issue_guide(body)
     target_path = guide_repo_path(guide)
+    issue_number = os.environ.get("ISSUE_NUMBER", "").strip()
+
+    if issue_number:
+        publication_map = load_publication_map()
+        previous = publication_map.get("issues", {}).get(issue_number)
+        previous_path_value = previous.get("path") if isinstance(previous, dict) else None
+        if previous_path_value:
+            previous_path = ROOT / previous_path_value
+            if previous_path != target_path and previous_path.exists():
+                previous_path.unlink()
+                remove_empty_guide_dirs(previous_path)
+
     target_path.parent.mkdir(parents=True, exist_ok=True)
     stamped = stamp_guide_dates(guide, target_path)
     target_path.write_text(json.dumps(stamped, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    if issue_number:
+        publication_map = load_publication_map()
+        publication_map.setdefault("issues", {})[issue_number] = {
+            "guideId": stamped["id"],
+            "language": stamped["language"],
+            "path": target_path.relative_to(ROOT).as_posix(),
+            "updatedAt": stamped["updatedAt"]
+        }
+        write_publication_map(publication_map)
+
     write_output("guide_id", stamped["id"])
     write_output("guide_language", stamped["language"])
     write_output("guide_path", target_path.relative_to(ROOT).as_posix())
