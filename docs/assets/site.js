@@ -26,7 +26,7 @@
         title: "TerraPath Hub",
         eyebrow: "Community progression guides for Terraria",
         heading: "TerraPath Hub",
-        lede: "Public catalog, guide editor, and submission tools for TerraPath guides.",
+        lede: "Build a guide, submit it, and browse what has already been published.",
         ctaBuilder: "Open editor",
         ctaBrowse: "Browse guides",
         ctaSubmit: "Submit guide",

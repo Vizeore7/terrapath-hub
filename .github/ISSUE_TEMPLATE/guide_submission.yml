@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Submit one exported `guide.json` per issue. TerraPath validates it automatically and a maintainer reviews it before publication.
+        Submit one exported `guide.json` per issue. TerraPath validates it automatically, and published guides are reviewed before they are added to the public catalog.
   - type: textarea
     id: guide_json
     attributes:
@@ -22,10 +22,10 @@ body:
       options:
         - label: I validated the guide in the editor preview before submitting.
           required: true
-        - label: I understand that the guide may be edited or rejected during moderation.
+        - label: I understand that the guide may be edited or rejected before publication.
           required: true
   - type: textarea
     id: notes
     attributes:
       label: Submission notes
-      description: Mention required mods, tested progression, known gaps, balance assumptions, or anything a moderator should review.
+      description: Mention required mods, tested progression, known gaps, balance assumptions, or anything important about this guide.

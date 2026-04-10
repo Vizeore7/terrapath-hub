@@ -10,7 +10,7 @@ request support for a new content source.
 3. Export `guide.json`.
 4. Open one `Guide submission` issue per guide.
 5. Paste the exported JSON exactly as the editor generated it.
-6. Update the same issue if a moderator asks for changes.
+6. Update the same issue if edits are requested before publication.
 
 ## Guide Rules
 
@@ -30,8 +30,5 @@ request support for a new content source.
 ## Review Expectations
 
 - TerraPath only publishes guides that are valid, readable, and useful to players.
-- Moderators may ask for naming, structure, or progression changes before approval.
+- Guide submissions may need naming, structure, or progression changes before approval.
 - Approved submission issues become pull requests automatically.
-
-For label meanings, review steps, and publication fallback instructions, use
-[MODERATION.md](MODERATION.md).

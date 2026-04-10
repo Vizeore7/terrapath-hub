@@ -1,11 +1,10 @@
 # TerraPath Hub
 
-TerraPath Hub is the public home for TerraPath guides.
+TerraPath Hub is the public guide catalog and authoring workspace for TerraPath.
 
-It hosts the published guide catalog, the web editor, submission and moderation
-automation, the guide schema, and the curated Terraria data used by the site.
-This is where authors build guides, moderators review them, and visitors browse
-what has already been published.
+This repository hosts the published guide catalog, the web editor, the guide
+schema, curated Terraria support data, and the GitHub issue flows used to submit
+new guides and report project feedback.
 
 `Build guide -> Submit -> Review -> Publish -> Browse`
 
@@ -15,9 +14,11 @@ what has already been published.
 - Browse guides: https://vizeore7.github.io/terrapath-hub/browse.html
 - Open the editor: https://vizeore7.github.io/terrapath-hub/editor.html
 - Submit a guide: https://github.com/Vizeore7/terrapath-hub/issues/new?template=guide_submission.yml
+- Report a bug: https://github.com/Vizeore7/terrapath-hub/issues/new?template=bug_report.yml
+- UI feedback: https://github.com/Vizeore7/terrapath-hub/issues/new?template=ui_feedback.yml
+- Request supported mod data: https://github.com/Vizeore7/terrapath-hub/issues/new?template=supported_mod_request.yml
 - Guide schema: [schema/guide.schema.json](schema/guide.schema.json)
 - Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
-- Moderation: [MODERATION.md](MODERATION.md)
 - Supported content: [SUPPORTED_MODS.md](SUPPORTED_MODS.md)
 
 ## What This Repo Contains
@@ -27,7 +28,7 @@ what has already been published.
 - Generated catalog data in `catalog/`.
 - The guide schema in `schema/`.
 - Curated support data and extracted web icons in `supported/`.
-- Submission and moderation automation in `.github/` and `tools/`.
+- Submission and publication automation in `.github/` and `tools/`.
 
 Guides are stored as structured JSON on purpose, not as free-form wiki pages.
 That keeps them searchable, validatable, sortable, and usable inside the
@@ -41,22 +42,40 @@ guides/     Published guide JSON files grouped by locale and guide id
 catalog/    Built indexes used by the site and future in-game loading
 schema/     JSON schema for guide validation
 supported/  Curated Terraria content data and web-ready icon assets
-tools/      Validation, catalog build, export, and moderation helper scripts
+tools/      Validation, catalog build, export, and publication helper scripts
 ```
 
 ## How To Use This Repo
 
-| Role | Start here | What to do |
-| --- | --- | --- |
-| Author | Published editor + [CONTRIBUTING.md](CONTRIBUTING.md) | Build a guide, export `guide.json`, open a submission issue, and respond to review feedback. |
-| Moderator | [MODERATION.md](MODERATION.md) | Review validated issues, apply `approved`, and merge the generated publication pull request. |
-| Visitor | Published site | Browse published guides, open guide pages, and inspect raw JSON when needed. |
+### For guide authors
+
+1. Open the published editor.
+2. Build your guide and check the preview.
+3. Export `guide.json`.
+4. Open one `Guide submission` issue per guide.
+5. Paste the exported JSON and submit it.
+6. Update the same issue if edits are requested before publication.
+
+### For visitors
+
+- Open the published site to browse guides.
+- Use the guide browser filters to narrow by class, language, or required mods.
+- Open any guide page to read the structured stages and item sections.
+- Use the raw JSON link if you want to inspect the stored guide data directly.
+
+## Where To Write
+
+- Use `Bug report` issues for broken pages, wrong data, submission problems, or site regressions.
+- Use `UI feedback` issues for usability complaints, layout ideas, or missing workflow improvements.
+- Use `Supported mod request` issues when you want TerraPath Hub to index a new mod for the web editor.
+- Use `Guide submission` issues only for one exported `guide.json`.
 
 ## Current Status
 
-- The public editor, guide browser, and issue-based moderation flow are live.
+- The public editor, guide browser, and issue-based submission flow are live.
 - The web editor is vanilla-first and uses curated Terraria content data.
 - Calamity Mod and Thorium Mod are currently metadata-only on the web side.
+- Published guides are reviewed before they are added to the public catalog.
 - The TerraPath tModLoader mod source lives separately from this public hub.
 
 ## Important Notes
