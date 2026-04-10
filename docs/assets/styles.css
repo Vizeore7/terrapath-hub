@@ -811,6 +811,9 @@ select:focus,
 .form-section,
 .stage-section,
 .item-group,
+.accessory-subgroup-editor,
+.substage-editor-list,
+.substage-editor-card,
 .stage-stack,
 .item-group-list,
 .stage-accordion {
@@ -888,6 +891,10 @@ select:focus,
   gap: 0.5rem;
 }
 
+.stage-card__actions--compact {
+  justify-content: flex-end;
+}
+
 .stage-card__body {
   display: grid;
   gap: 1rem;
@@ -958,6 +965,12 @@ select:focus,
   justify-content: space-between;
 }
 
+.item-group__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .item-group__header h4 {
   color: var(--gold);
 }
@@ -996,6 +1009,39 @@ select:focus,
 
 .picker-select:hover {
   border-color: #4f7b68;
+}
+
+.inline-input {
+  background: #10161d;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  color: var(--text);
+  min-height: 2.75rem;
+  padding: 0.65rem 0.85rem;
+  width: 100%;
+}
+
+.substage-editor-card,
+.accessory-subgroup-editor,
+.accessory-subgroup,
+.substage-card {
+  background: #10161d;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.85rem;
+}
+
+.substage-preview-list,
+.content-grid--single {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.accessory-subgroup h5 {
+  color: var(--gold);
+  margin: 0;
 }
 
 .picker-modal[hidden] {

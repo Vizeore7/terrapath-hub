@@ -15,38 +15,30 @@
       "id": "first-night",
       "title": "First Night",
       "era": "prehardmode",
-      "progressionMarkers": [
-        "early-exploration",
-        "pre-eye-of-cthulhu"
-      ],
       "description": "Collect basic mobility, find surface chests, and prepare a safe arena before fighting early bosses.",
-      "bossRefs": [],
-      "goals": [
-        "Find basic movement accessories",
-        "Craft or loot a stronger melee weapon",
-        "Build a simple arena with platforms and campfires"
+      "subStages": [
+        {
+          "title": "Before Eye of Cthulhu",
+          "description": "Focus on movement, a simple arena, and one reliable early melee option."
+        }
       ],
+      "bossRefs": [],
       "items": [
         {
           "itemId": "Terraria/EnchantedBoomerang",
-          "category": "weapon",
-          "priority": 70,
-          "note": "A safe ranged melee option if you find one in surface or underground chests."
+          "category": "weapon"
         },
         {
           "itemId": "Terraria/CloudinaBottle",
           "category": "accessory",
-          "priority": 80,
-          "note": "Early double jump makes boss dodging much easier."
+          "subgroup": "Mobility"
         },
         {
-          "itemId": "Terraria/IronBar",
-          "category": "material",
-          "priority": 45,
-          "note": "Useful early crafting material. Lead bars can replace iron in many worlds."
+          "itemId": "Terraria/HermesBoots",
+          "category": "accessory",
+          "subgroup": "Mobility"
         }
-      ],
-      "notes": ["This is a format example, not a complete melee walkthrough."]
+      ]
     }
   ]
 }

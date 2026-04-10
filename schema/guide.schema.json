@@ -69,6 +69,10 @@
           "uniqueItems": true,
           "items": { "$ref": "#/$defs/tag" }
         },
+        "subStages": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/subStage" }
+        },
         "description": { "type": "string", "maxLength": 1800 },
         "bossRefs": {
           "type": "array",
@@ -87,6 +91,15 @@
           "type": "array",
           "items": { "type": "string", "minLength": 3, "maxLength": 320 }
         }
+      }
+    },
+    "subStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "description": { "type": "string", "maxLength": 1200 }
       }
     },
     "guideItem": {
@@ -111,6 +124,7 @@
             "other"
           ]
         },
+        "subgroup": { "type": "string", "maxLength": 80 },
         "priority": { "type": "integer", "minimum": 0, "maximum": 100 },
         "note": { "type": "string", "maxLength": 420 },
         "alternatives": {

@@ -24,11 +24,10 @@ const GROUPS = [
   { key: "weapon", cats: ["weapon"], en: "Weapons", ru: "\u041e\u0440\u0443\u0436\u0438\u0435" },
   { key: "armor", cats: ["armor"], en: "Armor", ru: "\u0411\u0440\u043e\u043d\u044f" },
   { key: "accessory", cats: ["accessory"], en: "Accessories", ru: "\u0410\u043a\u0441\u0435\u0441\u0441\u0443\u0430\u0440\u044b" },
-  { key: "buff", cats: ["buff", "ammo"], en: "Buffs / Consumables", ru: "\u0411\u0430\u0444\u0444\u044b / \u0420\u0430\u0441\u0445\u043e\u0434\u043d\u0438\u043a\u0438" },
-  { key: "material", cats: ["material", "ore"], en: "Materials / Ores", ru: "\u041c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u044b / \u0420\u0443\u0434\u044b" },
-  { key: "tool", cats: ["tool", "mount", "pet", "furniture"], en: "Tools / Utility", ru: "\u0418\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b / \u0423\u0442\u0438\u043b\u0438\u0442\u0438" },
-  { key: "other", cats: ["other"], en: "Other", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" }
+  { key: "buff", cats: ["buff", "ammo"], en: "Buffs / Consumables", ru: "\u0411\u0430\u0444\u0444\u044b / \u0420\u0430\u0441\u0445\u043e\u0434\u043d\u0438\u043a\u0438" }
 ];
+
+const ALLOWED_ITEM_CATEGORIES = new Set(GROUPS.flatMap((group) => group.cats));
 
 const STEP_COPY = {
   en: [
@@ -289,18 +288,69 @@ function plainText(textValue) {
   return String(textValue || "").replace(/\{\{icon:[^}]+\}\}/g, " ").replace(/\s+/g, " ").trim();
 }
 
+function makeId(prefix = "id") {
+  return `${prefix}-${Math.random().toString(36).slice(2, 8)}-${Date.now().toString(36).slice(-4)}`;
+}
+
 function itemTemplate(seed = {}) {
-  return { itemId: seed.itemId || "", category: seed.category || "weapon" };
+  return { itemId: seed.itemId || "", category: seed.category || "weapon", subgroupId: seed.subgroupId || "" };
+}
+
+function subStageTemplate(seed = {}) {
+  return {
+    id: seed.id || makeId("substage"),
+    title: seed.title || "",
+    description: seed.description || ""
+  };
 }
 
 function stageTemplate(seed = {}) {
+  const accessoryGroups = Array.isArray(seed.accessoryGroups)
+    ? seed.accessoryGroups.map((group) => ({ id: group.id || makeId("accessory"), title: group.title || "" }))
+    : [];
+  const items = [];
+
+  for (const rawItem of Array.isArray(seed.items) ? seed.items : []) {
+    const nextItem = itemTemplate(rawItem);
+    if (!ALLOWED_ITEM_CATEGORIES.has(nextItem.category)) continue;
+    if ((nextItem.category || "weapon") === "accessory" && rawItem?.subgroup) {
+      const title = String(rawItem.subgroup).trim();
+      if (title) {
+        let group = accessoryGroups.find((entry) => entry.title === title);
+        if (!group) {
+          group = { id: makeId("accessory"), title };
+          accessoryGroups.push(group);
+        }
+        nextItem.subgroupId = group.id;
+      }
+    }
+    items.push(nextItem);
+  }
+
+  const subStages = Array.isArray(seed.subStages)
+    ? seed.subStages.map(subStageTemplate)
+    : [];
+
+  if (!subStages.length && Array.isArray(seed.progressionMarkers) && progression?.getMarker) {
+    seed.progressionMarkers.forEach((markerId) => {
+      const marker = progression.getMarker(markerId);
+      if (marker) {
+        subStages.push(subStageTemplate({
+          title: marker.title?.[lang()] || marker.title?.en || markerId,
+          description: marker.description?.[lang()] || marker.description?.en || ""
+        }));
+      }
+    });
+  }
+
   return {
     title: seed.title || s("stage"),
     era: seed.era || "prehardmode",
-    progressionMarkers: [...(seed.progressionMarkers || [])],
+    subStages,
     description: seed.description || "",
     bossRefs: [...(seed.bossRefs || [])],
-    items: Array.isArray(seed.items) ? seed.items.map(itemTemplate) : []
+    accessoryGroups,
+    items
   };
 }
 
@@ -318,12 +368,20 @@ function sampleState() {
       stageTemplate({
         title: "First Night",
         era: "prehardmode",
-        progressionMarkers: ["pre-eye-of-cthulhu"],
         description: "Collect movement items, prepare a basic arena, and secure a reliable early weapon.",
         bossRefs: ["Terraria/EyeofCthulhu"],
+        subStages: [
+          {
+            title: "Before Eye of Cthulhu",
+            description: "Build a simple arena and collect mobility before the first early boss."
+          }
+        ],
+        accessoryGroups: [
+          { title: "Mobility" }
+        ],
         items: [
           { itemId: "Terraria/EnchantedBoomerang", category: "weapon" },
-          { itemId: "Terraria/CloudinaBottle", category: "accessory" }
+          { itemId: "Terraria/CloudinaBottle", category: "accessory", subgroup: "Mobility" }
         ]
       })
     ]
@@ -402,17 +460,33 @@ function buildGuide() {
       id: count ? `${base}-${count + 1}`.slice(0, 40) : base,
       title,
       era: stage.era || "prehardmode",
-      items: (stage.items || []).filter((entry) => entry.itemId).map((entry) => ({
+      items: (stage.items || []).filter((entry) => entry.itemId && ALLOWED_ITEM_CATEGORIES.has(entry.category || "")).map((entry) => ({
         itemId: entry.itemId,
-        category: entry.category || "other"
+        category: entry.category || "weapon"
       }))
     };
-
-    const markers = uniq(stage.progressionMarkers || []);
     const bosses = uniq((stage.bossRefs || []).map((entry) => String(entry || "").trim()).filter(Boolean));
+    const subStages = (stage.subStages || [])
+      .map((subStage) => ({
+        title: String(subStage.title || "").trim(),
+        description: String(subStage.description || "").trim()
+      }))
+      .filter((subStage) => subStage.title || subStage.description);
+
+    output.items = output.items.map((item, itemIndex) => {
+      const source = stage.items[itemIndex];
+      if (item.category === "accessory" && source?.subgroupId) {
+        const group = (stage.accessoryGroups || []).find((entry) => entry.id === source.subgroupId);
+        const subgroup = String(group?.title || "").trim();
+        if (subgroup) {
+          return { ...item, subgroup };
+        }
+      }
+      return item;
+    });
 
     if (stage.description.trim()) output.description = stage.description.trim();
-    if (markers.length) output.progressionMarkers = markers;
+    if (subStages.length) output.subStages = subStages;
     if (bosses.length) output.bossRefs = bosses;
     return output;
   });
@@ -492,13 +566,9 @@ function renderGuideForm() {
   refs.summary.placeholder = lang() === "ru" ? "\u041a\u0440\u0430\u0442\u043a\u043e\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0434\u043b\u044f \u0441\u043f\u0438\u0441\u043a\u0430 \u0433\u0430\u0439\u0434\u043e\u0432." : "Short description shown in the guide list.";
 }
 
-function previewMarkers(stage) {
-  if (!stage.progressionMarkers?.length) return "";
-  return `<section class="preview-block"><h4>${esc(t("common.labelMarkers"))}</h4><div class="marker-preview-grid">${stage.progressionMarkers.map((id) => {
-    const marker = progression?.getMarker?.(id);
-    if (!marker) return "";
-    return `<article class="marker-preview-card"><img class="content-icon" src="${esc(marker.icon)}" alt="${esc(marker.title?.[lang()] || marker.title?.en || id)}" loading="lazy"><div><strong>${esc(marker.title?.[lang()] || marker.title?.en || id)}</strong><p>${esc(marker.description?.[lang()] || marker.description?.en || "")}</p></div></article>`;
-  }).join("")}</div></section>`;
+function previewSubStages(stage) {
+  if (!stage.subStages?.length) return "";
+  return `<section class="preview-block"><h4>${esc(lang() === "ru" ? "\u041f\u043e\u0434\u044d\u0442\u0430\u043f\u044b" : "Sub-stages")}</h4><div class="substage-preview-list">${stage.subStages.map((subStage) => `<article class="substage-card"><strong>${renderRichText(subStage.title || "")}</strong>${subStage.description ? `<div class="stage-description">${renderRichText(subStage.description)}</div>` : ""}</article>`).join("")}</div></section>`;
 }
 
 function previewBosses(stage) {
@@ -514,6 +584,24 @@ function previewGroups(items) {
   const blocks = GROUPS.map((group) => {
     const rows = (items || []).filter((entry) => group.cats.includes(entry.category || "other"));
     if (!rows.length) return "";
+
+    if (group.key === "accessory") {
+      const subgroupOrder = [];
+      rows.forEach((entry) => {
+        const subgroup = String(entry.subgroup || "").trim();
+        if (!subgroupOrder.includes(subgroup)) subgroupOrder.push(subgroup);
+      });
+
+      return `<section class="category-block"><h4>${esc(group[lang()])}</h4>${subgroupOrder.map((subgroup) => {
+        const subgroupRows = rows.filter((entry) => String(entry.subgroup || "").trim() === subgroup);
+        return `<div class="accessory-subgroup">${subgroup ? `<h5>${esc(subgroup)}</h5>` : ""}<div class="content-grid">${subgroupRows.map((itemEntry) => {
+          const entry = support.itemMap.get(itemEntry.itemId);
+          const label = pickLabel(itemEntry.itemId, support.itemMap);
+          return `<article class="content-card"><div class="content-card__head"><span class="content-card__media">${iconMarkup(entry, label)}</span><div><strong>${esc(label)}</strong></div></div></article>`;
+        }).join("")}</div></div>`;
+      }).join("")}</section>`;
+    }
+
     return `<section class="category-block"><h4>${esc(group[lang()])}</h4><div class="content-grid">${rows.map((itemEntry) => {
       const entry = support.itemMap.get(itemEntry.itemId);
       const label = pickLabel(itemEntry.itemId, support.itemMap);
@@ -527,7 +615,7 @@ function renderPreview() {
   const guide = buildGuide();
   latestJson = `${JSON.stringify(guide, null, 2)}\n`;
   refs.json.textContent = latestJson;
-  refs.preview.innerHTML = `<header class="guide-preview__header"><h2 class="guide-title">${esc(guide.title)}</h2><p>${esc(guide.summary)}</p><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelClass")}: ${classList(guide.classTags)}`)}</span><span class="meta-pill">${esc(`${t("common.labelLanguage")}: ${guideLanguageLabel(guide.language)}`)}</span><span class="meta-pill">${esc(`${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`)}</span><span class="meta-pill">${esc(`${guide.stages.length} ${t("common.labelStages").toLowerCase()}`)}</span></div></header><div class="guide-preview__stages">${guide.stages.map((stage) => `<article class="stage-preview"><section class="stage-overview"><div class="stage-preview__header"><h3>${renderRichText(stage.title)}</h3><span class="meta-pill">${esc(s("itemCount", { count: (stage.items || []).length }))}</span></div><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelEra")}: ${progression?.eraLabel?.(stage.era || "prehardmode", lang()) || stage.era || ""}`)}</span></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}${previewMarkers(stage)}${previewBosses(stage)}</section><section class="stage-loadout">${previewGroups(stage.items)}</section></article>`).join("")}</div>`;
+  refs.preview.innerHTML = `<header class="guide-preview__header"><h2 class="guide-title">${esc(guide.title)}</h2><p>${esc(guide.summary)}</p><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelClass")}: ${classList(guide.classTags)}`)}</span><span class="meta-pill">${esc(`${t("common.labelLanguage")}: ${guideLanguageLabel(guide.language)}`)}</span><span class="meta-pill">${esc(`${t("common.labelMods")}: ${(guide.requiredMods || []).join(", ")}`)}</span><span class="meta-pill">${esc(`${guide.stages.length} ${t("common.labelStages").toLowerCase()}`)}</span></div></header><div class="guide-preview__stages">${guide.stages.map((stage) => `<article class="stage-preview"><section class="stage-overview"><div class="stage-preview__header"><h3>${renderRichText(stage.title)}</h3><span class="meta-pill">${esc(s("itemCount", { count: (stage.items || []).length }))}</span></div><div class="chip-row"><span class="meta-pill">${esc(`${t("common.labelEra")}: ${progression?.eraLabel?.(stage.era || "prehardmode", lang()) || stage.era || ""}`)}</span></div>${stage.description ? `<div class="stage-description">${renderRichText(stage.description)}</div>` : ""}${previewSubStages(stage)}${previewBosses(stage)}</section><section class="stage-loadout">${previewGroups(stage.items)}</section></article>`).join("")}</div>`;
 }
 
 function bossRows(stage, stageIndex) {
@@ -537,6 +625,22 @@ function bossRows(stage, stageIndex) {
     const label = pickLabel(id, support.bossMap);
     return `<div class="picker-row boss-row"><span class="picker-row__media">${iconMarkup(entry, label, true)}</span><button class="picker-select" type="button" data-action="change-boss" data-stage-index="${stageIndex}" data-boss-index="${bossIndex}">${esc(label || s("chooseBoss"))}</button><button class="button button--quiet button--tiny" type="button" data-action="remove-boss" data-stage-index="${stageIndex}" data-boss-index="${bossIndex}">${esc(s("remove"))}</button></div>`;
   }).join("");
+}
+
+function accessoryGroupRows(stage, stageIndex) {
+  const ungroupedItems = (stage.items || []).filter((itemEntry) => itemEntry.category === "accessory" && !itemEntry.subgroupId);
+  const groups = stage.accessoryGroups || [];
+
+  const renderAccessoryRow = (itemEntry, itemIndex, subgroupId = "") => {
+    const entry = support.itemMap.get(itemEntry.itemId);
+    const label = pickLabel(itemEntry.itemId, support.itemMap) || s("chooseItem");
+    return `<div class="picker-row item-row"><span class="picker-row__media">${iconMarkup(entry, label)}</span><button class="picker-select" type="button" data-action="change-item" data-stage-index="${stageIndex}" data-item-index="${itemIndex}" data-group-key="accessory" data-subgroup-id="${esc(subgroupId)}">${esc(label)}</button><button class="button button--quiet button--tiny" type="button" data-action="remove-item" data-stage-index="${stageIndex}" data-item-index="${itemIndex}">${esc(s("remove"))}</button></div>`;
+  };
+
+  return `<section class="item-group"><div class="item-group__header"><h4>${esc(groupLabel("accessory"))}</h4><div class="item-group__actions"><button class="button button--quiet button--tiny" type="button" data-action="add-item" data-stage-index="${stageIndex}" data-group-key="accessory">${esc(s("addItem"))}</button><button class="button button--quiet button--tiny" type="button" data-action="add-accessory-group" data-stage-index="${stageIndex}">${esc(lang() === "ru" ? "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b" : "Add subgroup")}</button></div></div>${ungroupedItems.length ? `<div class="accessory-subgroup"><div class="content-grid content-grid--single">${ungroupedItems.map((itemEntry) => renderAccessoryRow(itemEntry, stage.items.indexOf(itemEntry))).join("")}</div></div>` : ""}${groups.map((group) => {
+    const subgroupItems = stage.items.filter((itemEntry) => itemEntry.category === "accessory" && itemEntry.subgroupId === group.id);
+    return `<section class="accessory-subgroup-editor"><div class="field-label-with-action"><input class="inline-input" data-role="accessory-group-title" data-stage-index="${stageIndex}" data-group-id="${esc(group.id)}" value="${esc(group.title)}" placeholder="${esc(lang() === "ru" ? "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043f\u043e\u0434\u0440\u0430\u0437\u0434\u0435\u043b\u0430" : "Subgroup title")}"><div class="item-group__actions"><button class="button button--quiet button--tiny" type="button" data-action="add-item" data-stage-index="${stageIndex}" data-group-key="accessory" data-subgroup-id="${esc(group.id)}">${esc(s("addItem"))}</button><button class="button button--quiet button--tiny" type="button" data-action="remove-accessory-group" data-stage-index="${stageIndex}" data-group-id="${esc(group.id)}">${esc(s("remove"))}</button></div></div><div class="content-grid content-grid--single">${subgroupItems.length ? subgroupItems.map((itemEntry) => renderAccessoryRow(itemEntry, stage.items.indexOf(itemEntry), group.id)).join("") : `<p class="empty-state">${esc(s("noItems"))}</p>`}</div></section>`;
+  }).join("") || ""}${!ungroupedItems.length && !groups.length ? `<p class="empty-state">${esc(s("noItems"))}</p>` : ""}</section>`;
 }
 
 function itemRows(stage, stageIndex, groupEntry) {
@@ -553,14 +657,9 @@ function itemRows(stage, stageIndex, groupEntry) {
 }
 
 function stageBody(stage, stageIndex) {
-  const markerEntries = progression?.markersForEra?.(stage.era || "prehardmode") || [];
-  const selectedMarkerId = stage.progressionMarkers?.[0] || "";
-  const selectedMarker = markerEntries.find((entry) => entry.id === selectedMarkerId);
-  const markerPreview = selectedMarker
-    ? `<article class="marker-preview-card"><img class="content-icon" src="${esc(selectedMarker.icon)}" alt="${esc(selectedMarker.title?.[lang()] || selectedMarker.title?.en || selectedMarker.id)}" loading="lazy"><div><strong>${esc(selectedMarker.title?.[lang()] || selectedMarker.title?.en || selectedMarker.id)}</strong><p>${esc(selectedMarker.description?.[lang()] || selectedMarker.description?.en || "")}</p></div></article>`
-    : "";
+  const subStages = stage.subStages || [];
 
-  return `<section class="stage-overview-editor"><div class="field-grid"><label class="field"><span class="field-label-with-action"><span>${esc(s("stageTitle"))}</span><button class="button button--quiet button--tiny" type="button" data-action="open-title-picker" data-stage-index="${stageIndex}">${esc(s("insertIcon"))}</button></span><input data-role="stage-title" data-stage-index="${stageIndex}" value="${esc(stage.title)}"></label><label class="field"><span>${esc(s("era"))}</span><select data-role="stage-era" data-stage-index="${stageIndex}">${(progression?.eras || []).map((era) => `<option value="${esc(era.id)}" ${era.id === stage.era ? "selected" : ""}>${esc(era.label?.[lang()] || era.label?.en || era.id)}</option>`).join("")}</select></label></div><label class="field"><span class="field-label-with-action"><span>${esc(s("description"))}</span><button class="button button--quiet button--tiny" type="button" data-action="open-description-picker" data-stage-index="${stageIndex}">${esc(s("insertIcon"))}</button></span><textarea data-role="stage-description" data-stage-index="${stageIndex}" rows="5" placeholder="${esc(s("descriptionPlaceholder"))}">${esc(stage.description)}</textarea></label><section class="stage-section"><div class="section-heading"><h3>${esc(s("markers"))}</h3></div><label class="field"><select data-role="stage-marker" data-stage-index="${stageIndex}"><option value="">${esc(lang() === "ru" ? "\u0411\u0435\u0437 \u043f\u043e\u0434\u044d\u0442\u0430\u043f\u0430" : "No detailed stage")}</option>${markerEntries.map((marker) => `<option value="${esc(marker.id)}" ${marker.id === selectedMarkerId ? "selected" : ""}>${esc(marker.title?.[lang()] || marker.title?.en || marker.id)}</option>`).join("")}</select></label>${markerPreview}</section><section class="stage-section"><div class="section-heading section-heading--with-action"><h3>${esc(s("bosses"))}</h3><button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${stageIndex}">${esc(s("addBoss"))}</button></div><div class="stage-stack">${bossRows(stage, stageIndex)}</div></section></section><section class="stage-loadout-editor"><section class="stage-section"><div class="section-heading"><h3>${esc(s("items"))}</h3></div><div class="item-group-list">${GROUPS.map((group) => itemRows(stage, stageIndex, group)).join("")}</div></section></section>`;
+  return `<section class="stage-overview-editor"><div class="field-grid"><label class="field"><span class="field-label-with-action"><span>${esc(s("stageTitle"))}</span><button class="button button--quiet button--tiny" type="button" data-action="open-title-picker" data-stage-index="${stageIndex}">${esc(s("insertIcon"))}</button></span><input data-role="stage-title" data-stage-index="${stageIndex}" value="${esc(stage.title)}"></label><label class="field"><span>${esc(s("era"))}</span><select data-role="stage-era" data-stage-index="${stageIndex}">${(progression?.eras || []).map((era) => `<option value="${esc(era.id)}" ${era.id === stage.era ? "selected" : ""}>${esc(era.label?.[lang()] || era.label?.en || era.id)}</option>`).join("")}</select></label></div><label class="field"><span class="field-label-with-action"><span>${esc(s("description"))}</span><button class="button button--quiet button--tiny" type="button" data-action="open-description-picker" data-stage-index="${stageIndex}">${esc(s("insertIcon"))}</button></span><textarea data-role="stage-description" data-stage-index="${stageIndex}" rows="5" placeholder="${esc(s("descriptionPlaceholder"))}">${esc(stage.description)}</textarea></label><section class="stage-section"><div class="section-heading section-heading--with-action"><h3>${esc(lang() === "ru" ? "\u041f\u043e\u0434\u044d\u0442\u0430\u043f\u044b" : "Sub-stages")}</h3><button class="button button--quiet button--tiny" type="button" data-action="add-substage" data-stage-index="${stageIndex}">${esc(lang() === "ru" ? "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043f\u043e\u0434\u044d\u0442\u0430\u043f" : "Add sub-stage")}</button></div><div class="substage-editor-list">${subStages.length ? subStages.map((subStage, subStageIndex) => `<article class="substage-editor-card"><div class="field-grid"><label class="field"><span>${esc(lang() === "ru" ? "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435" : "Title")}</span><input data-role="substage-title" data-stage-index="${stageIndex}" data-substage-index="${subStageIndex}" value="${esc(subStage.title)}"></label><div class="stage-card__actions stage-card__actions--compact"><button class="button button--quiet button--tiny" type="button" data-action="remove-substage" data-stage-index="${stageIndex}" data-substage-index="${subStageIndex}">${esc(s("remove"))}</button></div></div><label class="field"><span class="field-label-with-action"><span>${esc(lang() === "ru" ? "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043f\u043e\u0434\u044d\u0442\u0430\u043f\u0430" : "Sub-stage description")}</span><button class="button button--quiet button--tiny" type="button" data-action="open-substage-description-picker" data-stage-index="${stageIndex}" data-substage-index="${subStageIndex}">${esc(s("insertIcon"))}</button></span><textarea data-role="substage-description" data-stage-index="${stageIndex}" data-substage-index="${subStageIndex}" rows="3">${esc(subStage.description)}</textarea></label></article>`).join("") : `<p class="empty-state">${esc(lang() === "ru" ? "\u041f\u043e\u0434\u044d\u0442\u0430\u043f\u044b \u043f\u043e\u043a\u0430 \u043d\u0435 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u044b." : "No sub-stages added.")}</p>`}</div></section><section class="stage-section"><div class="section-heading section-heading--with-action"><h3>${esc(s("bosses"))}</h3><button class="button button--quiet button--tiny" type="button" data-action="add-boss" data-stage-index="${stageIndex}">${esc(s("addBoss"))}</button></div><div class="stage-stack">${bossRows(stage, stageIndex)}</div></section></section><section class="stage-loadout-editor"><section class="stage-section"><div class="section-heading"><h3>${esc(s("items"))}</h3></div><div class="item-group-list">${GROUPS.map((group) => group.key === "accessory" ? accessoryGroupRows(stage, stageIndex) : itemRows(stage, stageIndex, group)).join("")}</div></section></section>`;
 }
 
 function stageCard(stage, stageIndex) {
@@ -743,7 +842,10 @@ function pickerFilterOptions() {
     ];
   }
   if (pickerState.mode === "boss") return [{ key: "boss", label: s("bosses") }];
-  return [{ key: pickerState.groupKey || "other", label: groupLabel(pickerState.groupKey || "other") }];
+  return [
+    { key: pickerState.groupKey || "weapon", label: groupLabel(pickerState.groupKey || "weapon") },
+    { key: "all-items", label: lang() === "ru" ? "\u0412\u0441\u0435 \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u044b" : "All items" }
+  ];
 }
 
 function renderPickerFilters() {
@@ -769,8 +871,8 @@ function pickerSearchText(entry) {
 function renderPickerResults() {
   const query = refs.pickerSearchInput.value.trim().toLowerCase();
   const results = pickerEntries().filter((entry) => {
-    if (pickerState?.mode === "item" && !query) {
-      const group = GROUPS.find((item) => item.key === (pickerState.groupKey || "other")) || GROUPS[0];
+    if (pickerState?.mode === "item" && pickerState.filter !== "all-items") {
+      const group = GROUPS.find((item) => item.key === (pickerState.groupKey || "weapon")) || GROUPS[0];
       return group.cats.includes(entry.category || "__unknown__");
     }
     if (pickerState?.mode === "description" && pickerState.filter && pickerState.filter !== "all") {
@@ -800,10 +902,16 @@ function handlePickerSelection(contentId) {
 
   if (pickerState.mode === "description") {
     const fieldRole = pickerState.fieldRole || "stage-description";
-    const field = refs.accordion.querySelector(`[data-role="${fieldRole}"][data-stage-index="${pickerState.stageIndex}"]`);
+    const field = refs.accordion.querySelector(`[data-role="${fieldRole}"][data-stage-index="${pickerState.stageIndex}"]${Number.isInteger(pickerState.subStageIndex) ? `[data-substage-index="${pickerState.subStageIndex}"]` : ""}`);
     if (field) {
       insertAtCursor(field, `{{icon:${contentId}}}`);
-      state.stages[pickerState.stageIndex][fieldRole === "stage-title" ? "title" : "description"] = field.value;
+      if (fieldRole === "stage-title") {
+        state.stages[pickerState.stageIndex].title = field.value;
+      } else if (fieldRole === "stage-description") {
+        state.stages[pickerState.stageIndex].description = field.value;
+      } else if (fieldRole === "substage-description" && Number.isInteger(pickerState.subStageIndex)) {
+        state.stages[pickerState.stageIndex].subStages[pickerState.subStageIndex].description = field.value;
+      }
       saveAndRender();
     }
     closePicker();
@@ -831,8 +939,9 @@ function handlePickerSelection(contentId) {
   if (Number.isInteger(pickerState.itemIndex) && stage.items[pickerState.itemIndex]) {
     stage.items[pickerState.itemIndex].itemId = contentId;
     stage.items[pickerState.itemIndex].category = inferItemCategory(entry, pickerState.groupKey);
+    stage.items[pickerState.itemIndex].subgroupId = pickerState.groupKey === "accessory" ? (pickerState.subgroupId || "") : "";
   } else {
-    stage.items.push(itemTemplate({ itemId: contentId, category: inferItemCategory(entry, pickerState.groupKey) }));
+    stage.items.push(itemTemplate({ itemId: contentId, category: inferItemCategory(entry, pickerState.groupKey), subgroupId: pickerState.groupKey === "accessory" ? (pickerState.subgroupId || "") : "" }));
   }
 
   saveAndRender();
@@ -917,7 +1026,10 @@ refs.accordion.addEventListener("click", (event) => {
   const stageIndex = Number(button.dataset.stageIndex);
   const itemIndex = Number(button.dataset.itemIndex);
   const bossIndex = Number(button.dataset.bossIndex);
+  const subStageIndex = Number(button.dataset.substageIndex);
   const groupKey = button.dataset.groupKey;
+  const subgroupId = button.dataset.subgroupId || "";
+  const groupId = button.dataset.groupId || "";
   const stage = state.stages[stageIndex];
 
   if (action === "toggle-stage") {
@@ -947,6 +1059,17 @@ refs.accordion.addEventListener("click", (event) => {
   }
   if (action === "open-title-picker") return openPicker("description", { stageIndex, fieldRole: "stage-title" });
   if (action === "open-description-picker") return openPicker("description", { stageIndex, fieldRole: "stage-description" });
+  if (action === "add-substage") {
+    stage.subStages.push(subStageTemplate());
+    saveAndRender();
+    return;
+  }
+  if (action === "remove-substage") {
+    stage.subStages.splice(subStageIndex, 1);
+    saveAndRender();
+    return;
+  }
+  if (action === "open-substage-description-picker") return openPicker("description", { stageIndex, subStageIndex, fieldRole: "substage-description" });
   if (action === "add-boss") {
     return openPicker("boss", { stageIndex });
   }
@@ -956,8 +1079,21 @@ refs.accordion.addEventListener("click", (event) => {
     saveAndRender();
     return;
   }
-  if (action === "add-item") return openPicker("item", { stageIndex, groupKey });
-  if (action === "change-item") return openPicker("item", { stageIndex, groupKey, itemIndex });
+  if (action === "add-accessory-group") {
+    stage.accessoryGroups.push({ id: makeId("accessory"), title: "" });
+    saveAndRender();
+    return;
+  }
+  if (action === "remove-accessory-group") {
+    stage.items.forEach((itemEntry) => {
+      if (itemEntry.subgroupId === groupId) itemEntry.subgroupId = "";
+    });
+    stage.accessoryGroups = (stage.accessoryGroups || []).filter((entry) => entry.id !== groupId);
+    saveAndRender();
+    return;
+  }
+  if (action === "add-item") return openPicker("item", { stageIndex, groupKey, subgroupId });
+  if (action === "change-item") return openPicker("item", { stageIndex, groupKey, itemIndex, subgroupId });
   if (action === "remove-item") {
     stage.items.splice(itemIndex, 1);
     saveAndRender();
@@ -972,6 +1108,12 @@ refs.accordion.addEventListener("input", (event) => {
   if (!stage) return;
   if (role === "stage-title") stage.title = target.value;
   if (role === "stage-description") stage.description = target.value;
+  if (role === "substage-title") stage.subStages[Number(target.dataset.substageIndex)].title = target.value;
+  if (role === "substage-description") stage.subStages[Number(target.dataset.substageIndex)].description = target.value;
+  if (role === "accessory-group-title") {
+    const group = (stage.accessoryGroups || []).find((entry) => entry.id === target.dataset.groupId);
+    if (group) group.title = target.value;
+  }
   saveAndRender(false);
 });
 
@@ -983,15 +1125,8 @@ refs.accordion.addEventListener("change", (event) => {
   if (!stage) return;
   if (role === "stage-era") {
     stage.era = target.value;
-    const allowed = new Set((progression?.markersForEra?.(stage.era) || []).map((entry) => entry.id));
-    stage.progressionMarkers = (stage.progressionMarkers || []).filter((id) => allowed.has(id)).slice(0, 1);
     saveAndRender();
     return;
-  }
-
-  if (role === "stage-marker") {
-    stage.progressionMarkers = target.value ? [target.value] : [];
-    saveAndRender();
   }
 });
 

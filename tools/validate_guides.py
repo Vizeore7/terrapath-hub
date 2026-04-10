@@ -74,6 +74,17 @@ def validate_guide(path: Path) -> dict:
                 fail(path, "stage 'progressionMarkers' must be an array")
             if len(markers) != len(set(markers)):
                 fail(path, "stage 'progressionMarkers' must not contain duplicates")
+        if "subStages" in stage:
+            sub_stages = stage["subStages"]
+            if not isinstance(sub_stages, list):
+                fail(path, "stage 'subStages' must be an array")
+            for sub_stage in sub_stages:
+                if not isinstance(sub_stage, dict):
+                    fail(path, "stage 'subStages' entries must be objects")
+                if not isinstance(sub_stage.get("title"), str) or not sub_stage["title"].strip():
+                    fail(path, "stage 'subStages[].title' must be a non-empty string")
+                if "description" in sub_stage and not isinstance(sub_stage.get("description"), str):
+                    fail(path, "stage 'subStages[].description' must be a string")
         if not isinstance(stage.get("items"), list):
             fail(path, "stage 'items' must be an array")
         for boss_ref in stage.get("bossRefs", []):
@@ -82,6 +93,8 @@ def validate_guide(path: Path) -> dict:
             if not isinstance(item, dict):
                 fail(path, "stage item entries must be objects")
             validate_content_id(path, item.get("itemId"), "itemId")
+            if "subgroup" in item and not isinstance(item.get("subgroup"), str):
+                fail(path, "stage 'items[].subgroup' must be a string")
             for alternative in item.get("alternatives", []):
                 validate_content_id(path, alternative, "alternatives[]")
 
