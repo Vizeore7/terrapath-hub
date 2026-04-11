@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\TerrariaAssetDump.csproj": {}
+    "C:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\TerrariaAssetDump.csproj": {}
   },
   "projects": {
-    "c:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\TerrariaAssetDump.csproj": {
+    "C:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\TerrariaAssetDump.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\TerrariaAssetDump.csproj",
+        "projectUniqueName": "C:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\TerrariaAssetDump.csproj",
         "projectName": "TerrariaAssetDump",
-        "projectPath": "c:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\TerrariaAssetDump.csproj",
+        "projectPath": "C:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\TerrariaAssetDump.csproj",
         "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\obj\\",
+        "outputPath": "C:\\Users\\danil\\OneDrive\\Desktop\\TerrMode\\terrapath-hub\\tools\\TerrariaAssetDump\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config"

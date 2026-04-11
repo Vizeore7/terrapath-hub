@@ -76,7 +76,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/anahita.png",
+      "icon": "assets/icons/calamity/bosses/anahita-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Anahita"
     },
@@ -90,21 +90,71 @@
         "boss"
       ],
       "icon": "assets/icons/calamity/bosses/apollo.png",
-      "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Apollo"
+      "canonicalBossId": "CalamityMod/AresBody",
+      "bossPickerEligible": false
     },
     {
-      "id": "CalamityMod/AresBody",
+      "id": "CalamityMod/AquaticScourgeHead",
       "kind": "boss",
-      "internalName": "AresBody",
-      "displayName": "Ares",
-      "displayNameRu": "XF-09 Ares",
+      "internalName": "AquaticScourgeHead",
+      "displayName": "Aquatic Scourge",
+      "displayNameRu": "Aquatic Scourge",
       "tags": [
-        "boss"
+        "npc",
+        "boss",
+        "aquatic-scourge"
       ],
-      "icon": "assets/icons/calamity/bosses/aresbody.png",
+      "icon": "assets/icons/calamity/bosses/aquatic-scourge-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AresBody"
+      "canonicalBossId": "CalamityMod/AquaticScourgeHead"
+    },
+    {
+      "id": "CalamityMod/AquaticScourgeBody",
+      "kind": "boss",
+      "internalName": "AquaticScourgeBody",
+      "displayName": "Aquatic Scourge Body",
+      "displayNameRu": "\u0410\u043a\u0432\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0431\u0438\u0447",
+      "tags": [
+        "npc",
+        "boss",
+        "boss-segment",
+        "aquatic-scourge"
+      ],
+      "icon": "assets/icons/calamity/npcs/aquaticscourgebody.png",
+      "canonicalBossId": "CalamityMod/AquaticScourgeHead",
+      "bossPickerEligible": false
+    },
+    {
+      "id": "CalamityMod/AquaticScourgeBodyAlt",
+      "kind": "boss",
+      "internalName": "AquaticScourgeBodyAlt",
+      "displayName": "Aquatic Scourge Body Alt",
+      "displayNameRu": "\u0410\u043a\u0432\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0431\u0438\u0447",
+      "tags": [
+        "npc",
+        "boss",
+        "boss-segment",
+        "aquatic-scourge"
+      ],
+      "icon": "assets/icons/calamity/npcs/aquaticscourgebodyalt.png",
+      "canonicalBossId": "CalamityMod/AquaticScourgeHead",
+      "bossPickerEligible": false
+    },
+    {
+      "id": "CalamityMod/AquaticScourgeTail",
+      "kind": "boss",
+      "internalName": "AquaticScourgeTail",
+      "displayName": "Aquatic Scourge Tail",
+      "displayNameRu": "\u0410\u043a\u0432\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0431\u0438\u0447",
+      "tags": [
+        "npc",
+        "boss",
+        "boss-segment",
+        "aquatic-scourge"
+      ],
+      "icon": "assets/icons/calamity/npcs/aquaticscourgetail.png",
+      "canonicalBossId": "CalamityMod/AquaticScourgeHead",
+      "bossPickerEligible": false
     },
     {
       "id": "CalamityMod/AresGaussNuke",
@@ -168,8 +218,8 @@
         "boss"
       ],
       "icon": "assets/icons/calamity/bosses/artemis.png",
-      "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Artemis"
+      "canonicalBossId": "CalamityMod/AresBody",
+      "bossPickerEligible": false
     },
     {
       "id": "CalamityMod/AstrumAureus",
@@ -180,7 +230,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/astrumaureus.png",
+      "icon": "assets/icons/calamity/bosses/astrum-aureus-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/AstrumAureus"
     },
@@ -193,7 +243,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/astrumdeushead.png",
+      "icon": "assets/icons/calamity/bosses/astrum-deus-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/AstrumDeusHead"
     },
@@ -244,7 +294,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/brimstoneelemental.png",
+      "icon": "assets/icons/calamity/bosses/brimstone-elemental-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/BrimstoneElemental"
     },
@@ -257,7 +307,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/calamitasclone.png",
+      "icon": "assets/icons/calamity/bosses/calamitas-clone-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/CalamitasClone"
     },
@@ -270,7 +320,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/ceaselessvoid.png",
+      "icon": "assets/icons/calamity/bosses/ceaseless-void-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/CeaselessVoid"
     },
@@ -283,7 +333,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/crabulon.png",
+      "icon": "assets/icons/calamity/bosses/crabulon-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Crabulon"
     },
@@ -296,7 +346,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/cryogen.png",
+      "icon": "assets/icons/calamity/bosses/cryogen-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Cryogen"
     },
@@ -309,7 +359,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/desertscourgehead.png",
+      "icon": "assets/icons/calamity/bosses/desert-scourge-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/DesertScourgeHead"
     },
@@ -374,9 +424,22 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/dragonfolly.png",
+      "icon": "assets/icons/calamity/bosses/dragonfolly-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Dragonfolly"
+    },
+    {
+      "id": "CalamityMod/AresBody",
+      "kind": "boss",
+      "internalName": "AresBody",
+      "displayName": "Exo Mechs",
+      "displayNameRu": "Exo Mechs",
+      "tags": [
+        "boss"
+      ],
+      "icon": "assets/icons/calamity/bosses/exo-mechs-wiki.png",
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/AresBody"
     },
     {
       "id": "CalamityMod/FalseBrain",
@@ -399,7 +462,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/hivemind.png",
+      "icon": "assets/icons/calamity/bosses/hive-mind-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/HiveMind"
     },
@@ -412,7 +475,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/leviathan.png",
+      "icon": "assets/icons/calamity/bosses/leviathan-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Leviathan"
     },
@@ -425,7 +488,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/oldduke.png",
+      "icon": "assets/icons/calamity/bosses/old-duke-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/OldDuke"
     },
@@ -438,7 +501,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/plaguebringergoliath.png",
+      "icon": "assets/icons/calamity/bosses/plaguebringer-goliath-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/PlaguebringerGoliath"
     },
@@ -451,7 +514,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/polterghast.png",
+      "icon": "assets/icons/calamity/bosses/polterghast-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Polterghast"
     },
@@ -464,7 +527,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/primordialwyrmhead.png",
+      "icon": "assets/icons/calamity/bosses/primordial-wyrm-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/PrimordialWyrmHead"
     },
@@ -477,7 +540,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/profanedguardiancommander.png",
+      "icon": "assets/icons/calamity/bosses/profaned-guardians-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/ProfanedGuardianCommander"
     },
@@ -490,7 +553,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/providence.png",
+      "icon": "assets/icons/calamity/bosses/providence-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Providence"
     },
@@ -503,7 +566,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/ravagerbody.png",
+      "icon": "assets/icons/calamity/bosses/ravager-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/RavagerBody"
     },
@@ -516,7 +579,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/signus.png",
+      "icon": "assets/icons/calamity/bosses/signus-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Signus"
     },
@@ -529,7 +592,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/stormweaverhead.png",
+      "icon": "assets/icons/calamity/bosses/storm-weaver-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/StormWeaverHead"
     },
@@ -568,7 +631,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/supremecalamitas.png",
+      "icon": "assets/icons/calamity/bosses/supreme-calamitas-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/SupremeCalamitas"
     },
@@ -581,7 +644,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/thanatoshead.png",
+      "icon": "assets/icons/calamity/bosses/thanatos-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/ThanatosHead"
     },
@@ -633,7 +696,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/devourerofgodshead.png",
+      "icon": "assets/icons/calamity/bosses/devourer-of-gods-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/DevourerofGodsHead"
     },
@@ -659,7 +722,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/slimegodcore.png",
+      "icon": "assets/icons/calamity/bosses/slime-god-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/SlimeGodCore"
     },
@@ -672,7 +735,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/thelorde.png",
+      "icon": "assets/icons/calamity/bosses/the-lorde-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/THELORDE"
     },
@@ -685,7 +748,7 @@
       "tags": [
         "boss"
       ],
-      "icon": "assets/icons/calamity/bosses/yharon.png",
+      "icon": "assets/icons/calamity/bosses/yharon-wiki.png",
       "bossPickerEligible": true,
       "canonicalBossId": "CalamityMod/Yharon"
     },
@@ -733,7 +796,7 @@
       "internalName": "AbandonedSlimeStaff",
       "displayName": "Abandoned Slime Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043e\u0442\u0432\u0435\u0440\u0436\u0435\u043d\u043d\u043e\u0433\u043e \u0441\u043b\u0438\u0437\u043d\u044f",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "buff",
         "summoner"
@@ -799,7 +862,7 @@
       "internalName": "AbyssShellFossil",
       "displayName": "Abyss Shell Fossil",
       "displayNameRu": "\u0418\u0441\u043a\u043e\u043f\u0430\u0435\u043c\u0430\u044f \u0440\u0430\u043a\u0443\u0448\u043a\u0430 \u0431\u0435\u0437\u0434\u043d\u044b",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "buff"
       ],
@@ -1212,7 +1275,7 @@
       "internalName": "AlluringBait",
       "displayName": "Alluring Bait",
       "displayNameRu": "\u0417\u0430\u043c\u0430\u043d\u0447\u0438\u0432\u0430\u044f \u043f\u0440\u0438\u043c\u0430\u043d\u043a\u0430",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "accessory"
       ],
@@ -1275,7 +1338,7 @@
       "internalName": "AmbrosialAmpoule",
       "displayName": "Ambrosial Ampoule",
       "displayNameRu": "\u0410\u043c\u0431\u0440\u043e\u0437\u0438\u0435\u0432\u0430\u044f \u0430\u043c\u043f\u0443\u043b\u0430",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -1376,7 +1439,7 @@
       "internalName": "AncientGodSlayerChestplate",
       "displayName": "Ancient God Slayer Chestplate",
       "displayNameRu": "\u0414\u0440\u0435\u0432\u043d\u0438\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
-      "category": "armor",
+      "category": "other",
       "tags": [
         "armor"
       ],
@@ -1707,7 +1770,7 @@
       "internalName": "Arbalest",
       "displayName": "Arbalest",
       "displayNameRu": "\u0410\u0440\u0431\u0430\u043b\u0435\u0441\u0442",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -2494,7 +2557,7 @@
       "internalName": "BalefulHarvester",
       "displayName": "Baleful Harvester",
       "displayNameRu": "\u0417\u043b\u043e\u0432\u0435\u0449\u0438\u0439 \u0436\u043d\u0435\u0446",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "melee"
@@ -2546,7 +2609,7 @@
       "internalName": "Barberry",
       "displayName": "Barberry",
       "displayNameRu": "\u0411\u0430\u0440\u0431\u0430\u0440\u0438\u0441",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "buff",
         "consumable"
@@ -2559,7 +2622,7 @@
       "internalName": "Baroclaw",
       "displayName": "Baroclaw",
       "displayNameRu": "\u0411\u0430\u0440\u043e\u043a\u043b\u0435\u0448\u043d\u044f",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -2750,7 +2813,7 @@
       "internalName": "BlazingCore",
       "displayName": "Blazing Core",
       "displayNameRu": "\u041f\u044b\u043b\u0430\u044e\u0449\u0435\u0435 \u044f\u0434\u0440\u043e",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -2905,7 +2968,7 @@
       "internalName": "BloodflareCore",
       "displayName": "Bloodflare Core",
       "displayNameRu": "\u042f\u0434\u0440\u043e \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0439 \u0432\u0441\u043f\u044b\u0448\u043a\u0438",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -3896,7 +3959,7 @@
       "internalName": "ClockworkBow",
       "displayName": "Clockwork Bow",
       "displayNameRu": "\u0417\u0430\u0432\u043e\u0434\u043d\u043e\u0439 \u043b\u0443\u043a",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "weapon",
         "ranged"
@@ -4012,7 +4075,7 @@
       "internalName": "ConsecratedWater",
       "displayName": "Consecrated Water",
       "displayNameRu": "\u041e\u0441\u0432\u044f\u0449\u0451\u043d\u043d\u0430\u044f \u0432\u043e\u0434\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -4141,7 +4204,7 @@
       "internalName": "CorvidHarbringerStaff",
       "displayName": "Corvid Harbringer Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0432\u043e\u0440\u043e\u043d\u044c\u0435\u0433\u043e \u043f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u043a\u0430",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "buff",
         "summoner"
@@ -4244,7 +4307,7 @@
       "internalName": "Cosmilamp",
       "displayName": "Cosmilamp",
       "displayNameRu": "\u041a\u043e\u0441\u043c\u0438\u043b\u0430\u043c\u043f\u0430",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "buff",
         "summoner"
@@ -4953,7 +5016,7 @@
       "internalName": "DesecratedWater",
       "displayName": "Desecrated Water",
       "displayNameRu": "\u041e\u0441\u043a\u0432\u0435\u0440\u043d\u0451\u043d\u043d\u0430\u044f \u0432\u043e\u0434\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -5067,7 +5130,7 @@
       "internalName": "DimensionTearingDisk",
       "displayName": "Dimension Tearing Disk",
       "displayNameRu": "\u0420\u0430\u0437\u0440\u044b\u0432\u0430\u044e\u0449\u0438\u0439 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f \u0434\u0438\u0441\u043a",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "weapon",
         "rogue"
@@ -6717,7 +6780,7 @@
       "internalName": "FrostBarrier",
       "displayName": "Frost Barrier",
       "displayNameRu": "\u041c\u043e\u0440\u043e\u0437\u043d\u044b\u0439 \u0431\u0430\u0440\u044c\u0435\u0440",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -6920,7 +6983,7 @@
       "internalName": "Galeforce",
       "displayName": "Galeforce",
       "displayNameRu": "\u0428\u0442\u043e\u0440\u043c\u043e\u0432\u0430\u044f \u0441\u0438\u043b\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -7087,7 +7150,7 @@
       "internalName": "GeyserShell",
       "displayName": "Geyser Shell",
       "displayNameRu": "\u0413\u0435\u0439\u0437\u0435\u0440\u043d\u044b\u0439 \u043f\u0430\u043d\u0446\u0438\u0440\u044c",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "buff"
       ],
@@ -7313,7 +7376,7 @@
       "internalName": "GodSlayerChestplate",
       "displayName": "God Slayer Chestplate",
       "displayNameRu": "\u041d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
-      "category": "armor",
+      "category": "other",
       "tags": [
         "armor"
       ],
@@ -7875,7 +7938,7 @@
       "internalName": "HeavenlyGale",
       "displayName": "Heavenly Gale",
       "displayNameRu": "\u041d\u0435\u0431\u0435\u0441\u043d\u044b\u0439 \u0448\u0442\u043e\u0440\u043c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -8017,7 +8080,7 @@
       "internalName": "HerringStaff",
       "displayName": "Herring Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0441\u0435\u043b\u0451\u0434\u043a\u0438",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "buff",
         "summoner"
@@ -8539,7 +8602,7 @@
       "internalName": "InsidiousImpaler",
       "displayName": "Insidious Impaler",
       "displayNameRu": "\u041f\u043e\u0434\u0441\u0442\u0443\u043f\u043d\u044b\u0439 \u043f\u0440\u043e\u043d\u0437\u0430\u0442\u0435\u043b\u044c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "melee"
@@ -9273,7 +9336,7 @@
       "internalName": "Malevolence",
       "displayName": "Malevolence",
       "displayNameRu": "\u0417\u043b\u043e\u0431\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -10097,7 +10160,7 @@
       "internalName": "NebulousCore",
       "displayName": "Nebulous Core",
       "displayNameRu": "\u042f\u0434\u0440\u043e \u0442\u0443\u043c\u0430\u043d\u043d\u043e\u0441\u0442\u0438",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -10427,7 +10490,7 @@
       "internalName": "OmegaBlueChestplate",
       "displayName": "Omega Blue Chestplate",
       "displayNameRu": "\u041e\u043c\u0435\u0433\u0430-\u0441\u0438\u043d\u0438\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a",
-      "category": "armor",
+      "category": "other",
       "tags": [
         "armor"
       ],
@@ -10810,7 +10873,7 @@
       "internalName": "PestilentDefiler",
       "displayName": "Pestilent Defiler",
       "displayNameRu": "\u041f\u0430\u0433\u0443\u0431\u043d\u044b\u0439 \u043e\u0441\u043a\u0432\u0435\u0440\u043d\u0438\u0442\u0435\u043b\u044c",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "weapon",
         "ranged"
@@ -11345,7 +11408,7 @@
       "internalName": "PrimordialEarth",
       "displayName": "Primordial Earth",
       "displayNameRu": "\u041f\u0435\u0440\u0432\u043e\u0437\u0434\u0430\u043d\u043d\u0430\u044f \u0437\u0435\u043c\u043b\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "magic"
@@ -11890,7 +11953,7 @@
       "internalName": "ReaverHeadExplore",
       "displayName": "Reaver Head Explore",
       "displayNameRu": "\u0413\u043e\u043b\u043e\u0432\u043d\u043e\u0439 \u0443\u0431\u043e\u0440 \u0440\u0430\u0437\u043e\u0440\u0438\u0442\u0435\u043b\u044f",
-      "category": "armor",
+      "category": "other",
       "tags": [
         "armor"
       ],
@@ -12829,7 +12892,7 @@
       "internalName": "SealedSingularity",
       "displayName": "Sealed Singularity",
       "displayNameRu": "\u0417\u0430\u043f\u0435\u0447\u0430\u0442\u0430\u043d\u043d\u0430\u044f \u0441\u0438\u043d\u0433\u0443\u043b\u044f\u0440\u043d\u043e\u0441\u0442\u044c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -13075,7 +13138,7 @@
       "internalName": "ShellfishStaff",
       "displayName": "Shellfish Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043c\u043e\u043b\u043b\u044e\u0441\u043a\u043e\u0432",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "buff",
         "summoner"
@@ -13418,7 +13481,7 @@
       "internalName": "SkyfringePickaxe",
       "displayName": "Skyfringe Pickaxe",
       "displayNameRu": "\u041a\u0438\u0440\u043a\u0430 \u043d\u0435\u0431\u0435\u0441\u043d\u043e\u0439 \u043e\u043a\u0440\u0430\u0438\u043d\u044b",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "weapon",
         "melee"
@@ -13622,7 +13685,7 @@
       "internalName": "SnowRuffianChestplate",
       "displayName": "Snow Ruffian Chestplate",
       "displayNameRu": "\u041d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u0441\u043d\u0435\u0436\u043d\u043e\u0433\u043e \u0431\u0430\u043d\u0434\u0438\u0442\u0430",
-      "category": "armor",
+      "category": "other",
       "tags": [
         "armor"
       ],
@@ -13672,7 +13735,7 @@
       "internalName": "SoaringPotion",
       "displayName": "Soaring Potion",
       "displayNameRu": "\u0417\u0435\u043b\u044c\u0435 \u043f\u0430\u0440\u0435\u043d\u0438\u044f",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "buff",
         "consumable"
@@ -13788,7 +13851,7 @@
       "internalName": "SpearofPaleolith",
       "displayName": "Spearof Paleolith",
       "displayNameRu": "\u041a\u043e\u043f\u044c\u0451 \u043f\u0430\u043b\u0435\u043e\u043b\u0438\u0442\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -14045,7 +14108,7 @@
       "internalName": "StarbusterCore",
       "displayName": "Starbuster Core",
       "displayNameRu": "\u0421\u0435\u0440\u0434\u0446\u0435 \u0440\u0430\u0437\u0440\u0443\u0448\u0438\u0442\u0435\u043b\u044f \u0437\u0432\u0451\u0437\u0434",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -14677,7 +14740,7 @@
       "internalName": "SupremeBaitTackleBoxFishingStation",
       "displayName": "Supreme Bait Tackle Box Fishing Station",
       "displayNameRu": "\u041b\u0443\u0447\u0448\u0438\u0439 \u044f\u0449\u0438\u043a \u0440\u044b\u0431\u0430\u0446\u043a\u0438\u0445 \u0441\u043d\u0430\u0441\u0442\u0435\u0439",
-      "category": "accessory",
+      "category": "buff",
       "tags": [
         "accessory"
       ],
@@ -15704,7 +15767,7 @@
       "internalName": "ThrowingBrick",
       "displayName": "Throwing Brick",
       "displayNameRu": "\u041c\u0435\u0442\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043a\u0438\u0440\u043f\u0438\u0447",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "weapon",
         "rogue",
@@ -16190,7 +16253,7 @@
       "internalName": "UnstableCastersGauntlet",
       "displayName": "Unstable Casters Gauntlet",
       "displayNameRu": "\u041f\u0435\u0440\u0447\u0430\u0442\u043a\u0430 \u043d\u0435\u0441\u0442\u0430\u0431\u0438\u043b\u044c\u043d\u043e\u0433\u043e \u0447\u0430\u0440\u043e\u0434\u0435\u044f",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "weapon",
         "magic"
@@ -16203,7 +16266,7 @@
       "internalName": "UnstableGraniteCore",
       "displayName": "Unstable Granite Core",
       "displayNameRu": "\u041d\u0435\u0441\u0442\u0430\u0431\u0438\u043b\u044c\u043d\u043e\u0435 \u0433\u0440\u0430\u043d\u0438\u0442\u043d\u043e\u0435 \u044f\u0434\u0440\u043e",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -16266,7 +16329,7 @@
       "internalName": "Valediction",
       "displayName": "Valediction",
       "displayNameRu": "\u041f\u0440\u043e\u0449\u0430\u043d\u0438\u0435",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -16916,7 +16979,7 @@
       "internalName": "WarbanneroftheRighteous",
       "displayName": "Warbannerofthe Righteous",
       "displayNameRu": "\u0411\u043e\u0435\u0432\u043e\u0435 \u0437\u043d\u0430\u043c\u044f \u043f\u0440\u0430\u0432\u0435\u0434\u043d\u044b\u0445",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "accessory"
       ],
@@ -17466,7 +17529,7 @@
       "internalName": "AldebaranAlewife",
       "displayName": "Aldebaran Alewife",
       "displayNameRu": "\u0410\u043b\u044c\u0434\u0435\u0431\u0430\u0440\u0430\u043d\u0441\u043a\u0430\u044f \u0441\u0435\u0440\u043e\u0441\u043f\u0438\u043d\u043a\u0430",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "material"
       ],
@@ -17516,7 +17579,7 @@
       "internalName": "Barinade",
       "displayName": "Barinade",
       "displayNameRu": "\u0411\u0430\u0440\u0438\u043d\u0430\u0434",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "ranged"
@@ -17529,7 +17592,7 @@
       "internalName": "Barinautical",
       "displayName": "Barinautical",
       "displayNameRu": "\u0411\u0430\u0440\u0438\u043d\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "ranged"
@@ -17542,7 +17605,7 @@
       "internalName": "BarracudaGun",
       "displayName": "Barracuda Gun",
       "displayNameRu": "\u041f\u0443\u0448\u043a\u0430 \u0431\u0430\u0440\u0440\u0430\u043a\u0443\u0434\u044b",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "ranged"
@@ -17555,7 +17618,7 @@
       "internalName": "BlastBarrel",
       "displayName": "Blast Barrel",
       "displayNameRu": "\u0412\u0437\u0440\u044b\u0432\u043d\u0430\u044f \u0431\u043e\u0447\u043a\u0430",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "rogue"
@@ -17568,7 +17631,7 @@
       "internalName": "BlissfulBombardier",
       "displayName": "Blissful Bombardier",
       "displayNameRu": "\u0411\u043b\u0430\u0436\u0435\u043d\u043d\u044b\u0439 \u0431\u043e\u043c\u0431\u0430\u0440\u0434\u0438\u0440",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "ranged"
@@ -17581,7 +17644,7 @@
       "internalName": "BrinyBaron",
       "displayName": "Briny Baron",
       "displayNameRu": "\u041c\u043e\u0440\u0441\u043a\u043e\u0439 \u0431\u0430\u0440\u043e\u043d",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "melee"
@@ -17720,7 +17783,7 @@
       "internalName": "IceBarrage",
       "displayName": "Ice Barrage",
       "displayNameRu": "\u041b\u0435\u0434\u044f\u043d\u043e\u0439 \u0448\u043a\u0432\u0430\u043b",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "magic"
@@ -17746,7 +17809,7 @@
       "internalName": "PhoenixFlameBarrage",
       "displayName": "Phoenix Flame Barrage",
       "displayNameRu": "\u0428\u043a\u0432\u0430\u043b \u043f\u043b\u0430\u043c\u0435\u043d\u0438 \u0444\u0435\u043d\u0438\u043a\u0441\u0430",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "magic"
@@ -17772,7 +17835,7 @@
       "internalName": "ShadecrystalBarrage",
       "displayName": "Shadecrystal Barrage",
       "displayNameRu": "\u0428\u043a\u0432\u0430\u043b \u0442\u0435\u043d\u0435\u0432\u044b\u0445 \u043a\u0440\u0438\u0441\u0442\u0430\u043b\u043b\u043e\u0432",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "material",
         "magic"
@@ -17864,7 +17927,7 @@
       "tags": [
         "miniboss"
       ],
-      "icon": "assets/icons/calamity/bosses/cloudelemental.png",
+      "icon": "assets/icons/calamity/bosses/cloud-elemental-wiki.png",
       "bossPickerEligible": true
     },
     {
@@ -17876,7 +17939,7 @@
       "tags": [
         "miniboss"
       ],
-      "icon": "assets/icons/calamity/bosses/cragmawmire.png",
+      "icon": "assets/icons/calamity/bosses/cragmaw-mire-wiki.png",
       "bossPickerEligible": true
     },
     {
@@ -17888,7 +17951,7 @@
       "tags": [
         "miniboss"
       ],
-      "icon": "assets/icons/calamity/bosses/earthelemental.png",
+      "icon": "assets/icons/calamity/bosses/earth-elemental-wiki.png",
       "bossPickerEligible": true
     },
     {
@@ -17900,7 +17963,7 @@
       "tags": [
         "miniboss"
       ],
-      "icon": "assets/icons/calamity/bosses/giantclam.png",
+      "icon": "assets/icons/calamity/bosses/giant-clam-wiki.png",
       "bossPickerEligible": true
     },
     {
@@ -17912,7 +17975,7 @@
       "tags": [
         "miniboss"
       ],
-      "icon": "assets/icons/calamity/bosses/greatsandshark.png",
+      "icon": "assets/icons/calamity/bosses/great-sand-shark-wiki.png",
       "bossPickerEligible": true
     },
     {
@@ -17924,7 +17987,7 @@
       "tags": [
         "miniboss"
       ],
-      "icon": "assets/icons/calamity/bosses/mauler.png",
+      "icon": "assets/icons/calamity/bosses/mauler-wiki.png",
       "bossPickerEligible": true
     },
     {
@@ -17936,7 +17999,7 @@
       "tags": [
         "miniboss"
       ],
-      "icon": "assets/icons/calamity/bosses/nuclearterror.png",
+      "icon": "assets/icons/calamity/bosses/nuclear-terror-wiki.png",
       "bossPickerEligible": true
     },
     {
@@ -18015,50 +18078,6 @@
         "npc"
       ],
       "icon": "assets/icons/calamity/npcs/aquaticaberration.png"
-    },
-    {
-      "id": "CalamityMod/AquaticScourgeBody",
-      "kind": "npc",
-      "internalName": "AquaticScourgeBody",
-      "displayName": "Aquatic Scourge Body",
-      "displayNameRu": "\u0410\u043a\u0432\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0431\u0438\u0447",
-      "tags": [
-        "npc"
-      ],
-      "icon": "assets/icons/calamity/npcs/aquaticscourgebody.png"
-    },
-    {
-      "id": "CalamityMod/AquaticScourgeBodyAlt",
-      "kind": "npc",
-      "internalName": "AquaticScourgeBodyAlt",
-      "displayName": "Aquatic Scourge Body Alt",
-      "displayNameRu": "\u0410\u043a\u0432\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0431\u0438\u0447",
-      "tags": [
-        "npc"
-      ],
-      "icon": "assets/icons/calamity/npcs/aquaticscourgebodyalt.png"
-    },
-    {
-      "id": "CalamityMod/AquaticScourgeHead",
-      "kind": "npc",
-      "internalName": "AquaticScourgeHead",
-      "displayName": "Aquatic Scourge Head",
-      "displayNameRu": "\u0410\u043a\u0432\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0431\u0438\u0447",
-      "tags": [
-        "npc"
-      ],
-      "icon": "assets/icons/calamity/npcs/aquaticscourgehead.png"
-    },
-    {
-      "id": "CalamityMod/AquaticScourgeTail",
-      "kind": "npc",
-      "internalName": "AquaticScourgeTail",
-      "displayName": "Aquatic Scourge Tail",
-      "displayNameRu": "\u0410\u043a\u0432\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0431\u0438\u0447",
-      "tags": [
-        "npc"
-      ],
-      "icon": "assets/icons/calamity/npcs/aquaticscourgetail.png"
     },
     {
       "id": "CalamityMod/AquaticUrchin",
@@ -20666,7 +20685,7 @@
       "internalName": "ArmoredShell",
       "displayName": "Armored Shell",
       "displayNameRu": "\u0411\u0440\u043e\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043f\u0430\u043d\u0446\u0438\u0440\u044c",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "ore"
       ],
@@ -20716,7 +20735,7 @@
       "internalName": "BorealisBomber",
       "displayName": "Borealis Bomber",
       "displayNameRu": "\u0421\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u0431\u043e\u043c\u0431\u0430\u0440\u0434\u0438\u0440\u043e\u0432\u0449\u0438\u043a",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "ore",
         "summoner"
@@ -20729,7 +20748,7 @@
       "internalName": "CelestialClaymore",
       "displayName": "Celestial Claymore",
       "displayNameRu": "\u041d\u0435\u0437\u0435\u043c\u043d\u043e\u0439 \u043a\u043b\u0435\u0439\u043c\u043e\u0440",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "ore",
         "melee"
@@ -20767,7 +20786,7 @@
       "internalName": "DeepcoreGK2",
       "displayName": "Deepcore GK2",
       "displayNameRu": "Deepcore GK2",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "ore",
         "ranged"
@@ -20792,7 +20811,7 @@
       "internalName": "EntropicClaymore",
       "displayName": "Entropic Claymore",
       "displayNameRu": "\u042d\u043d\u0442\u0440\u043e\u043f\u0438\u0439\u043d\u044b\u0439 \u043a\u043b\u0435\u0439\u043c\u043e\u0440",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "ore",
         "melee"
@@ -20818,7 +20837,7 @@
       "internalName": "FeralthornClaymore",
       "displayName": "Feralthorn Claymore",
       "displayNameRu": "\u041a\u043b\u0435\u0439\u043c\u043e\u0440 \u0434\u0438\u043a\u0438\u0445 \u0448\u0438\u043f\u043e\u0432",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "ore",
         "melee"
@@ -21265,7 +21284,7 @@
       "internalName": "LorePlaguebringerGoliath",
       "displayName": "Lore Plaguebringer Goliath",
       "displayNameRu": "\u0418\u0441\u0442\u043e\u0440\u0438\u044f (\u041f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u0430 \u0447\u0443\u043c\u044b, \u0413\u043e\u043b\u0438\u0430\u0444)",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "ore"
       ],
@@ -21505,7 +21524,7 @@
       "internalName": "OldLordClaymore",
       "displayName": "Old Lord Claymore",
       "displayNameRu": "\u041a\u043b\u0435\u0439\u043c\u043e\u0440 \u0441\u0442\u0430\u0440\u043e\u0433\u043e \u043b\u043e\u0440\u0434\u0430",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "ore",
         "melee"
@@ -21531,7 +21550,7 @@
       "internalName": "PhosphorescentGauntlet",
       "displayName": "Phosphorescent Gauntlet",
       "displayNameRu": "\u0424\u043e\u0441\u0444\u043e\u0440\u0435\u0441\u0446\u0438\u0440\u0443\u044e\u0449\u0430\u044f \u043f\u0435\u0440\u0447\u0430\u0442\u043a\u0430",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "ore",
         "melee"
@@ -21593,7 +21612,7 @@
       "internalName": "SolsticeClaymore",
       "displayName": "Solstice Claymore",
       "displayNameRu": "\u041a\u043b\u0435\u0439\u043c\u043e\u0440 \u0441\u043e\u043b\u043d\u0446\u0435\u0441\u0442\u043e\u044f\u043d\u0438\u044f",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "ore",
         "melee"
@@ -21606,7 +21625,7 @@
       "internalName": "SporeKnife",
       "displayName": "Spore Knife",
       "displayNameRu": "\u0421\u043f\u043e\u0440\u043e\u0432\u044b\u0439 \u043d\u043e\u0436",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "ore",
         "rogue"
@@ -22433,7 +22452,7 @@
       "internalName": "AgedLaboratoryContainmentBoxItem",
       "displayName": "Aged Laboratory Containment Box Item",
       "displayNameRu": "\u0421\u0442\u0430\u0440\u044b\u0439 \u043b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u043d\u044b\u0439 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u0434\u043b\u044f \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -22524,7 +22543,7 @@
       "internalName": "AgedReinforcedCrateItem",
       "displayName": "Aged Reinforced Crate Item",
       "displayNameRu": "\u0421\u0442\u0430\u0440\u044b\u0439 \u0443\u043a\u0440\u0435\u043f\u043b\u0451\u043d\u043d\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -23238,7 +23257,7 @@
       "internalName": "AnodizedWulfrumJukebox",
       "displayName": "Anodized Wulfrum Jukebox",
       "displayNameRu": "\u0410\u043d\u043e\u0434\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u0432\u0443\u043b\u044c\u0444\u0440\u0443\u043c\u043e\u0432\u044b\u0439 \u043c\u0443\u0437\u044b\u043a\u0430\u043b\u044c\u043d\u044b\u0439 \u0430\u0432\u0442\u043e\u043c\u0430\u0442",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -24022,7 +24041,7 @@
       "internalName": "AstralCrate",
       "displayName": "Astral Crate",
       "displayNameRu": "\u0410\u0441\u0442\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -24176,11 +24195,10 @@
       "internalName": "AstralProbeBanner",
       "displayName": "Astral Probe Banner",
       "displayNameRu": "\u0417\u043d\u0430\u043c\u044f \u0430\u0441\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0437\u043e\u043d\u0434\u0430",
-      "category": "armor",
+      "category": "other",
       "tags": [
         "other",
-        "consumable",
-        "armor"
+        "consumable"
       ],
       "icon": "assets/icons/calamity/items/astralprobebanner.png"
     },
@@ -24526,7 +24544,7 @@
       "internalName": "AuricReinforcedCrate",
       "displayName": "Auric Reinforced Crate",
       "displayNameRu": "\u0410\u0443\u0440\u0438\u0442\u043e\u0432\u044b\u0439 \u0443\u043a\u0440\u0435\u043f\u043b\u0451\u043d\u043d\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -24617,7 +24635,7 @@
       "internalName": "BabyCannonballJellyfishBanner",
       "displayName": "Baby Cannonball Jellyfish Banner",
       "displayNameRu": "\u0417\u043d\u0430\u043c\u044f \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u0439 \u043c\u0435\u0434\u0443\u0437\u044b-\u043f\u0443\u0448\u0435\u0447\u043d\u043e\u0433\u043e \u044f\u0434\u0440\u0430",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -25231,7 +25249,7 @@
       "internalName": "BoxJellyfishBanner",
       "displayName": "Box Jellyfish Banner",
       "displayNameRu": "\u0417\u043d\u0430\u043c\u044f \u043a\u0443\u0431\u043e\u043c\u0435\u0434\u0443\u0437\u044b",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -25280,7 +25298,7 @@
       "internalName": "BrimstoneCrate",
       "displayName": "Brimstone Crate",
       "displayNameRu": "\u0421\u0435\u0440\u043d\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -25654,7 +25672,7 @@
       "internalName": "CannonballJellyfishBanner",
       "displayName": "Cannonball Jellyfish Banner",
       "displayNameRu": "\u0417\u043d\u0430\u043c\u044f \u043c\u0435\u0434\u0443\u0437\u044b-\u043f\u0443\u0448\u0435\u0447\u043d\u043e\u0433\u043e \u044f\u0434\u0440\u0430",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -27666,7 +27684,7 @@
       "internalName": "EutrophicCrate",
       "displayName": "Eutrophic Crate",
       "displayNameRu": "\u042d\u0432\u0442\u0440\u043e\u0444\u043d\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -28635,7 +28653,7 @@
       "internalName": "GrandScale",
       "displayName": "Grand Scale",
       "displayNameRu": "\u041e\u0433\u0440\u043e\u043c\u043d\u0430\u044f \u0447\u0435\u0448\u0443\u044f",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other"
       ],
@@ -29007,7 +29025,7 @@
       "internalName": "HydrothermalCrate",
       "displayName": "Hydrothermal Crate",
       "displayNameRu": "\u0413\u0438\u0434\u0440\u043e\u0442\u0435\u0440\u043c\u0430\u043b\u044c\u043d\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -29199,7 +29217,7 @@
       "internalName": "LaboratoryContainmentBoxItem",
       "displayName": "Laboratory Containment Box Item",
       "displayNameRu": "\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u043d\u044b\u0439 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u0434\u043b\u044f \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -30423,7 +30441,7 @@
       "internalName": "MonolithCrate",
       "displayName": "Monolith Crate",
       "displayNameRu": "\u041c\u043e\u043d\u043e\u043b\u0438\u0442\u043d\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -31937,7 +31955,7 @@
       "internalName": "PlaguebringerBanner",
       "displayName": "Plaguebringer Banner",
       "displayNameRu": "\u0417\u043d\u0430\u043c\u044f \u043f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u044b \u0447\u0443\u043c\u044b",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -32262,7 +32280,7 @@
       "internalName": "PlagueshellBanner",
       "displayName": "Plagueshell Banner",
       "displayNameRu": "\u0417\u043d\u0430\u043c\u044f \u0447\u0443\u043c\u043d\u043e\u0433\u043e \u043f\u0430\u043d\u0446\u0438\u0440\u044f",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -32417,7 +32435,7 @@
       "internalName": "PrismCrate",
       "displayName": "Prism Crate",
       "displayNameRu": "\u042f\u0449\u0438\u043a \u0441 \u043f\u0440\u0438\u0437\u043c\u043e\u0439",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -33121,7 +33139,7 @@
       "internalName": "ReinforcedCrateItem",
       "displayName": "Reinforced Crate Item",
       "displayNameRu": "\u0423\u043a\u0440\u0435\u043f\u043b\u0451\u043d\u043d\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -33995,7 +34013,7 @@
       "internalName": "ShellTrimBrick",
       "displayName": "Shell Trim Brick",
       "displayNameRu": "\u041a\u0438\u0440\u043f\u0438\u0447 \u0441 \u0440\u0430\u043a\u0443\u0448\u0435\u0447\u043d\u043e\u0439 \u043e\u043a\u0430\u043d\u0442\u043e\u0432\u043a\u043e\u0439",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -34008,7 +34026,7 @@
       "internalName": "ShellTrimBrickWall",
       "displayName": "Shell Trim Brick Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043d\u0430 \u0438\u0437 \u043a\u0438\u0440\u043f\u0438\u0447\u0430 \u0441 \u0440\u0430\u043a\u0443\u0448\u0435\u0447\u043d\u043e\u0439 \u043e\u043a\u0430\u043d\u0442\u043e\u0432\u043a\u043e\u0439",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -34047,7 +34065,7 @@
       "internalName": "ShellstoneSlabWall",
       "displayName": "Shellstone Slab Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043d\u0430 \u0438\u0437 \u043f\u043b\u0438\u0442\u044b \u0440\u0430\u043a\u0443\u0448\u0435\u0447\u043d\u0438\u043a\u0430",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -34060,7 +34078,7 @@
       "internalName": "ShellstoneWall",
       "displayName": "Shellstone Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043d\u0430 \u0438\u0437 \u0440\u0430\u043a\u0443\u0448\u0435\u0447\u043d\u0438\u043a\u0430",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -34513,7 +34531,7 @@
       "internalName": "SlagCrate",
       "displayName": "Slag Crate",
       "displayNameRu": "\u0428\u043b\u0430\u043a\u043e\u0432\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -35530,7 +35548,7 @@
       "internalName": "SulphuricScale",
       "displayName": "Sulphuric Scale",
       "displayNameRu": "\u0421\u0435\u0440\u043d\u0438\u0441\u0442\u0430\u044f \u0447\u0435\u0448\u0443\u044f",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other"
       ],
@@ -35555,7 +35573,7 @@
       "internalName": "SulphurousCrate",
       "displayName": "Sulphurous Crate",
       "displayNameRu": "\u0421\u0435\u0440\u043d\u0438\u0441\u0442\u044b\u0439 \u044f\u0449\u0438\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -35632,7 +35650,7 @@
       "internalName": "SulphurousShale",
       "displayName": "Sulphurous Shale",
       "displayNameRu": "\u0421\u0435\u0440\u043d\u0438\u0441\u0442\u044b\u0439 \u0441\u043b\u0430\u043d\u0435\u0446",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -35645,7 +35663,7 @@
       "internalName": "SulphurousShaleWall",
       "displayName": "Sulphurous Shale Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043d\u0430 \u0438\u0437 \u0441\u0435\u0440\u043d\u0438\u0441\u0442\u043e\u0433\u043e \u0441\u043b\u0430\u043d\u0446\u0430",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -36060,7 +36078,7 @@
       "internalName": "TundraLeash",
       "displayName": "Tundra Leash",
       "displayNameRu": "\u0422\u0443\u043d\u0434\u0440\u043e\u0432\u044b\u0439 \u043f\u043e\u0432\u043e\u0434\u043e\u043a",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other"
       ],

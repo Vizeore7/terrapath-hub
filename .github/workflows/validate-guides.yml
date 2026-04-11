@@ -22,5 +22,8 @@ jobs:
       - name: Validate guides
         run: python tools/validate_guides.py
 
+      - name: Validate support data
+        run: python tools/validate_support_data.py
+
       - name: Check generated catalog
         run: python tools/build_catalog.py --check

@@ -375,7 +375,7 @@ static class TerrariaAssetExport
           return "armor";
         }
 
-        if (ammo > 0 || buffType > 0 || healLife > 0 || healMana > 0 || potion || LooksBuffSupportItem(loweredName) || consumable && (healLife > 0 || healMana > 0))
+        if (LooksBuffSupportItem(loweredName) || ammo > 0 || buffType > 0 || healLife > 0 || healMana > 0 || potion || consumable && (healLife > 0 || healMana > 0))
         {
           return "buff";
         }
@@ -400,6 +400,17 @@ static class TerrariaAssetExport
 
     private static bool LooksBuffSupportItem(string loweredName)
     {
+      if (loweredName.Contains("banner") ||
+          loweredName.Contains("bookcase") ||
+          loweredName.Contains("brick") ||
+          loweredName.Contains("ore") ||
+          loweredName.Contains("platform") ||
+          loweredName.Contains("statue") ||
+          loweredName.Contains("wall"))
+      {
+        return false;
+      }
+
       return loweredName.Contains("ammobox") ||
              loweredName.Contains("bewitchingtable") ||
              loweredName.Contains("campfire") ||
@@ -426,6 +437,16 @@ static class TerrariaAssetExport
           loweredName.Contains("hammer") ||
           loweredName.Contains("hamaxe") ||
           loweredName.Contains("fishingpole"))
+      {
+        return "other";
+      }
+
+      if (LooksBuffSupportItem(loweredName))
+      {
+        return "buff";
+      }
+
+      if (LooksDecorativeOrMaterial(loweredName))
       {
         return "other";
       }
@@ -490,30 +511,19 @@ static class TerrariaAssetExport
         return "accessory";
       }
 
-      if (loweredName.Contains("ammobox") ||
-          loweredName.Contains("arrow") ||
+      if (loweredName.Contains("arrow") ||
           loweredName.Contains("bewitchingtable") ||
           loweredName.Contains("bullet") ||
-          loweredName.Contains("campfire") ||
-          loweredName.Contains("candle") ||
-          loweredName.Contains("crystalball") ||
           loweredName.Contains("dart") ||
           loweredName.Contains("elixir") ||
           loweredName.Contains("feast") ||
           loweredName.Contains("flask") ||
           loweredName.Contains("food") ||
-          loweredName.Contains("heartlantern") ||
           loweredName.Contains("meal") ||
-          loweredName.Contains("peacecandle") ||
           loweredName.Contains("potion") ||
           loweredName.Contains("rocket") ||
-          loweredName.Contains("sharpeningstation") ||
-          loweredName.Contains("sliceofcake") ||
           loweredName.Contains("stew") ||
-          loweredName.Contains("sunflower") ||
-          loweredName.Contains("tea") ||
-          loweredName.Contains("wartable") ||
-          loweredName.Contains("watercandle"))
+          loweredName.Contains("tea"))
       {
         return "buff";
       }
@@ -554,6 +564,36 @@ static class TerrariaAssetExport
       }
 
       return "other";
+    }
+
+    private static bool LooksDecorativeOrMaterial(string loweredName)
+    {
+      return loweredName.Contains("banner") ||
+             loweredName.Contains("bar") ||
+             loweredName.Contains("bookcase") ||
+             loweredName.Contains("brick") ||
+             loweredName.Contains("cage") ||
+             loweredName.Contains("chair") ||
+             loweredName.Contains("chandelier") ||
+             loweredName.Contains("chest") ||
+             loweredName.Contains("clock") ||
+             loweredName.Contains("door") ||
+             loweredName.Contains("dresser") ||
+             loweredName.Contains("fence") ||
+             loweredName.Contains("lamp") ||
+             loweredName.Contains("ore") ||
+             loweredName.Contains("painting") ||
+             loweredName.Contains("piano") ||
+             loweredName.Contains("platform") ||
+             loweredName.Contains("sink") ||
+             loweredName.Contains("sofa") ||
+             loweredName.Contains("statue") ||
+             loweredName.Contains("table") ||
+             loweredName.Contains("tile") ||
+             loweredName.Contains("toilet") ||
+             loweredName.Contains("torch") ||
+             loweredName.Contains("wall") ||
+             loweredName.Contains("workbench");
     }
 
     private bool ReadBool(string name)

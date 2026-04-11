@@ -839,7 +839,7 @@
       "internalName": "Candle",
       "displayName": "Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/candle.png"
     },
     {
@@ -3471,7 +3471,7 @@
       "internalName": "ClockworkAssaultRifle",
       "displayName": "Clockwork Assault Rifle",
       "displayNameRu": "\u0417\u0430\u0432\u043E\u0434\u043D\u0430\u044F \u0448\u0442\u0443\u0440\u043C\u043E\u0432\u0430\u044F \u0432\u0438\u043D\u0442\u043E\u0432\u043A\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/clockworkassaultrifle.png"
     },
     {
@@ -3511,7 +3511,7 @@
       "internalName": "SwordStatue",
       "displayName": "Sword Statue",
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0443\u044F \u043C\u0435\u0447\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/swordstatue.png"
     },
     {
@@ -3535,7 +3535,7 @@
       "internalName": "ShieldStatue",
       "displayName": "Shield Statue",
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0443\u044F \u0449\u0438\u0442\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/shieldstatue.png"
     },
     {
@@ -3647,7 +3647,7 @@
       "internalName": "PotionStatue",
       "displayName": "Potion Statue",
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0443\u044F \u0437\u0435\u043B\u044C\u044F",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/potionstatue.png"
     },
     {
@@ -3655,7 +3655,7 @@
       "internalName": "SpearStatue",
       "displayName": "Spear Statue",
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0443\u044F \u043A\u043E\u043F\u044C\u044F",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/spearstatue.png"
     },
     {
@@ -3679,7 +3679,7 @@
       "internalName": "BowStatue",
       "displayName": "Bow Statue",
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0443\u044F \u043B\u0443\u043A\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/bowstatue.png"
     },
     {
@@ -3687,7 +3687,7 @@
       "internalName": "BoomerangStatue",
       "displayName": "Boomerang Statue",
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0443\u044F \u0431\u0443\u043C\u0435\u0440\u0430\u043D\u0433\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/boomerangstatue.png"
     },
     {
@@ -3695,7 +3695,7 @@
       "internalName": "BootStatue",
       "displayName": "Boot Statue",
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0443\u044F \u0431\u043E\u0442\u0438\u043D\u043A\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/bootstatue.png"
     },
     {
@@ -3799,7 +3799,7 @@
       "internalName": "SunflowerStatue",
       "displayName": "Sunflower Statue",
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0443\u044F \u043F\u043E\u0434\u0441\u043E\u043B\u043D\u0443\u0445\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/sunflowerstatue.png"
     },
     {
@@ -3919,7 +3919,7 @@
       "internalName": "WarriorEmblem",
       "displayName": "Warrior Emblem",
       "displayNameRu": "\u042D\u043C\u0431\u043B\u0435\u043C\u0430 \u0432\u043E\u0438\u043D\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/warrioremblem.png"
     },
     {
@@ -5295,7 +5295,7 @@
       "internalName": "RainbowBrick",
       "displayName": "Rainbow Brick",
       "displayNameRu": "\u0420\u0430\u0434\u0443\u0436\u043D\u044B\u0439 \u043A\u0438\u0440\u043F\u0438\u0447",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/rainbowbrick.png"
     },
     {
@@ -5303,7 +5303,7 @@
       "internalName": "RainbowBrickWall",
       "displayName": "Rainbow Brick Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043D\u0430 \u0438\u0437 \u0440\u0430\u0434\u0443\u0436\u043D\u043E\u0433\u043E \u043A\u0438\u0440\u043F\u0438\u0447\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/rainbowbrickwall.png"
     },
     {
@@ -5703,7 +5703,7 @@
       "internalName": "PlatinumCandle",
       "displayName": "Platinum Candle",
       "displayNameRu": "\u041F\u043B\u0430\u0442\u0438\u043D\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/platinumcandle.png"
     },
     {
@@ -6311,7 +6311,7 @@
       "internalName": "AnkhBanner",
       "displayName": "Ankh Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u0430\u043D\u0445\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/ankhbanner.png"
     },
     {
@@ -6599,7 +6599,7 @@
       "internalName": "DiscWall",
       "displayName": "Disc Wall",
       "displayNameRu": "\u0414\u0438\u0441\u043A\u043E\u0432\u0430\u044F \u0441\u0442\u0435\u043D\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/discwall.png"
     },
     {
@@ -11239,7 +11239,7 @@
       "internalName": "BlueDungeonCandle",
       "displayName": "Blue Dungeon Candle",
       "displayNameRu": "\u0421\u0438\u043D\u044F\u044F \u0441\u0432\u0435\u0447\u0430 \u0442\u0435\u043C\u043D\u0438\u0446\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/bluedungeoncandle.png"
     },
     {
@@ -11247,7 +11247,7 @@
       "internalName": "GreenDungeonCandle",
       "displayName": "Green Dungeon Candle",
       "displayNameRu": "\u0417\u0435\u043B\u0435\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430 \u0442\u0435\u043C\u043D\u0438\u0446\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/greendungeoncandle.png"
     },
     {
@@ -11255,7 +11255,7 @@
       "internalName": "PinkDungeonCandle",
       "displayName": "Pink Dungeon Candle",
       "displayNameRu": "\u0420\u043E\u0437\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430 \u0442\u0435\u043C\u043D\u0438\u0446\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/pinkdungeoncandle.png"
     },
     {
@@ -13135,7 +13135,7 @@
       "internalName": "EnchantedSwordBanner",
       "displayName": "Enchanted Sword Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u0437\u0430\u0447\u0430\u0440\u043E\u0432\u0430\u043D\u043D\u043E\u0433\u043E \u043C\u0435\u0447\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/enchantedswordbanner.png"
     },
     {
@@ -13663,7 +13663,7 @@
       "internalName": "SteampunkChair",
       "displayName": "Steampunk Chair",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u0441\u0442\u0443\u043B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkchair.png"
     },
     {
@@ -13695,7 +13695,7 @@
       "internalName": "SteampunkDoor",
       "displayName": "Steampunk Door",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u0430\u044F \u0434\u0432\u0435\u0440\u044C",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkdoor.png"
     },
     {
@@ -13743,7 +13743,7 @@
       "internalName": "SteampunkTable",
       "displayName": "Steampunk Table",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u0441\u0442\u043E\u043B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunktable.png"
     },
     {
@@ -16095,7 +16095,7 @@
       "internalName": "RainbowWallpaper",
       "displayName": "Rainbow Wallpaper",
       "displayNameRu": "\u0420\u0430\u0434\u0443\u0436\u043D\u044B\u0435 \u043E\u0431\u043E\u0438",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/rainbowwallpaper.png"
     },
     {
@@ -16191,7 +16191,7 @@
       "internalName": "SteampunkBookcase",
       "displayName": "Steampunk Bookcase",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u043A\u043D\u0438\u0436\u043D\u044B\u0439 \u0448\u043A\u0430\u0444",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkbookcase.png"
     },
     {
@@ -16359,7 +16359,7 @@
       "internalName": "CactusCandle",
       "displayName": "Cactus Candle",
       "displayNameRu": "\u041A\u0430\u043A\u0442\u0443\u0441\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/cactuscandle.png"
     },
     {
@@ -16367,7 +16367,7 @@
       "internalName": "EbonwoodCandle",
       "displayName": "Ebonwood Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0438\u0437 \u0447\u0435\u0440\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/ebonwoodcandle.png"
     },
     {
@@ -16375,7 +16375,7 @@
       "internalName": "FleshCandle",
       "displayName": "Flesh Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0438\u0437 \u043F\u043B\u043E\u0442\u0438",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/fleshcandle.png"
     },
     {
@@ -16383,7 +16383,7 @@
       "internalName": "GlassCandle",
       "displayName": "Glass Candle",
       "displayNameRu": "\u0421\u0442\u0435\u043A\u043B\u044F\u043D\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/glasscandle.png"
     },
     {
@@ -16391,7 +16391,7 @@
       "internalName": "FrozenCandle",
       "displayName": "Frozen Candle",
       "displayNameRu": "\u0417\u0430\u043C\u043E\u0440\u043E\u0436\u0435\u043D\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/frozencandle.png"
     },
     {
@@ -16399,7 +16399,7 @@
       "internalName": "RichMahoganyCandle",
       "displayName": "Rich Mahogany Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0438\u0437 \u043A\u0440\u0430\u0441\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/richmahoganycandle.png"
     },
     {
@@ -16407,7 +16407,7 @@
       "internalName": "PearlwoodCandle",
       "displayName": "Pearlwood Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0438\u0437 \u0436\u0435\u043C\u0447\u0443\u0436\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/pearlwoodcandle.png"
     },
     {
@@ -16415,7 +16415,7 @@
       "internalName": "LihzahrdCandle",
       "displayName": "Lihzahrd Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u044F\u0449\u0449\u0435\u0440\u043E\u0432",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/lihzahrdcandle.png"
     },
     {
@@ -16423,7 +16423,7 @@
       "internalName": "SkywareCandle",
       "displayName": "Skyware Candle",
       "displayNameRu": "\u041D\u0435\u0431\u0435\u0441\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/skywarecandle.png"
     },
     {
@@ -16431,7 +16431,7 @@
       "internalName": "PumpkinCandle",
       "displayName": "Pumpkin Candle",
       "displayNameRu": "\u0422\u044B\u043A\u0432\u0435\u043D\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/pumpkincandle.png"
     },
     {
@@ -17039,7 +17039,7 @@
       "internalName": "SteampunkLamp",
       "displayName": "Steampunk Lamp",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u0430\u044F \u043B\u0430\u043C\u043F\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunklamp.png"
     },
     {
@@ -17223,7 +17223,7 @@
       "internalName": "LivingWoodCandle",
       "displayName": "Living Wood Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0438\u0437 \u0436\u0438\u0432\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/livingwoodcandle.png"
     },
     {
@@ -17231,7 +17231,7 @@
       "internalName": "ShadewoodCandle",
       "displayName": "Shadewood Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0438\u0437 \u043C\u0440\u0430\u0447\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/shadewoodcandle.png"
     },
     {
@@ -17239,7 +17239,7 @@
       "internalName": "GoldenCandle",
       "displayName": "Golden Candle",
       "displayNameRu": "\u0417\u043E\u043B\u043E\u0442\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/goldencandle.png"
     },
     {
@@ -17399,7 +17399,7 @@
       "internalName": "GlowingSnailCage",
       "displayName": "Glowing Snail Cage",
       "displayNameRu": "\u041A\u043B\u0435\u0442\u043A\u0430 \u0441\u043E \u0441\u0432\u0435\u0442\u044F\u0449\u0435\u0439\u0441\u044F \u0443\u043B\u0438\u0442\u043A\u043E\u0439",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/glowingsnailcage.png"
     },
     {
@@ -17887,7 +17887,7 @@
       "internalName": "DynastyCandle",
       "displayName": "Dynasty Candle",
       "displayNameRu": "\u0420\u043E\u0434\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/dynastycandle.png"
     },
     {
@@ -17927,7 +17927,7 @@
       "internalName": "SteampunkClock",
       "displayName": "Steampunk Clock",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0435 \u0447\u0430\u0441\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkclock.png"
     },
     {
@@ -17999,7 +17999,7 @@
       "internalName": "SteampunkChest",
       "displayName": "Steampunk Chest",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u0441\u0443\u043D\u0434\u0443\u043A",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkchest.png"
     },
     {
@@ -18023,7 +18023,7 @@
       "internalName": "SteampunkWorkBench",
       "displayName": "Steampunk Work Bench",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u0432\u0435\u0440\u0441\u0442\u0430\u043A",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkworkbench.png"
     },
     {
@@ -18047,7 +18047,7 @@
       "internalName": "SteampunkPiano",
       "displayName": "Steampunk Piano",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u043E\u0435 \u043F\u0438\u0430\u043D\u0438\u043D\u043E",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkpiano.png"
     },
     {
@@ -18751,7 +18751,7 @@
       "internalName": "AmmoReservationPotion",
       "displayName": "Ammo Reservation Potion",
       "displayNameRu": "\u0417\u0435\u043B\u044C\u0435 \u044D\u043A\u043E\u043D\u043E\u043C\u0438\u0438 \u043F\u0430\u0442\u0440\u043E\u043D\u043E\u0432",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/ammoreservationpotion.png"
     },
     {
@@ -19295,7 +19295,7 @@
       "internalName": "SteampunkSofa",
       "displayName": "Steampunk Sofa",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u0434\u0438\u0432\u0430\u043D",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunksofa.png"
     },
     {
@@ -20071,7 +20071,7 @@
       "internalName": "BorealWoodHelmet",
       "displayName": "Boreal Wood Helmet",
       "displayNameRu": "\u0428\u043B\u0435\u043C \u0438\u0437 \u0437\u0430\u0441\u043D\u0435\u0436\u0435\u043D\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/borealwoodhelmet.png"
     },
     {
@@ -20079,7 +20079,7 @@
       "internalName": "BorealWoodBreastplate",
       "displayName": "Boreal Wood Breastplate",
       "displayNameRu": "\u041D\u0430\u0433\u0440\u0443\u0434\u043D\u0438\u043A \u0438\u0437 \u0437\u0430\u0441\u043D\u0435\u0436\u0435\u043D\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/borealwoodbreastplate.png"
     },
     {
@@ -20087,7 +20087,7 @@
       "internalName": "BorealWoodGreaves",
       "displayName": "Boreal Wood Greaves",
       "displayNameRu": "\u0411\u043E\u0442\u0438\u043D\u043A\u0438 \u0438\u0437 \u0437\u0430\u0441\u043D\u0435\u0436\u0435\u043D\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/borealwoodgreaves.png"
     },
     {
@@ -20183,7 +20183,7 @@
       "internalName": "PalmWoodCandle",
       "displayName": "Palm Wood Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0438\u0437 \u043F\u0430\u043B\u044C\u043C\u043E\u0432\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/palmwoodcandle.png"
     },
     {
@@ -20335,7 +20335,7 @@
       "internalName": "MushroomCandle",
       "displayName": "Mushroom Candle",
       "displayNameRu": "\u0413\u0440\u0438\u0431\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/mushroomcandle.png"
     },
     {
@@ -20447,7 +20447,7 @@
       "internalName": "BorealWoodCandle",
       "displayName": "Boreal Wood Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0438\u0437 \u0437\u0430\u0441\u043D\u0435\u0436\u0435\u043D\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/borealwoodcandle.png"
     },
     {
@@ -20567,7 +20567,7 @@
       "internalName": "SlimeCandle",
       "displayName": "Slime Candle",
       "displayNameRu": "\u0413\u0435\u043B\u0435\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/slimecandle.png"
     },
     {
@@ -21015,7 +21015,7 @@
       "internalName": "SteampunkPlatform",
       "displayName": "Steampunk Platform",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u0430\u044F \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkplatform.png"
     },
     {
@@ -21103,7 +21103,7 @@
       "internalName": "SteampunkDresser",
       "displayName": "Steampunk Dresser",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u043A\u043E\u043C\u043E\u0434",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkdresser.png"
     },
     {
@@ -21183,7 +21183,7 @@
       "internalName": "HoneyCandle",
       "displayName": "Honey Candle",
       "displayNameRu": "\u041C\u0435\u0434\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/honeycandle.png"
     },
     {
@@ -21199,7 +21199,7 @@
       "internalName": "SpookyCandle",
       "displayName": "Spooky Candle",
       "displayNameRu": "\u0416\u0443\u0442\u043A\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/spookycandle.png"
     },
     {
@@ -21207,7 +21207,7 @@
       "internalName": "ObsidianCandle",
       "displayName": "Obsidian Candle",
       "displayNameRu": "\u041E\u0431\u0441\u0438\u0434\u0438\u0430\u043D\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/obsidiancandle.png"
     },
     {
@@ -21239,7 +21239,7 @@
       "internalName": "SteampunkChandelier",
       "displayName": "Steampunk Chandelier",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u0430\u044F \u043B\u044E\u0441\u0442\u0440\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunkchandelier.png"
     },
     {
@@ -21959,7 +21959,7 @@
       "internalName": "BorealWoodSword",
       "displayName": "Boreal Wood Sword",
       "displayNameRu": "\u041C\u0435\u0447 \u0438\u0437 \u0437\u0430\u0441\u043D\u0435\u0436\u0435\u043D\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/borealwoodsword.png"
     },
     {
@@ -21975,7 +21975,7 @@
       "internalName": "BorealWoodBow",
       "displayName": "Boreal Wood Bow",
       "displayNameRu": "\u041B\u0443\u043A \u0438\u0437 \u0437\u0430\u0441\u043D\u0435\u0436\u0435\u043D\u043D\u043E\u0439 \u0434\u0440\u0435\u0432\u0435\u0441\u0438\u043D\u044B",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/borealwoodbow.png"
     },
     {
@@ -22543,7 +22543,7 @@
       "internalName": "MartianHoverCandle",
       "displayName": "Martian Hover Candle",
       "displayNameRu": "\u041C\u0430\u0440\u0441\u0438\u0430\u043D\u0441\u043A\u0430\u044F \u043B\u0435\u0432\u0438\u0442\u0438\u0440\u0443\u044E\u0449\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/martianhovercandle.png"
     },
     {
@@ -22759,7 +22759,7 @@
       "internalName": "SteampunkSink",
       "displayName": "Steampunk Sink",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u0430\u044F \u0440\u0430\u043A\u043E\u0432\u0438\u043D\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/steampunksink.png"
     },
     {
@@ -23607,7 +23607,7 @@
       "internalName": "MartianRaygunnerBanner",
       "displayName": "Martian Ray Gunner Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u043C\u0430\u0440\u0441\u0438\u0430\u043D\u0441\u043A\u043E\u0433\u043E \u043B\u0443\u0447\u0435\u0432\u043E\u0433\u043E \u0441\u0442\u0440\u0435\u043B\u043A\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/martianraygunnerbanner.png"
     },
     {
@@ -23615,7 +23615,7 @@
       "internalName": "MartianScutlixGunnerBanner",
       "displayName": "Martian Scutlix Gunner Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u043C\u0430\u0440\u0441\u0438\u0430\u043D\u0441\u043A\u043E\u0433\u043E \u0441\u043A\u0443\u0442\u043B\u0438\u043A\u0441\u0430-\u0441\u0442\u0440\u0435\u043B\u043A\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/martianscutlixgunnerbanner.png"
     },
     {
@@ -23727,7 +23727,7 @@
       "internalName": "RainbowSlimeBanner",
       "displayName": "Rainbow Slime Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u0440\u0430\u0434\u0443\u0436\u043D\u043E\u0433\u043E \u0441\u043B\u0438\u0437\u043D\u044F",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/rainbowslimebanner.png"
     },
     {
@@ -24359,7 +24359,7 @@
       "internalName": "RainbowTorch",
       "displayName": "Rainbow Torch",
       "displayNameRu": "\u0420\u0430\u0434\u0443\u0436\u043D\u044B\u0439 \u0444\u0430\u043A\u0435\u043B",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/rainbowtorch.png"
     },
     {
@@ -25367,7 +25367,7 @@
       "internalName": "MeteoriteCandle",
       "displayName": "Meteorite Candle",
       "displayNameRu": "\u041C\u0435\u0442\u0435\u043E\u0440\u0438\u0442\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/meteoritecandle.png"
     },
     {
@@ -25375,7 +25375,7 @@
       "internalName": "MarbleCandle",
       "displayName": "Marble Candle",
       "displayNameRu": "\u041C\u0440\u0430\u043C\u043E\u0440\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/marblecandle.png"
     },
     {
@@ -25383,7 +25383,7 @@
       "internalName": "GraniteCandle",
       "displayName": "Granite Candle",
       "displayNameRu": "\u0413\u0440\u0430\u043D\u0438\u0442\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/granitecandle.png"
     },
     {
@@ -27135,7 +27135,7 @@
       "internalName": "GiantShellyBanner",
       "displayName": "Giant Shelly Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u0433\u0438\u0433\u0430\u043D\u0442\u0441\u043A\u043E\u0433\u043E \u0440\u0430\u043A\u0443\u0448\u0435\u0447\u043D\u0438\u043A\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/giantshellybanner.png"
     },
     {
@@ -27519,7 +27519,7 @@
       "internalName": "VortexRiflemanBanner",
       "displayName": "Storm Diver Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u0448\u0442\u043E\u0440\u043C\u043E\u043F\u0440\u043E\u0445\u043E\u0434\u0446\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/vortexriflemanbanner.png"
     },
     {
@@ -27551,7 +27551,7 @@
       "internalName": "PirateCrossbowerBanner",
       "displayName": "Pirate Crossbower Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u043F\u0438\u0440\u0430\u0442\u0430-\u0430\u0440\u0431\u0430\u043B\u0435\u0442\u0447\u0438\u043A\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/piratecrossbowerbanner.png"
     },
     {
@@ -28975,7 +28975,7 @@
       "internalName": "TeamBlockRedPlatform",
       "displayName": "Red Team Platform",
       "displayNameRu": "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u044B \u043A\u0440\u0430\u0441\u043D\u044B\u0445",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/teamblockredplatform.png"
     },
     {
@@ -29103,7 +29103,7 @@
       "internalName": "TeamBlockGreenPlatform",
       "displayName": "Green Team Platform",
       "displayNameRu": "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u044B \u0437\u0435\u043B\u0435\u043D\u044B\u0445",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/teamblockgreenplatform.png"
     },
     {
@@ -29111,7 +29111,7 @@
       "internalName": "TeamBlockBluePlatform",
       "displayName": "Blue Team Platform",
       "displayNameRu": "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u044B \u0441\u0438\u043D\u0438\u0445",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/teamblockblueplatform.png"
     },
     {
@@ -29119,7 +29119,7 @@
       "internalName": "TeamBlockYellowPlatform",
       "displayName": "Yellow Team Platform",
       "displayNameRu": "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u044B \u0436\u0435\u043B\u0442\u044B\u0445",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/teamblockyellowplatform.png"
     },
     {
@@ -29127,7 +29127,7 @@
       "internalName": "TeamBlockPinkPlatform",
       "displayName": "Pink Team Platform",
       "displayNameRu": "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u044B \u0440\u043E\u0437\u043E\u0432\u044B\u0445",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/teamblockpinkplatform.png"
     },
     {
@@ -29135,7 +29135,7 @@
       "internalName": "TeamBlockWhitePlatform",
       "displayName": "White Team Platform",
       "displayNameRu": "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u044B \u0431\u0435\u043B\u044B\u0445",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/teamblockwhiteplatform.png"
     },
     {
@@ -29466,7 +29466,7 @@
       "internalName": "Fake_SteampunkChest",
       "displayName": "Trapped Steampunk Chest",
       "displayNameRu": "\u0424\u0430\u043B\u044C\u0448\u0438\u0432\u044B\u0439 \u0441\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u0441\u0443\u043D\u0434\u0443\u043A",
-      "category": "buff"
+      "category": "other"
     },
     {
       "id": "Terraria/Fake_PalmWoodChest",
@@ -29941,7 +29941,7 @@
       "internalName": "PartyBundleOfBalloonTile",
       "displayName": "Silly Tied Bundle of Balloons",
       "displayNameRu": "\u0421\u0432\u044F\u0437\u043A\u0430 \u0433\u043B\u0443\u043F\u043E\u0432\u0430\u0442\u044B\u0445 \u0448\u0430\u0440\u0438\u043A\u043E\u0432",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/partybundleofballoontile.png"
     },
     {
@@ -30037,7 +30037,7 @@
       "internalName": "SillyBalloonPinkWall",
       "displayName": "Silly Pink Balloon Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043D\u0430 \u0438\u0437 \u0440\u043E\u0437\u043E\u0432\u044B\u0445 \u0433\u043B\u0443\u043F\u043E\u0432\u0430\u0442\u044B\u0445 \u0448\u0430\u0440\u0438\u043A\u043E\u0432",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/sillyballoonpinkwall.png"
     },
     {
@@ -30045,7 +30045,7 @@
       "internalName": "SillyBalloonPurpleWall",
       "displayName": "Silly Purple Balloon Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043D\u0430 \u0438\u0437 \u043F\u0443\u0440\u043F\u0443\u0440\u043D\u044B\u0445 \u0433\u043B\u0443\u043F\u043E\u0432\u0430\u0442\u044B\u0445 \u0448\u0430\u0440\u0438\u043A\u043E\u0432",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/sillyballoonpurplewall.png"
     },
     {
@@ -30053,7 +30053,7 @@
       "internalName": "SillyBalloonGreenWall",
       "displayName": "Silly Green Balloon Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043D\u0430 \u0438\u0437 \u0437\u0435\u043B\u0435\u043D\u044B\u0445 \u0433\u043B\u0443\u043F\u043E\u0432\u0430\u0442\u044B\u0445 \u0448\u0430\u0440\u0438\u043A\u043E\u0432",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/sillyballoongreenwall.png"
     },
     {
@@ -30477,7 +30477,7 @@
       "internalName": "WarTableBanner",
       "displayName": "War Table Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u0441\u0442\u043E\u043B\u0430 \u0432\u043E\u0439\u043D\u044B",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/wartablebanner.png"
     },
     {
@@ -30717,7 +30717,7 @@
       "internalName": "DD2JavelinThrowerBanner",
       "displayName": "Etherian Javelin Thrower Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u044D\u0442\u0435\u0440\u0438\u0430\u043D\u0441\u043A\u043E\u0433\u043E \u043A\u043E\u043F\u044C\u0435\u043C\u0435\u0442\u0430\u0442\u0435\u043B\u044F",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/dd2javelinthrowerbanner.png"
     },
     {
@@ -31077,7 +31077,7 @@
       "internalName": "CrystalCandle",
       "displayName": "Crystal Candle",
       "displayNameRu": "\u0425\u0440\u0443\u0441\u0442\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/crystalcandle.png"
     },
     {
@@ -31445,7 +31445,7 @@
       "internalName": "SpiderCandle",
       "displayName": "Spider Candle",
       "displayNameRu": "\u041F\u0430\u0443\u0447\u044C\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/spidercandle.png"
     },
     {
@@ -31653,7 +31653,7 @@
       "internalName": "LesionCandle",
       "displayName": "Lesion Candle",
       "displayNameRu": "\u0411\u043E\u043B\u044C\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/lesioncandle.png"
     },
     {
@@ -32869,7 +32869,7 @@
       "internalName": "ToiletSteampunk",
       "displayName": "Steampunk Toilet",
       "displayNameRu": "\u0421\u0442\u0438\u043C\u043F\u0430\u043D\u043A\u043E\u0432\u044B\u0439 \u0443\u043D\u0438\u0442\u0430\u0437",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/toiletsteampunk.png"
     },
     {
@@ -33157,7 +33157,7 @@
       "internalName": "SolarCandle",
       "displayName": "Solar Candle",
       "displayNameRu": "\u0421\u043E\u043B\u043D\u0435\u0447\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/solarcandle.png"
     },
     {
@@ -33325,7 +33325,7 @@
       "internalName": "VortexCandle",
       "displayName": "Vortex Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0432\u0438\u0445\u0440\u044F",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/vortexcandle.png"
     },
     {
@@ -33493,7 +33493,7 @@
       "internalName": "NebulaCandle",
       "displayName": "Nebula Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0442\u0443\u043C\u0430\u043D\u043D\u043E\u0441\u0442\u0438",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/nebulacandle.png"
     },
     {
@@ -33661,7 +33661,7 @@
       "internalName": "StardustCandle",
       "displayName": "Stardust Candle",
       "displayNameRu": "\u0421\u0432\u0435\u0447\u0430 \u0437\u0432\u0435\u0437\u0434\u043D\u043E\u0439 \u043F\u044B\u043B\u0438",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/stardustcandle.png"
     },
     {
@@ -34381,7 +34381,7 @@
       "internalName": "SandstoneCandle",
       "displayName": "Sandstone Candle",
       "displayNameRu": "\u041F\u0435\u0441\u0447\u0430\u043D\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/sandstonecandle.png"
     },
     {
@@ -36525,7 +36525,7 @@
       "internalName": "BambooCandle",
       "displayName": "Bamboo Candle",
       "displayNameRu": "\u0411\u0430\u043C\u0431\u0443\u043A\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/bamboocandle.png"
     },
     {
@@ -37581,7 +37581,7 @@
       "internalName": "QuadBarrelShotgun",
       "displayName": "Quad-Barrel Shotgun",
       "displayNameRu": "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A \u0441 \u0447\u0435\u0442\u044B\u0440\u044C\u043C\u044F \u0441\u0442\u0432\u043E\u043B\u0430\u043C\u0438",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/quadbarrelshotgun.png"
     },
     {
@@ -37957,7 +37957,7 @@
       "internalName": "FoodBarbarianWings",
       "displayName": "FoodBarbarian\u0027s Tattered Dragon Wings",
       "displayNameRu": "\u0418\u0437\u043E\u0434\u0440\u0430\u043D\u043D\u044B\u0435 \u043A\u0440\u044B\u043B\u044C\u044F \u0434\u0440\u0430\u043A\u043E\u043D\u0430 FoodBarbarian",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/foodbarbarianwings.png"
     },
     {
@@ -37965,7 +37965,7 @@
       "internalName": "FoodBarbarianHelm",
       "displayName": "FoodBarbarian\u0027s Horned Helm",
       "displayNameRu": "\u0420\u043E\u0433\u0430\u0442\u044B\u0439 \u0448\u043B\u0435\u043C FoodBarbarian",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/foodbarbarianhelm.png"
     },
     {
@@ -37973,7 +37973,7 @@
       "internalName": "FoodBarbarianArmor",
       "displayName": "FoodBarbarian\u0027s Wild Wolf Spaulders",
       "displayNameRu": "\u041D\u0430\u043F\u043B\u0435\u0447\u043D\u0438\u043A\u0438 \u0434\u0438\u043A\u043E\u0433\u043E \u0432\u043E\u043B\u043A\u0430 FoodBarbarian",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/foodbarbarianarmor.png"
     },
     {
@@ -37981,7 +37981,7 @@
       "internalName": "FoodBarbarianGreaves",
       "displayName": "FoodBarbarian\u0027s Savage Greaves",
       "displayNameRu": "\u0414\u0438\u043A\u0438\u0435 \u0431\u043E\u0442\u0438\u043D\u043A\u0438 FoodBarbarian",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/foodbarbariangreaves.png"
     },
     {
@@ -39773,7 +39773,7 @@
       "internalName": "WanderingEyeBanner",
       "displayName": "Wandering Eye Banner",
       "displayNameRu": "\u0417\u043D\u0430\u043C\u044F \u0431\u043B\u0443\u0436\u0434\u0430\u044E\u0449\u0435\u0433\u043E \u0433\u043B\u0430\u0437\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/wanderingeyebanner.png"
     },
     {
@@ -39821,7 +39821,7 @@
       "internalName": "CrystalNinjaChestplate",
       "displayName": "Crystal Assassin Shirt",
       "displayNameRu": "\u0425\u0440\u0443\u0441\u0442\u0430\u043B\u044C\u043D\u0430\u044F \u0440\u0443\u0431\u0430\u0448\u043A\u0430 \u0443\u0431\u0438\u0439\u0446\u044B",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/crystalninjachestplate.png"
     },
     {
@@ -40325,7 +40325,7 @@
       "internalName": "PlaguebringerChestplate",
       "displayName": "Plaguebringer\u0027s Cloak",
       "displayNameRu": "\u041F\u043B\u0430\u0449 \u0440\u0430\u0437\u043D\u043E\u0441\u0447\u0438\u043A\u0430 \u0447\u0443\u043C\u044B",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/plaguebringerchestplate.png"
     },
     {
@@ -40389,7 +40389,7 @@
       "internalName": "FloretProtectorHelmet",
       "displayName": "Floret Protector Helmet",
       "displayNameRu": "\u0428\u043B\u0435\u043C \u0446\u0432\u0435\u0442\u043E\u0447\u043D\u043E\u0433\u043E \u0437\u0430\u0449\u0438\u0442\u043D\u0438\u043A\u0430",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/floretprotectorhelmet.png"
     },
     {
@@ -40397,7 +40397,7 @@
       "internalName": "FloretProtectorChestplate",
       "displayName": "Floret Protector Shirt",
       "displayNameRu": "\u0420\u0443\u0431\u0430\u0448\u043A\u0430 \u0446\u0432\u0435\u0442\u043E\u0447\u043D\u043E\u0433\u043E \u0437\u0430\u0449\u0438\u0442\u043D\u0438\u043A\u0430",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/floretprotectorchestplate.png"
     },
     {
@@ -40421,7 +40421,7 @@
       "internalName": "CapricornChestplate",
       "displayName": "Capricorn Chestplate",
       "displayNameRu": "\u041D\u0430\u0433\u0440\u0443\u0434\u043D\u0438\u043A \u0435\u0434\u0438\u043D\u043E\u0440\u043E\u0433\u0430",
-      "category": "armor",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/capricornchestplate.png"
     },
     {
@@ -41181,7 +41181,7 @@
       "internalName": "CoralCandle",
       "displayName": "Reef Candle",
       "displayNameRu": "\u0420\u0438\u0444\u043E\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/coralcandle.png"
     },
     {
@@ -41325,7 +41325,7 @@
       "internalName": "BalloonBookcase",
       "displayName": "Balloon Bookcase",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u043A\u043D\u0438\u0436\u043D\u044B\u0439 \u0448\u043A\u0430\u0444",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonbookcase.png"
     },
     {
@@ -41333,7 +41333,7 @@
       "internalName": "BalloonDresser",
       "displayName": "Balloon Dresser",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u043A\u043E\u043C\u043E\u0434",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloondresser.png"
     },
     {
@@ -41357,7 +41357,7 @@
       "internalName": "BalloonChair",
       "displayName": "Balloon Chair",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u0441\u0442\u0443\u043B",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonchair.png"
     },
     {
@@ -41365,7 +41365,7 @@
       "internalName": "BalloonChandelier",
       "displayName": "Balloon Chandelier",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u0430\u044F \u043B\u044E\u0441\u0442\u0440\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonchandelier.png"
     },
     {
@@ -41373,7 +41373,7 @@
       "internalName": "BalloonChest",
       "displayName": "Balloon Chest",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u0441\u0443\u043D\u0434\u0443\u043A",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonchest.png"
     },
     {
@@ -41381,7 +41381,7 @@
       "internalName": "BalloonClock",
       "displayName": "Balloon Clock",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0435 \u0447\u0430\u0441\u044B",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonclock.png"
     },
     {
@@ -41389,7 +41389,7 @@
       "internalName": "BalloonDoor",
       "displayName": "Balloon Door",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u0430\u044F \u0434\u0432\u0435\u0440\u044C",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloondoor.png"
     },
     {
@@ -41397,7 +41397,7 @@
       "internalName": "BalloonLamp",
       "displayName": "Balloon Lamp",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u0430\u044F \u043B\u0430\u043C\u043F\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonlamp.png"
     },
     {
@@ -41413,7 +41413,7 @@
       "internalName": "BalloonPiano",
       "displayName": "Balloon Piano",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u043E\u0435 \u043F\u0438\u0430\u043D\u0438\u043D\u043E",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonpiano.png"
     },
     {
@@ -41421,7 +41421,7 @@
       "internalName": "BalloonPlatform",
       "displayName": "Balloon Platform",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonplatform.png"
     },
     {
@@ -41429,7 +41429,7 @@
       "internalName": "BalloonSink",
       "displayName": "Balloon Sink",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u0430\u044F \u0440\u0430\u043A\u043E\u0432\u0438\u043D\u0430",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonsink.png"
     },
     {
@@ -41437,7 +41437,7 @@
       "internalName": "BalloonSofa",
       "displayName": "Balloon Sofa",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u0434\u0438\u0432\u0430\u043D",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonsofa.png"
     },
     {
@@ -41445,7 +41445,7 @@
       "internalName": "BalloonTable",
       "displayName": "Balloon Table",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u0441\u0442\u043E\u043B",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloontable.png"
     },
     {
@@ -41453,7 +41453,7 @@
       "internalName": "BalloonWorkbench",
       "displayName": "Balloon Work Bench",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u0432\u0435\u0440\u0441\u0442\u0430\u043A",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloonworkbench.png"
     },
     {
@@ -41461,7 +41461,7 @@
       "internalName": "Fake_BalloonChest",
       "displayName": "Trapped Balloon Chest",
       "displayNameRu": "\u0424\u0430\u043B\u044C\u0448\u0438\u0432\u044B\u0439 \u0432\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u0441\u0443\u043D\u0434\u0443\u043A",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/fake-balloonchest.png"
     },
     {
@@ -41469,7 +41469,7 @@
       "internalName": "BalloonToilet",
       "displayName": "Balloon Toilet",
       "displayNameRu": "\u0412\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u0439 \u0443\u043D\u0438\u0442\u0430\u0437",
-      "category": "accessory",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/balloontoilet.png"
     },
     {
@@ -41517,7 +41517,7 @@
       "internalName": "AshWoodCandle",
       "displayName": "Ash Wood Candle",
       "displayNameRu": "\u042F\u0441\u0435\u043D\u0435\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/ashwoodcandle.png"
     },
     {
@@ -42533,7 +42533,7 @@
       "internalName": "ShadowCandle",
       "displayName": "Shadow Candle",
       "displayNameRu": "\u0422\u0435\u043D\u0435\u0432\u0430\u044F \u0441\u0432\u0435\u0447\u0430",
-      "category": "buff",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/shadowcandle.png"
     },
     {
@@ -43557,7 +43557,7 @@
       "internalName": "RainbowMossBlockWall",
       "displayName": "Helium Moss Brick Wall",
       "displayNameRu": "\u0421\u0442\u0435\u043D\u0430 \u043A\u0438\u0440\u043F\u0438\u0447\u0430 \u0438\u0437 \u0433\u0435\u043B\u0438\u0435\u0432\u043E\u0433\u043E \u043C\u0445\u0430",
-      "category": "weapon",
+      "category": "other",
       "icon": "assets/icons/terraria/search-items/rainbowmossblockwall.png"
     },
     {

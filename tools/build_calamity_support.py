@@ -35,9 +35,9 @@ WEAPON_HINTS = (
     "trident", "wand", "whip", "yoyo"
 )
 BUFF_HINTS = (
-    "potion", "elixir", "flask", "candle", "food", "meal", "stew", "soup", "tea", "coffee",
-    "ale", "beer", "wine", "sake", "ammo", "arrow", "bullet", "rocket", "dart", "solution",
-    "bait", "crate", "box", "fed", "feast"
+    "potion", "elixir", "flask", "food", "meal", "stew", "soup", "tea", "coffee",
+    "beer", "wine", "sake", "ammo", "arrow", "bullet", "rocket", "dart", "solution",
+    "bait", "fed", "feast"
 )
 TOOL_HINTS = ("pickaxe", "drill", "hammer", "hamaxe", "axe", "fishing pole")
 ACCESSORY_HINTS = (
@@ -57,6 +57,51 @@ BUFF_SUPPORT_HINTS = (
     "peace candle", "sharpening station", "slice of cake", "sunflower", "water candle",
     "war table"
 )
+DECORATIVE_OR_MATERIAL_HINTS = (
+    "banner", "bar", "bookcase", "brick", "cage", "chair", "chandelier", "chest",
+    "clock", "door", "dresser", "fence", "lamp", "ore", "painting", "piano",
+    "platform", "sink", "sofa", "statue", "table", "tile", "toilet", "torch",
+    "wall", "work bench", "workbench"
+)
+BOSS_WIKI_ICON_OVERRIDES = {
+    "CalamityMod/Anahita": "assets/icons/calamity/bosses/anahita-wiki.png",
+    "CalamityMod/AquaticScourgeHead": "assets/icons/calamity/bosses/aquatic-scourge-wiki.png",
+    "CalamityMod/AresBody": "assets/icons/calamity/bosses/exo-mechs-wiki.png",
+    "CalamityMod/AstrumAureus": "assets/icons/calamity/bosses/astrum-aureus-wiki.png",
+    "CalamityMod/AstrumDeusHead": "assets/icons/calamity/bosses/astrum-deus-wiki.png",
+    "CalamityMod/BrimstoneElemental": "assets/icons/calamity/bosses/brimstone-elemental-wiki.png",
+    "CalamityMod/CalamitasClone": "assets/icons/calamity/bosses/calamitas-clone-wiki.png",
+    "CalamityMod/CeaselessVoid": "assets/icons/calamity/bosses/ceaseless-void-wiki.png",
+    "CalamityMod/Crabulon": "assets/icons/calamity/bosses/crabulon-wiki.png",
+    "CalamityMod/Cryogen": "assets/icons/calamity/bosses/cryogen-wiki.png",
+    "CalamityMod/DesertScourgeHead": "assets/icons/calamity/bosses/desert-scourge-wiki.png",
+    "CalamityMod/Dragonfolly": "assets/icons/calamity/bosses/dragonfolly-wiki.png",
+    "CalamityMod/HiveMind": "assets/icons/calamity/bosses/hive-mind-wiki.png",
+    "CalamityMod/Leviathan": "assets/icons/calamity/bosses/leviathan-wiki.png",
+    "CalamityMod/OldDuke": "assets/icons/calamity/bosses/old-duke-wiki.png",
+    "CalamityMod/PerforatorHive": "assets/icons/calamity/bosses/perforatorhive-wiki.png",
+    "CalamityMod/PlaguebringerGoliath": "assets/icons/calamity/bosses/plaguebringer-goliath-wiki.png",
+    "CalamityMod/Polterghast": "assets/icons/calamity/bosses/polterghast-wiki.png",
+    "CalamityMod/PrimordialWyrmHead": "assets/icons/calamity/bosses/primordial-wyrm-wiki.png",
+    "CalamityMod/ProfanedGuardianCommander": "assets/icons/calamity/bosses/profaned-guardians-wiki.png",
+    "CalamityMod/Providence": "assets/icons/calamity/bosses/providence-wiki.png",
+    "CalamityMod/RavagerBody": "assets/icons/calamity/bosses/ravager-wiki.png",
+    "CalamityMod/Signus": "assets/icons/calamity/bosses/signus-wiki.png",
+    "CalamityMod/SlimeGodCore": "assets/icons/calamity/bosses/slime-god-wiki.png",
+    "CalamityMod/StormWeaverHead": "assets/icons/calamity/bosses/storm-weaver-wiki.png",
+    "CalamityMod/SupremeCalamitas": "assets/icons/calamity/bosses/supreme-calamitas-wiki.png",
+    "CalamityMod/ThanatosHead": "assets/icons/calamity/bosses/thanatos-wiki.png",
+    "CalamityMod/DevourerofGodsHead": "assets/icons/calamity/bosses/devourer-of-gods-wiki.png",
+    "CalamityMod/THELORDE": "assets/icons/calamity/bosses/the-lorde-wiki.png",
+    "CalamityMod/Yharon": "assets/icons/calamity/bosses/yharon-wiki.png",
+    "CalamityMod/CloudElemental": "assets/icons/calamity/bosses/cloud-elemental-wiki.png",
+    "CalamityMod/CragmawMire": "assets/icons/calamity/bosses/cragmaw-mire-wiki.png",
+    "CalamityMod/EarthElemental": "assets/icons/calamity/bosses/earth-elemental-wiki.png",
+    "CalamityMod/GiantClam": "assets/icons/calamity/bosses/giant-clam-wiki.png",
+    "CalamityMod/GreatSandShark": "assets/icons/calamity/bosses/great-sand-shark-wiki.png",
+    "CalamityMod/Mauler": "assets/icons/calamity/bosses/mauler-wiki.png",
+    "CalamityMod/NuclearTerror": "assets/icons/calamity/bosses/nuclear-terror-wiki.png",
+}
 
 
 def default_export_dirs() -> list[Path]:
@@ -243,20 +288,26 @@ def normalize_item_category(raw: dict, entry: dict) -> str:
         if str(value or "").strip()
     )
 
-    if entry.get("armorSetKey") or raw.get("armorSetKey") or current == "armor" or any(hint in haystack for hint in ARMOR_PIECE_HINTS):
-        return "armor"
-
-    if current == "accessory" or "accessory" in tags or any(hint in haystack for hint in ACCESSORY_HINTS):
-        return "accessory"
-
     if any(hint in haystack for hint in TOOL_HINTS):
         return "other"
+
+    if any(hint in haystack for hint in BUFF_SUPPORT_HINTS):
+        return "buff"
+
+    if any(hint in haystack for hint in DECORATIVE_OR_MATERIAL_HINTS):
+        return "other"
+
+    if entry.get("armorSetKey") or raw.get("armorSetKey") or current == "armor" or any(hint in haystack for hint in ARMOR_PIECE_HINTS):
+        return "armor"
 
     if current == "buff" or current == "ammo":
         return "buff"
 
-    if "buff" in tags or any(hint in haystack for hint in BUFF_HINTS) or any(hint in haystack for hint in BUFF_SUPPORT_HINTS):
+    if "buff" in tags or any(hint in haystack for hint in BUFF_HINTS):
         return "buff"
+
+    if current == "accessory" or "accessory" in tags or any(hint in haystack for hint in ACCESSORY_HINTS):
+        return "accessory"
 
     if current == "weapon" or {"melee", "ranged", "magic", "summoner", "rogue", "weapon"} & tags:
         return "weapon"
@@ -396,6 +447,8 @@ def apply_boss_normalization(entries_by_id: dict[str, dict], supplement: dict) -
             normalized["displayNameRu"] = override["displayNameRu"]
         if override.get("iconOverride"):
             normalized["icon"] = override["iconOverride"]
+        if content_id in BOSS_WIKI_ICON_OVERRIDES:
+            normalized["icon"] = BOSS_WIKI_ICON_OVERRIDES[content_id]
         if override.get("tags"):
             normalized["tags"] = merge_tags(normalized.get("tags", []), override.get("tags", []))
 

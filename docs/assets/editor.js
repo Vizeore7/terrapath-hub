@@ -81,6 +81,7 @@ const CATEGORY_PATTERNS = {
 };
 
 const CATEGORY_EXCLUSIONS = {
+  armor: [/banner/i, /bookcase/i, /brick/i, /drill/i, /hammer/i, /hamaxe/i, /ore/i, /pickaxe/i, /platform/i, /statue/i, /wall/i],
   accessory: [/ammo box/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /breastplate/i, /brick/i, /campfire/i, /candle/i, /chainmail/i, /chestplate/i, /crate/i, /crystal ball/i, /drill/i, /greaves/i, /hammer/i, /headgear/i, /headpiece/i, /helmet/i, /helm/i, /hood/i, /leggings/i, /mask/i, /ore/i, /pickaxe/i, /platemail/i, /robe/i, /sharpening station/i, /slice of cake/i, /statue/i, /sunflower/i, /tile/i, /visage/i, /wall/i, /work bench/i],
   buff: [/accessory/i, /amulet/i, /anklet/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /bracelet/i, /bracer/i, /breastplate/i, /brick/i, /chainmail/i, /chestplate/i, /cloak/i, /drill/i, /emblem/i, /gauntlet/i, /glove/i, /greaves/i, /helmet/i, /hood/i, /leggings/i, /mask/i, /necklace/i, /ore/i, /pickaxe/i, /platemail/i, /quiver/i, /ring/i, /robe/i, /scarf/i, /scope/i, /shield/i, /shell/i, /skates/i, /spurs/i, /talisman/i, /veil/i, /visage/i, /wings/i],
   weapon: [/accessory/i, /ammo box/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /breastplate/i, /brick/i, /campfire/i, /candle/i, /chainmail/i, /chestplate/i, /crate/i, /crystal ball/i, /drill/i, /greaves/i, /hammer/i, /headgear/i, /headpiece/i, /helmet/i, /helm/i, /hood/i, /leggings/i, /mask/i, /ore/i, /pickaxe/i, /platemail/i, /quiver/i, /robe/i, /scarf/i, /scope/i, /sharpening station/i, /shield/i, /slice of cake/i, /statue/i, /sunflower/i, /tile/i, /visage/i, /wall/i, /work bench/i]
@@ -1387,34 +1388,47 @@ function pickerSearchText(entry) {
   return entry?.searchText || [entry.displayName, entry.displayNameRu, entry.internalName, entry.id].filter(Boolean).join(" ").toLowerCase();
 }
 
+function uniquePickerEntries(entries) {
+  const seen = new Set();
+  return (entries || []).filter((entry) => {
+    const key = entry?.id;
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function pickerPreviewSource() {
+  if (!pickerState) return [];
+  if (pickerState.mode === "description") {
+    const filter = pickerState.filter || "all";
+    const balanced = support.previews.descriptionByKind[filter] || [];
+    const full = filter === "all"
+      ? support.content
+      : support.content.filter((entry) => normalizedContentKind(entry) === filter);
+    return uniquePickerEntries([...balanced, ...full]);
+  }
+  if (pickerState.mode === "boss") {
+    return uniquePickerEntries([...(support.previews.boss || []), ...support.bosses]);
+  }
+  const groupKey = pickerState.groupKey || "weapon";
+  return uniquePickerEntries([
+    ...(support.previews.itemByGroup[groupKey] || []),
+    ...(support.itemGroups[groupKey] || [])
+  ]);
+}
+
 function pickerPreviewEntries() {
   if (!pickerState) return [];
-  let source = [];
-  if (pickerState.mode === "description") {
-    source = support.previews.descriptionByKind[pickerState.filter || "all"] || [];
-  } else if (pickerState.mode === "boss") {
-    source = support.bosses;
-  } else {
-    source = pickerState.groupKey === "other"
-      ? support.itemGroups.other
-      : support.itemGroups[pickerState.groupKey || "weapon"] || [];
-  }
+  const source = pickerPreviewSource();
   return source.slice(0, pickerState.visibleCount || source.length);
 }
 
 function renderPickerResults() {
   const query = refs.pickerSearchInput.value.trim().toLowerCase();
   const searchModeNeedsMoreText = pickerState?.mode === "item" && pickerState?.groupKey === "other" && query.length > 0 && query.length < ITEM_PICKER_MIN_QUERY;
-  const fullPreviewEntries = !query && pickerState
-    ? pickerState.mode === "description"
-      ? (support.previews.descriptionByKind[pickerState.filter || "all"] || [])
-      : pickerState.mode === "boss"
-        ? support.bosses
-        : (pickerState.groupKey === "other"
-          ? support.itemGroups.other
-          : (support.itemGroups[pickerState.groupKey || "weapon"] || []))
-    : [];
-  let results = query
+  const fullPreviewEntries = !query && pickerState ? pickerPreviewSource() : [];
+  const fullSearchEntries = query
     ? pickerSearchEntries(query)
       .filter((entry) => {
         if (pickerState?.mode === "description" && pickerState.filter && pickerState.filter !== "all") {
@@ -1424,13 +1438,15 @@ function renderPickerResults() {
       })
       .filter((entry) => pickerSearchText(entry).includes(query))
       .sort(comparePickerEntries)
-      .slice(0, 80)
+    : [];
+  let results = query
+    ? fullSearchEntries.slice(0, pickerState?.visibleCount || PICKER_PREVIEW_STEP)
     : pickerPreviewEntries();
 
   const hint = searchModeNeedsMoreText
     ? `<p class="empty-state">${esc(lang() === "ru" ? `Введите минимум ${ITEM_PICKER_MIN_QUERY} символа, чтобы искать по полному списку предметов.` : `Type at least ${ITEM_PICKER_MIN_QUERY} characters to search the full item list.`)}</p>`
     : "";
-  const showMore = !query && fullPreviewEntries.length > results.length
+  const showMore = (query ? fullSearchEntries : fullPreviewEntries).length > results.length
     ? `<button class="button button--quiet button--tiny" type="button" data-picker-more="1">${esc(s("pickerShowMore"))}</button>`
     : "";
 

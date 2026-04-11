@@ -85,14 +85,57 @@
         "biome",
         "astral-infection"
       ]
+    },
+    {
+      "id": "CalamityMod/AquaticScourgeHead",
+      "kind": "boss",
+      "internalName": "AquaticScourgeHead",
+      "displayName": "Aquatic Scourge",
+      "displayNameRu": "Aquatic Scourge",
+      "tags": [
+        "boss",
+        "aquatic-scourge"
+      ]
+    },
+    {
+      "id": "CalamityMod/AquaticScourgeBody",
+      "kind": "boss",
+      "tags": [
+        "boss",
+        "boss-segment",
+        "aquatic-scourge"
+      ]
+    },
+    {
+      "id": "CalamityMod/AquaticScourgeBodyAlt",
+      "kind": "boss",
+      "tags": [
+        "boss",
+        "boss-segment",
+        "aquatic-scourge"
+      ]
+    },
+    {
+      "id": "CalamityMod/AquaticScourgeTail",
+      "kind": "boss",
+      "tags": [
+        "boss",
+        "boss-segment",
+        "aquatic-scourge"
+      ]
     }
   ],
   "bossNormalization": {
     "aliasMap": {
+      "CalamityMod/Apollo": "CalamityMod/AresBody",
       "CalamityMod/AresGaussNuke": "CalamityMod/AresBody",
       "CalamityMod/AresLaserCannon": "CalamityMod/AresBody",
       "CalamityMod/AresPlasmaFlamethrower": "CalamityMod/AresBody",
       "CalamityMod/AresTeslaCannon": "CalamityMod/AresBody",
+      "CalamityMod/Artemis": "CalamityMod/AresBody",
+      "CalamityMod/AquaticScourgeBody": "CalamityMod/AquaticScourgeHead",
+      "CalamityMod/AquaticScourgeBodyAlt": "CalamityMod/AquaticScourgeHead",
+      "CalamityMod/AquaticScourgeTail": "CalamityMod/AquaticScourgeHead",
       "CalamityMod/AstrumDeusBody": "CalamityMod/AstrumDeusHead",
       "CalamityMod/AstrumDeusTail": "CalamityMod/AstrumDeusHead",
       "CalamityMod/DesertScourgeBody": "CalamityMod/DesertScourgeHead",
@@ -120,8 +163,12 @@
     ],
     "displayOverrides": {
       "CalamityMod/AresBody": {
-        "displayName": "Ares",
-        "displayNameRu": "XF-09 Ares"
+        "displayName": "Exo Mechs",
+        "displayNameRu": "Exo Mechs"
+      },
+      "CalamityMod/AquaticScourgeHead": {
+        "displayName": "Aquatic Scourge",
+        "displayNameRu": "Aquatic Scourge"
       },
       "CalamityMod/AstrumDeusHead": {
         "displayName": "Astrum Deus",
