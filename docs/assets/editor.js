@@ -270,6 +270,7 @@ function createEmptySupport() {
     content: [],
     visibleItems: [],
     itemGroups: { weapon: [], armor: [], accessory: [], buff: [], other: [] },
+    previews: { boss: [], descriptionByKind: {}, itemByGroup: { weapon: [], armor: [], accessory: [], buff: [], other: [] } },
     itemMap: new Map(),
     bossMap: new Map(),
     contentMap: new Map()
@@ -278,6 +279,7 @@ function createEmptySupport() {
 
 let support = createEmptySupport();
 let supportRequestToken = 0;
+let supportDataCache = new Map();
 let state = loadDraft() || sampleState();
 
 function lang() {
@@ -444,7 +446,9 @@ function isBossLikeEntry(entry) {
 
 function mergeSupportEntry(map, entry) {
   if (!entry?.id) return;
-  map.set(entry.id, { ...(map.get(entry.id) || {}), ...entry });
+  const merged = { ...(map.get(entry.id) || {}), ...entry };
+  merged.searchText = [merged.displayName, merged.displayNameRu, merged.internalName, merged.id].filter(Boolean).join(" ").toLowerCase();
+  map.set(entry.id, merged);
 }
 
 function normalizePickerCategory(entry) {
@@ -512,6 +516,23 @@ function applySupportEnhancements() {
   support.content = [...support.contentMap.values()]
     .filter((entry) => entry.icon)
     .sort((left, right) => localizedDisplayName(left).localeCompare(localizedDisplayName(right), undefined, { sensitivity: "base" }));
+  support.previews = {
+    boss: balancePickerEntries(support.bosses, { perMod: 50, total: 120 }),
+    descriptionByKind: { all: balancePickerEntries(support.content, { perMod: 50, total: 140 }) },
+    itemByGroup: {
+      weapon: balancePickerEntries(support.itemGroups.weapon, { perMod: 35, total: 80 }),
+      armor: balancePickerEntries(support.itemGroups.armor, { perMod: 35, total: 80 }),
+      accessory: balancePickerEntries(support.itemGroups.accessory, { perMod: 35, total: 80 }),
+      buff: balancePickerEntries(support.itemGroups.buff, { perMod: 35, total: 80 }),
+      other: balancePickerEntries(support.itemGroups.other, { perMod: 50, total: 120 })
+    }
+  };
+  uniq(support.content.map(normalizedContentKind)).forEach((kind) => {
+    support.previews.descriptionByKind[kind] = balancePickerEntries(
+      support.content.filter((entry) => normalizedContentKind(entry) === kind),
+      { perMod: 50, total: 140 }
+    );
+  });
 }
 
 function visibleSearchItems() {
@@ -1311,47 +1332,49 @@ function renderPickerFilters() {
 function pickerEntries() {
   if (!pickerState) return [];
   if (pickerState.mode === "description") {
-    return support.content.map((entry) => ({ ...entry, pickerType: normalizedContentKind(entry) }));
+    return support.content;
   }
   if (pickerState.mode === "boss") {
-    return support.bosses.map((entry) => ({ ...entry, pickerType: "boss" }));
+    return support.bosses;
   }
   if (pickerState.groupKey === "other") {
-    return visibleSearchItems().map((entry) => ({ ...entry, pickerType: "item" }));
+    return visibleSearchItems();
   }
-  return (support.itemGroups[pickerState.groupKey || "weapon"] || [])
-    .map((entry) => ({ ...entry, pickerType: "item" }));
+  return support.itemGroups[pickerState.groupKey || "weapon"] || [];
 }
 
 function pickerSearchText(entry) {
-  return [entry.displayName, entry.displayNameRu, entry.internalName, entry.id].filter(Boolean).join(" ").toLowerCase();
+  return entry?.searchText || [entry.displayName, entry.displayNameRu, entry.internalName, entry.id].filter(Boolean).join(" ").toLowerCase();
+}
+
+function pickerPreviewEntries() {
+  if (!pickerState) return [];
+  if (pickerState.mode === "description") {
+    return support.previews.descriptionByKind[pickerState.filter || "all"] || [];
+  }
+  if (pickerState.mode === "boss") {
+    return support.previews.boss;
+  }
+  return support.previews.itemByGroup[pickerState.groupKey || "weapon"] || [];
 }
 
 function renderPickerResults() {
   const query = refs.pickerSearchInput.value.trim().toLowerCase();
-  let results = pickerEntries().filter((entry) => {
-    if (pickerState?.mode === "description" && pickerState.filter && pickerState.filter !== "all") {
-      return entry.pickerType === pickerState.filter;
-    }
-    return true;
-  }).filter((entry) => !query || pickerSearchText(entry).includes(query))
-    .sort(comparePickerEntries);
-
-  if (query) {
-    results = results.slice(0, 160);
-  } else if (pickerState?.mode === "boss") {
-    results = balancePickerEntries(results, { perMod: 50, total: 120 });
-  } else if (pickerState?.mode === "description") {
-    results = balancePickerEntries(results, { perMod: 50, total: 140 });
-  } else if (pickerState?.groupKey === "other") {
-    results = balancePickerEntries(results, { perMod: 50, total: 120 });
-  } else {
-    results = balancePickerEntries(results, { perMod: 35, total: 80 });
-  }
+  let results = query
+    ? pickerEntries().filter((entry) => {
+      if (pickerState?.mode === "description" && pickerState.filter && pickerState.filter !== "all") {
+        return normalizedContentKind(entry) === pickerState.filter;
+      }
+      return true;
+    }).filter((entry) => pickerSearchText(entry).includes(query))
+      .sort(comparePickerEntries)
+      .slice(0, 160)
+    : pickerPreviewEntries();
 
   refs.pickerResults.innerHTML = results.map((entry) => {
     const label = localizedDisplayName(entry) || String(entry.id || "").split("/").pop() || "";
-    const boss = entry.pickerType === "boss";
+    const pickerType = pickerState?.mode === "description" ? normalizedContentKind(entry) : pickerState?.mode === "boss" ? "boss" : "item";
+    const boss = pickerType === "boss";
     return `<button class="picker-result" type="button" data-picker-id="${esc(entry.id)}"><span class="picker-result__media">${iconMarkup(entry, label, boss)}</span><span class="picker-result__copy"><strong>${esc(label)}</strong><span>${esc(entry.id)}</span></span></button>`;
   }).join("") || `<p class="empty-state">${esc(s("noPickerResults"))}</p>`;
 }
@@ -1460,14 +1483,19 @@ function ingestSearchableSupport(entries) {
 }
 
 async function loadModSupport(modName) {
-  const base = `supported/${modName}`;
-  const alt = `../supported/${modName}`;
+  if (!supportDataCache.has(modName)) {
+    const base = `supported/${modName}`;
+    const alt = `../supported/${modName}`;
+    supportDataCache.set(modName, await Promise.all([
+      fetchJsonOptional([`${base}/search-content.json`, `${alt}/search-content.json`]),
+      fetchJsonOptional([`${base}/items.json`, `${alt}/items.json`]),
+      fetchJsonOptional([`${base}/ores.json`, `${alt}/ores.json`]),
+      fetchJsonOptional([`${base}/bosses.json`, `${alt}/bosses.json`]),
+      fetchJsonOptional([`${base}/search-items.json`, `${alt}/search-items.json`])
+    ]));
+  }
 
-  const searchContentData = await fetchJsonOptional([`${base}/search-content.json`, `${alt}/search-content.json`]);
-  const itemsData = await fetchJsonOptional([`${base}/items.json`, `${alt}/items.json`]);
-  const oresData = await fetchJsonOptional([`${base}/ores.json`, `${alt}/ores.json`]);
-  const bossesData = await fetchJsonOptional([`${base}/bosses.json`, `${alt}/bosses.json`]);
-  const legacySearchItemsData = await fetchJsonOptional([`${base}/search-items.json`, `${alt}/search-items.json`]);
+  const [searchContentData, itemsData, oresData, bossesData, legacySearchItemsData] = supportDataCache.get(modName);
 
   if (searchContentData?.entries) {
     ingestSearchableSupport(searchContentData.entries);
