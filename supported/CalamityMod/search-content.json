@@ -189,7 +189,7 @@
       "kind": "boss",
       "internalName": "AstrumDeusHead",
       "displayName": "Astrum Deus",
-      "displayNameRu": "Astrum Deus",
+      "displayNameRu": "\u0410\u0441\u0442\u0440\u0443\u043c \u0414\u0435\u0443\u0441",
       "tags": [
         "boss"
       ],
@@ -305,7 +305,7 @@
       "kind": "boss",
       "internalName": "DesertScourgeHead",
       "displayName": "Desert Scourge",
-      "displayNameRu": "Desert Scourge",
+      "displayNameRu": "\u041f\u0443\u0441\u0442\u044b\u043d\u043d\u0430\u044f \u043d\u0430\u043f\u0430\u0441\u0442\u044c",
       "tags": [
         "boss"
       ],
@@ -460,7 +460,7 @@
       "kind": "boss",
       "internalName": "PrimordialWyrmHead",
       "displayName": "Primordial Wyrm",
-      "displayNameRu": "Primordial Wyrm",
+      "displayNameRu": "\u041f\u0435\u0440\u0432\u043e\u0431\u044b\u0442\u043d\u044b\u0439 \u0437\u043c\u0435\u0439",
       "tags": [
         "boss"
       ],
@@ -499,7 +499,7 @@
       "kind": "boss",
       "internalName": "RavagerBody",
       "displayName": "Ravager",
-      "displayNameRu": "Ravager",
+      "displayNameRu": "\u041e\u043f\u0443\u0441\u0442\u043e\u0448\u0438\u0442\u0435\u043b\u044c",
       "tags": [
         "boss"
       ],
@@ -525,7 +525,7 @@
       "kind": "boss",
       "internalName": "StormWeaverHead",
       "displayName": "Storm Weaver",
-      "displayNameRu": "Storm Weaver",
+      "displayNameRu": "\u0422\u043a\u0430\u0447 \u0431\u0443\u0440\u044c",
       "tags": [
         "boss"
       ],
@@ -564,7 +564,7 @@
       "kind": "boss",
       "internalName": "SupremeCalamitas",
       "displayName": "Supreme Witch, Calamitas",
-      "displayNameRu": "Supreme Witch, Calamitas",
+      "displayNameRu": "\u0412\u0435\u0440\u0445\u043e\u0432\u043d\u0430\u044f \u0432\u0435\u0434\u044c\u043c\u0430, \u041a\u0430\u043b\u0430\u043c\u0438\u0442\u0430\u0441",
       "tags": [
         "boss"
       ],
@@ -629,7 +629,7 @@
       "kind": "boss",
       "internalName": "DevourerofGodsHead",
       "displayName": "The Devourer of Gods",
-      "displayNameRu": "The Devourer of Gods",
+      "displayNameRu": "\u041f\u043e\u0436\u0438\u0440\u0430\u0442\u0435\u043b\u044c \u0431\u043e\u0433\u043e\u0432",
       "tags": [
         "boss"
       ],
@@ -655,7 +655,7 @@
       "kind": "boss",
       "internalName": "SlimeGodCore",
       "displayName": "The Slime God",
-      "displayNameRu": "The Slime God",
+      "displayNameRu": "\u0421\u043b\u0438\u0437\u043d\u0435\u0432\u044b\u0439 \u0431\u043e\u0433",
       "tags": [
         "boss"
       ],

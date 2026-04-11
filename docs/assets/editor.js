@@ -1338,15 +1338,15 @@ function renderPickerResults() {
     .sort(comparePickerEntries);
 
   if (query) {
-    results = results.slice(0, 220);
+    results = results.slice(0, 160);
   } else if (pickerState?.mode === "boss") {
-    results = balancePickerEntries(results, { perMod: 70, total: 180 });
-  } else if (pickerState?.mode === "description") {
-    results = balancePickerEntries(results, { perMod: 80, total: 220 });
-  } else if (pickerState?.groupKey === "other") {
-    results = balancePickerEntries(results, { perMod: 80, total: 200 });
-  } else {
     results = balancePickerEntries(results, { perMod: 50, total: 120 });
+  } else if (pickerState?.mode === "description") {
+    results = balancePickerEntries(results, { perMod: 50, total: 140 });
+  } else if (pickerState?.groupKey === "other") {
+    results = balancePickerEntries(results, { perMod: 50, total: 120 });
+  } else {
+    results = balancePickerEntries(results, { perMod: 35, total: 80 });
   }
 
   refs.pickerResults.innerHTML = results.map((entry) => {
