@@ -29,6 +29,7 @@ const GROUPS = [
 ];
 
 const ERA_IDS = ["prehardmode", "hardmode", "postmoonlord"];
+const ITEM_PICKER_MIN_QUERY = 2;
 
 const ARMOR_SET_ALIASES = [
   { id: "Terraria/WoodHelmet", internalName: "WoodHelmet", displayName: "Wood armor set", displayNameRu: "\u0414\u0435\u0440\u0435\u0432\u044f\u043d\u043d\u044b\u0439 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u0431\u0440\u043e\u043d\u0438" },
@@ -72,10 +73,16 @@ const ARMOR_SET_ALIASES = [
 const ARMOR_SET_IDS = new Set(ARMOR_SET_ALIASES.map((entry) => entry.id));
 
 const CATEGORY_PATTERNS = {
-  armor: [/helmet/i, /headgear/i, /mask/i, /hood/i, /hat$/i, /cap$/i, /chainmail/i, /breastplate/i, /greaves/i, /leggings/i, /pants$/i, /robe$/i, /cuirass/i, /tunic/i, /shirt$/i, /mail$/i],
-  accessory: [/boots/i, /balloon/i, /band/i, /shackle/i, /claws/i, /shield/i, /emblem/i, /anklet/i, /quiver/i, /glove/i, /gauntlet/i, /wings/i, /charm/i, /stone/i, /shell/i, /insignia/i, /necklace/i, /cloak/i, /scarf/i, /rose/i, /bezoar/i, /horseshoe/i, /skates/i, /fins/i, /flipper/i, /bundle/i, /mitten/i, /glove/i, /cuffs/i],
-  buff: [/potion/i, /flask/i, /ale$/i, /beer$/i, /cake$/i, /soup$/i, /stew$/i, /food/i, /candle/i, /bowl/i, /buff/i, /fed/i, /sake/i],
-  weapon: [/sword/i, /blade/i, /bow/i, /gun/i, /staff/i, /tome/i, /book/i, /blaster/i, /boomerang/i, /spear/i, /lance/i, /yoyo/i, /whip/i, /knife/i, /dagger/i, /flail/i, /launcher/i, /cannon/i, /rifle/i, /shotgun/i, /pistol/i, /revolver/i, /wand/i, /trident/i, /chakram/i, /javelin/i, /scythe/i]
+  armor: [/armor set/i],
+  accessory: [/ankh/i, /artifact/i, /badge/i, /balloon/i, /band/i, /bezoar/i, /boots/i, /booster/i, /bundle/i, /cell/i, /charm/i, /cloak/i, /cuffs/i, /emblem/i, /fins/i, /flipper/i, /flower/i, /gauntlet/i, /gear/i, /glove/i, /heart/i, /horseshoe/i, /insignia/i, /jelly/i, /jewel/i, /locket/i, /magiluminescence/i, /mirror/i, /mitten/i, /necklace/i, /pack/i, /pendant/i, /quiver/i, /ring/i, /rose/i, /scarf/i, /scope/i, /shackle/i, /shield/i, /shell/i, /sigil/i, /skates/i, /spurs/i, /star veil/i, /stone/i, /talisman/i, /veil/i, /wings/i],
+  buff: [/ale$/i, /ammo box/i, /bait/i, /beer$/i, /box$/i, /broth/i, /candle/i, /crate/i, /elixir/i, /fed/i, /feast/i, /flask/i, /food/i, /juice/i, /meal/i, /potion/i, /sake/i, /soup$/i, /stew$/i, /tea$/i, /wine$/i],
+  weapon: [/axe/i, /blade/i, /blaster/i, /boomerang/i, /bow/i, /cannon/i, /chakram/i, /dagger/i, /disc/i, /drill/i, /flail/i, /gun/i, /hamaxe/i, /hammer/i, /harpoon/i, /hatchet/i, /javelin/i, /knife/i, /lance/i, /launcher/i, /mace/i, /pike/i, /pickaxe/i, /pistol/i, /polearm/i, /revolver/i, /rifle/i, /saber/i, /scythe/i, /shotgun/i, /spear/i, /staff/i, /sword/i, /tome/i, /trident/i, /wand/i, /whip/i, /yoyo/i]
+};
+
+const CATEGORY_EXCLUSIONS = {
+  accessory: [/banner/i, /bar$/i, /beam/i, /bed/i, /bookcase/i, /brick/i, /cage/i, /chair/i, /chandelier/i, /clock/i, /crate/i, /door/i, /dresser/i, /fence/i, /gate/i, /ore/i, /painting/i, /piano/i, /platform/i, /sand/i, /sink/i, /slab/i, /sofa/i, /statue/i, /table/i, /tile/i, /toilet/i, /torch/i, /wall/i, /work bench/i],
+  buff: [/banner/i, /bookcase/i, /brick/i, /cage/i, /chair/i, /chandelier/i, /clock/i, /door/i, /dresser/i, /ore/i, /painting/i, /piano/i, /platform/i, /sink/i, /sofa/i, /statue/i, /table/i, /toilet/i, /wall/i, /work bench/i],
+  weapon: [/banner/i, /bar$/i, /bathtub/i, /bed/i, /bookcase/i, /bowl/i, /brick/i, /cage/i, /candelabra/i, /candle/i, /chair/i, /chandelier/i, /clock/i, /crate/i, /cup/i, /door/i, /dresser/i, /fence/i, /gate/i, /lamp/i, /lantern/i, /ore/i, /painting/i, /piano/i, /platform/i, /sink/i, /sofa/i, /statue/i, /table/i, /toilet/i, /torch/i, /wall/i, /work bench/i]
 };
 
 const ALLOWED_ITEM_CATEGORIES = new Set(GROUPS.flatMap((group) => group.cats));
@@ -459,10 +466,34 @@ function normalizePickerCategory(entry) {
   return null;
 }
 
+function categoryHaystack(entry) {
+  return [
+    entry?.displayName,
+    entry?.displayNameRu,
+    entry?.internalName,
+    ...(Array.isArray(entry?.tags) ? entry.tags : [])
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+function matchesCategory(entry, category) {
+  const haystack = categoryHaystack(entry);
+  if (!haystack) return false;
+  const patterns = CATEGORY_PATTERNS[category] || [];
+  const exclusions = CATEGORY_EXCLUSIONS[category] || [];
+  return patterns.some((pattern) => pattern.test(haystack)) && !exclusions.some((pattern) => pattern.test(haystack));
+}
+
 function inferSearchCategory(entry) {
   if (!entry) return "other";
   const normalized = normalizePickerCategory(entry);
   if (normalized) return normalized;
+  if (entry.armorSetKey || matchesCategory(entry, "armor")) return "armor";
+  if (matchesCategory(entry, "accessory")) return "accessory";
+  if (matchesCategory(entry, "buff")) return "buff";
+  if (matchesCategory(entry, "weapon")) return "weapon";
   return "other";
 }
 
@@ -517,20 +548,20 @@ function applySupportEnhancements() {
     .filter((entry) => entry.icon)
     .sort((left, right) => localizedDisplayName(left).localeCompare(localizedDisplayName(right), undefined, { sensitivity: "base" }));
   support.previews = {
-    boss: balancePickerEntries(support.bosses, { perMod: 50, total: 120 }),
-    descriptionByKind: { all: balancePickerEntries(support.content, { perMod: 50, total: 140 }) },
+    boss: balancePickerEntries(support.bosses, { perMod: 24, total: 48 }),
+    descriptionByKind: { all: balancePickerEntries(support.content, { perMod: 28, total: 72 }) },
     itemByGroup: {
-      weapon: balancePickerEntries(support.itemGroups.weapon, { perMod: 35, total: 80 }),
-      armor: balancePickerEntries(support.itemGroups.armor, { perMod: 35, total: 80 }),
-      accessory: balancePickerEntries(support.itemGroups.accessory, { perMod: 35, total: 80 }),
-      buff: balancePickerEntries(support.itemGroups.buff, { perMod: 35, total: 80 }),
-      other: balancePickerEntries(support.itemGroups.other, { perMod: 50, total: 120 })
+      weapon: balancePickerEntries(support.itemGroups.weapon, { perMod: 18, total: 36 }),
+      armor: balancePickerEntries(support.itemGroups.armor, { perMod: 16, total: 28 }),
+      accessory: balancePickerEntries(support.itemGroups.accessory, { perMod: 18, total: 36 }),
+      buff: balancePickerEntries(support.itemGroups.buff, { perMod: 18, total: 36 }),
+      other: balancePickerEntries(support.itemGroups.other, { perMod: 18, total: 36 })
     }
   };
   uniq(support.content.map(normalizedContentKind)).forEach((kind) => {
     support.previews.descriptionByKind[kind] = balancePickerEntries(
       support.content.filter((entry) => normalizedContentKind(entry) === kind),
-      { perMod: 50, total: 140 }
+      { perMod: 28, total: 72 }
     );
   });
 }
@@ -1343,6 +1374,13 @@ function pickerEntries() {
   return support.itemGroups[pickerState.groupKey || "weapon"] || [];
 }
 
+function pickerSearchEntries(query) {
+  if (!pickerState) return [];
+  if (pickerState.mode !== "item") return pickerEntries();
+  if (query.length < ITEM_PICKER_MIN_QUERY) return [];
+  return visibleSearchItems();
+}
+
 function pickerSearchText(entry) {
   return entry?.searchText || [entry.displayName, entry.displayNameRu, entry.internalName, entry.id].filter(Boolean).join(" ").toLowerCase();
 }
@@ -1360,23 +1398,37 @@ function pickerPreviewEntries() {
 
 function renderPickerResults() {
   const query = refs.pickerSearchInput.value.trim().toLowerCase();
+  const searchModeNeedsMoreText = pickerState?.mode === "item" && query.length > 0 && query.length < ITEM_PICKER_MIN_QUERY;
   let results = query
-    ? pickerEntries().filter((entry) => {
-      if (pickerState?.mode === "description" && pickerState.filter && pickerState.filter !== "all") {
-        return normalizedContentKind(entry) === pickerState.filter;
-      }
-      return true;
-    }).filter((entry) => pickerSearchText(entry).includes(query))
-      .sort(comparePickerEntries)
-      .slice(0, 160)
+    ? pickerSearchEntries(query)
+      .filter((entry) => {
+        if (pickerState?.mode === "description" && pickerState.filter && pickerState.filter !== "all") {
+          return normalizedContentKind(entry) === pickerState.filter;
+        }
+        return true;
+      })
+      .filter((entry) => pickerSearchText(entry).includes(query))
+      .sort((left, right) => {
+        if (pickerState?.mode === "item" && pickerState.groupKey && pickerState.groupKey !== "other") {
+          const leftPriority = inferSearchCategory(left) === pickerState.groupKey ? 0 : 1;
+          const rightPriority = inferSearchCategory(right) === pickerState.groupKey ? 0 : 1;
+          if (leftPriority !== rightPriority) return leftPriority - rightPriority;
+        }
+        return comparePickerEntries(left, right);
+      })
+      .slice(0, 80)
     : pickerPreviewEntries();
 
-  refs.pickerResults.innerHTML = results.map((entry) => {
+  const hint = searchModeNeedsMoreText
+    ? `<p class="empty-state">${esc(lang() === "ru" ? `Введите минимум ${ITEM_PICKER_MIN_QUERY} символа, чтобы искать по полному списку предметов.` : `Type at least ${ITEM_PICKER_MIN_QUERY} characters to search the full item list.`)}</p>`
+    : "";
+
+  refs.pickerResults.innerHTML = hint + (results.map((entry) => {
     const label = localizedDisplayName(entry) || String(entry.id || "").split("/").pop() || "";
     const pickerType = pickerState?.mode === "description" ? normalizedContentKind(entry) : pickerState?.mode === "boss" ? "boss" : "item";
     const boss = pickerType === "boss";
     return `<button class="picker-result" type="button" data-picker-id="${esc(entry.id)}"><span class="picker-result__media">${iconMarkup(entry, label, boss)}</span><span class="picker-result__copy"><strong>${esc(label)}</strong><span>${esc(entry.id)}</span></span></button>`;
-  }).join("") || `<p class="empty-state">${esc(s("noPickerResults"))}</p>`;
+  }).join("") || (!hint ? `<p class="empty-state">${esc(s("noPickerResults"))}</p>` : ""));
 }
 
 function insertAtCursor(field, value, startOverride, endOverride) {
