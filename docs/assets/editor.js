@@ -1377,8 +1377,11 @@ function pickerEntries() {
 function pickerSearchEntries(query) {
   if (!pickerState) return [];
   if (pickerState.mode !== "item") return pickerEntries();
-  if (query.length < ITEM_PICKER_MIN_QUERY) return [];
-  return visibleSearchItems();
+  if (pickerState.groupKey === "other") {
+    if (query.length < ITEM_PICKER_MIN_QUERY) return [];
+    return visibleSearchItems();
+  }
+  return pickerEntries();
 }
 
 function pickerSearchText(entry) {
@@ -1398,7 +1401,7 @@ function pickerPreviewEntries() {
 
 function renderPickerResults() {
   const query = refs.pickerSearchInput.value.trim().toLowerCase();
-  const searchModeNeedsMoreText = pickerState?.mode === "item" && query.length > 0 && query.length < ITEM_PICKER_MIN_QUERY;
+  const searchModeNeedsMoreText = pickerState?.mode === "item" && pickerState?.groupKey === "other" && query.length > 0 && query.length < ITEM_PICKER_MIN_QUERY;
   let results = query
     ? pickerSearchEntries(query)
       .filter((entry) => {
@@ -1408,14 +1411,7 @@ function renderPickerResults() {
         return true;
       })
       .filter((entry) => pickerSearchText(entry).includes(query))
-      .sort((left, right) => {
-        if (pickerState?.mode === "item" && pickerState.groupKey && pickerState.groupKey !== "other") {
-          const leftPriority = inferSearchCategory(left) === pickerState.groupKey ? 0 : 1;
-          const rightPriority = inferSearchCategory(right) === pickerState.groupKey ? 0 : 1;
-          if (leftPriority !== rightPriority) return leftPriority - rightPriority;
-        }
-        return comparePickerEntries(left, right);
-      })
+      .sort(comparePickerEntries)
       .slice(0, 80)
     : pickerPreviewEntries();
 
