@@ -1,0 +1,90 @@
+{
+  "mod": "CalamityMod",
+  "contentType": "supplement",
+  "entries": [
+    {
+      "id": "CalamityMod/AcidRain",
+      "kind": "event",
+      "internalName": "AcidRain",
+      "displayName": "Acid Rain",
+      "displayNameRu": "Кислотный дождь",
+      "iconSourceId": "CalamityMod/CausticTear",
+      "tags": [
+        "event",
+        "acid-rain"
+      ]
+    },
+    {
+      "id": "CalamityMod/BossRush",
+      "kind": "event",
+      "internalName": "BossRush",
+      "displayName": "Boss Rush",
+      "displayNameRu": "Босс-раш",
+      "iconSourceId": "CalamityMod/Terminus",
+      "tags": [
+        "event",
+        "boss-rush"
+      ]
+    },
+    {
+      "id": "CalamityMod/SunkenSea",
+      "kind": "biome",
+      "internalName": "SunkenSea",
+      "displayName": "Sunken Sea",
+      "displayNameRu": "Затонувшее море",
+      "iconSourceId": "CalamityMod/Navystone",
+      "tags": [
+        "biome",
+        "sunken-sea"
+      ]
+    },
+    {
+      "id": "CalamityMod/SulphurousSea",
+      "kind": "biome",
+      "internalName": "SulphurousSea",
+      "displayName": "Sulphurous Sea",
+      "displayNameRu": "Сернистое море",
+      "iconSourceId": "CalamityMod/SulphurousSand",
+      "tags": [
+        "biome",
+        "sulphurous-sea"
+      ]
+    },
+    {
+      "id": "CalamityMod/Abyss",
+      "kind": "biome",
+      "internalName": "Abyss",
+      "displayName": "Abyss",
+      "displayNameRu": "Бездна",
+      "iconSourceId": "CalamityMod/DepthCells",
+      "tags": [
+        "biome",
+        "abyss"
+      ]
+    },
+    {
+      "id": "CalamityMod/BrimstoneCrag",
+      "kind": "biome",
+      "internalName": "BrimstoneCrag",
+      "displayName": "Brimstone Crag",
+      "displayNameRu": "Brimstone Crag",
+      "iconSourceId": "CalamityMod/BrimstoneSlag",
+      "tags": [
+        "biome",
+        "brimstone-crag"
+      ]
+    },
+    {
+      "id": "CalamityMod/AstralInfection",
+      "kind": "biome",
+      "internalName": "AstralInfection",
+      "displayName": "Astral Infection",
+      "displayNameRu": "Астральная инфекция",
+      "iconSourceId": "CalamityMod/AstralOre",
+      "tags": [
+        "biome",
+        "astral-infection"
+      ]
+    }
+  ]
+}

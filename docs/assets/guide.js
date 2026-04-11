@@ -53,7 +53,7 @@ const ARMOR_SET_ALIASES = [
   { id: "Terraria/StardustHelmet", internalName: "StardustHelmet", displayName: "Stardust armor set", displayNameRu: "\u0417\u0432\u0435\u0437\u0434\u043d\u044b\u0439 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u0431\u0440\u043e\u043d\u0438" }
 ];
 
-const supportIndex = { itemMap: new Map(), bossMap: new Map() };
+const supportIndex = { itemMap: new Map(), bossMap: new Map(), contentMap: new Map() };
 let currentGuide = null;
 
 function language() {
@@ -114,6 +114,27 @@ function supportSearchIcon(internalName) {
   return `assets/icons/terraria/search-items/${String(internalName || "").toLowerCase()}.png`;
 }
 
+function normalizedContentKind(entry) {
+  const kind = String(entry?.kind || "").toLowerCase();
+  if (["item", "material", "ore", "other"].includes(kind)) return "item";
+  if (["boss", "miniboss"].includes(kind)) return "boss";
+  if (["npc", "event", "biome", "system"].includes(kind)) return kind;
+  return kind || "item";
+}
+
+function isItemLikeEntry(entry) {
+  return Boolean(entry) && (Boolean(entry.category) || ["item", "material", "ore", "other"].includes(String(entry.kind || "").toLowerCase()));
+}
+
+function isBossLikeEntry(entry) {
+  return ["boss", "miniboss"].includes(String(entry?.kind || "").toLowerCase());
+}
+
+function mergeSupportEntry(map, entry) {
+  if (!entry?.id) return;
+  map.set(entry.id, { ...(map.get(entry.id) || {}), ...entry });
+}
+
 function applySupportEnhancements() {
   ARMOR_SET_ALIASES.forEach((alias) => {
     const previous = supportIndex.itemMap.get(alias.id) || {};
@@ -123,6 +144,22 @@ function applySupportEnhancements() {
       icon: previous.icon || alias.icon || supportSearchIcon(alias.internalName)
     });
   });
+
+  for (const [id, entry] of supportIndex.itemMap.entries()) {
+    supportIndex.contentMap.set(id, {
+      ...(supportIndex.contentMap.get(id) || {}),
+      ...entry,
+      kind: entry.kind || "item"
+    });
+  }
+
+  for (const [id, entry] of supportIndex.bossMap.entries()) {
+    supportIndex.contentMap.set(id, {
+      ...(supportIndex.contentMap.get(id) || {}),
+      ...entry,
+      kind: entry.kind || "boss"
+    });
+  }
 }
 
 function params() {
@@ -145,17 +182,38 @@ async function loadCatalog() {
 
 async function tryLoadSupport(modName) {
   const files = [
-    { path: `supported/${modName}/search-items.json`, key: "items", target: supportIndex.itemMap },
-    { path: `supported/${modName}/items.json`, key: "items", target: supportIndex.itemMap },
-    { path: `supported/${modName}/ores.json`, key: "ores", target: supportIndex.itemMap },
-    { path: `supported/${modName}/bosses.json`, key: "bosses", target: supportIndex.bossMap }
+    { path: `supported/${modName}/search-content.json`, key: "entries", apply(entry) {
+      mergeSupportEntry(supportIndex.contentMap, entry);
+      if (isItemLikeEntry(entry)) mergeSupportEntry(supportIndex.itemMap, entry);
+      if (isBossLikeEntry(entry)) mergeSupportEntry(supportIndex.bossMap, entry);
+    } },
+    { path: `supported/${modName}/search-items.json`, key: "items", apply(entry) {
+      const nextEntry = { ...entry, kind: entry.kind || "item" };
+      mergeSupportEntry(supportIndex.contentMap, nextEntry);
+      mergeSupportEntry(supportIndex.itemMap, nextEntry);
+    } },
+    { path: `supported/${modName}/items.json`, key: "items", apply(entry) {
+      const nextEntry = { ...entry, kind: entry.kind || "item" };
+      mergeSupportEntry(supportIndex.contentMap, nextEntry);
+      mergeSupportEntry(supportIndex.itemMap, nextEntry);
+    } },
+    { path: `supported/${modName}/ores.json`, key: "ores", apply(entry) {
+      const nextEntry = { ...entry, kind: entry.kind || "ore" };
+      mergeSupportEntry(supportIndex.contentMap, nextEntry);
+      mergeSupportEntry(supportIndex.itemMap, nextEntry);
+    } },
+    { path: `supported/${modName}/bosses.json`, key: "bosses", apply(entry) {
+      const nextEntry = { ...entry, kind: entry.kind || "boss" };
+      mergeSupportEntry(supportIndex.contentMap, nextEntry);
+      mergeSupportEntry(supportIndex.bossMap, nextEntry);
+    } }
   ];
 
   for (const file of files) {
     try {
       const data = await fetchJson(file.path);
       for (const entry of data[file.key] || []) {
-        file.target.set(entry.id, { ...file.target.get(entry.id), ...entry });
+        file.apply(entry);
       }
     } catch {}
   }
@@ -238,11 +296,12 @@ function renderRichText(textValue) {
     const index = match.index ?? 0;
     const contentId = match[1];
     if (index > lastIndex) parts.push(escapeHtml(source.slice(lastIndex, index)).replace(/\n/g, "<br>"));
+    const contentEntry = supportIndex.contentMap.get(contentId);
     const itemEntry = supportIndex.itemMap.get(contentId);
     const bossEntry = supportIndex.bossMap.get(contentId);
-    const entry = itemEntry || bossEntry;
-    const label = resolveName(contentId, itemEntry ? supportIndex.itemMap : supportIndex.bossMap);
-    parts.push(inlineIconMarkup(entry, label, bossEntry ? "boss" : "item"));
+    const entry = contentEntry || itemEntry || bossEntry;
+    const label = localizedDisplayName(entry) || String(contentId || "").split("/").pop() || "";
+    parts.push(inlineIconMarkup(entry, label, normalizedContentKind(entry) === "boss" ? "boss" : "item"));
     lastIndex = index + match[0].length;
   }
 

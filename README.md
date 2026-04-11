@@ -72,8 +72,9 @@ tools/      Validation, catalog build, export, and publication helper scripts
 ## Current Status
 
 - The public editor, guide browser, and issue-based submission flow are live.
-- The web editor is vanilla-first and uses curated Terraria content data.
-- Calamity Mod and Thorium Mod are currently metadata-only on the web side.
+- The web editor ships with curated Terraria data and can also load generated Calamity support packs.
+- Calamity Mod support is rebuilt from an installed copy of the mod plus supplement data in this repo.
+- Thorium Mod is still metadata-only on the web side.
 - Published guides are reviewed before they are added to the public catalog.
 - The TerraPath tModLoader mod source lives separately from this public hub.
 

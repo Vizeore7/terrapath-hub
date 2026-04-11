@@ -118,13 +118,13 @@ const COPY = {
     moveDown: "Down",
     delete: "Delete",
     itemCount: "{count} items",
-    loadingSupport: "Loading Terraria support data...",
-    supportLoaded: "Vanilla support ready: {items} searchable items, {bosses} bosses.",
-    supportFailed: "Terraria support data could not be loaded.",
+    loadingSupport: "Loading support data...",
+    supportLoaded: "Support ready: {items} searchable entries, {bosses} bosses.",
+    supportFailed: "Support data could not be loaded.",
     pickerDescriptionTitle: "Insert icon into description",
     pickerItemTitle: "Search item",
     pickerSearch: "Search",
-    pickerSearchPlaceholder: "Search items, bosses, ores",
+    pickerSearchPlaceholder: "Search items, bosses, events, biomes",
     pickerClose: "Close",
     noPickerResults: "No results found.",
     previewHeading: "Preview",
@@ -177,13 +177,13 @@ const COPY = {
     moveDown: "\u041d\u0438\u0436\u0435",
     delete: "\u0423\u0434\u0430\u043b\u0438\u0442\u044c",
     itemCount: "{count} \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u043e\u0432",
-    loadingSupport: "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 Terraria-\u0438\u043d\u0434\u0435\u043a\u0441\u0430...",
-    supportLoaded: "Vanilla \u0433\u043e\u0442\u043e\u0432\u0430: {items} \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u043e\u0432 \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430, {bosses} \u0431\u043e\u0441\u0441\u043e\u0432.",
-    supportFailed: "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c Terraria-\u0438\u043d\u0434\u0435\u043a\u0441.",
+    loadingSupport: "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 support-\u0434\u0430\u043d\u043d\u044b\u0445...",
+    supportLoaded: "\u0414\u0430\u043d\u043d\u044b\u0435 \u0433\u043e\u0442\u043e\u0432\u044b: {items} \u0437\u0430\u043f\u0438\u0441\u0435\u0439 \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430, {bosses} \u0431\u043e\u0441\u0441\u043e\u0432.",
+    supportFailed: "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c support-\u0434\u0430\u043d\u043d\u044b\u0435.",
     pickerDescriptionTitle: "\u0412\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0438\u043a\u043e\u043d\u043a\u0443 \u0432 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435",
     pickerItemTitle: "\u041f\u043e\u0438\u0441\u043a \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u0430",
     pickerSearch: "\u041f\u043e\u0438\u0441\u043a",
-    pickerSearchPlaceholder: "\u0418\u0449\u0438\u0442\u0435 \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u044b, \u0431\u043e\u0441\u0441\u043e\u0432, \u0440\u0443\u0434\u044b",
+    pickerSearchPlaceholder: "\u0418\u0449\u0438\u0442\u0435 \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u044b, \u0431\u043e\u0441\u0441\u043e\u0432, \u0441\u043e\u0431\u044b\u0442\u0438\u044f, \u0431\u0438\u043e\u043c\u044b",
     pickerClose: "\u0417\u0430\u043a\u0440\u044b\u0442\u044c",
     noPickerResults: "\u041d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e.",
     previewHeading: "\u041f\u0440\u0435\u0434\u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440",
@@ -262,7 +262,7 @@ let lastSavedAt = null;
 let submissionMessage = "";
 let supportState = "loading";
 let pickerState = null;
-let support = { items: [], searchItems: [], bosses: [], itemMap: new Map(), bossMap: new Map() };
+let support = { items: [], bosses: [], content: [], itemMap: new Map(), bossMap: new Map(), contentMap: new Map() };
 let state = loadDraft() || sampleState();
 
 function lang() {
@@ -394,6 +394,40 @@ function supportSearchIcon(internalName) {
   return `assets/icons/terraria/search-items/${String(internalName || "").toLowerCase()}.png`;
 }
 
+function normalizedContentKind(entry) {
+  const kind = String(entry?.kind || "").toLowerCase();
+  if (["item", "material", "ore", "other"].includes(kind)) return "item";
+  if (["boss", "miniboss"].includes(kind)) return "boss";
+  if (["npc", "event", "biome", "system"].includes(kind)) return kind;
+  return kind || "item";
+}
+
+function contentKindLabel(kind) {
+  const labels = {
+    all: { en: "All", ru: "Все" },
+    item: { en: "Items", ru: "Предметы" },
+    boss: { en: "Bosses", ru: "Боссы" },
+    npc: { en: "NPCs", ru: "NPC" },
+    event: { en: "Events", ru: "События" },
+    biome: { en: "Biomes", ru: "Биомы" },
+    system: { en: "Systems", ru: "Системы" }
+  };
+  return labels[kind]?.[lang()] || kind;
+}
+
+function isItemLikeEntry(entry) {
+  return Boolean(entry) && (Boolean(entry.category) || ["item", "material", "ore", "other"].includes(String(entry.kind || "").toLowerCase()));
+}
+
+function isBossLikeEntry(entry) {
+  return ["boss", "miniboss"].includes(String(entry?.kind || "").toLowerCase());
+}
+
+function mergeSupportEntry(map, entry) {
+  if (!entry?.id) return;
+  map.set(entry.id, { ...(map.get(entry.id) || {}), ...entry });
+}
+
 function inferSearchCategory(entry) {
   if (!entry) return "weapon";
   if (entry.category && ALLOWED_ITEM_CATEGORIES.has(entry.category)) return entry.category;
@@ -429,6 +463,28 @@ function applySupportEnhancements() {
       category: inferSearchCategory(entry)
     });
   }
+
+  for (const [id, entry] of support.itemMap.entries()) {
+    support.contentMap.set(id, {
+      ...(support.contentMap.get(id) || {}),
+      ...entry,
+      kind: entry.kind || "item"
+    });
+  }
+
+  for (const [id, entry] of support.bossMap.entries()) {
+    support.contentMap.set(id, {
+      ...(support.contentMap.get(id) || {}),
+      ...entry,
+      kind: entry.kind || "boss"
+    });
+  }
+
+  support.items = [...support.itemMap.values()];
+  support.bosses = [...support.bossMap.values()];
+  support.content = [...support.contentMap.values()]
+    .filter((entry) => entry.icon)
+    .sort((left, right) => localizedDisplayName(left).localeCompare(localizedDisplayName(right), undefined, { sensitivity: "base" }));
 }
 
 function visibleSearchItems() {
@@ -501,11 +557,12 @@ function renderRichText(textValue) {
     const index = match.index ?? 0;
     const contentId = match[1];
     if (index > lastIndex) parts.push(esc(source.slice(lastIndex, index)).replace(/\n/g, "<br>"));
+    const contentEntry = support.contentMap.get(contentId);
     const itemEntry = support.itemMap.get(contentId);
     const bossEntry = support.bossMap.get(contentId);
-    const entry = itemEntry || bossEntry;
-    const label = pickLabel(contentId, itemEntry ? support.itemMap : support.bossMap);
-    parts.push(inlineIconMarkup(entry, label, Boolean(bossEntry)));
+    const entry = contentEntry || itemEntry || bossEntry;
+    const label = localizedDisplayName(entry) || String(contentId || "").split("/").pop() || "";
+    parts.push(inlineIconMarkup(entry, label, isBossLikeEntry(entry)));
     lastIndex = index + match[0].length;
   }
 
@@ -741,7 +798,7 @@ function moveStep(offset) {
 
 function renderSupportStatus() {
   if (supportState === "loaded") {
-    refs.support.textContent = s("supportLoaded", { items: support.searchItems.length || support.items.length, bosses: support.bosses.length });
+    refs.support.textContent = s("supportLoaded", { items: support.content.length || support.items.length, bosses: support.bosses.length });
     return;
   }
   refs.support.textContent = supportState === "failed" ? s("supportFailed") : s("loadingSupport");
@@ -1138,10 +1195,10 @@ function closePicker() {
 function pickerFilterOptions() {
   if (!pickerState) return [];
   if (pickerState.mode === "description") {
+    const kinds = uniq(support.content.map(normalizedContentKind));
     return [
-      { key: "all", label: lang() === "ru" ? "\u0412\u0441\u0435" : "All" },
-      { key: "item", label: lang() === "ru" ? "\u041f\u0440\u0435\u0434\u043c\u0435\u0442\u044b" : "Items" },
-      { key: "boss", label: s("bosses") }
+      { key: "all", label: contentKindLabel("all") },
+      ...kinds.map((kind) => ({ key: kind, label: contentKindLabel(kind) }))
     ];
   }
   if (pickerState.mode === "boss") return [{ key: "boss", label: s("bosses") }];
@@ -1162,7 +1219,7 @@ function renderPickerFilters() {
 function pickerEntries() {
   if (!pickerState) return [];
   if (pickerState.mode === "description") {
-    return [...visibleSearchItems().map((entry) => ({ ...entry, pickerType: "item" })), ...support.bosses.map((entry) => ({ ...entry, pickerType: "boss" }))];
+    return support.content.map((entry) => ({ ...entry, pickerType: normalizedContentKind(entry) }));
   }
   if (pickerState.mode === "boss") {
     return support.bosses.map((entry) => ({ ...entry, pickerType: "boss" }));
@@ -1188,8 +1245,7 @@ function renderPickerResults() {
       return group.cats.includes(entry.category || "__unknown__");
     }
     if (pickerState?.mode === "description" && pickerState.filter && pickerState.filter !== "all") {
-      if (pickerState.filter === "boss") return entry.pickerType === "boss";
-      return entry.pickerType === "item";
+      return entry.pickerType === pickerState.filter;
     }
     return true;
   }).filter((entry) => !query || pickerSearchText(entry).includes(query)).slice(0, 200);
@@ -1268,22 +1324,79 @@ async function fetchJson(paths) {
   throw new Error("JSON load failed.");
 }
 
+async function fetchJsonOptional(paths, fallback = null) {
+  try {
+    return await fetchJson(paths);
+  } catch {
+    return fallback;
+  }
+}
+
+function ingestLegacySupport(entries, kind) {
+  for (const entry of entries || []) {
+    const nextEntry = { ...entry, kind: entry.kind || kind };
+    mergeSupportEntry(support.contentMap, nextEntry);
+    if (kind === "boss") {
+      mergeSupportEntry(support.bossMap, nextEntry);
+      continue;
+    }
+    mergeSupportEntry(support.itemMap, nextEntry);
+  }
+}
+
+function ingestSearchableSupport(entries) {
+  for (const entry of entries || []) {
+    mergeSupportEntry(support.contentMap, entry);
+    if (isItemLikeEntry(entry)) {
+      mergeSupportEntry(support.itemMap, entry);
+    }
+    if (isBossLikeEntry(entry)) {
+      mergeSupportEntry(support.bossMap, entry);
+    }
+  }
+}
+
+async function loadModSupport(modName) {
+  const base = `supported/${modName}`;
+  const alt = `../supported/${modName}`;
+
+  const searchContentData = await fetchJsonOptional([`${base}/search-content.json`, `${alt}/search-content.json`]);
+  const itemsData = await fetchJsonOptional([`${base}/items.json`, `${alt}/items.json`]);
+  const oresData = await fetchJsonOptional([`${base}/ores.json`, `${alt}/ores.json`]);
+  const bossesData = await fetchJsonOptional([`${base}/bosses.json`, `${alt}/bosses.json`]);
+  const legacySearchItemsData = await fetchJsonOptional([`${base}/search-items.json`, `${alt}/search-items.json`]);
+
+  if (searchContentData?.entries) {
+    ingestSearchableSupport(searchContentData.entries);
+  }
+
+  if (legacySearchItemsData?.items) {
+    ingestLegacySupport(legacySearchItemsData.items, "item");
+  }
+
+  if (itemsData?.items) {
+    ingestLegacySupport(itemsData.items, "item");
+  }
+
+  if (oresData?.ores) {
+    ingestLegacySupport(oresData.ores, "ore");
+  }
+
+  if (bossesData?.bosses) {
+    ingestLegacySupport(bossesData.bosses, "boss");
+  }
+}
+
 async function loadSupport() {
   supportState = "loading";
   renderSupportStatus();
 
   try {
-    const [itemsData, oresData, bossesData, searchItemsData] = await Promise.all([
-      fetchJson(["supported/Terraria/items.json", "../supported/Terraria/items.json"]),
-      fetchJson(["supported/Terraria/ores.json", "../supported/Terraria/ores.json"]),
-      fetchJson(["supported/Terraria/bosses.json", "../supported/Terraria/bosses.json"]),
-      fetchJson(["supported/Terraria/search-items.json", "../supported/Terraria/search-items.json"]).catch(() => ({ items: [] }))
+    support = { items: [], bosses: [], content: [], itemMap: new Map(), bossMap: new Map(), contentMap: new Map() };
+    await Promise.all([
+      loadModSupport("Terraria"),
+      loadModSupport("CalamityMod")
     ]);
-
-    support = { items: [...(itemsData.items || []), ...(oresData.ores || [])], searchItems: searchItemsData.items || [], bosses: bossesData.bosses || [], itemMap: new Map(), bossMap: new Map() };
-    support.searchItems.forEach((entry) => support.itemMap.set(entry.id, entry));
-    support.items.forEach((entry) => support.itemMap.set(entry.id, { ...support.itemMap.get(entry.id), ...entry }));
-    support.bosses.forEach((entry) => support.bossMap.set(entry.id, entry));
     applySupportEnhancements();
     supportState = "loaded";
   } catch (error) {
