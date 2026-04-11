@@ -30,7 +30,8 @@ const GROUPS = [
 
 const ERA_IDS = ["prehardmode", "hardmode", "postmoonlord"];
 const ITEM_PICKER_MIN_QUERY = 2;
-const PICKER_PREVIEW_STEP = 48;
+const PICKER_VIRTUAL_ROW_HEIGHT = 94;
+const PICKER_VIRTUAL_OVERSCAN = 6;
 
 const ARMOR_SET_ALIASES = [
   { id: "Terraria/WoodHelmet", internalName: "WoodHelmet", displayName: "Wood armor set", displayNameRu: "\u0414\u0435\u0440\u0435\u0432\u044f\u043d\u043d\u044b\u0439 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u0431\u0440\u043e\u043d\u0438" },
@@ -72,20 +73,6 @@ const ARMOR_SET_ALIASES = [
 ];
 
 const ARMOR_SET_IDS = new Set(ARMOR_SET_ALIASES.map((entry) => entry.id));
-
-const CATEGORY_PATTERNS = {
-  armor: [/armor set/i, /breastplate/i, /chainmail/i, /chestplate/i, /cowl/i, /greaves/i, /headgear/i, /headpiece/i, /helmet/i, /helm/i, /hood/i, /leggings/i, /mask/i, /platemail/i, /robe/i, /visage/i],
-  accessory: [/amulet/i, /ankh/i, /anklet/i, /badge/i, /balloon/i, /band/i, /bezoar/i, /boots/i, /bracelet/i, /bracer/i, /bundle/i, /charm/i, /cloak/i, /cuffs/i, /emblem/i, /fins/i, /flipper/i, /gauntlet/i, /glove/i, /horseshoe/i, /insignia/i, /magiluminescence/i, /mitten/i, /necklace/i, /pendant/i, /quiver/i, /ring/i, /scarf/i, /scope/i, /shackle/i, /shield/i, /shell/i, /sigil/i, /skates/i, /spurs/i, /talisman/i, /veil/i, /wings/i],
-  buff: [/ale$/i, /ammo box/i, /arrow/i, /beer$/i, /bewitching table/i, /bullet/i, /campfire/i, /candle/i, /crystal ball/i, /dart/i, /elixir/i, /feast/i, /flask/i, /food/i, /heart lantern/i, /meal/i, /peace candle/i, /potion/i, /rocket/i, /sake/i, /sharpening station/i, /slice of cake/i, /stew$/i, /sunflower/i, /tea$/i, /war table/i, /water candle/i, /wine$/i],
-  weapon: [/blade/i, /blaster/i, /boomerang/i, /bow/i, /cannon/i, /chakram/i, /dagger/i, /disc/i, /flail/i, /gun/i, /harpoon/i, /javelin/i, /knife/i, /lance/i, /launcher/i, /mace/i, /pistol/i, /polearm/i, /revolver/i, /rifle/i, /saber/i, /scythe/i, /shotgun/i, /spear/i, /staff/i, /sword/i, /tome/i, /trident/i, /wand/i, /whip/i, /yoyo/i]
-};
-
-const CATEGORY_EXCLUSIONS = {
-  armor: [/banner/i, /bookcase/i, /brick/i, /drill/i, /hammer/i, /hamaxe/i, /ore/i, /pickaxe/i, /platform/i, /statue/i, /wall/i],
-  accessory: [/ammo box/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /breastplate/i, /brick/i, /campfire/i, /candle/i, /chainmail/i, /chestplate/i, /crate/i, /crystal ball/i, /drill/i, /greaves/i, /hammer/i, /headgear/i, /headpiece/i, /helmet/i, /helm/i, /hood/i, /leggings/i, /mask/i, /ore/i, /pickaxe/i, /platemail/i, /robe/i, /sharpening station/i, /slice of cake/i, /statue/i, /sunflower/i, /tile/i, /visage/i, /wall/i, /work bench/i],
-  buff: [/accessory/i, /amulet/i, /anklet/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /bracelet/i, /bracer/i, /breastplate/i, /brick/i, /chainmail/i, /chestplate/i, /cloak/i, /drill/i, /emblem/i, /gauntlet/i, /glove/i, /greaves/i, /helmet/i, /hood/i, /leggings/i, /mask/i, /necklace/i, /ore/i, /pickaxe/i, /platemail/i, /quiver/i, /ring/i, /robe/i, /scarf/i, /scope/i, /shield/i, /shell/i, /skates/i, /spurs/i, /talisman/i, /veil/i, /visage/i, /wings/i],
-  weapon: [/accessory/i, /ammo box/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /breastplate/i, /brick/i, /campfire/i, /candle/i, /chainmail/i, /chestplate/i, /crate/i, /crystal ball/i, /drill/i, /greaves/i, /hammer/i, /headgear/i, /headpiece/i, /helmet/i, /helm/i, /hood/i, /leggings/i, /mask/i, /ore/i, /pickaxe/i, /platemail/i, /quiver/i, /robe/i, /scarf/i, /scope/i, /sharpening station/i, /shield/i, /slice of cake/i, /statue/i, /sunflower/i, /tile/i, /visage/i, /wall/i, /work bench/i]
-};
 
 const ALLOWED_ITEM_CATEGORIES = new Set(GROUPS.flatMap((group) => group.cats));
 
@@ -274,6 +261,8 @@ let lastSavedAt = null;
 let submissionMessage = "";
 let supportState = "loading";
 let pickerState = null;
+let pickerScrollFrame = 0;
+let pickerSearchDebounce = 0;
 function createEmptySupport() {
   return {
     items: [],
@@ -339,10 +328,6 @@ function localizedDisplayName(entry) {
   return lang() === "ru"
     ? (entry.displayNameRu || entry.displayName || entry.internalName || "")
     : (entry.displayName || entry.displayNameRu || entry.internalName || "");
-}
-
-function entryModName(entry) {
-  return String(entry?.id || "").split("/")[0] || "Terraria";
 }
 
 function pickLabel(id, map) {
@@ -457,56 +442,35 @@ function isBossLikeEntry(entry) {
 
 function mergeSupportEntry(map, entry) {
   if (!entry?.id) return;
-  const merged = { ...(map.get(entry.id) || {}), ...entry };
+  const existing = map.get(entry.id) || {};
+  const existingKind = normalizedContentKind(existing);
+  const incomingKind = normalizedContentKind(entry);
+  const merged = map === support.contentMap && existingKind === "boss" && incomingKind === "item"
+    ? { ...entry, ...existing }
+    : { ...existing, ...entry };
   merged.searchText = [merged.displayName, merged.displayNameRu, merged.internalName, merged.id].filter(Boolean).join(" ").toLowerCase();
   map.set(entry.id, merged);
 }
 
 function normalizePickerCategory(entry) {
   const category = String(entry?.category || "").toLowerCase();
-  if (["weapon", "armor", "accessory", "buff", "other"].includes(category)) return category;
+  if (ALLOWED_ITEM_CATEGORIES.has(category)) return category;
   if (category === "ammo") return "buff";
   if (["material", "ore", "tool", "mount", "pet", "furniture"].includes(category)) return "other";
   return null;
 }
 
-function categoryHaystack(entry) {
-  return [
-    entry?.displayName,
-    entry?.displayNameRu,
-    entry?.internalName,
-    ...(Array.isArray(entry?.tags) ? entry.tags : [])
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-}
-
-function matchesCategory(entry, category) {
-  const haystack = categoryHaystack(entry);
-  if (!haystack) return false;
-  const patterns = CATEGORY_PATTERNS[category] || [];
-  const exclusions = CATEGORY_EXCLUSIONS[category] || [];
-  return patterns.some((pattern) => pattern.test(haystack)) && !exclusions.some((pattern) => pattern.test(haystack));
-}
-
 function inferSearchCategory(entry) {
-  if (!entry) return "other";
   const normalized = normalizePickerCategory(entry);
-  if (normalized) return normalized;
-  if (entry.armorSetKey || matchesCategory(entry, "armor")) return "armor";
-  if (matchesCategory(entry, "accessory")) return "accessory";
-  if (matchesCategory(entry, "buff")) return "buff";
-  if (matchesCategory(entry, "weapon")) return "weapon";
-  return "other";
+  return normalized || "other";
 }
 
 function applySupportEnhancements() {
   for (const [id, entry] of support.itemMap.entries()) {
-    const normalized = normalizePickerCategory(entry);
+    const normalized = inferSearchCategory(entry);
     support.itemMap.set(id, {
       ...entry,
-      category: normalized || inferSearchCategory(entry)
+      category: normalized
     });
   }
 
@@ -542,23 +506,7 @@ function applySupportEnhancements() {
   support.content = [...support.contentMap.values()]
     .filter((entry) => entry.icon)
     .sort((left, right) => localizedDisplayName(left).localeCompare(localizedDisplayName(right), undefined, { sensitivity: "base" }));
-  support.previews = {
-    boss: balancePickerEntries(support.bosses, { perMod: 24, total: 48 }),
-    descriptionByKind: { all: balancePickerEntries(support.content, { perMod: 28, total: 72 }) },
-    itemByGroup: {
-      weapon: balancePickerEntries(support.itemGroups.weapon, { perMod: 18, total: 36 }),
-      armor: balancePickerEntries(support.itemGroups.armor, { perMod: 16, total: 28 }),
-      accessory: balancePickerEntries(support.itemGroups.accessory, { perMod: 18, total: 36 }),
-      buff: balancePickerEntries(support.itemGroups.buff, { perMod: 18, total: 36 }),
-      other: balancePickerEntries(support.itemGroups.other, { perMod: 18, total: 36 })
-    }
-  };
-  uniq(support.content.map(normalizedContentKind)).forEach((kind) => {
-    support.previews.descriptionByKind[kind] = balancePickerEntries(
-      support.content.filter((entry) => normalizedContentKind(entry) === kind),
-      { perMod: 28, total: 72 }
-    );
-  });
+  support.previews = { boss: [], descriptionByKind: {}, itemByGroup: { weapon: [], armor: [], accessory: [], buff: [], other: [] } };
 }
 
 function visibleSearchItems() {
@@ -566,82 +514,16 @@ function visibleSearchItems() {
 }
 
 function inferItemCategory(entry, groupKey) {
-  const group = GROUPS.find((item) => item.key === groupKey) || GROUPS[0];
-  if (groupKey) return group.cats[0];
-  return inferSearchCategory(entry);
+  if (groupKey) {
+    const group = GROUPS.find((item) => item.key === groupKey) || GROUPS[0];
+    return group.cats[0];
+  }
+  return normalizePickerCategory(entry) || "other";
 }
 
 function requestedSupportMods() {
   const supportedMods = new Set(MODS.map((entry) => entry.value));
   return uniq(["Terraria", ...(state.requiredMods || [])]).filter((modName) => supportedMods.has(modName));
-}
-
-function pickerModOrder() {
-  const requested = requestedSupportMods();
-  const preferred = requested.filter((modName) => modName !== "Terraria");
-  const fallback = requested.includes("Terraria") ? ["Terraria"] : [];
-  const knownMods = uniq([
-    ...support.content.map((entry) => entryModName(entry)),
-    ...support.items.map((entry) => entryModName(entry)),
-    ...support.bosses.map((entry) => entryModName(entry))
-  ]);
-
-  return uniq([...preferred, ...fallback, ...knownMods]);
-}
-
-function comparePickerEntries(left, right) {
-  const modOrder = pickerModOrder();
-  const leftOrder = modOrder.indexOf(entryModName(left));
-  const rightOrder = modOrder.indexOf(entryModName(right));
-  const normalizedLeftOrder = leftOrder === -1 ? modOrder.length : leftOrder;
-  const normalizedRightOrder = rightOrder === -1 ? modOrder.length : rightOrder;
-
-  if (normalizedLeftOrder !== normalizedRightOrder) {
-    return normalizedLeftOrder - normalizedRightOrder;
-  }
-
-  return localizedDisplayName(left).localeCompare(localizedDisplayName(right), undefined, { sensitivity: "base" });
-}
-
-function balancePickerEntries(entries, { perMod = 120, total = 320 } = {}) {
-  const buckets = new Map();
-
-  entries.forEach((entry) => {
-    const modName = entryModName(entry);
-    if (!buckets.has(modName)) buckets.set(modName, []);
-    buckets.get(modName).push(entry);
-  });
-
-  const orderedMods = pickerModOrder().filter((modName) => buckets.has(modName));
-  const cursors = new Map(orderedMods.map((modName) => [modName, 0]));
-  const results = [];
-
-  while (results.length < total) {
-    let addedInRound = false;
-
-    for (const modName of orderedMods) {
-      const bucket = buckets.get(modName) || [];
-      const cursor = cursors.get(modName) || 0;
-      if (cursor >= bucket.length || cursor >= perMod) continue;
-      results.push(bucket[cursor]);
-      cursors.set(modName, cursor + 1);
-      addedInRound = true;
-      if (results.length >= total) break;
-    }
-
-    if (!addedInRound) break;
-  }
-
-  if (results.length >= total) return results.slice(0, total);
-
-  const leftovers = [];
-  orderedMods.forEach((modName) => {
-    const bucket = buckets.get(modName) || [];
-    const cursor = cursors.get(modName) || 0;
-    leftovers.push(...bucket.slice(cursor));
-  });
-
-  return [...results, ...leftovers.slice(0, Math.max(0, total - results.length))];
 }
 
 function normalizeRichTextSource(value) {
@@ -1319,7 +1201,7 @@ function openPicker(mode, options = {}) {
   pickerState = {
     mode,
     filter,
-    visibleCount: mode === "description" ? PICKER_PREVIEW_STEP * 2 : PICKER_PREVIEW_STEP,
+    entries: [],
     ...nextOptions
   };
   refs.picker.hidden = false;
@@ -1333,11 +1215,19 @@ function openPicker(mode, options = {}) {
   refs.pickerClose.textContent = s("pickerClose");
   refs.pickerSearchInput.value = "";
   renderPickerFilters();
-  renderPickerResults();
+  renderPickerResults({ resetScroll: true });
   refs.pickerSearchInput.focus();
 }
 
 function closePicker() {
+  if (pickerScrollFrame) {
+    cancelAnimationFrame(pickerScrollFrame);
+    pickerScrollFrame = 0;
+  }
+  if (pickerSearchDebounce) {
+    clearTimeout(pickerSearchDebounce);
+    pickerSearchDebounce = 0;
+  }
   pickerState = null;
   refs.picker.hidden = true;
 }
@@ -1363,6 +1253,9 @@ function renderPickerFilters() {
 function pickerEntries() {
   if (!pickerState) return [];
   if (pickerState.mode === "description") {
+    if (pickerState.filter && pickerState.filter !== "all") {
+      return support.content.filter((entry) => normalizedContentKind(entry) === pickerState.filter);
+    }
     return support.content;
   }
   if (pickerState.mode === "boss") {
@@ -1374,88 +1267,69 @@ function pickerEntries() {
   return support.itemGroups[pickerState.groupKey || "weapon"] || [];
 }
 
-function pickerSearchEntries(query) {
-  if (!pickerState) return [];
-  if (pickerState.mode !== "item") return pickerEntries();
-  if (pickerState.groupKey === "other") {
-    if (query.length < ITEM_PICKER_MIN_QUERY) return [];
-    return visibleSearchItems();
-  }
-  return pickerEntries();
-}
-
 function pickerSearchText(entry) {
   return entry?.searchText || [entry.displayName, entry.displayNameRu, entry.internalName, entry.id].filter(Boolean).join(" ").toLowerCase();
 }
 
-function uniquePickerEntries(entries) {
-  const seen = new Set();
-  return (entries || []).filter((entry) => {
-    const key = entry?.id;
-    if (!key || seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-}
-
-function pickerPreviewSource() {
+function filteredPickerEntries(query) {
   if (!pickerState) return [];
-  if (pickerState.mode === "description") {
-    const filter = pickerState.filter || "all";
-    const balanced = support.previews.descriptionByKind[filter] || [];
-    const full = filter === "all"
-      ? support.content
-      : support.content.filter((entry) => normalizedContentKind(entry) === filter);
-    return uniquePickerEntries([...balanced, ...full]);
-  }
-  if (pickerState.mode === "boss") {
-    return uniquePickerEntries([...(support.previews.boss || []), ...support.bosses]);
-  }
-  const groupKey = pickerState.groupKey || "weapon";
-  return uniquePickerEntries([
-    ...(support.previews.itemByGroup[groupKey] || []),
-    ...(support.itemGroups[groupKey] || [])
-  ]);
+  const normalizedQuery = String(query || "").trim().toLowerCase();
+  const source = pickerEntries();
+  if (!normalizedQuery) return source;
+  return source.filter((entry) => pickerSearchText(entry).includes(normalizedQuery));
 }
 
-function pickerPreviewEntries() {
-  if (!pickerState) return [];
-  const source = pickerPreviewSource();
-  return source.slice(0, pickerState.visibleCount || source.length);
+function pickerResultMarkup(entry) {
+  const label = localizedDisplayName(entry) || String(entry.id || "").split("/").pop() || "";
+  const pickerType = pickerState?.mode === "description"
+    ? normalizedContentKind(entry)
+    : pickerState?.mode === "boss"
+      ? "boss"
+      : "item";
+  const boss = pickerType === "boss";
+  return `<button class="picker-result" type="button" data-picker-id="${esc(entry.id)}"><span class="picker-result__media">${iconMarkup(entry, label, boss)}</span><span class="picker-result__copy"><strong>${esc(label)}</strong><span>${esc(entry.id)}</span></span></button>`;
 }
 
-function renderPickerResults() {
+function renderPickerViewport() {
+  if (!pickerState?.entries) return;
+  const listHost = refs.pickerResults.querySelector("[data-picker-virtual]");
+  if (!listHost) return;
+
+  const entries = pickerState.entries;
+  const viewportHeight = Math.max(refs.pickerResults.clientHeight || 0, PICKER_VIRTUAL_ROW_HEIGHT * 5);
+  const visibleRows = Math.ceil(viewportHeight / PICKER_VIRTUAL_ROW_HEIGHT);
+  const scrollTop = refs.pickerResults.scrollTop;
+  const start = Math.max(0, Math.floor(scrollTop / PICKER_VIRTUAL_ROW_HEIGHT) - PICKER_VIRTUAL_OVERSCAN);
+  const end = Math.min(entries.length, start + visibleRows + PICKER_VIRTUAL_OVERSCAN * 2);
+  const topPad = start * PICKER_VIRTUAL_ROW_HEIGHT;
+  const bottomPad = Math.max(0, (entries.length - end) * PICKER_VIRTUAL_ROW_HEIGHT);
+  const rows = entries.slice(start, end).map((entry) => pickerResultMarkup(entry)).join("");
+
+  listHost.innerHTML = `${topPad ? `<div class="picker-virtual-pad" style="height:${topPad}px"></div>` : ""}${rows}${bottomPad ? `<div class="picker-virtual-pad" style="height:${bottomPad}px"></div>` : ""}`;
+}
+
+function renderPickerResults({ resetScroll = false } = {}) {
+  if (!pickerState) return;
   const query = refs.pickerSearchInput.value.trim().toLowerCase();
-  const searchModeNeedsMoreText = pickerState?.mode === "item" && pickerState?.groupKey === "other" && query.length > 0 && query.length < ITEM_PICKER_MIN_QUERY;
-  const fullPreviewEntries = !query && pickerState ? pickerPreviewSource() : [];
-  const fullSearchEntries = query
-    ? pickerSearchEntries(query)
-      .filter((entry) => {
-        if (pickerState?.mode === "description" && pickerState.filter && pickerState.filter !== "all") {
-          return normalizedContentKind(entry) === pickerState.filter;
-        }
-        return true;
-      })
-      .filter((entry) => pickerSearchText(entry).includes(query))
-      .sort(comparePickerEntries)
-    : [];
-  let results = query
-    ? fullSearchEntries.slice(0, pickerState?.visibleCount || PICKER_PREVIEW_STEP)
-    : pickerPreviewEntries();
+  const needsLongerQuery = pickerState.mode === "item" && pickerState.groupKey === "other" && query.length > 0 && query.length < ITEM_PICKER_MIN_QUERY;
 
-  const hint = searchModeNeedsMoreText
-    ? `<p class="empty-state">${esc(lang() === "ru" ? `Введите минимум ${ITEM_PICKER_MIN_QUERY} символа, чтобы искать по полному списку предметов.` : `Type at least ${ITEM_PICKER_MIN_QUERY} characters to search the full item list.`)}</p>`
-    : "";
-  const showMore = (query ? fullSearchEntries : fullPreviewEntries).length > results.length
-    ? `<button class="button button--quiet button--tiny" type="button" data-picker-more="1">${esc(s("pickerShowMore"))}</button>`
-    : "";
+  if (needsLongerQuery) {
+    refs.pickerResults.innerHTML = `<p class="empty-state">${esc(lang() === "ru" ? `Введите минимум ${ITEM_PICKER_MIN_QUERY} символа, чтобы искать по полному списку предметов.` : `Type at least ${ITEM_PICKER_MIN_QUERY} characters to search the full item list.`)}</p>`;
+    pickerState.entries = [];
+    return;
+  }
 
-  refs.pickerResults.innerHTML = hint + (results.map((entry) => {
-    const label = localizedDisplayName(entry) || String(entry.id || "").split("/").pop() || "";
-    const pickerType = pickerState?.mode === "description" ? normalizedContentKind(entry) : pickerState?.mode === "boss" ? "boss" : "item";
-    const boss = pickerType === "boss";
-    return `<button class="picker-result" type="button" data-picker-id="${esc(entry.id)}"><span class="picker-result__media">${iconMarkup(entry, label, boss)}</span><span class="picker-result__copy"><strong>${esc(label)}</strong><span>${esc(entry.id)}</span></span></button>`;
-  }).join("") || (!hint ? `<p class="empty-state">${esc(s("noPickerResults"))}</p>` : "")) + showMore;
+  const results = filteredPickerEntries(query);
+  pickerState.entries = results;
+
+  if (!results.length) {
+    refs.pickerResults.innerHTML = `<p class="empty-state">${esc(s("noPickerResults"))}</p>`;
+    return;
+  }
+
+  refs.pickerResults.innerHTML = `<div class="picker-virtual-list" data-picker-virtual></div>`;
+  if (resetScroll) refs.pickerResults.scrollTop = 0;
+  renderPickerViewport();
 }
 
 function insertAtCursor(field, value, startOverride, endOverride) {
@@ -1537,8 +1411,13 @@ async function fetchJsonOptional(paths, fallback = null) {
 function ingestLegacySupport(entries, kind) {
   for (const entry of entries || []) {
     const nextEntry = { ...entry, kind: entry.kind || kind };
+    if (kind !== "boss") {
+      nextEntry.category = normalizePickerCategory(nextEntry) || "other";
+    }
     if (kind === "boss" && nextEntry.bossPickerEligible === undefined) {
       nextEntry.bossPickerEligible = true;
+      nextEntry.canonicalBossId = nextEntry.canonicalBossId || nextEntry.id;
+      nextEntry.bossColumn = nextEntry.bossColumn || "hardmode";
     }
     mergeSupportEntry(support.contentMap, nextEntry);
     if (kind === "boss") {
@@ -1565,19 +1444,32 @@ async function loadModSupport(modName) {
   if (!supportDataCache.has(modName)) {
     const base = `supported/${modName}`;
     const alt = `../supported/${modName}`;
-    supportDataCache.set(modName, await Promise.all([
-      fetchJsonOptional([`${base}/search-content.json`, `${alt}/search-content.json`]),
-      fetchJsonOptional([`${base}/items.json`, `${alt}/items.json`]),
-      fetchJsonOptional([`${base}/ores.json`, `${alt}/ores.json`]),
-      fetchJsonOptional([`${base}/bosses.json`, `${alt}/bosses.json`]),
-      fetchJsonOptional([`${base}/search-items.json`, `${alt}/search-items.json`])
-    ]));
+    const searchContentData = await fetchJsonOptional([`${base}/search-content.json`, `${alt}/search-content.json`]);
+    if (searchContentData?.entries) {
+      supportDataCache.set(modName, { searchContentData });
+    } else {
+      const [itemsData, oresData, bossesData, legacySearchItemsData] = await Promise.all([
+        fetchJsonOptional([`${base}/items.json`, `${alt}/items.json`]),
+        fetchJsonOptional([`${base}/ores.json`, `${alt}/ores.json`]),
+        fetchJsonOptional([`${base}/bosses.json`, `${alt}/bosses.json`]),
+        fetchJsonOptional([`${base}/search-items.json`, `${alt}/search-items.json`])
+      ]);
+      supportDataCache.set(modName, {
+        searchContentData: null,
+        itemsData,
+        oresData,
+        bossesData,
+        legacySearchItemsData
+      });
+    }
   }
 
-  const [searchContentData, itemsData, oresData, bossesData, legacySearchItemsData] = supportDataCache.get(modName);
+  const cached = supportDataCache.get(modName) || {};
+  const { searchContentData, itemsData, oresData, bossesData, legacySearchItemsData } = cached;
 
   if (searchContentData?.entries) {
     ingestSearchableSupport(searchContentData.entries);
+    return;
   }
 
   if (legacySearchItemsData?.items) {
@@ -1790,21 +1682,28 @@ refs.picker.addEventListener("click", (event) => {
   const filterButton = event.target.closest("[data-picker-filter]");
   if (filterButton && pickerState) {
     pickerState.filter = filterButton.dataset.pickerFilter;
-    pickerState.visibleCount = pickerState.mode === "description" ? PICKER_PREVIEW_STEP * 2 : PICKER_PREVIEW_STEP;
     renderPickerFilters();
-    renderPickerResults();
-    return;
-  }
-  const moreButton = event.target.closest("[data-picker-more]");
-  if (moreButton && pickerState) {
-    pickerState.visibleCount = (pickerState.visibleCount || PICKER_PREVIEW_STEP) + PICKER_PREVIEW_STEP;
-    renderPickerResults();
+    renderPickerResults({ resetScroll: true });
     return;
   }
   const button = event.target.closest("[data-picker-id]");
   if (button) handlePickerSelection(button.dataset.pickerId);
 });
-refs.pickerSearchInput.addEventListener("input", renderPickerResults);
+refs.pickerSearchInput.addEventListener("input", () => {
+  if (pickerSearchDebounce) clearTimeout(pickerSearchDebounce);
+  pickerSearchDebounce = setTimeout(() => {
+    pickerSearchDebounce = 0;
+    renderPickerResults({ resetScroll: true });
+  }, 80);
+});
+refs.pickerResults.addEventListener("scroll", () => {
+  if (!pickerState?.entries?.length) return;
+  if (pickerScrollFrame) cancelAnimationFrame(pickerScrollFrame);
+  pickerScrollFrame = requestAnimationFrame(() => {
+    pickerScrollFrame = 0;
+    renderPickerViewport();
+  });
+});
 site?.onChange?.(() => renderAll());
 
 renderAll();

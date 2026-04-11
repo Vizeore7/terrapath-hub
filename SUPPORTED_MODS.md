@@ -26,5 +26,6 @@ website can display, but the public editor stays limited to supported web data.
 1. Load TerraPath and Calamity Mod together in `tModLoader`.
 2. Run `/terrapath export calamity` in-game.
 3. Run `python tools/import_calamity_wiki_boss_icons.py` to refresh curated boss icons from the official wiki.
-4. Run `python tools/build_calamity_support.py` in this repository.
-5. Run `python tools/validate_support_data.py` before committing regenerated support files.
+4. Run `python tools/build_terraria_support.py` to regenerate deterministic Terraria search-content.
+5. Run `python tools/build_calamity_support.py` to rebuild Calamity search-content/items/bosses.
+6. Run `python tools/validate_support_data.py` and `python tools/build_catalog.py --check` before committing.

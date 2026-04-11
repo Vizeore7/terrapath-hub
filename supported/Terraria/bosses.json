@@ -6,225 +6,471 @@
       "id": "Terraria/KingSlime",
       "internalName": "KingSlime",
       "displayName": "King Slime",
+      "displayNameRu": "\u041a\u043e\u0440\u043e\u043b\u044c \u0441\u043b\u0438\u0437\u043d\u0435\u0439",
       "icon": "assets/icons/terraria/bosses/king-slime-wiki.png",
-      "displayNameRu": "\u041A\u043E\u0440\u043E\u043B\u044C \u0441\u043B\u0438\u0437\u043D\u0435\u0439"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/KingSlime",
+      "bossColumn": "prehardmode",
+      "tags": [
+        "boss",
+        "prehardmode"
+      ]
     },
     {
       "id": "Terraria/EyeofCthulhu",
       "internalName": "EyeofCthulhu",
       "displayName": "Eye of Cthulhu",
+      "displayNameRu": "\u0413\u043b\u0430\u0437 \u041a\u0442\u0443\u043b\u0445\u0443",
       "icon": "assets/icons/terraria/bosses/eye-of-cthulhu.png",
-      "displayNameRu": "\u0413\u043B\u0430\u0437 \u041A\u0442\u0443\u043B\u0445\u0443"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/EyeofCthulhu",
+      "bossColumn": "prehardmode",
+      "tags": [
+        "boss",
+        "prehardmode"
+      ]
     },
     {
       "id": "Terraria/EaterofWorldsHead",
       "internalName": "EaterofWorldsHead",
       "displayName": "Eater of Worlds",
+      "displayNameRu": "\u041f\u043e\u0436\u0438\u0440\u0430\u0442\u0435\u043b\u044c \u043c\u0438\u0440\u043e\u0432",
       "icon": "assets/icons/terraria/bosses/eater-of-worlds.png",
-      "displayNameRu": "\u041F\u043E\u0436\u0438\u0440\u0430\u0442\u0435\u043B\u044C \u043C\u0438\u0440\u043E\u0432"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/EaterofWorldsHead",
+      "bossColumn": "prehardmode",
+      "tags": [
+        "boss",
+        "prehardmode"
+      ]
     },
     {
       "id": "Terraria/BrainofCthulhu",
       "internalName": "BrainofCthulhu",
       "displayName": "Brain of Cthulhu",
+      "displayNameRu": "\u041c\u043e\u0437\u0433 \u041a\u0442\u0443\u043b\u0445\u0443",
       "icon": "assets/icons/terraria/bosses/brain-of-cthulhu.png",
-      "displayNameRu": "\u041C\u043E\u0437\u0433 \u041A\u0442\u0443\u043B\u0445\u0443"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/BrainofCthulhu",
+      "bossColumn": "prehardmode",
+      "tags": [
+        "boss",
+        "prehardmode"
+      ]
     },
     {
       "id": "Terraria/QueenBee",
       "internalName": "QueenBee",
       "displayName": "Queen Bee",
+      "displayNameRu": "\u041a\u043e\u0440\u043e\u043b\u0435\u0432\u0430 \u043f\u0447\u0435\u043b",
       "icon": "assets/icons/terraria/bosses/queen-bee.png",
-      "displayNameRu": "\u041A\u043E\u0440\u043E\u043B\u0435\u0432\u0430 \u043F\u0447\u0435\u043B"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/QueenBee",
+      "bossColumn": "prehardmode",
+      "tags": [
+        "boss",
+        "prehardmode"
+      ]
     },
     {
       "id": "Terraria/SkeletronHead",
       "internalName": "SkeletronHead",
       "displayName": "Skeletron",
+      "displayNameRu": "\u0421\u043a\u0435\u043b\u0435\u0442\u0440\u043e\u043d",
       "icon": "assets/icons/terraria/bosses/skeletron.png",
-      "displayNameRu": "\u0421\u043A\u0435\u043B\u0435\u0442\u0440\u043E\u043D"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/SkeletronHead",
+      "bossColumn": "prehardmode",
+      "tags": [
+        "boss",
+        "prehardmode"
+      ]
     },
     {
       "id": "Terraria/Deerclops",
       "internalName": "Deerclops",
       "displayName": "Deerclops",
+      "displayNameRu": "\u0426\u0438\u043a\u043b\u043e\u043b\u0435\u043d\u044c",
       "icon": "assets/icons/terraria/bosses/deerclops-wiki.png",
-      "displayNameRu": "\u0426\u0438\u043A\u043B\u043E\u043B\u0435\u043D\u044C"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/Deerclops",
+      "bossColumn": "prehardmode",
+      "tags": [
+        "boss",
+        "prehardmode"
+      ]
     },
     {
       "id": "Terraria/WallofFlesh",
       "internalName": "WallofFlesh",
       "displayName": "Wall of Flesh",
+      "displayNameRu": "\u0421\u0442\u0435\u043d\u0430 \u043f\u043b\u043e\u0442\u0438",
       "icon": "assets/icons/terraria/bosses/wall-of-flesh.png",
-      "displayNameRu": "\u0421\u0442\u0435\u043D\u0430 \u043F\u043B\u043E\u0442\u0438"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/WallofFlesh",
+      "bossColumn": "prehardmode",
+      "tags": [
+        "boss",
+        "prehardmode"
+      ]
     },
     {
       "id": "Terraria/QueenSlimeBoss",
       "internalName": "QueenSlimeBoss",
       "displayName": "Queen Slime",
+      "displayNameRu": "\u041a\u043e\u0440\u043e\u043b\u0435\u0432\u0430 \u0441\u043b\u0438\u0437\u043d\u0435\u0439",
       "icon": "assets/icons/terraria/bosses/queen-slime-wiki.png",
-      "displayNameRu": "\u041A\u043E\u0440\u043E\u043B\u0435\u0432\u0430 \u0441\u043B\u0438\u0437\u043D\u0435\u0439"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/QueenSlimeBoss",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/TheDestroyer",
       "internalName": "TheDestroyer",
       "displayName": "The Destroyer",
+      "displayNameRu": "\u0423\u043d\u0438\u0447\u0442\u043e\u0436\u0438\u0442\u0435\u043b\u044c",
       "icon": "assets/icons/terraria/bosses/the-destroyer.png",
-      "displayNameRu": "\u0423\u043D\u0438\u0447\u0442\u043E\u0436\u0438\u0442\u0435\u043B\u044C"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/TheDestroyer",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/Retinazer",
       "internalName": "Retinazer",
       "displayName": "The Twins",
+      "displayNameRu": "\u0420\u0435\u0442\u0438\u043d\u0430\u0437\u0435\u0440",
       "icon": "assets/icons/terraria/bosses/the-twins.png",
-      "displayNameRu": "\u0420\u0435\u0442\u0438\u043D\u0430\u0437\u0435\u0440"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/Retinazer",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/SkeletronPrime",
       "internalName": "SkeletronPrime",
       "displayName": "Skeletron Prime",
+      "displayNameRu": "\u0421\u043a\u0435\u043b\u0435\u0442\u0440\u043e\u043d \u041f\u0440\u0430\u0439\u043c",
       "icon": "assets/icons/terraria/bosses/skeletron-prime.png",
-      "displayNameRu": "\u0421\u043A\u0435\u043B\u0435\u0442\u0440\u043E\u043D \u041F\u0440\u0430\u0439\u043C"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/SkeletronPrime",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/Plantera",
       "internalName": "Plantera",
       "displayName": "Plantera",
+      "displayNameRu": "\u041f\u043b\u0430\u043d\u0442\u0435\u0440\u0430",
       "icon": "assets/icons/terraria/bosses/plantera.png",
-      "displayNameRu": "\u041F\u043B\u0430\u043D\u0442\u0435\u0440\u0430"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/Plantera",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/Golem",
       "internalName": "Golem",
       "displayName": "Golem",
+      "displayNameRu": "\u0413\u043e\u043b\u0435\u043c",
       "icon": "assets/icons/terraria/bosses/golem.png",
-      "displayNameRu": "\u0413\u043E\u043B\u0435\u043C"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/Golem",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/DukeFishron",
       "internalName": "DukeFishron",
       "displayName": "Duke Fishron",
+      "displayNameRu": "\u0413\u0435\u0440\u0446\u043e\u0433 \u0420\u044b\u0431\u0440\u043e\u043d",
       "icon": "assets/icons/terraria/bosses/duke-fishron.png",
-      "displayNameRu": "\u0413\u0435\u0440\u0446\u043E\u0433 \u0420\u044B\u0431\u0440\u043E\u043D"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/DukeFishron",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/HallowBoss",
       "internalName": "HallowBoss",
       "displayName": "Empress of Light",
+      "displayNameRu": "\u0418\u043c\u043f\u0435\u0440\u0430\u0442\u0440\u0438\u0446\u0430 \u0441\u0432\u0435\u0442\u0430",
       "icon": "assets/icons/terraria/bosses/empress-of-light.png",
-      "displayNameRu": "\u0418\u043C\u043F\u0435\u0440\u0430\u0442\u0440\u0438\u0446\u0430 \u0441\u0432\u0435\u0442\u0430"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/HallowBoss",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/CultistBoss",
       "internalName": "CultistBoss",
       "displayName": "Lunatic Cultist",
+      "displayNameRu": "\u041a\u0443\u043b\u044c\u0442\u0438\u0441\u0442-\u043b\u0443\u043d\u0430\u0442\u0438\u043a",
       "icon": "assets/icons/terraria/bosses/lunatic-cultist.png",
-      "displayNameRu": "\u041A\u0443\u043B\u044C\u0442\u0438\u0441\u0442-\u043B\u0443\u043D\u0430\u0442\u0438\u043A"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/CultistBoss",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/MoonLordCore",
       "internalName": "MoonLordCore",
       "displayName": "Moon Lord",
+      "displayNameRu": "\u041b\u0443\u043d\u043d\u044b\u0439 \u043b\u043e\u0440\u0434",
       "icon": "assets/icons/terraria/bosses/moon-lord-wiki.png",
-      "displayNameRu": "\u041B\u0443\u043D\u043D\u044B\u0439 \u043B\u043E\u0440\u0434"
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/MoonLordCore",
+      "bossColumn": "postmoonlord",
+      "tags": [
+        "boss",
+        "postmoonlord"
+      ]
     },
     {
       "id": "Terraria/DD2DarkMageT1",
       "internalName": "DD2DarkMageT1",
       "displayName": "Dark Mage",
-      "displayNameRu": "\u0422\u0435\u043C\u043D\u044B\u0439 \u043C\u0430\u0433",
-      "icon": "assets/icons/terraria/bosses/dark-mage-wiki.png"
+      "displayNameRu": "\u0422\u0435\u043c\u043d\u044b\u0439 \u043c\u0430\u0433",
+      "icon": "assets/icons/terraria/bosses/dark-mage-wiki.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/DD2DarkMageT1",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/DD2OgreT2",
       "internalName": "DD2OgreT2",
       "displayName": "Ogre",
-      "displayNameRu": "\u041E\u0433\u0440",
-      "icon": "assets/icons/terraria/bosses/ogre-wiki.png"
+      "displayNameRu": "\u041e\u0433\u0440",
+      "icon": "assets/icons/terraria/bosses/ogre-wiki.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/DD2OgreT2",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/DD2Betsy",
       "internalName": "DD2Betsy",
       "displayName": "Betsy",
       "displayNameRu": "\u0411\u0435\u0442\u0441\u0438",
-      "icon": "assets/icons/terraria/bosses/betsy-wiki.png"
+      "icon": "assets/icons/terraria/bosses/betsy-wiki.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/DD2Betsy",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/PirateShip",
       "internalName": "PirateShip",
       "displayName": "Flying Dutchman",
-      "displayNameRu": "\u041B\u0435\u0442\u0443\u0447\u0438\u0439 \u0433\u043E\u043B\u043B\u0430\u043D\u0434\u0435\u0446",
-      "icon": "assets/icons/terraria/bosses/flying-dutchman.png"
+      "displayNameRu": "\u041b\u0435\u0442\u0443\u0447\u0438\u0439 \u0433\u043e\u043b\u043b\u0430\u043d\u0434\u0435\u0446",
+      "icon": "assets/icons/terraria/bosses/flying-dutchman.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/PirateShip",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/MourningWood",
       "internalName": "MourningWood",
       "displayName": "Mourning Wood",
-      "displayNameRu": "\u041F\u043B\u0430\u043A\u0443\u0447\u0438\u0439 \u0414\u0440\u0435\u0432\u0435\u043D\u044C",
-      "icon": "assets/icons/terraria/bosses/mourning-wood.png"
+      "displayNameRu": "\u041f\u043b\u0430\u043a\u0443\u0447\u0438\u0439 \u0414\u0440\u0435\u0432\u0435\u043d\u044c",
+      "icon": "assets/icons/terraria/bosses/mourning-wood.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/MourningWood",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/Pumpking",
       "internalName": "Pumpking",
       "displayName": "Pumpking",
-      "displayNameRu": "\u0422\u044B\u043A\u0432\u0435\u043D\u043D\u044B\u0439 \u041A\u043E\u0440\u043E\u043B\u044C",
-      "icon": "assets/icons/terraria/bosses/pumpking.png"
+      "displayNameRu": "\u0422\u044b\u043a\u0432\u0435\u043d\u043d\u044b\u0439 \u041a\u043e\u0440\u043e\u043b\u044c",
+      "icon": "assets/icons/terraria/bosses/pumpking.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/Pumpking",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/Everscream",
       "internalName": "Everscream",
       "displayName": "Everscream",
-      "displayNameRu": "\u0417\u043B\u043E\u0431\u043D\u043E\u0435\u043B\u044C",
-      "icon": "assets/icons/terraria/bosses/everscream.png"
+      "displayNameRu": "\u0417\u043b\u043e\u0431\u043d\u043e\u0435\u043b\u044c",
+      "icon": "assets/icons/terraria/bosses/everscream.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/Everscream",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/SantaNK1",
       "internalName": "SantaNK1",
       "displayName": "Santa-NK1",
-      "displayNameRu": "\u0421\u0430\u043D\u0442\u0430-NK1",
-      "icon": "assets/icons/terraria/bosses/santa-nk1.png"
+      "displayNameRu": "\u0421\u0430\u043d\u0442\u0430-NK1",
+      "icon": "assets/icons/terraria/bosses/santa-nk1.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/SantaNK1",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/IceQueen",
       "internalName": "IceQueen",
       "displayName": "Ice Queen",
-      "displayNameRu": "\u041B\u0435\u0434\u044F\u043D\u0430\u044F \u043A\u043E\u0440\u043E\u043B\u0435\u0432\u0430",
-      "icon": "assets/icons/terraria/bosses/ice-queen.png"
+      "displayNameRu": "\u041b\u0435\u0434\u044f\u043d\u0430\u044f \u043a\u043e\u0440\u043e\u043b\u0435\u0432\u0430",
+      "icon": "assets/icons/terraria/bosses/ice-queen.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/IceQueen",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/MartianSaucerCore",
       "internalName": "MartianSaucerCore",
       "displayName": "Martian Saucer",
-      "displayNameRu": "\u041B\u0435\u0442\u0430\u044E\u0449\u0430\u044F \u0442\u0430\u0440\u0435\u043B\u043A\u0430 \u043C\u0430\u0440\u0441\u0438\u0430\u043D",
-      "icon": "assets/icons/terraria/bosses/martian-saucer.png"
+      "displayNameRu": "\u041b\u0435\u0442\u0430\u044e\u0449\u0430\u044f \u0442\u0430\u0440\u0435\u043b\u043a\u0430 \u043c\u0430\u0440\u0441\u0438\u0430\u043d",
+      "icon": "assets/icons/terraria/bosses/martian-saucer.png",
+      "kind": "miniboss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/MartianSaucerCore",
+      "bossColumn": "miniboss",
+      "tags": [
+        "miniboss"
+      ]
     },
     {
       "id": "Terraria/LunarTowerSolar",
       "internalName": "LunarTowerSolar",
       "displayName": "Solar Pillar",
-      "displayNameRu": "\u0411\u0430\u0448\u043D\u044F \u0441\u043E\u043B\u043D\u0446\u0430",
-      "icon": "assets/icons/terraria/bosses/solar-pillar.png"
+      "displayNameRu": "\u0411\u0430\u0448\u043d\u044f \u0441\u043e\u043b\u043d\u0446\u0430",
+      "icon": "assets/icons/terraria/bosses/solar-pillar.png",
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/LunarTowerSolar",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/LunarTowerNebula",
       "internalName": "LunarTowerNebula",
       "displayName": "Nebula Pillar",
-      "displayNameRu": "\u0411\u0430\u0448\u043D\u044F \u0442\u0443\u043C\u0430\u043D\u043D\u043E\u0441\u0442\u0438",
-      "icon": "assets/icons/terraria/bosses/nebula-pillar.png"
+      "displayNameRu": "\u0411\u0430\u0448\u043d\u044f \u0442\u0443\u043c\u0430\u043d\u043d\u043e\u0441\u0442\u0438",
+      "icon": "assets/icons/terraria/bosses/nebula-pillar.png",
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/LunarTowerNebula",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/LunarTowerVortex",
       "internalName": "LunarTowerVortex",
       "displayName": "Vortex Pillar",
-      "displayNameRu": "\u0411\u0430\u0448\u043D\u044F \u0432\u0438\u0445\u0440\u044F",
-      "icon": "assets/icons/terraria/bosses/vortex-pillar.png"
+      "displayNameRu": "\u0411\u0430\u0448\u043d\u044f \u0432\u0438\u0445\u0440\u044f",
+      "icon": "assets/icons/terraria/bosses/vortex-pillar.png",
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/LunarTowerVortex",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     },
     {
       "id": "Terraria/LunarTowerStardust",
       "internalName": "LunarTowerStardust",
       "displayName": "Stardust Pillar",
-      "displayNameRu": "\u0411\u0430\u0448\u043D\u044F \u0437\u0432\u0435\u0437\u0434\u043D\u043E\u0439 \u043F\u044B\u043B\u0438",
-      "icon": "assets/icons/terraria/bosses/stardust-pillar.png"
+      "displayNameRu": "\u0411\u0430\u0448\u043d\u044f \u0437\u0432\u0435\u0437\u0434\u043d\u043e\u0439 \u043f\u044b\u043b\u0438",
+      "icon": "assets/icons/terraria/bosses/stardust-pillar.png",
+      "kind": "boss",
+      "bossPickerEligible": true,
+      "canonicalBossId": "Terraria/LunarTowerStardust",
+      "bossColumn": "hardmode",
+      "tags": [
+        "boss",
+        "hardmode"
+      ]
     }
   ]
 }

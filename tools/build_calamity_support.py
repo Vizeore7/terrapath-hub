@@ -15,6 +15,7 @@ NPC_ICON_ROOT = DOC_ICON_ROOT / "npcs"
 ITEM_LIKE_KINDS = {"item", "material", "ore", "other"}
 BOSS_LIKE_KINDS = {"boss", "miniboss"}
 STRICT_ITEM_CATEGORIES = {"weapon", "armor", "accessory", "buff", "other"}
+COMBAT_CLASS_TAGS = {"weapon", "melee", "ranged", "magic", "summoner", "rogue"}
 ARMOR_SUFFIXES = [
     "Helmet",
     "Helm",
@@ -29,6 +30,37 @@ ARMOR_SUFFIXES = [
     "Hat",
 ]
 ARMOR_REPRESENTATIVE_ORDER = {"Helmet": 0, "Helm": 0, "Headgear": 0, "Headpiece": 0, "Mask": 0, "Hood": 0, "Visage": 0, "Cowl": 0, "Crown": 0, "Cap": 0, "Hat": 0}
+ARMOR_HEAD_SUFFIXES = (
+    "Helmet",
+    "Helm",
+    "Headgear",
+    "Headpiece",
+    "Mask",
+    "Hood",
+    "Visage",
+    "Cowl",
+    "Crown",
+    "Cap",
+    "Hat",
+)
+ARMOR_BODY_SUFFIXES = (
+    "Breastplate",
+    "Chestplate",
+    "Chainmail",
+    "Platemail",
+    "Robe",
+    "Shirt",
+    "Tunic",
+    "BodyArmor",
+)
+ARMOR_LEG_SUFFIXES = (
+    "Greaves",
+    "Leggings",
+    "Cuisses",
+    "Pants",
+    "Kilt",
+)
+VALID_BOSS_COLUMNS = {"miniboss", "prehardmode", "hardmode", "postmoonlord"}
 WEAPON_HINTS = (
     "blade", "blaster", "boomerang", "bow", "cannon", "chakram", "gun", "knife", "lance",
     "launcher", "pistol", "rifle", "scythe", "shotgun", "spear", "staff", "sword", "tome",
@@ -187,6 +219,17 @@ def infer_armor_piece_rank(raw: dict) -> int:
     return 10
 
 
+def infer_armor_piece_slot(raw: dict) -> str:
+    internal_name = str(raw.get("internalName") or "")
+    if any(internal_name.endswith(suffix) for suffix in ARMOR_HEAD_SUFFIXES):
+        return "head"
+    if any(internal_name.endswith(suffix) for suffix in ARMOR_BODY_SUFFIXES):
+        return "body"
+    if any(internal_name.endswith(suffix) for suffix in ARMOR_LEG_SUFFIXES):
+        return "legs"
+    return "other"
+
+
 def load_raw_export(export_dir: Path | None) -> tuple[list[dict], list[dict]]:
     if export_dir is None:
         return [], []
@@ -288,77 +331,96 @@ def normalize_item_category(raw: dict, entry: dict) -> str:
         if str(value or "").strip()
     )
 
-    if any(hint in haystack for hint in TOOL_HINTS):
+    # Deterministic pipeline: trust curated/exported categories first.
+    if current == "ammo":
+        current = "buff"
+    elif current in {"material", "ore", "mount", "pet", "tool", "furniture"}:
+        current = "other"
+    elif current not in STRICT_ITEM_CATEGORIES:
+        current = ""
+
+    # Safety rails for known contamination cases.
+    if current in {"buff", "other"} and COMBAT_CLASS_TAGS & tags:
+        current = "weapon"
+
+    if current == "weapon" and any(hint in haystack for hint in TOOL_HINTS):
+        return "other"
+    if current == "accessory" and any(hint in haystack for hint in ARMOR_PIECE_HINTS + DECORATIVE_OR_MATERIAL_HINTS):
+        return "other"
+    if current == "buff" and any(hint in haystack for hint in ARMOR_PIECE_HINTS):
         return "other"
 
-    if any(hint in haystack for hint in BUFF_SUPPORT_HINTS):
-        return "buff"
+    if current:
+        return current
 
-    if any(hint in haystack for hint in DECORATIVE_OR_MATERIAL_HINTS):
-        return "other"
-
-    if entry.get("armorSetKey") or raw.get("armorSetKey") or current == "armor" or any(hint in haystack for hint in ARMOR_PIECE_HINTS):
+    if entry.get("armorSetKey") or raw.get("armorSetKey"):
         return "armor"
-
-    if current == "buff" or current == "ammo":
-        return "buff"
-
-    if "buff" in tags or any(hint in haystack for hint in BUFF_HINTS):
-        return "buff"
-
-    if current == "accessory" or "accessory" in tags or any(hint in haystack for hint in ACCESSORY_HINTS):
+    if "accessory" in tags:
         return "accessory"
-
-    if current == "weapon" or {"melee", "ranged", "magic", "summoner", "rogue", "weapon"} & tags:
+    if COMBAT_CLASS_TAGS & tags:
         return "weapon"
-
-    if any(hint in haystack for hint in WEAPON_HINTS):
-        return "weapon"
-
-    if current in {"material", "ore"}:
-        return "other"
-
-    if current in {"ammo", "mount", "pet", "tool", "furniture", "other"}:
-        return "other"
+    if "buff" in tags:
+        return "buff"
 
     return "other"
 
 
-def apply_armor_set_aliases(raw_items: list[dict], entries_by_id: dict[str, dict]) -> None:
-    groups: dict[str, list[dict]] = {}
-    for raw in raw_items:
-        key = infer_armor_set_key(raw)
-        if not key:
-            continue
-        groups.setdefault(key, []).append(raw)
+def apply_armor_selection_metadata(raw_items: list[dict], entries_by_id: dict[str, dict]) -> None:
+    raw_items_by_id = {
+        str(raw.get("id")): raw
+        for raw in raw_items
+        if raw.get("id")
+    }
+    armor_groups: dict[str, list[dict]] = {}
 
-    for set_key, members in groups.items():
+    for content_id, entry in entries_by_id.items():
+        if entry.get("category") != "armor":
+            continue
+
+        raw = raw_items_by_id.get(content_id, {})
+        set_key = infer_armor_set_key(raw) or infer_armor_set_key(entry) or str(entry.get("internalName") or content_id.split("/")[-1])
+        armor_groups.setdefault(set_key, []).append(raw or {"id": content_id, "internalName": entry.get("internalName", "")})
+
+    for set_key, members in armor_groups.items():
+        members = [member for member in members if member.get("id") in entries_by_id]
+        if not members:
+            continue
+
         members.sort(key=lambda raw: (infer_armor_piece_rank(raw), str(raw.get("internalName") or "")))
-        representative = members[0]
-        representative_id = representative.get("id")
-        if not representative_id or representative_id not in entries_by_id:
-            continue
+        piece_slots = [infer_armor_piece_slot(raw) for raw in members]
+        unique_head_count = sum(1 for slot in piece_slots if slot == "head")
+        has_body = any(slot == "body" for slot in piece_slots)
+        has_legs = any(slot == "legs" for slot in piece_slots)
+        set_mode = len(members) >= 3 and unique_head_count == 1 and has_body and has_legs
 
-        representative_entry = dict(entries_by_id[representative_id])
-        set_name = representative.get("armorSetName") or f"{humanize_identifier(set_key)} armor set"
-        set_name_ru = representative.get("armorSetNameRu") or representative_entry.get("displayNameRu") or set_name
-        representative_entry["displayName"] = set_name
-        representative_entry["displayNameRu"] = set_name_ru
-        representative_entry["category"] = "armor"
-        representative_entry["tags"] = merge_tags(representative_entry.get("tags", []), ["armor", "armor-set", slugify(set_key)])
-        representative_entry.pop("pickerHidden", None)
-        entries_by_id[representative_id] = representative_entry
+        representative = next((member for member in members if infer_armor_piece_slot(member) == "head"), members[0])
+        representative_id = str(representative.get("id"))
+        representative_slug = slugify(set_key)
 
-        for member in members[1:]:
-            member_id = member.get("id")
-            if not member_id or member_id not in entries_by_id:
-                continue
+        for member in members:
+            member_id = str(member.get("id"))
+            entry = dict(entries_by_id[member_id])
+            entry["category"] = "armor"
+            entry["armorGroupKey"] = set_key
 
-            member_entry = dict(entries_by_id[member_id])
-            member_entry["category"] = "armor"
-            member_entry["pickerHidden"] = True
-            member_entry["tags"] = merge_tags(member_entry.get("tags", []), ["armor", "armor-piece", slugify(set_key)])
-            entries_by_id[member_id] = member_entry
+            if set_mode and member_id == representative_id:
+                set_name = representative.get("armorSetName") or f"{humanize_identifier(set_key)} armor set"
+                set_name_ru = representative.get("armorSetNameRu") or entry.get("displayNameRu") or set_name
+                entry["displayName"] = set_name
+                entry["displayNameRu"] = set_name_ru
+                entry["armorMode"] = "set"
+                entry.pop("pickerHidden", None)
+                entry["tags"] = merge_tags(entry.get("tags", []), ["armor", "armor-set", representative_slug])
+            elif set_mode:
+                entry["armorMode"] = "piece"
+                entry["pickerHidden"] = True
+                entry["tags"] = merge_tags(entry.get("tags", []), ["armor", "armor-piece", representative_slug])
+            else:
+                entry["armorMode"] = "piece"
+                entry.pop("pickerHidden", None)
+                entry["tags"] = merge_tags(entry.get("tags", []), ["armor", "armor-piece", representative_slug])
+
+            entries_by_id[member_id] = entry
 
 
 def apply_supplement(entries_by_id: dict[str, dict], supplement_entries: list[dict]) -> None:
@@ -422,6 +484,11 @@ def apply_boss_normalization(entries_by_id: dict[str, dict], supplement: dict) -
     hidden_bosses = {str(entry) for entry in (rules.get("hiddenBosses") or []) if entry}
     eligible_minibosses = {str(entry) for entry in (rules.get("eligibleMinibosses") or []) if entry}
     display_overrides = rules.get("displayOverrides") or {}
+    column_map = {
+        str(content_id): str(column).strip().lower()
+        for content_id, column in (rules.get("columnMap") or {}).items()
+        if content_id and str(column).strip().lower() in VALID_BOSS_COLUMNS
+    }
 
     for content_id, entry in list(entries_by_id.items()):
         if entry.get("kind") not in BOSS_LIKE_KINDS:
@@ -436,9 +503,16 @@ def apply_boss_normalization(entries_by_id: dict[str, dict], supplement: dict) -
             normalized["bossPickerEligible"] = False
         elif normalized.get("kind") == "miniboss":
             normalized["bossPickerEligible"] = content_id in eligible_minibosses
+            if normalized["bossPickerEligible"]:
+                normalized["canonicalBossId"] = content_id
         else:
             normalized["bossPickerEligible"] = True
             normalized["canonicalBossId"] = content_id
+
+        boss_column = column_map.get(content_id) or column_map.get(canonical_id)
+        if not boss_column:
+            boss_column = "miniboss" if normalized.get("kind") == "miniboss" else "hardmode"
+        normalized["bossColumn"] = boss_column
 
         override = display_overrides.get(content_id) or {}
         if override.get("displayName"):
@@ -499,6 +573,16 @@ def validate_coverage(raw_items: list[dict], raw_npcs: list[dict], entries_by_id
             f"Boss normalization refers to missing canonical targets: {', '.join(missing_canonical_targets[:20])}"
         )
 
+    missing_boss_columns = [
+        row.get("id")
+        for row in bosses.get("bosses", [])
+        if row.get("bossColumn") not in VALID_BOSS_COLUMNS
+    ]
+    if missing_boss_columns:
+        raise SystemExit(
+            f"Boss picker entries missing bossColumn metadata: {', '.join(sorted(str(entry) for entry in missing_boss_columns)[:20])}"
+        )
+
 
 def build_pack(export_dir: Path) -> tuple[dict, dict, dict]:
     raw_items, raw_npcs = load_raw_export(export_dir)
@@ -521,6 +605,7 @@ def build_pack(export_dir: Path) -> tuple[dict, dict, dict]:
     apply_supplement(entries_by_id, supplement_entries)
     preserve_previous_localizations(entries_by_id, previous_entries)
     normalize_item_entries(raw_items, entries_by_id)
+    apply_armor_selection_metadata(raw_items, entries_by_id)
     apply_boss_normalization(entries_by_id, supplement)
 
     entries = sorted(
@@ -555,6 +640,9 @@ def build_pack(export_dir: Path) -> tuple[dict, dict, dict]:
                     "tags",
                     "pickerHidden",
                     "canonicalBossId",
+                    "armorMode",
+                    "armorGroupKey",
+                    "bossColumn",
                 }
             }
             for entry in entries
@@ -579,6 +667,7 @@ def build_pack(export_dir: Path) -> tuple[dict, dict, dict]:
                     "tags",
                     "bossPickerEligible",
                     "canonicalBossId",
+                    "bossColumn",
                 }
             }
             for entry in entries

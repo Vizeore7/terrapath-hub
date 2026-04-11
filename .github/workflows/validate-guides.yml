@@ -22,6 +22,9 @@ jobs:
       - name: Validate guides
         run: python tools/validate_guides.py
 
+      - name: Check generated Terraria support
+        run: python tools/build_terraria_support.py --check
+
       - name: Validate support data
         run: python tools/validate_support_data.py
 

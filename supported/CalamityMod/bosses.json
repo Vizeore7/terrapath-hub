@@ -13,7 +13,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/anahita-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Anahita"
+      "canonicalBossId": "CalamityMod/Anahita",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AquaticScourgeHead",
@@ -28,7 +29,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/aquatic-scourge-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AquaticScourgeHead"
+      "canonicalBossId": "CalamityMod/AquaticScourgeHead",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AstrumAureus",
@@ -41,7 +43,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/astrum-aureus-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AstrumAureus"
+      "canonicalBossId": "CalamityMod/AstrumAureus",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AstrumDeusHead",
@@ -54,7 +57,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/astrum-deus-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AstrumDeusHead"
+      "canonicalBossId": "CalamityMod/AstrumDeusHead",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/BrimstoneElemental",
@@ -67,7 +71,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/brimstone-elemental-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/BrimstoneElemental"
+      "canonicalBossId": "CalamityMod/BrimstoneElemental",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/CalamitasClone",
@@ -80,7 +85,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/calamitas-clone-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/CalamitasClone"
+      "canonicalBossId": "CalamityMod/CalamitasClone",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/CeaselessVoid",
@@ -93,7 +99,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/ceaseless-void-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/CeaselessVoid"
+      "canonicalBossId": "CalamityMod/CeaselessVoid",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/Crabulon",
@@ -106,7 +113,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/crabulon-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Crabulon"
+      "canonicalBossId": "CalamityMod/Crabulon",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/Cryogen",
@@ -119,7 +127,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/cryogen-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Cryogen"
+      "canonicalBossId": "CalamityMod/Cryogen",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/DesertScourgeHead",
@@ -132,7 +141,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/desert-scourge-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/DesertScourgeHead"
+      "canonicalBossId": "CalamityMod/DesertScourgeHead",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/Dragonfolly",
@@ -145,7 +155,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/dragonfolly-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Dragonfolly"
+      "canonicalBossId": "CalamityMod/Dragonfolly",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/AresBody",
@@ -158,7 +169,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/exo-mechs-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AresBody"
+      "canonicalBossId": "CalamityMod/AresBody",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/HiveMind",
@@ -171,7 +183,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/hive-mind-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/HiveMind"
+      "canonicalBossId": "CalamityMod/HiveMind",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/Leviathan",
@@ -184,7 +197,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/leviathan-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Leviathan"
+      "canonicalBossId": "CalamityMod/Leviathan",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/OldDuke",
@@ -197,7 +211,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/old-duke-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/OldDuke"
+      "canonicalBossId": "CalamityMod/OldDuke",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/PlaguebringerGoliath",
@@ -210,7 +225,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/plaguebringer-goliath-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/PlaguebringerGoliath"
+      "canonicalBossId": "CalamityMod/PlaguebringerGoliath",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/Polterghast",
@@ -223,7 +239,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/polterghast-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Polterghast"
+      "canonicalBossId": "CalamityMod/Polterghast",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/PrimordialWyrmHead",
@@ -236,7 +253,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/primordial-wyrm-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/PrimordialWyrmHead"
+      "canonicalBossId": "CalamityMod/PrimordialWyrmHead",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/ProfanedGuardianCommander",
@@ -249,7 +267,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/profaned-guardians-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/ProfanedGuardianCommander"
+      "canonicalBossId": "CalamityMod/ProfanedGuardianCommander",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/Providence",
@@ -262,7 +281,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/providence-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Providence"
+      "canonicalBossId": "CalamityMod/Providence",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/RavagerBody",
@@ -275,7 +295,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/ravager-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/RavagerBody"
+      "canonicalBossId": "CalamityMod/RavagerBody",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/Signus",
@@ -288,7 +309,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/signus-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Signus"
+      "canonicalBossId": "CalamityMod/Signus",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/StormWeaverHead",
@@ -301,7 +323,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/storm-weaver-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/StormWeaverHead"
+      "canonicalBossId": "CalamityMod/StormWeaverHead",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/SupremeCalamitas",
@@ -314,7 +337,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/supreme-calamitas-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/SupremeCalamitas"
+      "canonicalBossId": "CalamityMod/SupremeCalamitas",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/ThanatosHead",
@@ -327,7 +351,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/thanatos-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/ThanatosHead"
+      "canonicalBossId": "CalamityMod/ThanatosHead",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/DevourerofGodsHead",
@@ -340,7 +365,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/devourer-of-gods-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/DevourerofGodsHead"
+      "canonicalBossId": "CalamityMod/DevourerofGodsHead",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/PerforatorHive",
@@ -353,7 +379,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/perforatorhive-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/PerforatorHive"
+      "canonicalBossId": "CalamityMod/PerforatorHive",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/SlimeGodCore",
@@ -366,7 +393,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/slime-god-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/SlimeGodCore"
+      "canonicalBossId": "CalamityMod/SlimeGodCore",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/THELORDE",
@@ -379,7 +407,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/the-lorde-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/THELORDE"
+      "canonicalBossId": "CalamityMod/THELORDE",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/Yharon",
@@ -392,7 +421,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/yharon-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Yharon"
+      "canonicalBossId": "CalamityMod/Yharon",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/CloudElemental",
@@ -404,7 +434,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/cloud-elemental-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/CloudElemental",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/CragmawMire",
@@ -416,7 +448,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/cragmaw-mire-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/CragmawMire",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/EarthElemental",
@@ -428,7 +462,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/earth-elemental-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/EarthElemental",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/GiantClam",
@@ -440,7 +476,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/giant-clam-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/GiantClam",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/GreatSandShark",
@@ -452,7 +490,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/great-sand-shark-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/GreatSandShark",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/Mauler",
@@ -464,7 +504,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/mauler-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/Mauler",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/NuclearTerror",
@@ -476,7 +518,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/nuclear-terror-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/NuclearTerror",
+      "bossColumn": "miniboss"
     }
   ]
 }

@@ -133,7 +133,13 @@ function isBossLikeEntry(entry) {
 
 function mergeSupportEntry(map, entry) {
   if (!entry?.id) return;
-  map.set(entry.id, { ...(map.get(entry.id) || {}), ...entry });
+  const existing = map.get(entry.id) || {};
+  const existingKind = normalizedContentKind(existing);
+  const incomingKind = normalizedContentKind(entry);
+  const merged = map === supportIndex.contentMap && existingKind === "boss" && incomingKind === "item"
+    ? { ...entry, ...existing }
+    : { ...existing, ...entry };
+  map.set(entry.id, merged);
 }
 
 function normalizeGuideCategory(entry) {
@@ -175,17 +181,30 @@ async function fetchJson(path) {
   throw new Error(`Could not load ${path}`);
 }
 
+async function fetchJsonOptional(path) {
+  try {
+    return await fetchJson(path);
+  } catch {
+    return null;
+  }
+}
+
 async function loadCatalog() {
   return fetchJson("catalog/index.json");
 }
 
 async function tryLoadSupport(modName) {
-  const files = [
-    { path: `supported/${modName}/search-content.json`, key: "entries", apply(entry) {
+  const searchContentData = await fetchJsonOptional(`supported/${modName}/search-content.json`);
+  if (searchContentData?.entries) {
+    for (const entry of searchContentData.entries) {
       mergeSupportEntry(supportIndex.contentMap, entry);
       if (isItemLikeEntry(entry)) mergeSupportEntry(supportIndex.itemMap, entry);
       if (isBossLikeEntry(entry)) mergeSupportEntry(supportIndex.bossMap, entry);
-    } },
+    }
+    return;
+  }
+
+  const files = [
     { path: `supported/${modName}/search-items.json`, key: "items", apply(entry) {
       const nextEntry = { ...entry, kind: entry.kind || "item" };
       mergeSupportEntry(supportIndex.contentMap, nextEntry);
@@ -216,8 +235,6 @@ async function tryLoadSupport(modName) {
       }
     } catch {}
   }
-
-  if (modName === "Terraria") applySupportEnhancements();
 }
 
 function resolveName(contentId, map) {
@@ -392,6 +409,7 @@ async function init() {
     if (modName === "Terraria") continue;
     await tryLoadSupport(modName);
   }
+  applySupportEnhancements();
 
   const guide = await fetchJson(catalogEntry.path);
   currentGuide = guide;

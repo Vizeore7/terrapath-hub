@@ -78,7 +78,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/anahita-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Anahita"
+      "canonicalBossId": "CalamityMod/Anahita",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/Apollo",
@@ -91,7 +92,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/apollo.png",
       "canonicalBossId": "CalamityMod/AresBody",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/AquaticScourgeHead",
@@ -106,7 +108,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/aquatic-scourge-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AquaticScourgeHead"
+      "canonicalBossId": "CalamityMod/AquaticScourgeHead",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AquaticScourgeBody",
@@ -122,7 +125,8 @@
       ],
       "icon": "assets/icons/calamity/npcs/aquaticscourgebody.png",
       "canonicalBossId": "CalamityMod/AquaticScourgeHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AquaticScourgeBodyAlt",
@@ -138,7 +142,8 @@
       ],
       "icon": "assets/icons/calamity/npcs/aquaticscourgebodyalt.png",
       "canonicalBossId": "CalamityMod/AquaticScourgeHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AquaticScourgeTail",
@@ -154,7 +159,8 @@
       ],
       "icon": "assets/icons/calamity/npcs/aquaticscourgetail.png",
       "canonicalBossId": "CalamityMod/AquaticScourgeHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AresGaussNuke",
@@ -167,7 +173,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/aresgaussnuke.png",
       "canonicalBossId": "CalamityMod/AresBody",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/AresLaserCannon",
@@ -180,7 +187,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/areslasercannon.png",
       "canonicalBossId": "CalamityMod/AresBody",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/AresPlasmaFlamethrower",
@@ -193,7 +201,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/aresplasmaflamethrower.png",
       "canonicalBossId": "CalamityMod/AresBody",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/AresTeslaCannon",
@@ -206,7 +215,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/aresteslacannon.png",
       "canonicalBossId": "CalamityMod/AresBody",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/Artemis",
@@ -219,7 +229,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/artemis.png",
       "canonicalBossId": "CalamityMod/AresBody",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/AstrumAureus",
@@ -232,7 +243,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/astrum-aureus-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AstrumAureus"
+      "canonicalBossId": "CalamityMod/AstrumAureus",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AstrumDeusHead",
@@ -245,7 +257,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/astrum-deus-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AstrumDeusHead"
+      "canonicalBossId": "CalamityMod/AstrumDeusHead",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AstrumDeusBody",
@@ -258,7 +271,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/astrumdeusbody.png",
       "canonicalBossId": "CalamityMod/AstrumDeusHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/AstrumDeusTail",
@@ -271,7 +285,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/astrumdeustail.png",
       "canonicalBossId": "CalamityMod/AstrumDeusHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/BrainIllusion",
@@ -283,7 +298,8 @@
         "boss"
       ],
       "icon": "assets/icons/calamity/bosses/brainillusion.png",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/BrimstoneElemental",
@@ -296,7 +312,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/brimstone-elemental-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/BrimstoneElemental"
+      "canonicalBossId": "CalamityMod/BrimstoneElemental",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/CalamitasClone",
@@ -309,7 +326,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/calamitas-clone-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/CalamitasClone"
+      "canonicalBossId": "CalamityMod/CalamitasClone",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/CeaselessVoid",
@@ -322,7 +340,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/ceaseless-void-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/CeaselessVoid"
+      "canonicalBossId": "CalamityMod/CeaselessVoid",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/Crabulon",
@@ -335,7 +354,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/crabulon-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Crabulon"
+      "canonicalBossId": "CalamityMod/Crabulon",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/Cryogen",
@@ -348,7 +368,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/cryogen-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Cryogen"
+      "canonicalBossId": "CalamityMod/Cryogen",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/DesertScourgeHead",
@@ -361,7 +382,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/desert-scourge-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/DesertScourgeHead"
+      "canonicalBossId": "CalamityMod/DesertScourgeHead",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/DesertScourgeBody",
@@ -374,7 +396,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/desertscourgebody.png",
       "canonicalBossId": "CalamityMod/DesertScourgeHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/DesertScourgeTail",
@@ -387,7 +410,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/desertscourgetail.png",
       "canonicalBossId": "CalamityMod/DesertScourgeHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/DevourerofGodsBody",
@@ -400,7 +424,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/devourerofgodsbody.png",
       "canonicalBossId": "CalamityMod/DevourerofGodsHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/DevourerofGodsTail",
@@ -413,7 +438,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/devourerofgodstail.png",
       "canonicalBossId": "CalamityMod/DevourerofGodsHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/Dragonfolly",
@@ -426,7 +452,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/dragonfolly-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Dragonfolly"
+      "canonicalBossId": "CalamityMod/Dragonfolly",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/AresBody",
@@ -439,7 +466,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/exo-mechs-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/AresBody"
+      "canonicalBossId": "CalamityMod/AresBody",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/FalseBrain",
@@ -451,7 +479,8 @@
         "boss"
       ],
       "icon": "assets/icons/calamity/bosses/falsebrain.png",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/HiveMind",
@@ -464,7 +493,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/hive-mind-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/HiveMind"
+      "canonicalBossId": "CalamityMod/HiveMind",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/Leviathan",
@@ -477,7 +507,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/leviathan-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Leviathan"
+      "canonicalBossId": "CalamityMod/Leviathan",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/OldDuke",
@@ -490,7 +521,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/old-duke-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/OldDuke"
+      "canonicalBossId": "CalamityMod/OldDuke",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/PlaguebringerGoliath",
@@ -503,7 +535,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/plaguebringer-goliath-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/PlaguebringerGoliath"
+      "canonicalBossId": "CalamityMod/PlaguebringerGoliath",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/Polterghast",
@@ -516,7 +549,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/polterghast-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Polterghast"
+      "canonicalBossId": "CalamityMod/Polterghast",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/PrimordialWyrmHead",
@@ -529,7 +563,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/primordial-wyrm-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/PrimordialWyrmHead"
+      "canonicalBossId": "CalamityMod/PrimordialWyrmHead",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/ProfanedGuardianCommander",
@@ -542,7 +577,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/profaned-guardians-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/ProfanedGuardianCommander"
+      "canonicalBossId": "CalamityMod/ProfanedGuardianCommander",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/Providence",
@@ -555,7 +591,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/providence-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Providence"
+      "canonicalBossId": "CalamityMod/Providence",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/RavagerBody",
@@ -568,7 +605,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/ravager-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/RavagerBody"
+      "canonicalBossId": "CalamityMod/RavagerBody",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/Signus",
@@ -581,7 +619,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/signus-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Signus"
+      "canonicalBossId": "CalamityMod/Signus",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/StormWeaverHead",
@@ -594,7 +633,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/storm-weaver-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/StormWeaverHead"
+      "canonicalBossId": "CalamityMod/StormWeaverHead",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/StormWeaverBody",
@@ -607,7 +647,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/stormweaverbody.png",
       "canonicalBossId": "CalamityMod/StormWeaverHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/StormWeaverTail",
@@ -620,7 +661,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/stormweavertail.png",
       "canonicalBossId": "CalamityMod/StormWeaverHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/SupremeCalamitas",
@@ -633,7 +675,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/supreme-calamitas-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/SupremeCalamitas"
+      "canonicalBossId": "CalamityMod/SupremeCalamitas",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/ThanatosHead",
@@ -646,7 +689,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/thanatos-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/ThanatosHead"
+      "canonicalBossId": "CalamityMod/ThanatosHead",
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/ThanatosBody1",
@@ -659,7 +703,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/thanatosbody1.png",
       "canonicalBossId": "CalamityMod/ThanatosHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/ThanatosBody2",
@@ -672,7 +717,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/thanatosbody2.png",
       "canonicalBossId": "CalamityMod/ThanatosHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/ThanatosTail",
@@ -685,7 +731,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/thanatostail.png",
       "canonicalBossId": "CalamityMod/ThanatosHead",
-      "bossPickerEligible": false
+      "bossPickerEligible": false,
+      "bossColumn": "hardmode"
     },
     {
       "id": "CalamityMod/DevourerofGodsHead",
@@ -698,7 +745,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/devourer-of-gods-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/DevourerofGodsHead"
+      "canonicalBossId": "CalamityMod/DevourerofGodsHead",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/PerforatorHive",
@@ -711,7 +759,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/perforatorhive-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/PerforatorHive"
+      "canonicalBossId": "CalamityMod/PerforatorHive",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/SlimeGodCore",
@@ -724,7 +773,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/slime-god-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/SlimeGodCore"
+      "canonicalBossId": "CalamityMod/SlimeGodCore",
+      "bossColumn": "prehardmode"
     },
     {
       "id": "CalamityMod/THELORDE",
@@ -737,7 +787,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/the-lorde-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/THELORDE"
+      "canonicalBossId": "CalamityMod/THELORDE",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/Yharon",
@@ -750,7 +801,8 @@
       ],
       "icon": "assets/icons/calamity/bosses/yharon-wiki.png",
       "bossPickerEligible": true,
-      "canonicalBossId": "CalamityMod/Yharon"
+      "canonicalBossId": "CalamityMod/Yharon",
+      "bossColumn": "postmoonlord"
     },
     {
       "id": "CalamityMod/AcidRain",
@@ -796,7 +848,7 @@
       "internalName": "AbandonedSlimeStaff",
       "displayName": "Abandoned Slime Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043e\u0442\u0432\u0435\u0440\u0436\u0435\u043d\u043d\u043e\u0433\u043e \u0441\u043b\u0438\u0437\u043d\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -812,10 +864,14 @@
       "category": "armor",
       "tags": [
         "armor",
-        "accessory"
+        "accessory",
+        "armor-piece",
+        "abandonedwulfrum"
       ],
       "icon": "assets/icons/calamity/items/abandonedwulfrumhelmet.png",
-      "armorSetKey": "AbandonedWulfrum"
+      "armorSetKey": "AbandonedWulfrum",
+      "armorGroupKey": "AbandonedWulfrum",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AbsoluteZero",
@@ -951,9 +1007,13 @@
       "displayNameRu": "\u0424\u0430\u0440\u0442\u0443\u043a \u043f\u0440\u0438\u0432\u044f\u0437\u0430\u043d\u043d\u043e\u0441\u0442\u0438 \u042d\u0439\u0441\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "acesapronofaffection"
       ],
-      "icon": "assets/icons/calamity/items/acesapronofaffection.png"
+      "icon": "assets/icons/calamity/items/acesapronofaffection.png",
+      "armorGroupKey": "AcesApronOfAffection",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AcesHigh",
@@ -1118,9 +1178,13 @@
       "displayNameRu": "\u0410\u044d\u0440\u043e\u0444\u0430\u0437\u043e\u0432\u044b\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "aerospecbreastplate"
       ],
-      "icon": "assets/icons/calamity/items/aerospecbreastplate.png"
+      "icon": "assets/icons/calamity/items/aerospecbreastplate.png",
+      "armorGroupKey": "AerospecBreastplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AerospecHeadMagic",
@@ -1130,9 +1194,13 @@
       "displayNameRu": "\u0410\u044d\u0440\u043e\u0444\u0430\u0437\u043e\u0432\u0430\u044f \u0448\u043b\u044f\u043f\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "aerospecheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/aerospecheadmagic.png"
+      "icon": "assets/icons/calamity/items/aerospecheadmagic.png",
+      "armorGroupKey": "AerospecHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AerospecHeadMelee",
@@ -1142,9 +1210,13 @@
       "displayNameRu": "\u0410\u044d\u0440\u043e\u0444\u0430\u0437\u043e\u0432\u044b\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "aerospecheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/aerospecheadmelee.png"
+      "icon": "assets/icons/calamity/items/aerospecheadmelee.png",
+      "armorGroupKey": "AerospecHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AerospecHeadRanged",
@@ -1154,9 +1226,13 @@
       "displayNameRu": "\u0410\u044d\u0440\u043e\u0444\u0430\u0437\u043e\u0432\u044b\u0439 \u043a\u0430\u043f\u044e\u0448\u043e\u043d",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "aerospecheadranged"
       ],
-      "icon": "assets/icons/calamity/items/aerospecheadranged.png"
+      "icon": "assets/icons/calamity/items/aerospecheadranged.png",
+      "armorGroupKey": "AerospecHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AerospecHeadRogue",
@@ -1166,9 +1242,13 @@
       "displayNameRu": "\u0410\u044d\u0440\u043e\u0444\u0430\u0437\u043e\u0432\u044b\u0439 \u0433\u043e\u043b\u043e\u0432\u043d\u043e\u0439 \u0443\u0431\u043e\u0440",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "aerospecheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/aerospecheadrogue.png"
+      "icon": "assets/icons/calamity/items/aerospecheadrogue.png",
+      "armorGroupKey": "AerospecHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AerospecHeadSummon",
@@ -1178,9 +1258,13 @@
       "displayNameRu": "\u0410\u044d\u0440\u043e\u0444\u0430\u0437\u043e\u0432\u0430\u044f \u043a\u0430\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "aerospecheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/aerospecheadsummon.png"
+      "icon": "assets/icons/calamity/items/aerospecheadsummon.png",
+      "armorGroupKey": "AerospecHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AerospecLeggings",
@@ -1190,9 +1274,13 @@
       "displayNameRu": "\u0410\u044d\u0440\u043e\u0444\u0430\u0437\u043e\u0432\u044b\u0435 \u043f\u043e\u043d\u043e\u0436\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "aerospecleggings"
       ],
-      "icon": "assets/icons/calamity/items/aerospecleggings.png"
+      "icon": "assets/icons/calamity/items/aerospecleggings.png",
+      "armorGroupKey": "AerospecLeggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/Aestheticus",
@@ -1275,7 +1363,7 @@
       "internalName": "AlluringBait",
       "displayName": "Alluring Bait",
       "displayNameRu": "\u0417\u0430\u043c\u0430\u043d\u0447\u0438\u0432\u0430\u044f \u043f\u0440\u0438\u043c\u0430\u043d\u043a\u0430",
-      "category": "buff",
+      "category": "accessory",
       "tags": [
         "accessory"
       ],
@@ -1390,10 +1478,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0410\u043d\u0430\u0445\u0438\u0442\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "anahita"
       ],
       "icon": "assets/icons/calamity/items/anahitamask.png",
-      "armorSetKey": "Anahita"
+      "armorSetKey": "Anahita",
+      "armorGroupKey": "Anahita",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AnahitasArpeggio",
@@ -1439,11 +1531,15 @@
       "internalName": "AncientGodSlayerChestplate",
       "displayName": "Ancient God Slayer Chestplate",
       "displayNameRu": "\u0414\u0440\u0435\u0432\u043d\u0438\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
-      "category": "other",
+      "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "ancientgodslayerchestplate"
       ],
-      "icon": "assets/icons/calamity/items/ancientgodslayerchestplate.png"
+      "icon": "assets/icons/calamity/items/ancientgodslayerchestplate.png",
+      "armorGroupKey": "AncientGodSlayerChestplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AncientGodSlayerHelm",
@@ -1453,10 +1549,14 @@
       "displayNameRu": "\u0414\u0440\u0435\u0432\u043d\u0438\u0439 \u0448\u043b\u0435\u043c \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "ancientgodslayer"
       ],
       "icon": "assets/icons/calamity/items/ancientgodslayerhelm.png",
-      "armorSetKey": "AncientGodSlayer"
+      "armorSetKey": "AncientGodSlayer",
+      "armorGroupKey": "AncientGodSlayer",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AncientGodSlayerLeggings",
@@ -1466,9 +1566,13 @@
       "displayNameRu": "\u0414\u0440\u0435\u0432\u043d\u0438\u0435 \u043f\u043e\u043d\u043e\u0436\u0438 \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "ancientgodslayerleggings"
       ],
-      "icon": "assets/icons/calamity/items/ancientgodslayerleggings.png"
+      "icon": "assets/icons/calamity/items/ancientgodslayerleggings.png",
+      "armorGroupKey": "AncientGodSlayerLeggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AncientIceChunk",
@@ -1476,7 +1580,7 @@
       "internalName": "AncientIceChunk",
       "displayName": "Ancient Ice Chunk",
       "displayNameRu": "\u0414\u0440\u0435\u0432\u043d\u044f\u044f \u043b\u0435\u0434\u044f\u043d\u0430\u044f \u0433\u043b\u044b\u0431\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -1657,10 +1761,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0410\u043f\u043e\u043b\u043b\u043e\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "apollo"
       ],
       "icon": "assets/icons/calamity/items/apollomask.png",
-      "armorSetKey": "Apollo"
+      "armorSetKey": "Apollo",
+      "armorGroupKey": "Apollo",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/Apotheosis",
@@ -1746,10 +1854,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0410\u043a\u0432\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u0431\u0438\u0447\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "aquaticscourge"
       ],
       "icon": "assets/icons/calamity/items/aquaticscourgemask.png",
-      "armorSetKey": "AquaticScourge"
+      "armorSetKey": "AquaticScourge",
+      "armorGroupKey": "AquaticScourge",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AqueousHunterDrone",
@@ -1874,10 +1986,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0410\u0440\u0435\u0441\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "ares"
       ],
       "icon": "assets/icons/calamity/items/aresmask.png",
-      "armorSetKey": "Ares"
+      "armorSetKey": "Ares",
+      "armorGroupKey": "Ares",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/Arietes41",
@@ -1939,10 +2055,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0410\u0440\u0442\u0435\u043c\u0438\u0434\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "artemis"
       ],
       "icon": "assets/icons/calamity/items/artemismask.png",
-      "armorSetKey": "Artemis"
+      "armorSetKey": "Artemis",
+      "armorGroupKey": "Artemis",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ArterialAssault",
@@ -2014,9 +2134,13 @@
       "displayNameRu": "\u041f\u0435\u043f\u0435\u043b\u044c\u043d\u044b\u0435 \u0440\u043e\u0433\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "ashenhorns"
       ],
-      "icon": "assets/icons/calamity/items/ashenhorns.png"
+      "icon": "assets/icons/calamity/items/ashenhorns.png",
+      "armorGroupKey": "AshenHorns",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AshenStalactite",
@@ -2052,9 +2176,13 @@
       "displayNameRu": "\u0410\u0441\u0442\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "astralbreastplate"
       ],
-      "icon": "assets/icons/calamity/items/astralbreastplate.png"
+      "icon": "assets/icons/calamity/items/astralbreastplate.png",
+      "armorGroupKey": "AstralBreastplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AstralHamaxe",
@@ -2077,10 +2205,14 @@
       "displayNameRu": "\u0410\u0441\u0442\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "astral"
       ],
       "icon": "assets/icons/calamity/items/astralhelm.png",
-      "armorSetKey": "Astral"
+      "armorSetKey": "Astral",
+      "armorGroupKey": "Astral",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AstralInjection",
@@ -2103,9 +2235,13 @@
       "displayNameRu": "\u0410\u0441\u0442\u0440\u0430\u043b\u044c\u043d\u044b\u0435 \u043f\u043e\u043d\u043e\u0436\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "astralleggings"
       ],
-      "icon": "assets/icons/calamity/items/astralleggings.png"
+      "icon": "assets/icons/calamity/items/astralleggings.png",
+      "armorGroupKey": "AstralLeggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AstralPickaxe",
@@ -2244,10 +2380,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0410\u0441\u0442\u0440\u0443\u043c \u0410\u0440\u0435\u0443\u0441\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "astrumaureus"
       ],
       "icon": "assets/icons/calamity/items/astrumaureusmask.png",
-      "armorSetKey": "AstrumAureus"
+      "armorSetKey": "AstrumAureus",
+      "armorGroupKey": "AstrumAureus",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AstrumDeusMask",
@@ -2257,10 +2397,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0410\u0441\u0442\u0440\u0443\u043c \u0414\u0435\u0443\u0441\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "astrumdeus"
       ],
       "icon": "assets/icons/calamity/items/astrumdeusmask.png",
-      "armorSetKey": "AstrumDeus"
+      "armorSetKey": "AstrumDeus",
+      "armorGroupKey": "AstrumDeus",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/Ataraxia",
@@ -2385,9 +2529,13 @@
       "displayNameRu": "\u0410\u0443\u0440\u0438\u0442\u043e\u0432\u044b\u0439 \u0442\u0435\u0441\u043b\u0430-\u0434\u043e\u0441\u043f\u0435\u0445",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "auricteslabodyarmor"
       ],
-      "icon": "assets/icons/calamity/items/auricteslabodyarmor.png"
+      "icon": "assets/icons/calamity/items/auricteslabodyarmor.png",
+      "armorGroupKey": "AuricTeslaBodyArmor",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AuricTeslaCuisses",
@@ -2397,9 +2545,13 @@
       "displayNameRu": "\u0410\u0443\u0440\u0438\u0442\u043e\u0432\u044b\u0435 \u0442\u0435\u0441\u043b\u0430-\u043d\u0430\u0431\u0435\u0434\u0440\u0435\u043d\u043d\u0438\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "auricteslacuisses"
       ],
-      "icon": "assets/icons/calamity/items/auricteslacuisses.png"
+      "icon": "assets/icons/calamity/items/auricteslacuisses.png",
+      "armorGroupKey": "AuricTeslaCuisses",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AuricTeslaHeadMagic",
@@ -2409,9 +2561,13 @@
       "displayNameRu": "\u041e\u043a\u0430\u0439\u043c\u043b\u0451\u043d\u043d\u044b\u0439 \u043f\u0440\u043e\u0432\u043e\u0434\u0430\u043c\u0438 \u0430\u0443\u0440\u0438\u0442\u043e\u0432\u044b\u0439 \u0442\u0435\u0441\u043b\u0430-\u043b\u0438\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "auricteslaheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/auricteslaheadmagic.png"
+      "icon": "assets/icons/calamity/items/auricteslaheadmagic.png",
+      "armorGroupKey": "AuricTeslaHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AuricTeslaHeadMelee",
@@ -2421,9 +2577,13 @@
       "displayNameRu": "\u041a\u043e\u0440\u043e\u043b\u0435\u0432\u0441\u043a\u0438\u0439 \u0430\u0443\u0440\u0438\u0442\u043e\u0432\u044b\u0439 \u0442\u0435\u0441\u043b\u0430-\u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "auricteslaheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/auricteslaheadmelee.png"
+      "icon": "assets/icons/calamity/items/auricteslaheadmelee.png",
+      "armorGroupKey": "AuricTeslaHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AuricTeslaHeadRanged",
@@ -2433,9 +2593,13 @@
       "displayNameRu": "\u0417\u0430\u0449\u0438\u0442\u043d\u0430\u044f \u0430\u0443\u0440\u0438\u0442\u043e\u0432\u0430\u044f \u0442\u0435\u0441\u043b\u0430-\u043c\u0430\u0441\u043a\u0430 \u0441 \u043a\u0430\u043f\u044e\u0448\u043e\u043d\u043e\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "auricteslaheadranged"
       ],
-      "icon": "assets/icons/calamity/items/auricteslaheadranged.png"
+      "icon": "assets/icons/calamity/items/auricteslaheadranged.png",
+      "armorGroupKey": "AuricTeslaHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AuricTeslaHeadRogue",
@@ -2445,9 +2609,13 @@
       "displayNameRu": "\u041f\u043b\u044e\u043c\u0430\u0436\u043d\u044b\u0439 \u0430\u0443\u0440\u0438\u0442\u043e\u0432\u044b\u0439 \u0442\u0435\u0441\u043b\u0430-\u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "auricteslaheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/auricteslaheadrogue.png"
+      "icon": "assets/icons/calamity/items/auricteslaheadrogue.png",
+      "armorGroupKey": "AuricTeslaHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AuricTeslaHeadSummon",
@@ -2457,9 +2625,13 @@
       "displayNameRu": "\u041a\u043e\u0441\u043c\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0430\u0443\u0440\u0438\u0442\u043e\u0432\u0430\u044f \u0442\u0435\u0441\u043b\u0430-\u043a\u0430\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "auricteslaheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/auricteslaheadsummon.png"
+      "icon": "assets/icons/calamity/items/auricteslaheadsummon.png",
+      "armorGroupKey": "AuricTeslaHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/AuroraBlazer",
@@ -2609,7 +2781,7 @@
       "internalName": "Barberry",
       "displayName": "Barberry",
       "displayNameRu": "\u0411\u0430\u0440\u0431\u0430\u0440\u0438\u0441",
-      "category": "other",
+      "category": "buff",
       "tags": [
         "buff",
         "consumable"
@@ -2697,7 +2869,7 @@
       "internalName": "BelladonnaSpiritStaff",
       "displayName": "Belladonna Spirit Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0434\u0443\u0445\u0430 \u0431\u0435\u043b\u043b\u0430\u0434\u043e\u043d\u043d\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -2761,7 +2933,7 @@
       "internalName": "BlackHawkRemote",
       "displayName": "Black Hawk Remote",
       "displayNameRu": "\u041f\u0443\u043b\u044c\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u0447\u0451\u0440\u043d\u044b\u043c \u044f\u0441\u0442\u0440\u0435\u0431\u043e\u043c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -2928,7 +3100,7 @@
       "internalName": "BloodfireArrow",
       "displayName": "Bloodfire Arrow",
       "displayNameRu": "\u0421\u0442\u0440\u0435\u043b\u0430 \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0433\u043e \u043e\u0433\u043d\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -2942,7 +3114,7 @@
       "internalName": "BloodfireBullet",
       "displayName": "Bloodfire Bullet",
       "displayNameRu": "\u041f\u0443\u043b\u044f \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0433\u043e \u043e\u0433\u043d\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -2958,9 +3130,13 @@
       "displayNameRu": "\u0414\u043e\u0441\u043f\u0435\u0445 \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0439 \u0432\u0441\u043f\u044b\u0448\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "bloodflarebodyarmor"
       ],
-      "icon": "assets/icons/calamity/items/bloodflarebodyarmor.png"
+      "icon": "assets/icons/calamity/items/bloodflarebodyarmor.png",
+      "armorGroupKey": "BloodflareBodyArmor",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BloodflareCore",
@@ -2982,9 +3158,13 @@
       "displayNameRu": "\u041d\u0430\u0431\u0435\u0434\u0440\u0435\u043d\u043d\u0438\u043a\u0438 \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0439 \u0432\u0441\u043f\u044b\u0448\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "bloodflarecuisses"
       ],
-      "icon": "assets/icons/calamity/items/bloodflarecuisses.png"
+      "icon": "assets/icons/calamity/items/bloodflarecuisses.png",
+      "armorGroupKey": "BloodflareCuisses",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BloodflareHeadMagic",
@@ -2994,9 +3174,13 @@
       "displayNameRu": "\u041a\u0430\u043f\u044e\u0448\u043e\u043d \u0433\u0438\u0434\u0440\u044b \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0439 \u0432\u0441\u043f\u044b\u0448\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "bloodflareheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/bloodflareheadmagic.png"
+      "icon": "assets/icons/calamity/items/bloodflareheadmagic.png",
+      "armorGroupKey": "BloodflareHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BloodflareHeadMelee",
@@ -3006,9 +3190,13 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0431\u0430\u0440\u0430\u043d\u0430 \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0439 \u0432\u0441\u043f\u044b\u0448\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "bloodflareheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/bloodflareheadmelee.png"
+      "icon": "assets/icons/calamity/items/bloodflareheadmelee.png",
+      "armorGroupKey": "BloodflareHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BloodflareHeadRanged",
@@ -3018,9 +3206,13 @@
       "displayNameRu": "\u0420\u043e\u0433\u0430\u0442\u044b\u0439 \u0448\u043b\u0435\u043c \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0439 \u0432\u0441\u043f\u044b\u0448\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "bloodflareheadranged"
       ],
-      "icon": "assets/icons/calamity/items/bloodflareheadranged.png"
+      "icon": "assets/icons/calamity/items/bloodflareheadranged.png",
+      "armorGroupKey": "BloodflareHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BloodflareHeadRogue",
@@ -3030,9 +3222,13 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0431\u0435\u0441\u0430 \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0439 \u0432\u0441\u043f\u044b\u0448\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "bloodflareheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/bloodflareheadrogue.png"
+      "icon": "assets/icons/calamity/items/bloodflareheadrogue.png",
+      "armorGroupKey": "BloodflareHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BloodflareHeadSummon",
@@ -3042,9 +3238,13 @@
       "displayNameRu": "\u0428\u043b\u0435\u043c \u0432\u0438\u0432\u0435\u0440\u043d\u044b \u043a\u0440\u043e\u0432\u0430\u0432\u043e\u0439 \u0432\u0441\u043f\u044b\u0448\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "bloodflareheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/bloodflareheadsummon.png"
+      "icon": "assets/icons/calamity/items/bloodflareheadsummon.png",
+      "armorGroupKey": "BloodflareHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BloodsoakedCrasher",
@@ -3294,9 +3494,13 @@
       "displayNameRu": "\u0411\u043e\u0442\u0438\u043d\u043a\u0438 \u0441\u0435\u0440\u043d\u043e\u0433\u043e \u043f\u043b\u0430\u043c\u0435\u043d\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "brimflameboots"
       ],
-      "icon": "assets/icons/calamity/items/brimflameboots.png"
+      "icon": "assets/icons/calamity/items/brimflameboots.png",
+      "armorGroupKey": "BrimflameBoots",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BrimflameCowl",
@@ -3306,10 +3510,14 @@
       "displayNameRu": "\u041a\u043b\u043e\u0431\u0443\u043a \u0441\u0435\u0440\u043d\u043e\u0433\u043e \u043f\u043b\u0430\u043c\u0435\u043d\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "brimflame"
       ],
       "icon": "assets/icons/calamity/items/brimflamecowl.png",
-      "armorSetKey": "Brimflame"
+      "armorSetKey": "Brimflame",
+      "armorGroupKey": "Brimflame",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BrimflameRobes",
@@ -3319,9 +3527,13 @@
       "displayNameRu": "\u041e\u0434\u0435\u044f\u043d\u0438\u0435 \u0441\u0435\u0440\u043d\u043e\u0433\u043e \u043f\u043b\u0430\u043c\u0435\u043d\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "brimflamerobes"
       ],
-      "icon": "assets/icons/calamity/items/brimflamerobes.png"
+      "icon": "assets/icons/calamity/items/brimflamerobes.png",
+      "armorGroupKey": "BrimflameRobes",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/Brimlance",
@@ -3370,10 +3582,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0421\u0435\u0440\u043d\u043e\u0433\u043e \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "brimstoneelemental"
       ],
       "icon": "assets/icons/calamity/items/brimstoneelementalmask.png",
-      "armorSetKey": "BrimstoneElemental"
+      "armorSetKey": "BrimstoneElemental",
+      "armorGroupKey": "BrimstoneElemental",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BrimstoneFury",
@@ -3419,7 +3635,7 @@
       "internalName": "BrittleStarStaff",
       "displayName": "Brittle Star Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0445\u0440\u0443\u043f\u043a\u043e\u0439 \u0437\u0432\u0435\u0437\u0434\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -3445,7 +3661,7 @@
       "internalName": "BubonicRound",
       "displayName": "Bubonic Round",
       "displayNameRu": "\u0411\u0443\u0431\u043e\u043d\u043d\u0430\u044f \u043f\u0443\u043b\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -3459,7 +3675,7 @@
       "internalName": "BulletFilledShotgun",
       "displayName": "Bullet Filled Shotgun",
       "displayNameRu": "\u041f\u043e\u043b\u043d\u043e\u043f\u0430\u0442\u0440\u043e\u043d\u043d\u044b\u0439 \u0434\u0440\u043e\u0431\u043e\u0432\u0438\u043a",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -3474,10 +3690,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041f\u0441\u0435\u0432\u0434\u043e\u0434\u0440\u0430\u043a\u043e\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "bumblefuck"
       ],
       "icon": "assets/icons/calamity/items/bumblefuckmask.png",
-      "armorSetKey": "Bumblefuck"
+      "armorSetKey": "Bumblefuck",
+      "armorGroupKey": "Bumblefuck",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/BurningRevelation",
@@ -3575,7 +3795,7 @@
       "internalName": "CalamarisLament",
       "displayName": "Calamaris Lament",
       "displayNameRu": "\u041f\u043b\u0430\u0447 \u043a\u0430\u043b\u044c\u043c\u0430\u0440\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -3590,10 +3810,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041a\u043b\u043e\u043d\u0430 \u041a\u0430\u043b\u0430\u043c\u0438\u0442\u0430\u0441",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "calamitasclone"
       ],
       "icon": "assets/icons/calamity/items/calamitasclonemask.png",
-      "armorSetKey": "CalamitasClone"
+      "armorSetKey": "CalamitasClone",
+      "armorGroupKey": "CalamitasClone",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/Calamity",
@@ -3665,7 +3889,7 @@
       "internalName": "CausticStaff",
       "displayName": "Caustic Staff",
       "displayNameRu": "\u0415\u0434\u043a\u0438\u0439 \u043f\u043e\u0441\u043e\u0445",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -3693,10 +3917,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041d\u0435\u0441\u043a\u043e\u043d\u0447\u0430\u0435\u043c\u043e\u0439 \u043f\u0443\u0441\u0442\u043e\u0442\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "ceaselessvoid"
       ],
       "icon": "assets/icons/calamity/items/ceaselessvoidmask.png",
-      "armorSetKey": "CeaselessVoid"
+      "armorSetKey": "CeaselessVoid",
+      "armorGroupKey": "CeaselessVoid",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/CelestialReaper",
@@ -3830,7 +4058,7 @@
       "internalName": "CinderArrow",
       "displayName": "Cinder Arrow",
       "displayNameRu": "\u041f\u0435\u043f\u0435\u043b\u044c\u043d\u0430\u044f \u0441\u0442\u0440\u0435\u043b\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -3844,7 +4072,7 @@
       "internalName": "CinderBlossomStaff",
       "displayName": "Cinder Blossom Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043f\u0435\u043f\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0432\u0435\u0442\u043a\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -3959,7 +4187,7 @@
       "internalName": "ClockworkBow",
       "displayName": "Clockwork Bow",
       "displayNameRu": "\u0417\u0430\u0432\u043e\u0434\u043d\u043e\u0439 \u043b\u0443\u043a",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -4191,7 +4419,7 @@
       "internalName": "CorroslimeStaff",
       "displayName": "Corroslime Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043f\u043e\u0440\u0447\u0435\u043b\u0438\u0437\u043d\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4204,7 +4432,7 @@
       "internalName": "CorvidHarbringerStaff",
       "displayName": "Corvid Harbringer Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0432\u043e\u0440\u043e\u043d\u044c\u0435\u0433\u043e \u043f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u043a\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4230,7 +4458,7 @@
       "internalName": "CosmicImmaterializer",
       "displayName": "Cosmic Immaterializer",
       "displayNameRu": "\u041a\u043e\u0441\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0438\u043c\u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0438\u0437\u0430\u0442\u043e\u0440",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4294,7 +4522,7 @@
       "internalName": "CosmicViperEngine",
       "displayName": "Cosmic Viper Engine",
       "displayNameRu": "\u0414\u0432\u0438\u0433\u0430\u0442\u0435\u043b\u044c \u043a\u043e\u0441\u043c\u0438\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u0412\u0430\u0439\u043f\u0435\u0440\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4307,7 +4535,7 @@
       "internalName": "Cosmilamp",
       "displayName": "Cosmilamp",
       "displayNameRu": "\u041a\u043e\u0441\u043c\u0438\u043b\u0430\u043c\u043f\u0430",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4360,10 +4588,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041a\u0440\u0430\u0431\u0443\u043b\u043e\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "crabulon"
       ],
       "icon": "assets/icons/calamity/items/crabulonmask.png",
-      "armorSetKey": "Crabulon"
+      "armorSetKey": "Crabulon",
+      "armorGroupKey": "Crabulon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/CrackshotColt",
@@ -4422,7 +4654,7 @@
       "internalName": "CrimslimeStaff",
       "displayName": "Crimslime Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0431\u0430\u0433\u0440\u043e\u043b\u0438\u0437\u043d\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4435,10 +4667,9 @@
       "internalName": "CrownJewel",
       "displayName": "Crown Jewel",
       "displayNameRu": "\u041a\u043e\u0440\u043e\u043b\u0435\u0432\u0441\u043a\u0430\u044f \u0434\u0440\u0430\u0433\u043e\u0446\u0435\u043d\u043d\u043e\u0441\u0442\u044c",
-      "category": "armor",
+      "category": "other",
       "tags": [
-        "accessory",
-        "armor"
+        "accessory"
       ],
       "icon": "assets/icons/calamity/items/crownjewel.png"
     },
@@ -4475,10 +4706,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041a\u0440\u0438\u043e\u0433\u0435\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "cryogen"
       ],
       "icon": "assets/icons/calamity/items/cryogenmask.png",
-      "armorSetKey": "Cryogen"
+      "armorSetKey": "Cryogen",
+      "armorGroupKey": "Cryogen",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/CryogenicStaff",
@@ -4578,9 +4813,13 @@
       "displayNameRu": "\u041d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u0414\u0435\u0434\u0430\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "daedalusbreastplate"
       ],
-      "icon": "assets/icons/calamity/items/daedalusbreastplate.png"
+      "icon": "assets/icons/calamity/items/daedalusbreastplate.png",
+      "armorGroupKey": "DaedalusBreastplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DaedalusGolemStaff",
@@ -4588,7 +4827,7 @@
       "internalName": "DaedalusGolemStaff",
       "displayName": "Daedalus Golem Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0433\u043e\u043b\u0435\u043c\u0430 \u0414\u0435\u0434\u0430\u043b\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4603,9 +4842,13 @@
       "displayNameRu": "\u041a\u0430\u043f\u044e\u0448\u043e\u043d \u0414\u0435\u0434\u0430\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "daedalusheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/daedalusheadmagic.png"
+      "icon": "assets/icons/calamity/items/daedalusheadmagic.png",
+      "armorGroupKey": "DaedalusHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DaedalusHeadMelee",
@@ -4615,9 +4858,13 @@
       "displayNameRu": "\u0428\u043b\u0435\u043c \u0414\u0435\u0434\u0430\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "daedalusheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/daedalusheadmelee.png"
+      "icon": "assets/icons/calamity/items/daedalusheadmelee.png",
+      "armorGroupKey": "DaedalusHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DaedalusHeadRanged",
@@ -4627,9 +4874,13 @@
       "displayNameRu": "\u0413\u043e\u043b\u043e\u0432\u043d\u043e\u0439 \u0443\u0431\u043e\u0440 \u0414\u0435\u0434\u0430\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "daedalusheadranged"
       ],
-      "icon": "assets/icons/calamity/items/daedalusheadranged.png"
+      "icon": "assets/icons/calamity/items/daedalusheadranged.png",
+      "armorGroupKey": "DaedalusHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DaedalusHeadRogue",
@@ -4639,9 +4890,13 @@
       "displayNameRu": "\u0417\u0430\u0449\u0438\u0442\u043d\u0430\u044f \u043c\u0430\u0441\u043a\u0430 \u0414\u0435\u0434\u0430\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "daedalusheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/daedalusheadrogue.png"
+      "icon": "assets/icons/calamity/items/daedalusheadrogue.png",
+      "armorGroupKey": "DaedalusHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DaedalusHeadSummon",
@@ -4651,9 +4906,13 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0414\u0435\u0434\u0430\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "daedalusheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/daedalusheadsummon.png"
+      "icon": "assets/icons/calamity/items/daedalusheadsummon.png",
+      "armorGroupKey": "DaedalusHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DaedalusLeggings",
@@ -4663,9 +4922,13 @@
       "displayNameRu": "\u041f\u043e\u043d\u043e\u0436\u0438 \u0414\u0435\u0434\u0430\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "daedalusleggings"
       ],
-      "icon": "assets/icons/calamity/items/daedalusleggings.png"
+      "icon": "assets/icons/calamity/items/daedalusleggings.png",
+      "armorGroupKey": "DaedalusLeggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DaemonsFlame",
@@ -4686,7 +4949,7 @@
       "internalName": "DankStaff",
       "displayName": "Dank Staff",
       "displayNameRu": "\u041f\u0440\u043e\u043c\u043e\u0437\u0433\u043b\u044b\u0439 \u043f\u043e\u0441\u043e\u0445",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4762,7 +5025,7 @@
       "internalName": "DazzlingStabberStaff",
       "displayName": "Dazzling Stabber Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043e\u0441\u043b\u0435\u043f\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u0437\u0430\u043a\u0430\u043b\u044b\u0432\u0430\u0442\u0435\u043b\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4826,7 +5089,7 @@
       "internalName": "DeathstareRod",
       "displayName": "Deathstare Rod",
       "displayNameRu": "\u0416\u0435\u0437\u043b \u0441\u043c\u0435\u0440\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u0432\u0437\u0433\u043b\u044f\u0434\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4890,7 +5153,7 @@
       "internalName": "DeepseaStaff",
       "displayName": "Deepsea Staff",
       "displayNameRu": "\u0413\u043b\u0443\u0431\u043e\u043a\u043e\u0432\u043e\u0434\u043d\u044b\u0439 \u043f\u043e\u0441\u043e\u0445",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -4956,9 +5219,13 @@
       "displayNameRu": "\u0422\u0435\u043d\u0435\u0434\u0435\u043c\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "demonshadebreastplate"
       ],
-      "icon": "assets/icons/calamity/items/demonshadebreastplate.png"
+      "icon": "assets/icons/calamity/items/demonshadebreastplate.png",
+      "armorGroupKey": "DemonshadeBreastplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DemonshadeGreaves",
@@ -4968,9 +5235,13 @@
       "displayNameRu": "\u0422\u0435\u043d\u0435\u0434\u0435\u043c\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u043e\u043d\u043e\u0436\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "demonshadegreaves"
       ],
-      "icon": "assets/icons/calamity/items/demonshadegreaves.png"
+      "icon": "assets/icons/calamity/items/demonshadegreaves.png",
+      "armorGroupKey": "DemonshadeGreaves",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DemonshadeHelm",
@@ -4980,10 +5251,14 @@
       "displayNameRu": "\u0422\u0435\u043d\u0435\u0434\u0435\u043c\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "demonshade"
       ],
       "icon": "assets/icons/calamity/items/demonshadehelm.png",
-      "armorSetKey": "Demonshade"
+      "armorSetKey": "Demonshade",
+      "armorGroupKey": "Demonshade",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DepthCharm",
@@ -5031,10 +5306,14 @@
       "displayNameRu": "\u0428\u043b\u044f\u043f\u0430 \u043f\u0443\u0441\u0442\u044b\u043d\u043d\u043e\u0433\u043e \u043c\u0430\u0440\u043e\u0434\u0451\u0440\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "desertprowler"
       ],
       "icon": "assets/icons/calamity/items/desertprowlerhat.png",
-      "armorSetKey": "DesertProwler"
+      "armorSetKey": "DesertProwler",
+      "armorGroupKey": "DesertProwler",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DesertProwlerPants",
@@ -5044,9 +5323,13 @@
       "displayNameRu": "\u0428\u0442\u0430\u043d\u044b \u043f\u0443\u0441\u0442\u044b\u043d\u043d\u043e\u0433\u043e \u043c\u0430\u0440\u043e\u0434\u0451\u0440\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "desertprowlerpants"
       ],
-      "icon": "assets/icons/calamity/items/desertprowlerpants.png"
+      "icon": "assets/icons/calamity/items/desertprowlerpants.png",
+      "armorGroupKey": "DesertProwlerPants",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DesertProwlerShirt",
@@ -5056,9 +5339,13 @@
       "displayNameRu": "\u0420\u0443\u0431\u0430\u0448\u043a\u0430 \u043f\u0443\u0441\u0442\u044b\u043d\u043d\u043e\u0433\u043e \u043c\u0430\u0440\u043e\u0434\u0451\u0440\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "desertprowlershirt"
       ],
-      "icon": "assets/icons/calamity/items/desertprowlershirt.png"
+      "icon": "assets/icons/calamity/items/desertprowlershirt.png",
+      "armorGroupKey": "DesertProwlerShirt",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DesertScourgeMask",
@@ -5068,10 +5355,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041f\u0443\u0441\u0442\u044b\u043d\u043d\u043e\u0433\u043e \u0431\u0438\u0447\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "desertscourge"
       ],
       "icon": "assets/icons/calamity/items/desertscourgemask.png",
-      "armorSetKey": "DesertScourge"
+      "armorSetKey": "DesertScourge",
+      "armorGroupKey": "DesertScourge",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DevilsDevastation",
@@ -5107,10 +5398,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041f\u043e\u0436\u0438\u0440\u0430\u0442\u0435\u043b\u044f \u0431\u043e\u0433\u043e\u0432",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "devourerofgods"
       ],
       "icon": "assets/icons/calamity/items/devourerofgodsmask.png",
-      "armorSetKey": "DevourerofGods"
+      "armorSetKey": "DevourerofGods",
+      "armorGroupKey": "DevourerofGods",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DiamondOfTheDeep",
@@ -5130,7 +5425,7 @@
       "internalName": "DimensionTearingDisk",
       "displayName": "Dimension Tearing Disk",
       "displayNameRu": "\u0420\u0430\u0437\u0440\u044b\u0432\u0430\u044e\u0449\u0438\u0439 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f \u0434\u0438\u0441\u043a",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -5235,10 +5530,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0414\u0440\u044d\u0439\u0434\u043e\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "draedon"
       ],
       "icon": "assets/icons/calamity/items/draedonmask.png",
-      "armorSetKey": "Draedon"
+      "armorSetKey": "Draedon",
+      "armorGroupKey": "Draedon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/DraedonTalkMusicBox",
@@ -5309,7 +5608,7 @@
       "internalName": "DragonbloodDisgorger",
       "displayName": "Dragonblood Disgorger",
       "displayNameRu": "\u0418\u0437\u0432\u0435\u0440\u0433\u0430\u0442\u0435\u043b\u044c \u0434\u0440\u0430\u043a\u043e\u043d\u044c\u0435\u0439 \u043a\u0440\u043e\u0432\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -5426,7 +5725,7 @@
       "internalName": "DryadsTear",
       "displayName": "Dryads Tear",
       "displayNameRu": "\u0421\u043b\u0435\u0437\u0430 \u0434\u0440\u0438\u0430\u0434\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -5440,11 +5739,10 @@
       "internalName": "DukesDecapitator",
       "displayName": "Dukes Decapitator",
       "displayNameRu": "\u0413\u0435\u0440\u0446\u043e\u0433\u0441\u043a\u0438\u0439 \u043e\u0431\u0435\u0437\u0433\u043b\u0430\u0432\u043b\u0438\u0432\u0430\u0442\u0435\u043b\u044c",
-      "category": "armor",
+      "category": "weapon",
       "tags": [
         "weapon",
-        "rogue",
-        "armor"
+        "rogue"
       ],
       "icon": "assets/icons/calamity/items/dukesdecapitator.png"
     },
@@ -5681,7 +5979,7 @@
       "internalName": "ElysianArrow",
       "displayName": "Elysian Arrow",
       "displayNameRu": "\u042d\u043b\u0438\u0437\u0438\u0439\u0441\u043a\u0430\u044f \u0441\u0442\u0440\u0435\u043b\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -5709,9 +6007,13 @@
       "displayNameRu": "\u042d\u043c\u043f\u0438\u0440\u0435\u0439\u0441\u043a\u0438\u0439 \u043f\u043b\u0430\u0449",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "empyreancloak"
       ],
-      "icon": "assets/icons/calamity/items/empyreancloak.png"
+      "icon": "assets/icons/calamity/items/empyreancloak.png",
+      "armorGroupKey": "EmpyreanCloak",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/EmpyreanCuisses",
@@ -5721,9 +6023,13 @@
       "displayNameRu": "\u042d\u043c\u043f\u0438\u0440\u0435\u0439\u0441\u043a\u0438\u0435 \u043d\u0430\u0431\u0435\u0434\u0440\u0435\u043d\u043d\u0438\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "empyreancuisses"
       ],
-      "icon": "assets/icons/calamity/items/empyreancuisses.png"
+      "icon": "assets/icons/calamity/items/empyreancuisses.png",
+      "armorGroupKey": "EmpyreanCuisses",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/EmpyreanKnives",
@@ -5746,10 +6052,14 @@
       "displayNameRu": "\u042d\u043c\u043f\u0438\u0440\u0435\u0439\u0441\u043a\u0430\u044f \u043c\u0430\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "empyrean"
       ],
       "icon": "assets/icons/calamity/items/empyreanmask.png",
-      "armorSetKey": "Empyrean"
+      "armorSetKey": "Empyrean",
+      "armorGroupKey": "Empyrean",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/EnchantedAxe",
@@ -5782,7 +6092,7 @@
       "internalName": "EnchantedConch",
       "displayName": "Enchanted Conch",
       "displayNameRu": "\u0417\u0430\u0447\u0430\u0440\u043e\u0432\u0430\u043d\u043d\u0430\u044f \u0440\u0430\u043a\u0443\u0448\u043a\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -5820,7 +6130,7 @@
       "internalName": "EndoHydraStaff",
       "displayName": "Endo Hydra Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u044d\u043d\u0434\u043e\u0433\u0438\u0434\u0440\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -5833,7 +6143,7 @@
       "internalName": "Endogenesis",
       "displayName": "Endogenesis",
       "displayNameRu": "\u042d\u043d\u0434\u043e\u0433\u0435\u043d\u0435\u0437",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -5846,7 +6156,7 @@
       "internalName": "EntropysVigil",
       "displayName": "Entropys Vigil",
       "displayNameRu": "\u0411\u043b\u044e\u0441\u0442\u0438\u0442\u0435\u043b\u044c \u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -5923,7 +6233,7 @@
       "internalName": "EtherealSubjugator",
       "displayName": "Ethereal Subjugator",
       "displayNameRu": "\u042d\u0444\u0438\u0440\u043d\u044b\u0439 \u043f\u043e\u043a\u043e\u0440\u0438\u0442\u0435\u043b\u044c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -6141,7 +6451,7 @@
       "internalName": "EyeOfNight",
       "displayName": "Eye Of Night",
       "displayNameRu": "\u0413\u043b\u0430\u0437 \u043d\u043e\u0447\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -6204,7 +6514,7 @@
       "internalName": "FantasyTalisman",
       "displayName": "Fantasy Talisman",
       "displayNameRu": "\u0422\u0430\u043b\u0438\u0441\u043c\u0430\u043d \u0444\u0430\u043d\u0442\u0430\u0437\u0438\u0438",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -6232,9 +6542,13 @@
       "displayNameRu": "\u041f\u043e\u043d\u043e\u0436\u0438 \u0433\u043b\u0443\u0431\u043e\u043a\u043e\u0432\u043e\u0434\u043d\u043e\u0439 \u0441\u0442\u0430\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "fathomswarmerboots"
       ],
-      "icon": "assets/icons/calamity/items/fathomswarmerboots.png"
+      "icon": "assets/icons/calamity/items/fathomswarmerboots.png",
+      "armorGroupKey": "FathomSwarmerBoots",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/FathomSwarmerBreastplate",
@@ -6244,9 +6558,13 @@
       "displayNameRu": "\u041d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u0433\u043b\u0443\u0431\u043e\u043a\u043e\u0432\u043e\u0434\u043d\u043e\u0439 \u0441\u0442\u0430\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "fathomswarmerbreastplate"
       ],
-      "icon": "assets/icons/calamity/items/fathomswarmerbreastplate.png"
+      "icon": "assets/icons/calamity/items/fathomswarmerbreastplate.png",
+      "armorGroupKey": "FathomSwarmerBreastplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/FathomSwarmerVisage",
@@ -6256,10 +6574,14 @@
       "displayNameRu": "\u041b\u0438\u043a \u0433\u043b\u0443\u0431\u043e\u043a\u043e\u0432\u043e\u0434\u043d\u043e\u0439 \u0441\u0442\u0430\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "fathomswarmer"
       ],
       "icon": "assets/icons/calamity/items/fathomswarmervisage.png",
-      "armorSetKey": "FathomSwarmer"
+      "armorSetKey": "FathomSwarmer",
+      "armorGroupKey": "FathomSwarmer",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/FaultLine",
@@ -6282,9 +6604,13 @@
       "displayNameRu": "\u0422\u044f\u0436\u0451\u043b\u044b\u0439 \u0448\u043b\u0435\u043c \u0437\u0430\u043f\u0443\u0433\u0438\u0432\u0430\u0442\u0435\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "fearmongergreathelm"
       ],
-      "icon": "assets/icons/calamity/items/fearmongergreathelm.png"
+      "icon": "assets/icons/calamity/items/fearmongergreathelm.png",
+      "armorGroupKey": "FearmongerGreathelm",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/FearmongerGreaves",
@@ -6294,9 +6620,13 @@
       "displayNameRu": "\u041f\u043e\u043d\u043e\u0436\u0438 \u0437\u0430\u043f\u0443\u0433\u0438\u0432\u0430\u0442\u0435\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "fearmongergreaves"
       ],
-      "icon": "assets/icons/calamity/items/fearmongergreaves.png"
+      "icon": "assets/icons/calamity/items/fearmongergreaves.png",
+      "armorGroupKey": "FearmongerGreaves",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/FearmongerPlateMail",
@@ -6306,9 +6636,13 @@
       "displayNameRu": "\u041b\u0430\u0442\u044b \u0437\u0430\u043f\u0443\u0433\u0438\u0432\u0430\u0442\u0435\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "fearmongerplatemail"
       ],
-      "icon": "assets/icons/calamity/items/fearmongerplatemail.png"
+      "icon": "assets/icons/calamity/items/fearmongerplatemail.png",
+      "armorGroupKey": "FearmongerPlateMail",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/FeatherCrown",
@@ -6319,10 +6653,14 @@
       "category": "armor",
       "tags": [
         "armor",
-        "accessory"
+        "accessory",
+        "armor-piece",
+        "feather"
       ],
       "icon": "assets/icons/calamity/items/feathercrown.png",
-      "armorSetKey": "Feather"
+      "armorSetKey": "Feather",
+      "armorGroupKey": "Feather",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/FeatherKnife",
@@ -6458,7 +6796,7 @@
       "internalName": "FlamsteedRing",
       "displayName": "Flamsteed Ring",
       "displayNameRu": "\u041a\u043e\u043b\u044c\u0446\u043e \u0424\u043b\u0435\u043c\u0441\u0442\u0438\u0434\u0430",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "summoner"
@@ -6510,7 +6848,7 @@
       "internalName": "FlashRound",
       "displayName": "Flash Round",
       "displayNameRu": "\u0421\u0432\u0435\u0440\u043a\u0430\u044e\u0449\u0438\u0439 \u043f\u0430\u0442\u0440\u043e\u043d",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -6563,7 +6901,7 @@
       "internalName": "FleshOfInfidelity",
       "displayName": "Flesh Of Infidelity",
       "displayNameRu": "\u041f\u043b\u043e\u0442\u044c \u043d\u0435\u0432\u0435\u0440\u043d\u043e\u0441\u0442\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -6601,7 +6939,7 @@
       "internalName": "FlowersOfMortality",
       "displayName": "Flowers Of Mortality",
       "displayNameRu": "\u0426\u0432\u0435\u0442\u044b \u0441\u043c\u0435\u0440\u0442\u043d\u043e\u0441\u0442\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -6629,9 +6967,13 @@
       "displayNameRu": "\u0417\u0430\u043f\u0440\u0435\u0442\u043d\u0430\u044f \u0434\u0438\u0430\u0434\u0435\u043c\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "forbiddencirclet"
       ],
-      "icon": "assets/icons/calamity/items/forbiddencirclet.png"
+      "icon": "assets/icons/calamity/items/forbiddencirclet.png",
+      "armorGroupKey": "ForbiddenCirclet",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ForbiddenOathblade",
@@ -6665,7 +7007,7 @@
       "internalName": "ForgottenApexWand",
       "displayName": "Forgotten Apex Wand",
       "displayNameRu": "\u0417\u0430\u0431\u044b\u0442\u044b\u0439 \u0436\u0435\u0437\u043b \u0445\u0438\u0449\u043d\u0438\u043a\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -6690,7 +7032,7 @@
       "internalName": "ForsakenSaber",
       "displayName": "Forsaken Saber",
       "displayNameRu": "\u0417\u0430\u0431\u044b\u0442\u0430\u044f \u0441\u0430\u0431\u043b\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "melee"
@@ -6792,7 +7134,7 @@
       "internalName": "FrostBlossomStaff",
       "displayName": "Frost Blossom Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043c\u043e\u0440\u043e\u0437\u043d\u043e\u0433\u043e \u0446\u0432\u0435\u0442\u043a\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -6881,7 +7223,7 @@
       "internalName": "FuelCellBundle",
       "displayName": "Fuel Cell Bundle",
       "displayNameRu": "\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u0442\u043e\u043f\u043b\u0438\u0432\u043d\u044b\u0445 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "summoner"
@@ -7022,7 +7364,7 @@
       "internalName": "GammaHeart",
       "displayName": "Gamma Heart",
       "displayNameRu": "\u0413\u0430\u043c\u043c\u0430-\u0441\u0435\u0440\u0434\u0446\u0435",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -7035,7 +7377,7 @@
       "internalName": "GastricBelcherStaff",
       "displayName": "Gastric Belcher Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0436\u0435\u043b\u0443\u0434\u043e\u0447\u043d\u043e\u0433\u043e \u0438\u0437\u0440\u044b\u0433\u0430\u0442\u0435\u043b\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -7048,7 +7390,7 @@
       "internalName": "GelDart",
       "displayName": "Gel Dart",
       "displayNameRu": "\u0413\u0435\u043b\u0435\u0432\u044b\u0439 \u0434\u0440\u043e\u0442\u0438\u043a",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -7089,9 +7431,13 @@
       "displayNameRu": "\u0412\u044b\u0441\u043e\u043a\u043e\u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0447\u043d\u044b\u0439 \u0441\u0430\u043c\u043e\u0446\u0432\u0435\u0442\u043d\u044b\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "gemtechbodyarmor"
       ],
-      "icon": "assets/icons/calamity/items/gemtechbodyarmor.png"
+      "icon": "assets/icons/calamity/items/gemtechbodyarmor.png",
+      "armorGroupKey": "GemTechBodyArmor",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GemTechHeadgear",
@@ -7101,10 +7447,14 @@
       "displayNameRu": "\u0412\u044b\u0441\u043e\u043a\u043e\u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0447\u043d\u044b\u0439 \u0441\u0430\u043c\u043e\u0446\u0432\u0435\u0442\u043d\u044b\u0439 \u0433\u043e\u043b\u043e\u0432\u043d\u043e\u0439 \u0443\u0431\u043e\u0440",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "gemtech"
       ],
       "icon": "assets/icons/calamity/items/gemtechheadgear.png",
-      "armorSetKey": "GemTech"
+      "armorSetKey": "GemTech",
+      "armorGroupKey": "GemTech",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GemTechSchynbaulds",
@@ -7114,9 +7464,13 @@
       "displayNameRu": "\u0412\u044b\u0441\u043e\u043a\u043e\u0442\u0435\u0445\u043d\u043e\u043b\u043e\u0433\u0438\u0447\u043d\u044b\u0435 \u0441\u0430\u043c\u043e\u0446\u0432\u0435\u0442\u043d\u044b\u0435 \u043f\u043e\u043d\u043e\u0436\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "gemtechschynbaulds"
       ],
-      "icon": "assets/icons/calamity/items/gemtechschynbaulds.png"
+      "icon": "assets/icons/calamity/items/gemtechschynbaulds.png",
+      "armorGroupKey": "GemTechSchynbaulds",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/Genesis",
@@ -7165,10 +7519,14 @@
       "category": "armor",
       "tags": [
         "armor",
-        "magic"
+        "magic",
+        "armor-piece",
+        "ghastly"
       ],
       "icon": "assets/icons/calamity/items/ghastlyvisage.png",
-      "armorSetKey": "Ghastly"
+      "armorSetKey": "Ghastly",
+      "armorGroupKey": "Ghastly",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GhostBracelet",
@@ -7263,7 +7621,7 @@
       "internalName": "GlacialEmbrace",
       "displayName": "Glacial Embrace",
       "displayNameRu": "\u041b\u0435\u0434\u0435\u043d\u044f\u0449\u0438\u0435 \u043e\u0431\u044a\u044f\u0442\u044c\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -7376,11 +7734,15 @@
       "internalName": "GodSlayerChestplate",
       "displayName": "God Slayer Chestplate",
       "displayNameRu": "\u041d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
-      "category": "other",
+      "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "godslayerchestplate"
       ],
-      "icon": "assets/icons/calamity/items/godslayerchestplate.png"
+      "icon": "assets/icons/calamity/items/godslayerchestplate.png",
+      "armorGroupKey": "GodSlayerChestplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GodSlayerHeadMelee",
@@ -7390,9 +7752,13 @@
       "displayNameRu": "\u0422\u044f\u0436\u0451\u043b\u044b\u0439 \u0440\u043e\u0433\u0430\u0442\u044b\u0439 \u0448\u043b\u0435\u043c \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "godslayerheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/godslayerheadmelee.png"
+      "icon": "assets/icons/calamity/items/godslayerheadmelee.png",
+      "armorGroupKey": "GodSlayerHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GodSlayerHeadRanged",
@@ -7402,9 +7768,13 @@
       "displayNameRu": "\u041a\u0430\u0441\u043a\u0430 \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "godslayerheadranged"
       ],
-      "icon": "assets/icons/calamity/items/godslayerheadranged.png"
+      "icon": "assets/icons/calamity/items/godslayerheadranged.png",
+      "armorGroupKey": "GodSlayerHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GodSlayerHeadRogue",
@@ -7414,9 +7784,13 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "godslayerheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/godslayerheadrogue.png"
+      "icon": "assets/icons/calamity/items/godslayerheadrogue.png",
+      "armorGroupKey": "GodSlayerHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GodSlayerHornedHelm",
@@ -7426,10 +7800,14 @@
       "displayNameRu": "\u0420\u043e\u0433\u0430\u0442\u044b\u0439 \u0448\u043b\u0435\u043c \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "godslayerhorned"
       ],
       "icon": "assets/icons/calamity/items/godslayerhornedhelm.png",
-      "armorSetKey": "GodSlayerHorned"
+      "armorSetKey": "GodSlayerHorned",
+      "armorGroupKey": "GodSlayerHorned",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GodSlayerLeggings",
@@ -7439,9 +7817,13 @@
       "displayNameRu": "\u041f\u043e\u043d\u043e\u0436\u0438 \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "godslayerleggings"
       ],
-      "icon": "assets/icons/calamity/items/godslayerleggings.png"
+      "icon": "assets/icons/calamity/items/godslayerleggings.png",
+      "armorGroupKey": "GodSlayerLeggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GodSlayerSlug",
@@ -7449,7 +7831,7 @@
       "internalName": "GodSlayerSlug",
       "displayName": "God Slayer Slug",
       "displayNameRu": "\u041f\u0443\u043b\u044f \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -7465,10 +7847,14 @@
       "displayNameRu": "\u041b\u0438\u043a \u0431\u043e\u0433\u043e\u0443\u0431\u0438\u0439\u0446\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "godslayer"
       ],
       "icon": "assets/icons/calamity/items/godslayervisage.png",
-      "armorSetKey": "GodSlayer"
+      "armorSetKey": "GodSlayer",
+      "armorGroupKey": "GodSlayer",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/GodsParanoia",
@@ -7746,7 +8132,7 @@
       "internalName": "HailstormBullet",
       "displayName": "Hailstorm Bullet",
       "displayNameRu": "\u041f\u0443\u043b\u044f \u043b\u0435\u0434\u044f\u043d\u043e\u0433\u043e \u0433\u0440\u0430\u0434\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -7786,7 +8172,7 @@
       "internalName": "HallowPointRound",
       "displayName": "Hallow Point Round",
       "displayNameRu": "\u041f\u0430\u0442\u0440\u043e\u043d \u0441\u043e \u0441\u0432\u044f\u0442\u044b\u043c \u043d\u0430\u043a\u043e\u043d\u0435\u0447\u043d\u0438\u043a\u043e\u043c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -7875,7 +8261,7 @@
       "internalName": "HauntedScroll",
       "displayName": "Haunted Scroll",
       "displayNameRu": "\u041e\u0434\u0435\u0440\u0436\u0438\u043c\u044b\u0439 \u0441\u0432\u0438\u0442\u043e\u043a",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -8016,7 +8402,7 @@
       "internalName": "HellwingStaff",
       "displayName": "Hellwing Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0430\u0434\u0441\u043a\u043e\u0433\u043e \u043a\u0440\u044b\u043b\u0430",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "magic"
@@ -8080,7 +8466,7 @@
       "internalName": "HerringStaff",
       "displayName": "Herring Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0441\u0435\u043b\u0451\u0434\u043a\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -8107,10 +8493,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0420\u0430\u0437\u0443\u043c\u0430 \u0443\u043b\u044c\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hivemind"
       ],
       "icon": "assets/icons/calamity/items/hivemindmask.png",
-      "armorSetKey": "HiveMind"
+      "armorSetKey": "HiveMind",
+      "armorGroupKey": "HiveMind",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HivePod",
@@ -8170,7 +8560,7 @@
       "internalName": "HolyFireBullet",
       "displayName": "Holy Fire Bullet",
       "displayNameRu": "\u041f\u0443\u043b\u044f \u0441\u0432\u044f\u0442\u043e\u0433\u043e \u043e\u0433\u043d\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -8198,9 +8588,13 @@
       "displayNameRu": "\u041a\u0430\u043f\u044e\u0448\u043e\u043d \u0431\u0435\u0434\u0441\u0442\u0432\u0438\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hoodofcalamity"
       ],
-      "icon": "assets/icons/calamity/items/hoodofcalamity.png"
+      "icon": "assets/icons/calamity/items/hoodofcalamity.png",
+      "armorGroupKey": "HoodOfCalamity",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HowlsHeart",
@@ -8248,9 +8642,13 @@
       "displayNameRu": "\u0413\u0438\u0434\u0440\u043e\u0442\u0435\u0440\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0434\u043e\u0441\u043f\u0435\u0445",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hydrothermicarmor"
       ],
-      "icon": "assets/icons/calamity/items/hydrothermicarmor.png"
+      "icon": "assets/icons/calamity/items/hydrothermicarmor.png",
+      "armorGroupKey": "HydrothermicArmor",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HydrothermicHeadMagic",
@@ -8260,9 +8658,13 @@
       "displayNameRu": "\u0413\u0438\u0434\u0440\u043e\u0442\u0435\u0440\u043c\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043c\u0430\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hydrothermicheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/hydrothermicheadmagic.png"
+      "icon": "assets/icons/calamity/items/hydrothermicheadmagic.png",
+      "armorGroupKey": "HydrothermicHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HydrothermicHeadMelee",
@@ -8272,9 +8674,13 @@
       "displayNameRu": "\u0413\u0438\u0434\u0440\u043e\u0442\u0435\u0440\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hydrothermicheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/hydrothermicheadmelee.png"
+      "icon": "assets/icons/calamity/items/hydrothermicheadmelee.png",
+      "armorGroupKey": "HydrothermicHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HydrothermicHeadRanged",
@@ -8284,9 +8690,13 @@
       "displayNameRu": "\u0413\u0438\u0434\u0440\u043e\u0442\u0435\u0440\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0433\u043e\u043b\u043e\u0432\u043d\u043e\u0439 \u0443\u0431\u043e\u0440",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hydrothermicheadranged"
       ],
-      "icon": "assets/icons/calamity/items/hydrothermicheadranged.png"
+      "icon": "assets/icons/calamity/items/hydrothermicheadranged.png",
+      "armorGroupKey": "HydrothermicHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HydrothermicHeadRogue",
@@ -8296,9 +8706,13 @@
       "displayNameRu": "\u0413\u0438\u0434\u0440\u043e\u0442\u0435\u0440\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u043a\u0430\u043f\u044e\u0448\u043e\u043d",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hydrothermicheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/hydrothermicheadrogue.png"
+      "icon": "assets/icons/calamity/items/hydrothermicheadrogue.png",
+      "armorGroupKey": "HydrothermicHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HydrothermicHeadSummon",
@@ -8308,9 +8722,13 @@
       "displayNameRu": "\u0413\u0438\u0434\u0440\u043e\u0442\u0435\u0440\u043c\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043a\u0430\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hydrothermicheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/hydrothermicheadsummon.png"
+      "icon": "assets/icons/calamity/items/hydrothermicheadsummon.png",
+      "armorGroupKey": "HydrothermicHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HydrothermicSubligar",
@@ -8320,9 +8738,13 @@
       "displayNameRu": "\u0413\u0438\u0434\u0440\u043e\u0442\u0435\u0440\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0443\u0431\u043b\u0438\u0433\u0430\u043a\u0443\u043b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "hydrothermicsubligar"
       ],
-      "icon": "assets/icons/calamity/items/hydrothermicsubligar.png"
+      "icon": "assets/icons/calamity/items/hydrothermicsubligar.png",
+      "armorGroupKey": "HydrothermicSubligar",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/HyperdeathRiftScepter",
@@ -8343,7 +8765,7 @@
       "internalName": "HyperiusBullet",
       "displayName": "Hyperius Bullet",
       "displayNameRu": "\u041f\u0443\u043b\u044f \u0413\u0438\u043f\u0435\u0440\u0438\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -8422,7 +8844,7 @@
       "internalName": "IcicleArrow",
       "displayName": "Icicle Arrow",
       "displayNameRu": "\u0421\u0442\u0440\u0435\u043b\u0430-\u0441\u043e\u0441\u0443\u043b\u044c\u043a\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -8462,7 +8884,7 @@
       "internalName": "IgneousExaltation",
       "displayName": "Igneous Exaltation",
       "displayNameRu": "\u041c\u0430\u0433\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u0438\u0437\u0432\u0435\u0440\u0436\u0435\u043d\u0438\u0435",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -8512,7 +8934,7 @@
       "internalName": "InfectedRemote",
       "displayName": "Infected Remote",
       "displayNameRu": "\u0417\u0430\u0440\u0430\u0436\u0451\u043d\u043d\u044b\u0439 \u0434\u0438\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u043f\u0443\u043b\u044c\u0442",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -8766,7 +9188,7 @@
       "internalName": "KingofConstellationsTenryu",
       "displayName": "Kingof Constellations Tenryu",
       "displayNameRu": "\u041a\u043e\u0440\u043e\u043b\u044c \u0441\u043e\u0437\u0432\u0435\u0437\u0434\u0438\u0439, \u0422\u0435\u043d\u0440\u044e",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -8869,7 +9291,7 @@
       "internalName": "LegionofCelestia",
       "displayName": "Legionof Celestia",
       "displayNameRu": "\u041b\u0435\u0433\u0438\u043e\u043d \u0421\u0435\u043b\u0435\u0441\u0442\u0438\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -8921,10 +9343,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041b\u0435\u0432\u0438\u0430\u0444\u0430\u043d",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "leviathan"
       ],
       "icon": "assets/icons/calamity/items/leviathanmask.png",
-      "armorSetKey": "Leviathan"
+      "armorSetKey": "Leviathan",
+      "armorGroupKey": "Leviathan",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/LeviathanTeeth",
@@ -9009,7 +9435,7 @@
       "internalName": "LiliesOfFinality",
       "displayName": "Lilies Of Finality",
       "displayNameRu": "\u041b\u0438\u043b\u0438\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0451\u043d\u043d\u043e\u0441\u0442\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -9099,9 +9525,13 @@
       "displayNameRu": "\u0411\u043e\u0442\u0438\u043d\u043a\u0438 \u041b\u044e\u0441\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "lucisboots"
       ],
-      "icon": "assets/icons/calamity/items/lucisboots.png"
+      "icon": "assets/icons/calamity/items/lucisboots.png",
+      "armorGroupKey": "LucisBoots",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/LucisHairstyle",
@@ -9111,9 +9541,13 @@
       "displayNameRu": "\u041f\u0440\u0438\u0447\u0451\u0441\u043a\u0430 \u041b\u044e\u0441\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "lucishairstyle"
       ],
-      "icon": "assets/icons/calamity/items/lucishairstyle.png"
+      "icon": "assets/icons/calamity/items/lucishairstyle.png",
+      "armorGroupKey": "LucisHairstyle",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/LucisMilitaryUniform",
@@ -9123,9 +9557,13 @@
       "displayNameRu": "\u0412\u043e\u0435\u043d\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u041b\u044e\u0441\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "lucismilitaryuniform"
       ],
-      "icon": "assets/icons/calamity/items/lucismilitaryuniform.png"
+      "icon": "assets/icons/calamity/items/lucismilitaryuniform.png",
+      "armorGroupKey": "LucisMilitaryUniform",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/LucisSight",
@@ -9186,9 +9624,13 @@
       "displayNameRu": "\u0411\u043e\u0442\u0438\u043d\u043a\u0438 \u044d\u043b\u0438\u0442\u043d\u043e\u0433\u043e \u043b\u0443\u043d\u043d\u043e\u0433\u043e \u043e\u0442\u0440\u044f\u0434\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "luniccorpsboots"
       ],
-      "icon": "assets/icons/calamity/items/luniccorpsboots.png"
+      "icon": "assets/icons/calamity/items/luniccorpsboots.png",
+      "armorGroupKey": "LunicCorpsBoots",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/LunicCorpsHelmet",
@@ -9198,10 +9640,14 @@
       "displayNameRu": "\u0428\u043b\u0435\u043c \u044d\u043b\u0438\u0442\u043d\u043e\u0433\u043e \u043b\u0443\u043d\u043d\u043e\u0433\u043e \u043e\u0442\u0440\u044f\u0434\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "luniccorps"
       ],
       "icon": "assets/icons/calamity/items/luniccorpshelmet.png",
-      "armorSetKey": "LunicCorps"
+      "armorSetKey": "LunicCorps",
+      "armorGroupKey": "LunicCorps",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/LunicCorpsVest",
@@ -9211,9 +9657,13 @@
       "displayNameRu": "\u0416\u0438\u043b\u0435\u0442 \u044d\u043b\u0438\u0442\u043d\u043e\u0433\u043e \u043b\u0443\u043d\u043d\u043e\u0433\u043e \u043e\u0442\u0440\u044f\u0434\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "luniccorpsvest"
       ],
-      "icon": "assets/icons/calamity/items/luniccorpsvest.png"
+      "icon": "assets/icons/calamity/items/luniccorpsvest.png",
+      "armorGroupKey": "LunicCorpsVest",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/LunicEye",
@@ -9258,7 +9708,7 @@
       "internalName": "MadAlchemistsCocktailGlove",
       "displayName": "Mad Alchemists Cocktail Glove",
       "displayNameRu": "\u041a\u043e\u043a\u0442\u0435\u0439\u043b\u044c\u043d\u0430\u044f \u043f\u0435\u0440\u0447\u0430\u0442\u043a\u0430 \u0431\u0435\u0437\u0443\u043c\u043d\u043e\u0433\u043e \u0430\u043b\u0445\u0438\u043c\u0438\u043a\u0430",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "magic"
@@ -9400,11 +9850,10 @@
       "internalName": "Manhattan",
       "displayName": "Manhattan",
       "displayNameRu": "\u041c\u0430\u043d\u0445\u044d\u0442\u0442\u0435\u043d",
-      "category": "armor",
+      "category": "other",
       "tags": [
         "buff",
-        "consumable",
-        "armor"
+        "consumable"
       ],
       "icon": "assets/icons/calamity/items/manhattan.png"
     },
@@ -9453,7 +9902,7 @@
       "internalName": "MarksmanRound",
       "displayName": "Marksman Round",
       "displayNameRu": "\u0421\u043d\u0430\u0439\u043f\u0435\u0440\u0441\u043a\u0430\u044f \u043f\u0443\u043b\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -9469,10 +9918,14 @@
       "displayNameRu": "\u041c\u0440\u0430\u043d\u0438\u0442\u043e\u0432\u044b\u0439 \u0433\u043e\u043b\u043e\u0432\u043d\u043e\u0439 \u0443\u0431\u043e\u0440 \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u043e\u0440\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "marnitearchitect"
       ],
       "icon": "assets/icons/calamity/items/marnitearchitectheadgear.png",
-      "armorSetKey": "MarniteArchitect"
+      "armorSetKey": "MarniteArchitect",
+      "armorGroupKey": "MarniteArchitect",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/MarniteArchitectToga",
@@ -9482,9 +9935,13 @@
       "displayNameRu": "\u041c\u0440\u0430\u043d\u0438\u0442\u043e\u0432\u0430\u044f \u043c\u0430\u043d\u0442\u0438\u044f \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u043e\u0440\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "marnitearchitecttoga"
       ],
-      "icon": "assets/icons/calamity/items/marnitearchitecttoga.png"
+      "icon": "assets/icons/calamity/items/marnitearchitecttoga.png",
+      "armorGroupKey": "MarniteArchitectToga",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/MarniteCandle",
@@ -9607,7 +10064,7 @@
       "internalName": "Metastasis",
       "displayName": "Metastasis",
       "displayNameRu": "\u041c\u0435\u0442\u0430\u0441\u0442\u0430\u0437",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -9710,7 +10167,7 @@
       "internalName": "MirrorofKalandra",
       "displayName": "Mirrorof Kalandra",
       "displayNameRu": "\u0417\u0435\u0440\u043a\u0430\u043b\u043e \u041a\u0430\u043b\u0430\u043d\u0434\u0440\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -9750,9 +10207,13 @@
       "displayNameRu": "\u041f\u0430\u043d\u0446\u0438\u0440\u043d\u044b\u0435 \u043f\u043e\u043d\u043e\u0436\u0438 \u043c\u043e\u043b\u043b\u044e\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "molluskshelleggings"
       ],
-      "icon": "assets/icons/calamity/items/molluskshelleggings.png"
+      "icon": "assets/icons/calamity/items/molluskshelleggings.png",
+      "armorGroupKey": "MolluskShelleggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/MolluskShellmet",
@@ -9762,9 +10223,13 @@
       "displayNameRu": "\u041f\u0430\u043d\u0446\u0438\u0440\u043d\u044b\u0439 \u0448\u043b\u0435\u043c \u043c\u043e\u043b\u043b\u044e\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "molluskshellmet"
       ],
-      "icon": "assets/icons/calamity/items/molluskshellmet.png"
+      "icon": "assets/icons/calamity/items/molluskshellmet.png",
+      "armorGroupKey": "MolluskShellmet",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/MolluskShellplate",
@@ -9774,9 +10239,13 @@
       "displayNameRu": "\u041f\u0430\u043d\u0446\u0438\u0440\u043d\u044b\u0435 \u043b\u0430\u0442\u044b \u043c\u043e\u043b\u043b\u044e\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "molluskshellplate"
       ],
-      "icon": "assets/icons/calamity/items/molluskshellplate.png"
+      "icon": "assets/icons/calamity/items/molluskshellplate.png",
+      "armorGroupKey": "MolluskShellplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/MoltenAmputator",
@@ -9916,10 +10385,14 @@
       "category": "armor",
       "tags": [
         "armor",
-        "accessory"
+        "accessory",
+        "armor-piece",
+        "moonstone"
       ],
       "icon": "assets/icons/calamity/items/moonstonecrown.png",
-      "armorSetKey": "Moonstone"
+      "armorSetKey": "Moonstone",
+      "armorGroupKey": "Moonstone",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/MortarRound",
@@ -9927,7 +10400,7 @@
       "internalName": "MortarRound",
       "displayName": "Mortar Round",
       "displayNameRu": "\u041c\u0438\u043d\u043e\u043c\u0451\u0442\u043d\u044b\u0439 \u043f\u0430\u0442\u0440\u043e\u043d",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -9993,7 +10466,7 @@
       "internalName": "MutatedTruffle",
       "displayName": "Mutated Truffle",
       "displayNameRu": "\u041c\u0443\u0442\u0438\u0440\u043e\u0432\u0430\u0432\u0448\u0438\u0439 \u0442\u0440\u044e\u0444\u0435\u043b\u044c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -10354,10 +10827,14 @@
       "category": "armor",
       "tags": [
         "armor",
-        "accessory"
+        "accessory",
+        "armor-piece",
+        "occultskull"
       ],
       "icon": "assets/icons/calamity/items/occultskullcrown.png",
-      "armorSetKey": "OccultSkull"
+      "armorSetKey": "OccultSkull",
+      "armorGroupKey": "OccultSkull",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/OceanCrest",
@@ -10404,10 +10881,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0421\u0442\u0430\u0440\u043e\u0433\u043e \u0433\u0435\u0440\u0446\u043e\u0433\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "oldduke"
       ],
       "icon": "assets/icons/calamity/items/olddukemask.png",
-      "armorSetKey": "OldDuke"
+      "armorSetKey": "OldDuke",
+      "armorGroupKey": "OldDuke",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/OldDukeScales",
@@ -10442,10 +10923,14 @@
       "displayNameRu": "\u0428\u043b\u044f\u043f\u0430 \u0441\u0442\u0430\u0440\u043e\u0433\u043e \u043e\u0445\u043e\u0442\u043d\u0438\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "oldhunter"
       ],
       "icon": "assets/icons/calamity/items/oldhunterhat.png",
-      "armorSetKey": "OldHunter"
+      "armorSetKey": "OldHunter",
+      "armorGroupKey": "OldHunter",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/OldHunterPants",
@@ -10455,9 +10940,13 @@
       "displayNameRu": "\u0428\u0442\u0430\u043d\u044b \u0441\u0442\u0430\u0440\u043e\u0433\u043e \u043e\u0445\u043e\u0442\u043d\u0438\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "oldhunterpants"
       ],
-      "icon": "assets/icons/calamity/items/oldhunterpants.png"
+      "icon": "assets/icons/calamity/items/oldhunterpants.png",
+      "armorGroupKey": "OldHunterPants",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/OldHunterShirt",
@@ -10467,9 +10956,13 @@
       "displayNameRu": "\u041a\u0443\u0440\u0442\u043a\u0430 \u0441\u0442\u0430\u0440\u043e\u0433\u043e \u043e\u0445\u043e\u0442\u043d\u0438\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "oldhuntershirt"
       ],
-      "icon": "assets/icons/calamity/items/oldhuntershirt.png"
+      "icon": "assets/icons/calamity/items/oldhuntershirt.png",
+      "armorGroupKey": "OldHunterShirt",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/OmegaBiomeBlade",
@@ -10490,11 +10983,15 @@
       "internalName": "OmegaBlueChestplate",
       "displayName": "Omega Blue Chestplate",
       "displayNameRu": "\u041e\u043c\u0435\u0433\u0430-\u0441\u0438\u043d\u0438\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a",
-      "category": "other",
+      "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "omegabluechestplate"
       ],
-      "icon": "assets/icons/calamity/items/omegabluechestplate.png"
+      "icon": "assets/icons/calamity/items/omegabluechestplate.png",
+      "armorGroupKey": "OmegaBlueChestplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/OmegaBlueHelmet",
@@ -10504,10 +11001,14 @@
       "displayNameRu": "\u041e\u043c\u0435\u0433\u0430-\u0441\u0438\u043d\u0438\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "omegablue"
       ],
       "icon": "assets/icons/calamity/items/omegabluehelmet.png",
-      "armorSetKey": "OmegaBlue"
+      "armorSetKey": "OmegaBlue",
+      "armorGroupKey": "OmegaBlue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/OmegaBlueTentacles",
@@ -10517,9 +11018,13 @@
       "displayNameRu": "\u041e\u043c\u0435\u0433\u0430-\u0441\u0438\u043d\u0438\u0435 \u0449\u0443\u043f\u0430\u043b\u044c\u0446\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "omegabluetentacles"
       ],
-      "icon": "assets/icons/calamity/items/omegabluetentacles.png"
+      "icon": "assets/icons/calamity/items/omegabluetentacles.png",
+      "armorGroupKey": "OmegaBlueTentacles",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/OmegaHealingPotion",
@@ -10630,7 +11135,7 @@
       "internalName": "Orderbringer",
       "displayName": "Orderbringer",
       "displayNameRu": "\u0412\u0435\u0440\u0448\u0438\u0442\u0435\u043b\u044c \u043f\u0440\u0430\u0432\u043e\u0441\u0443\u0434\u0438\u044f",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "melee"
@@ -10668,7 +11173,7 @@
       "internalName": "OrthoceraShell",
       "displayName": "Orthocera Shell",
       "displayNameRu": "\u041f\u0430\u043d\u0446\u0438\u0440\u044c \u043e\u0440\u0442\u043e\u0446\u0435\u0440\u0430\u0441\u0430",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "summoner"
@@ -10810,7 +11315,7 @@
       "internalName": "Perdition",
       "displayName": "Perdition",
       "displayNameRu": "\u041f\u043e\u0433\u0438\u0431\u0435\u043b\u044c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -10850,10 +11355,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041f\u0435\u0440\u0444\u043e\u0440\u0430\u0442\u043e\u0440\u043e\u0432",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "perforator"
       ],
       "icon": "assets/icons/calamity/items/perforatormask.png",
-      "armorSetKey": "Perforator"
+      "armorSetKey": "Perforator",
+      "armorGroupKey": "Perforator",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PermafrostsConcoction",
@@ -10873,7 +11382,7 @@
       "internalName": "PestilentDefiler",
       "displayName": "Pestilent Defiler",
       "displayNameRu": "\u041f\u0430\u0433\u0443\u0431\u043d\u044b\u0439 \u043e\u0441\u043a\u0432\u0435\u0440\u043d\u0438\u0442\u0435\u043b\u044c",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -11041,10 +11550,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0436\u043d\u0435\u0446\u0430 \u0447\u0443\u043c\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "plaguereaper"
       ],
       "icon": "assets/icons/calamity/items/plaguereapermask.png",
-      "armorSetKey": "PlagueReaper"
+      "armorSetKey": "PlagueReaper",
+      "armorGroupKey": "PlagueReaper",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PlagueReaperStriders",
@@ -11054,9 +11567,13 @@
       "displayNameRu": "\u041f\u043e\u0445\u043e\u0434\u043d\u044b\u0435 \u0431\u043e\u0442\u0438\u043d\u043a\u0438 \u0436\u043d\u0435\u0446\u0430 \u0447\u0443\u043c\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "plaguereaperstriders"
       ],
-      "icon": "assets/icons/calamity/items/plaguereaperstriders.png"
+      "icon": "assets/icons/calamity/items/plaguereaperstriders.png",
+      "armorGroupKey": "PlagueReaperStriders",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PlagueReaperVest",
@@ -11066,9 +11583,13 @@
       "displayNameRu": "\u0416\u0438\u043b\u0435\u0442 \u0436\u043d\u0435\u0446\u0430 \u0447\u0443\u043c\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "plaguereapervest"
       ],
-      "icon": "assets/icons/calamity/items/plaguereapervest.png"
+      "icon": "assets/icons/calamity/items/plaguereapervest.png",
+      "armorGroupKey": "PlagueReaperVest",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PlagueStaff",
@@ -11104,9 +11625,13 @@
       "displayNameRu": "\u041f\u0430\u043d\u0446\u0438\u0440\u044c \u043f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u044b \u0447\u0443\u043c\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "plaguebringercarapace"
       ],
-      "icon": "assets/icons/calamity/items/plaguebringercarapace.png"
+      "icon": "assets/icons/calamity/items/plaguebringercarapace.png",
+      "armorGroupKey": "PlaguebringerCarapace",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PlaguebringerGoliathMask",
@@ -11116,10 +11641,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u044b \u0447\u0443\u043c\u044b, \u0413\u043e\u043b\u0438\u0430\u0444",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "plaguebringergoliath"
       ],
       "icon": "assets/icons/calamity/items/plaguebringergoliathmask.png",
-      "armorSetKey": "PlaguebringerGoliath"
+      "armorSetKey": "PlaguebringerGoliath",
+      "armorGroupKey": "PlaguebringerGoliath",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PlaguebringerPistons",
@@ -11129,9 +11658,13 @@
       "displayNameRu": "\u041f\u043e\u0440\u0448\u043d\u0438 \u043f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u044b \u0447\u0443\u043c\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "plaguebringerpistons"
       ],
-      "icon": "assets/icons/calamity/items/plaguebringerpistons.png"
+      "icon": "assets/icons/calamity/items/plaguebringerpistons.png",
+      "armorGroupKey": "PlaguebringerPistons",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PlaguebringerVisor",
@@ -11141,9 +11674,13 @@
       "displayNameRu": "\u0412\u0438\u0437\u043e\u0440 \u043f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u044b \u0447\u0443\u043c\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "plaguebringervisor"
       ],
-      "icon": "assets/icons/calamity/items/plaguebringervisor.png"
+      "icon": "assets/icons/calamity/items/plaguebringervisor.png",
+      "armorGroupKey": "PlaguebringerVisor",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PlaguedFuelPack",
@@ -11214,7 +11751,7 @@
       "internalName": "PlantationStaff",
       "displayName": "Plantation Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043f\u043b\u0430\u043d\u0442\u0430\u0446\u0438\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -11307,10 +11844,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041f\u043e\u043b\u0442\u0435\u0440\u0433\u0430\u0441\u0442\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "polterghast"
       ],
       "icon": "assets/icons/calamity/items/polterghastmask.png",
-      "armorSetKey": "Polterghast"
+      "armorSetKey": "Polterghast",
+      "armorGroupKey": "Polterghast",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PolypLauncher",
@@ -11462,9 +12003,13 @@
       "displayNameRu": "\u041f\u0440\u0438\u0437\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u043e\u043d\u043e\u0436\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "prismaticgreaves"
       ],
-      "icon": "assets/icons/calamity/items/prismaticgreaves.png"
+      "icon": "assets/icons/calamity/items/prismaticgreaves.png",
+      "armorGroupKey": "PrismaticGreaves",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PrismaticHelmet",
@@ -11474,10 +12019,14 @@
       "displayNameRu": "\u041f\u0440\u0438\u0437\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "prismatic"
       ],
       "icon": "assets/icons/calamity/items/prismatichelmet.png",
-      "armorSetKey": "Prismatic"
+      "armorSetKey": "Prismatic",
+      "armorGroupKey": "Prismatic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PrismaticRegalia",
@@ -11487,9 +12036,13 @@
       "displayNameRu": "\u041f\u0440\u0438\u0437\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0440\u0435\u0433\u0430\u043b\u0438\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "prismaticregalia"
       ],
-      "icon": "assets/icons/calamity/items/prismaticregalia.png"
+      "icon": "assets/icons/calamity/items/prismaticregalia.png",
+      "armorGroupKey": "PrismaticRegalia",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PristineFury",
@@ -11525,10 +12078,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041e\u0441\u043a\u0432\u0435\u0440\u043d\u0451\u043d\u043d\u043e\u0433\u043e \u0441\u0442\u0440\u0430\u0436\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "profanedguardian"
       ],
       "icon": "assets/icons/calamity/items/profanedguardianmask.png",
-      "armorSetKey": "ProfanedGuardian"
+      "armorSetKey": "ProfanedGuardian",
+      "armorGroupKey": "ProfanedGuardian",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ProfanedPartisan",
@@ -11587,10 +12144,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u041f\u0440\u043e\u0432\u0438\u0434\u0435\u043d\u0441",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "providence"
       ],
       "icon": "assets/icons/calamity/items/providencemask.png",
-      "armorSetKey": "Providence"
+      "armorSetKey": "Providence",
+      "armorGroupKey": "Providence",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/PuffShroom",
@@ -11598,7 +12159,7 @@
       "internalName": "PuffShroom",
       "displayName": "Puff Shroom",
       "displayNameRu": "\u041f\u0443\u0444\u0433\u0440\u0438\u0431",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -11892,10 +12453,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0420\u0430\u0437\u0440\u0443\u0448\u0438\u0442\u0435\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "ravager"
       ],
       "icon": "assets/icons/calamity/items/ravagermask.png",
-      "armorSetKey": "Ravager"
+      "armorSetKey": "Ravager",
+      "armorGroupKey": "Ravager",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/RealityRupture",
@@ -11943,9 +12508,13 @@
       "displayNameRu": "\u041d\u0430\u0431\u0435\u0434\u0440\u0435\u043d\u043d\u0438\u043a\u0438 \u0440\u0430\u0437\u043e\u0440\u0438\u0442\u0435\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "reavercuisses"
       ],
-      "icon": "assets/icons/calamity/items/reavercuisses.png"
+      "icon": "assets/icons/calamity/items/reavercuisses.png",
+      "armorGroupKey": "ReaverCuisses",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ReaverHeadExplore",
@@ -11953,11 +12522,15 @@
       "internalName": "ReaverHeadExplore",
       "displayName": "Reaver Head Explore",
       "displayNameRu": "\u0413\u043e\u043b\u043e\u0432\u043d\u043e\u0439 \u0443\u0431\u043e\u0440 \u0440\u0430\u0437\u043e\u0440\u0438\u0442\u0435\u043b\u044f",
-      "category": "other",
+      "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "reaverheadexplore"
       ],
-      "icon": "assets/icons/calamity/items/reaverheadexplore.png"
+      "icon": "assets/icons/calamity/items/reaverheadexplore.png",
+      "armorGroupKey": "ReaverHeadExplore",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ReaverHeadMobility",
@@ -11967,9 +12540,13 @@
       "displayNameRu": "\u041b\u0438\u043a \u0440\u0430\u0437\u043e\u0440\u0438\u0442\u0435\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "reaverheadmobility"
       ],
-      "icon": "assets/icons/calamity/items/reaverheadmobility.png"
+      "icon": "assets/icons/calamity/items/reaverheadmobility.png",
+      "armorGroupKey": "ReaverHeadMobility",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ReaverHeadTank",
@@ -11979,9 +12556,13 @@
       "displayNameRu": "\u0428\u043b\u0435\u043c \u0440\u0430\u0437\u043e\u0440\u0438\u0442\u0435\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "reaverheadtank"
       ],
-      "icon": "assets/icons/calamity/items/reaverheadtank.png"
+      "icon": "assets/icons/calamity/items/reaverheadtank.png",
+      "armorGroupKey": "ReaverHeadTank",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ReaverScaleMail",
@@ -11991,9 +12572,13 @@
       "displayNameRu": "\u0427\u0435\u0448\u0443\u0439\u0447\u0430\u0442\u0430\u044f \u043a\u043e\u043b\u044c\u0447\u0443\u0433\u0430 \u0440\u0430\u0437\u043e\u0440\u0438\u0442\u0435\u043b\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "reaverscalemail"
       ],
-      "icon": "assets/icons/calamity/items/reaverscalemail.png"
+      "icon": "assets/icons/calamity/items/reaverscalemail.png",
+      "armorGroupKey": "ReaverScaleMail",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ReboundingRainbow",
@@ -12181,7 +12766,7 @@
       "internalName": "ResurrectionButterfly",
       "displayName": "Resurrection Butterfly",
       "displayNameRu": "\u0411\u0430\u0431\u043e\u0447\u043a\u0430 \u0432\u043e\u0441\u043a\u0440\u0435\u0441\u0435\u043d\u0438\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -12235,9 +12820,13 @@
       "displayNameRu": "\u041c\u0430\u043d\u0442\u0438\u044f \u0431\u0435\u0434\u0441\u0442\u0432\u0438\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "robesofcalamity"
       ],
-      "icon": "assets/icons/calamity/items/robesofcalamity.png"
+      "icon": "assets/icons/calamity/items/robesofcalamity.png",
+      "armorGroupKey": "RobesOfCalamity",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/RogueEmblem",
@@ -12369,7 +12958,7 @@
       "internalName": "RubberMortarRound",
       "displayName": "Rubber Mortar Round",
       "displayNameRu": "\u0420\u0435\u0437\u0438\u043d\u043e\u0432\u044b\u0439 \u043c\u0438\u043d\u043e\u043c\u0451\u0442\u043d\u044b\u0439 \u043f\u0430\u0442\u0440\u043e\u043d",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -12561,7 +13150,7 @@
       "internalName": "SandSharknadoStaff",
       "displayName": "Sand Sharknado Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043f\u0435\u0441\u0447\u0430\u043d\u043e\u0433\u043e \u0430\u043a\u0443\u043b\u043e\u043d\u0430\u0434\u043e",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -12613,7 +13202,7 @@
       "internalName": "SarosPossession",
       "displayName": "Saros Possession",
       "displayNameRu": "\u041e\u0434\u0435\u0440\u0436\u0438\u043c\u043e\u0441\u0442\u044c \u0441\u0430\u0440\u043e\u0441\u043e\u043c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -12639,7 +13228,7 @@
       "internalName": "ScabRipper",
       "displayName": "Scab Ripper",
       "displayNameRu": "\u0413\u043d\u043e\u0439\u043d\u044b\u0439 \u043f\u043e\u0442\u0440\u043e\u0448\u0438\u0442\u0435\u043b\u044c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -12654,9 +13243,13 @@
       "displayNameRu": "\u0411\u0435\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0435 \u0431\u043e\u0442\u0438\u043d\u043a\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "scalboots"
       ],
-      "icon": "assets/icons/calamity/items/scalboots.png"
+      "icon": "assets/icons/calamity/items/scalboots.png",
+      "armorGroupKey": "SCalBoots",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SCalMask",
@@ -12666,10 +13259,14 @@
       "displayNameRu": "\u0411\u0435\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u043a\u0430\u043f\u044e\u0448\u043e\u043d",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "scal"
       ],
       "icon": "assets/icons/calamity/items/scalmask.png",
-      "armorSetKey": "SCal"
+      "armorSetKey": "SCal",
+      "armorGroupKey": "SCal",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SCalRobes",
@@ -12679,9 +13276,13 @@
       "displayNameRu": "\u0411\u0435\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u043c\u0430\u043d\u0442\u0438\u044f",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "scalrobes"
       ],
-      "icon": "assets/icons/calamity/items/scalrobes.png"
+      "icon": "assets/icons/calamity/items/scalrobes.png",
+      "armorGroupKey": "SCalRobes",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/ScarletDevil",
@@ -12905,7 +13506,7 @@
       "internalName": "SeasSearing",
       "displayName": "Seas Searing",
       "displayNameRu": "\u0416\u0433\u0443\u0447\u0435\u0435 \u043c\u043e\u0440\u0435",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -13111,10 +13712,9 @@
       "internalName": "ShatteredCommunity",
       "displayName": "Shattered Community",
       "displayNameRu": "\u0420\u0430\u0441\u043a\u043e\u043b\u043e\u0442\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u043e",
-      "category": "armor",
+      "category": "other",
       "tags": [
-        "accessory",
-        "armor"
+        "accessory"
       ],
       "icon": "assets/icons/calamity/items/shatteredcommunity.png"
     },
@@ -13124,11 +13724,10 @@
       "internalName": "ShatteredDawn",
       "displayName": "Shattered Dawn",
       "displayNameRu": "\u0420\u0430\u0441\u043a\u043e\u043b\u043e\u0442\u044b\u0439 \u0440\u0430\u0441\u0441\u0432\u0435\u0442",
-      "category": "armor",
+      "category": "weapon",
       "tags": [
         "weapon",
-        "rogue",
-        "armor"
+        "rogue"
       ],
       "icon": "assets/icons/calamity/items/shattereddawn.png"
     },
@@ -13138,7 +13737,7 @@
       "internalName": "ShellfishStaff",
       "displayName": "Shellfish Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043c\u043e\u043b\u043b\u044e\u0441\u043a\u043e\u0432",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -13151,7 +13750,7 @@
       "internalName": "Shellshooter",
       "displayName": "Shellshooter",
       "displayNameRu": "\u0420\u0430\u043a\u0443\u0448\u043a\u043e\u0441\u0442\u0440\u0435\u043b",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "ranged"
@@ -13307,10 +13906,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0421\u0438\u0433\u043d\u0443\u0441\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "signus"
       ],
       "icon": "assets/icons/calamity/items/signusmask.png",
-      "armorSetKey": "Signus"
+      "armorSetKey": "Signus",
+      "armorGroupKey": "Signus",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SilencingSheath",
@@ -13332,9 +13935,13 @@
       "displayNameRu": "\u0414\u043e\u0441\u043f\u0435\u0445 \u0421\u0438\u043b\u044c\u0432\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "silvaarmor"
       ],
-      "icon": "assets/icons/calamity/items/silvaarmor.png"
+      "icon": "assets/icons/calamity/items/silvaarmor.png",
+      "armorGroupKey": "SilvaArmor",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SilvaCandle",
@@ -13357,9 +13964,13 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0438\u0440\u043e\u0432\u043e\u0447\u043d\u0430\u044f \u0448\u043b\u044f\u043f\u0430 \u0421\u0438\u043b\u044c\u0432\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "silvaheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/silvaheadmagic.png"
+      "icon": "assets/icons/calamity/items/silvaheadmagic.png",
+      "armorGroupKey": "SilvaHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SilvaHeadSummon",
@@ -13369,9 +13980,13 @@
       "displayNameRu": "\u0420\u043e\u0433\u0430\u0442\u044b\u0439 \u043a\u0430\u043f\u044e\u0448\u043e\u043d \u0421\u0438\u043b\u044c\u0432\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "silvaheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/silvaheadsummon.png"
+      "icon": "assets/icons/calamity/items/silvaheadsummon.png",
+      "armorGroupKey": "SilvaHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SilvaHelm",
@@ -13381,10 +13996,14 @@
       "displayNameRu": "\u0428\u043b\u0435\u043c \u0421\u0438\u043b\u044c\u0432\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "silva"
       ],
       "icon": "assets/icons/calamity/items/silvahelm.png",
-      "armorSetKey": "Silva"
+      "armorSetKey": "Silva",
+      "armorGroupKey": "Silva",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SilvaHornedHelm",
@@ -13394,10 +14013,14 @@
       "displayNameRu": "\u0420\u043e\u0433\u0430\u0442\u044b\u0439 \u0448\u043b\u0435\u043c \u0421\u0438\u043b\u044c\u0432\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "silvahorned"
       ],
       "icon": "assets/icons/calamity/items/silvahornedhelm.png",
-      "armorSetKey": "SilvaHorned"
+      "armorSetKey": "SilvaHorned",
+      "armorGroupKey": "SilvaHorned",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SilvaLeggings",
@@ -13407,9 +14030,13 @@
       "displayNameRu": "\u041f\u043e\u043d\u043e\u0436\u0438 \u0421\u0438\u043b\u044c\u0432\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "silvaleggings"
       ],
-      "icon": "assets/icons/calamity/items/silvaleggings.png"
+      "icon": "assets/icons/calamity/items/silvaleggings.png",
+      "armorGroupKey": "SilvaLeggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SilvaMask",
@@ -13419,10 +14046,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0421\u0438\u043b\u044c\u0432\u044b",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "silva"
       ],
       "icon": "assets/icons/calamity/items/silvamask.png",
-      "armorSetKey": "Silva"
+      "armorSetKey": "Silva",
+      "armorGroupKey": "Silva",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SilvaWings",
@@ -13442,7 +14073,7 @@
       "internalName": "Sirius",
       "displayName": "Sirius",
       "displayNameRu": "\u0421\u0438\u0440\u0438\u0443\u0441",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -13584,10 +14215,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0411\u043e\u0433\u0430 \u0441\u043b\u0438\u0437\u043d\u0435\u0439",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "slimegod"
       ],
       "icon": "assets/icons/calamity/items/slimegodmask.png",
-      "armorSetKey": "SlimeGod"
+      "armorSetKey": "SlimeGod",
+      "armorGroupKey": "SlimeGod",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SlimeGodMask2",
@@ -13597,9 +14232,13 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0411\u043e\u0433\u0430 \u0441\u043b\u0438\u0437\u043d\u0435\u0439",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "slimegodmask2"
       ],
-      "icon": "assets/icons/calamity/items/slimegodmask2.png"
+      "icon": "assets/icons/calamity/items/slimegodmask2.png",
+      "armorGroupKey": "SlimeGodMask2",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SlimePuppetStaff",
@@ -13620,7 +14259,7 @@
       "internalName": "SlitheringEels",
       "displayName": "Slithering Eels",
       "displayNameRu": "\u0421\u043a\u043e\u043b\u044c\u0437\u044f\u0449\u0438\u0435 \u0443\u0433\u0440\u0438",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "magic"
@@ -13685,11 +14324,15 @@
       "internalName": "SnowRuffianChestplate",
       "displayName": "Snow Ruffian Chestplate",
       "displayNameRu": "\u041d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u0441\u043d\u0435\u0436\u043d\u043e\u0433\u043e \u0431\u0430\u043d\u0434\u0438\u0442\u0430",
-      "category": "other",
+      "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "snowruffianchestplate"
       ],
-      "icon": "assets/icons/calamity/items/snowruffianchestplate.png"
+      "icon": "assets/icons/calamity/items/snowruffianchestplate.png",
+      "armorGroupKey": "SnowRuffianChestplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SnowRuffianGreaves",
@@ -13699,9 +14342,13 @@
       "displayNameRu": "\u041f\u043e\u043d\u043e\u0436\u0438 \u0441\u043d\u0435\u0436\u043d\u043e\u0433\u043e \u0431\u0430\u043d\u0434\u0438\u0442\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "snowruffiangreaves"
       ],
-      "icon": "assets/icons/calamity/items/snowruffiangreaves.png"
+      "icon": "assets/icons/calamity/items/snowruffiangreaves.png",
+      "armorGroupKey": "SnowRuffianGreaves",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SnowRuffianMask",
@@ -13711,10 +14358,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0441\u043d\u0435\u0436\u043d\u043e\u0433\u043e \u0431\u0430\u043d\u0434\u0438\u0442\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "snowruffian"
       ],
       "icon": "assets/icons/calamity/items/snowruffianmask.png",
-      "armorSetKey": "SnowRuffian"
+      "armorSetKey": "SnowRuffian",
+      "armorGroupKey": "SnowRuffian",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SnowstormStaff",
@@ -13978,7 +14629,7 @@
       "internalName": "SproutingArrow",
       "displayName": "Sprouting Arrow",
       "displayNameRu": "\u041f\u0440\u043e\u0440\u0430\u0441\u0442\u0430\u044e\u0449\u0430\u044f \u0441\u0442\u0440\u0435\u043b\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -14018,7 +14669,7 @@
       "internalName": "StaffOfNecrosteocytes",
       "displayName": "Staff Of Necrosteocytes",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043d\u0435\u043a\u0440\u043e\u0441\u0442\u0435\u043e\u0446\u0438\u0442\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -14197,7 +14848,7 @@
       "internalName": "StarspawnHelixStaff",
       "displayName": "Starspawn Helix Staff",
       "displayNameRu": "\u0417\u0432\u0435\u0437\u0434\u043e\u0440\u043e\u0436\u0434\u0451\u043d\u043d\u044b\u0439 \u0441\u043f\u0438\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u043f\u043e\u0441\u043e\u0445",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -14212,9 +14863,13 @@
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0438\u0433\u0435\u043b\u0435\u0432\u044b\u0439 \u0434\u043e\u0441\u043f\u0435\u0445",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "statigelarmor"
       ],
-      "icon": "assets/icons/calamity/items/statigelarmor.png"
+      "icon": "assets/icons/calamity/items/statigelarmor.png",
+      "armorGroupKey": "StatigelArmor",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/StatigelCandle",
@@ -14237,9 +14892,13 @@
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0438\u0433\u0435\u043b\u0435\u0432\u044b\u0435 \u043f\u043e\u043d\u043e\u0436\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "statigelgreaves"
       ],
-      "icon": "assets/icons/calamity/items/statigelgreaves.png"
+      "icon": "assets/icons/calamity/items/statigelgreaves.png",
+      "armorGroupKey": "StatigelGreaves",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/StatigelHeadMagic",
@@ -14249,9 +14908,13 @@
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0438\u0433\u0435\u043b\u0435\u0432\u044b\u0439 \u043a\u043e\u043b\u043f\u0430\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "statigelheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/statigelheadmagic.png"
+      "icon": "assets/icons/calamity/items/statigelheadmagic.png",
+      "armorGroupKey": "StatigelHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/StatigelHeadMelee",
@@ -14261,9 +14924,13 @@
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0438\u0433\u0435\u043b\u0435\u0432\u044b\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "statigelheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/statigelheadmelee.png"
+      "icon": "assets/icons/calamity/items/statigelheadmelee.png",
+      "armorGroupKey": "StatigelHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/StatigelHeadRanged",
@@ -14273,9 +14940,13 @@
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0438\u0433\u0435\u043b\u0435\u0432\u044b\u0439 \u0433\u043e\u043b\u043e\u0432\u043d\u043e\u0439 \u0443\u0431\u043e\u0440",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "statigelheadranged"
       ],
-      "icon": "assets/icons/calamity/items/statigelheadranged.png"
+      "icon": "assets/icons/calamity/items/statigelheadranged.png",
+      "armorGroupKey": "StatigelHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/StatigelHeadRogue",
@@ -14285,9 +14956,13 @@
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0438\u0433\u0435\u043b\u0435\u0432\u0430\u044f \u043c\u0430\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "statigelheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/statigelheadrogue.png"
+      "icon": "assets/icons/calamity/items/statigelheadrogue.png",
+      "armorGroupKey": "StatigelHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/StatigelHeadSummon",
@@ -14297,9 +14972,13 @@
       "displayNameRu": "\u0421\u0442\u0430\u0442\u0438\u0433\u0435\u043b\u0435\u0432\u044b\u0439 \u043a\u0430\u043f\u044e\u0448\u043e\u043d",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "statigelheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/statigelheadsummon.png"
+      "icon": "assets/icons/calamity/items/statigelheadsummon.png",
+      "armorGroupKey": "StatigelHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/StatisBlessing",
@@ -14407,7 +15086,7 @@
       "internalName": "StellarTorusStaff",
       "displayName": "Stellar Torus Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0437\u0432\u0451\u0437\u0434\u043d\u043e\u0433\u043e \u0442\u043e\u0440\u0443\u0441\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -14461,10 +15140,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0428\u0442\u043e\u0440\u043c\u043e\u0432\u043e\u0433\u043e \u0442\u043a\u0430\u0447\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "stormweaver"
       ],
       "icon": "assets/icons/calamity/items/stormweavermask.png",
-      "armorSetKey": "StormWeaver"
+      "armorSetKey": "StormWeaver",
+      "armorGroupKey": "StormWeaver",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/StormfrontRazor",
@@ -14485,7 +15168,7 @@
       "internalName": "StormjawStaff",
       "displayName": "Stormjaw Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0448\u0442\u043e\u0440\u043c\u043e\u0432\u043e\u0439 \u0447\u0435\u043b\u044e\u0441\u0442\u0438",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -14560,7 +15243,7 @@
       "internalName": "StygianShield",
       "displayName": "Stygian Shield",
       "displayNameRu": "\u0421\u0442\u0438\u0433\u0438\u0439\u0441\u043a\u0438\u0439 \u0449\u0438\u0442",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "melee"
@@ -14627,9 +15310,13 @@
       "displayNameRu": "\u0421\u0435\u0440\u043d\u0438\u0441\u0442\u044b\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "sulphurousbreastplate"
       ],
-      "icon": "assets/icons/calamity/items/sulphurousbreastplate.png"
+      "icon": "assets/icons/calamity/items/sulphurousbreastplate.png",
+      "armorGroupKey": "SulphurousBreastplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SulphurousGrabber",
@@ -14652,10 +15339,14 @@
       "displayNameRu": "\u0421\u0435\u0440\u043d\u0438\u0441\u0442\u044b\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "sulphurous"
       ],
       "icon": "assets/icons/calamity/items/sulphuroushelmet.png",
-      "armorSetKey": "Sulphurous"
+      "armorSetKey": "Sulphurous",
+      "armorGroupKey": "Sulphurous",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SulphurousLeggings",
@@ -14665,9 +15356,13 @@
       "displayNameRu": "\u0421\u0435\u0440\u043d\u0438\u0441\u0442\u044b\u0435 \u043f\u043e\u043d\u043e\u0436\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "sulphurousleggings"
       ],
-      "icon": "assets/icons/calamity/items/sulphurousleggings.png"
+      "icon": "assets/icons/calamity/items/sulphurousleggings.png",
+      "armorGroupKey": "SulphurousLeggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/SulphurousSand",
@@ -14701,7 +15396,7 @@
       "internalName": "SunSpiritStaff",
       "displayName": "Sun Spirit Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0441\u043e\u043b\u043d\u0435\u0447\u043d\u043e\u0433\u043e \u0434\u0443\u0445\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -14740,7 +15435,7 @@
       "internalName": "SupremeBaitTackleBoxFishingStation",
       "displayName": "Supreme Bait Tackle Box Fishing Station",
       "displayNameRu": "\u041b\u0443\u0447\u0448\u0438\u0439 \u044f\u0449\u0438\u043a \u0440\u044b\u0431\u0430\u0446\u043a\u0438\u0445 \u0441\u043d\u0430\u0441\u0442\u0435\u0439",
-      "category": "buff",
+      "category": "accessory",
       "tags": [
         "accessory"
       ],
@@ -14855,7 +15550,7 @@
       "internalName": "TacticalPlagueEngine",
       "displayName": "Tactical Plague Engine",
       "displayNameRu": "\u0422\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0447\u0443\u043c\u043d\u043e\u0439 \u0434\u0432\u0438\u0433\u0430\u0442\u0435\u043b\u044c",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -14896,9 +15591,13 @@
       "displayNameRu": "\u042d\u0441\u0442\u0440\u0430\u0433\u043e\u043d\u043e\u0432\u044b\u0439 \u043d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "tarragonbreastplate"
       ],
-      "icon": "assets/icons/calamity/items/tarragonbreastplate.png"
+      "icon": "assets/icons/calamity/items/tarragonbreastplate.png",
+      "armorGroupKey": "TarragonBreastplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TarragonHeadMagic",
@@ -14908,9 +15607,13 @@
       "displayNameRu": "\u042d\u0441\u0442\u0440\u0430\u0433\u043e\u043d\u043e\u0432\u0430\u044f \u043c\u0430\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "tarragonheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/tarragonheadmagic.png"
+      "icon": "assets/icons/calamity/items/tarragonheadmagic.png",
+      "armorGroupKey": "TarragonHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TarragonHeadMelee",
@@ -14920,9 +15623,13 @@
       "displayNameRu": "\u042d\u0441\u0442\u0440\u0430\u0433\u043e\u043d\u043e\u0432\u044b\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "tarragonheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/tarragonheadmelee.png"
+      "icon": "assets/icons/calamity/items/tarragonheadmelee.png",
+      "armorGroupKey": "TarragonHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TarragonHeadRanged",
@@ -14932,9 +15639,13 @@
       "displayNameRu": "\u042d\u0441\u0442\u0440\u0430\u0433\u043e\u043d\u043e\u0432\u044b\u0439 \u043b\u0438\u043a",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "tarragonheadranged"
       ],
-      "icon": "assets/icons/calamity/items/tarragonheadranged.png"
+      "icon": "assets/icons/calamity/items/tarragonheadranged.png",
+      "armorGroupKey": "TarragonHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TarragonHeadRogue",
@@ -14944,9 +15655,13 @@
       "displayNameRu": "\u042d\u0441\u0442\u0440\u0430\u0433\u043e\u043d\u043e\u0432\u0430\u044f \u043a\u0430\u0441\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "tarragonheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/tarragonheadrogue.png"
+      "icon": "assets/icons/calamity/items/tarragonheadrogue.png",
+      "armorGroupKey": "TarragonHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TarragonHeadSummon",
@@ -14956,9 +15671,13 @@
       "displayNameRu": "\u042d\u0441\u0442\u0440\u0430\u0433\u043e\u043d\u043e\u0432\u044b\u0439 \u0440\u043e\u0433\u0430\u0442\u044b\u0439 \u0448\u043b\u0435\u043c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "tarragonheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/tarragonheadsummon.png"
+      "icon": "assets/icons/calamity/items/tarragonheadsummon.png",
+      "armorGroupKey": "TarragonHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TarragonLeggings",
@@ -14968,9 +15687,13 @@
       "displayNameRu": "\u042d\u0441\u0442\u0440\u0430\u0433\u043e\u043d\u043e\u0432\u044b\u0435 \u043f\u043e\u043d\u043e\u0436\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "tarragonleggings"
       ],
-      "icon": "assets/icons/calamity/items/tarragonleggings.png"
+      "icon": "assets/icons/calamity/items/tarragonleggings.png",
+      "armorGroupKey": "TarragonLeggings",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TarragonThrowingDart",
@@ -14978,7 +15701,7 @@
       "internalName": "TarragonThrowingDart",
       "displayName": "Tarragon Throwing Dart",
       "displayNameRu": "\u042d\u0441\u0442\u0440\u0430\u0433\u043e\u043d\u043e\u0432\u044b\u0439 \u043c\u0435\u0442\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0434\u0440\u043e\u0442\u0438\u043a",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -15016,7 +15739,7 @@
       "internalName": "TeardropCleaver",
       "displayName": "Teardrop Cleaver",
       "displayNameRu": "\u041a\u043b\u0438\u043d\u043e\u043a \u0441\u043b\u0451\u0437",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "melee"
@@ -15029,7 +15752,7 @@
       "internalName": "TearsofHeaven",
       "displayName": "Tearsof Heaven",
       "displayNameRu": "\u0421\u043b\u0451\u0437\u044b \u043d\u0435\u0431\u0435\u0441",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "weapon",
         "magic"
@@ -15068,7 +15791,7 @@
       "internalName": "TemporalUmbrella",
       "displayName": "Temporal Umbrella",
       "displayNameRu": "\u0412\u0440\u0435\u043c\u0435\u043d\u043d\u043e\u0439 \u0437\u043e\u043d\u0442",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -15199,10 +15922,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0422\u0430\u043d\u0430\u0442\u043e\u0441\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "thanatos"
       ],
       "icon": "assets/icons/calamity/items/thanatosmask.png",
-      "armorSetKey": "Thanatos"
+      "armorSetKey": "Thanatos",
+      "armorGroupKey": "Thanatos",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TheAbsorber",
@@ -15337,10 +16064,14 @@
       "displayNameRu": "\u0424\u0443\u0440\u0430\u0436\u043a\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0438\u0440\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "thecommanders"
       ],
       "icon": "assets/icons/calamity/items/thecommanderscap.png",
-      "armorSetKey": "TheCommanders"
+      "armorSetKey": "TheCommanders",
+      "armorGroupKey": "TheCommanders",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TheCommunity",
@@ -15437,9 +16168,13 @@
       "displayNameRu": "\u041f\u0430\u0440\u0430\u0434\u043d\u0430\u044f \u043e\u0431\u0443\u0432\u044c",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "theformalfootwear"
       ],
-      "icon": "assets/icons/calamity/items/theformalfootwear.png"
+      "icon": "assets/icons/calamity/items/theformalfootwear.png",
+      "armorGroupKey": "TheFormalFootwear",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TheGodsGambit",
@@ -15462,9 +16197,13 @@
       "displayNameRu": "\u041f\u0430\u0440\u0430\u0434\u043d\u044b\u0439 \u043c\u0443\u043d\u0434\u0438\u0440",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "thegrandgarment"
       ],
-      "icon": "assets/icons/calamity/items/thegrandgarment.png"
+      "icon": "assets/icons/calamity/items/thegrandgarment.png",
+      "armorGroupKey": "TheGrandGarment",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TheHive",
@@ -15678,7 +16417,7 @@
       "internalName": "TheSyringe",
       "displayName": "The Syringe",
       "displayNameRu": "\u0428\u043f\u0440\u0438\u0446",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue"
@@ -15767,7 +16506,7 @@
       "internalName": "ThrowingBrick",
       "displayName": "Throwing Brick",
       "displayNameRu": "\u041c\u0435\u0442\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043a\u0438\u0440\u043f\u0438\u0447",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "weapon",
         "rogue",
@@ -15809,9 +16548,13 @@
       "displayNameRu": "\u0411\u043e\u0442\u0438\u043d\u043a\u0438 \u0438\u0437 \u0441\u0435\u0440\u0434\u0446\u0430 \u0442\u0438\u0442\u0430\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "titanheartboots"
       ],
-      "icon": "assets/icons/calamity/items/titanheartboots.png"
+      "icon": "assets/icons/calamity/items/titanheartboots.png",
+      "armorGroupKey": "TitanHeartBoots",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TitanHeartMantle",
@@ -15821,9 +16564,13 @@
       "displayNameRu": "\u041f\u043e\u043a\u0440\u043e\u0432 \u0438\u0437 \u0441\u0435\u0440\u0434\u0446\u0430 \u0442\u0438\u0442\u0430\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "titanheartmantle"
       ],
-      "icon": "assets/icons/calamity/items/titanheartmantle.png"
+      "icon": "assets/icons/calamity/items/titanheartmantle.png",
+      "armorGroupKey": "TitanHeartMantle",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TitanHeartMask",
@@ -15833,10 +16580,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u0438\u0437 \u0441\u0435\u0440\u0434\u0446\u0430 \u0442\u0438\u0442\u0430\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "titanheart"
       ],
       "icon": "assets/icons/calamity/items/titanheartmask.png",
-      "armorSetKey": "TitanHeart"
+      "armorSetKey": "TitanHeart",
+      "armorGroupKey": "TitanHeart",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/TitaniumRailgun",
@@ -16061,7 +16812,7 @@
       "internalName": "TundraFlameBlossomsStaff",
       "displayName": "Tundra Flame Blossoms Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043f\u043b\u0430\u043c\u0435\u043d\u043d\u044b\u0445 \u0446\u0432\u0435\u0442\u043a\u043e\u0432 \u0442\u0443\u043d\u0434\u0440\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -16167,9 +16918,13 @@
       "displayNameRu": "\u0411\u043e\u0442\u0438\u043d\u043a\u0438 \u0443\u043c\u0431\u0440\u0430\u0444\u0438\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "umbraphileboots"
       ],
-      "icon": "assets/icons/calamity/items/umbraphileboots.png"
+      "icon": "assets/icons/calamity/items/umbraphileboots.png",
+      "armorGroupKey": "UmbraphileBoots",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/UmbraphileHood",
@@ -16179,10 +16934,14 @@
       "displayNameRu": "\u041a\u0430\u043f\u044e\u0448\u043e\u043d \u0443\u043c\u0431\u0440\u0430\u0444\u0438\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "umbraphile"
       ],
       "icon": "assets/icons/calamity/items/umbraphilehood.png",
-      "armorSetKey": "Umbraphile"
+      "armorSetKey": "Umbraphile",
+      "armorGroupKey": "Umbraphile",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/UmbraphileRegalia",
@@ -16192,9 +16951,13 @@
       "displayNameRu": "\u0420\u0435\u0433\u0430\u043b\u0438\u044f \u0443\u043c\u0431\u0440\u0430\u0444\u0438\u043b\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "umbraphileregalia"
       ],
-      "icon": "assets/icons/calamity/items/umbraphileregalia.png"
+      "icon": "assets/icons/calamity/items/umbraphileregalia.png",
+      "armorGroupKey": "UmbraphileRegalia",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/UndinesRetribution",
@@ -16253,7 +17016,7 @@
       "internalName": "UnstableCastersGauntlet",
       "displayName": "Unstable Casters Gauntlet",
       "displayNameRu": "\u041f\u0435\u0440\u0447\u0430\u0442\u043a\u0430 \u043d\u0435\u0441\u0442\u0430\u0431\u0438\u043b\u044c\u043d\u043e\u0433\u043e \u0447\u0430\u0440\u043e\u0434\u0435\u044f",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "weapon",
         "magic"
@@ -16380,7 +17143,7 @@
       "internalName": "VanquisherArrow",
       "displayName": "Vanquisher Arrow",
       "displayNameRu": "\u0421\u0442\u0440\u0435\u043b\u0430 \u043f\u043e\u043a\u043e\u0440\u0438\u0442\u0435\u043b\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -16394,7 +17157,7 @@
       "internalName": "VeeringWind",
       "displayName": "Veering Wind",
       "displayNameRu": "\u0412\u0435\u0442\u0435\u0440 \u043f\u0435\u0440\u0435\u043c\u0435\u043d",
-      "category": "accessory",
+      "category": "weapon",
       "tags": [
         "weapon",
         "magic"
@@ -16458,7 +17221,7 @@
       "internalName": "VengefulSunStaff",
       "displayName": "Vengeful Sun Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u043c\u0441\u0442\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u0441\u043e\u043b\u043d\u0446\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -16484,7 +17247,7 @@
       "internalName": "VeriumBolt",
       "displayName": "Verium Bolt",
       "displayNameRu": "\u0412\u0435\u0440\u0438\u0435\u0432\u0430\u044f \u0441\u0442\u0440\u0435\u043b\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "ranged",
@@ -16538,9 +17301,13 @@
       "displayNameRu": "\u041d\u0430\u0433\u0440\u0443\u0434\u043d\u0438\u043a \u043f\u0440\u0438\u043b\u0438\u0432\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "victidebreastplate"
       ],
-      "icon": "assets/icons/calamity/items/victidebreastplate.png"
+      "icon": "assets/icons/calamity/items/victidebreastplate.png",
+      "armorGroupKey": "VictideBreastplate",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/VictideGreaves",
@@ -16550,9 +17317,13 @@
       "displayNameRu": "\u041f\u043e\u043d\u043e\u0436\u0438 \u043f\u0440\u0438\u043b\u0438\u0432\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "victidegreaves"
       ],
-      "icon": "assets/icons/calamity/items/victidegreaves.png"
+      "icon": "assets/icons/calamity/items/victidegreaves.png",
+      "armorGroupKey": "VictideGreaves",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/VictideHeadMagic",
@@ -16562,9 +17333,13 @@
       "displayNameRu": "\u0428\u043b\u0435\u043c \u043e\u0442\u0448\u0435\u043b\u044c\u043d\u0438\u043a\u0430 \u043f\u0440\u0438\u043b\u0438\u0432\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "victideheadmagic"
       ],
-      "icon": "assets/icons/calamity/items/victideheadmagic.png"
+      "icon": "assets/icons/calamity/items/victideheadmagic.png",
+      "armorGroupKey": "VictideHeadMagic",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/VictideHeadMelee",
@@ -16574,9 +17349,13 @@
       "displayNameRu": "\u0428\u043b\u0435\u043c\u0430\u043a\u0443\u0448\u043a\u0430 \u043f\u0440\u0438\u043b\u0438\u0432\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "victideheadmelee"
       ],
-      "icon": "assets/icons/calamity/items/victideheadmelee.png"
+      "icon": "assets/icons/calamity/items/victideheadmelee.png",
+      "armorGroupKey": "VictideHeadMelee",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/VictideHeadRanged",
@@ -16586,9 +17365,13 @@
       "displayNameRu": "\u041a\u043e\u0440\u0430\u043b\u043b\u043e\u0432\u044b\u0439 \u0442\u044e\u0440\u0431\u0430\u043d \u043f\u0440\u0438\u043b\u0438\u0432\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "victideheadranged"
       ],
-      "icon": "assets/icons/calamity/items/victideheadranged.png"
+      "icon": "assets/icons/calamity/items/victideheadranged.png",
+      "armorGroupKey": "VictideHeadRanged",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/VictideHeadRogue",
@@ -16598,9 +17381,13 @@
       "displayNameRu": "\u041d\u0430\u043a\u0440\u0430\u0431\u043e\u0432\u043d\u0438\u043a \u043f\u0440\u0438\u043b\u0438\u0432\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "victideheadrogue"
       ],
-      "icon": "assets/icons/calamity/items/victideheadrogue.png"
+      "icon": "assets/icons/calamity/items/victideheadrogue.png",
+      "armorGroupKey": "VictideHeadRogue",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/VictideHeadSummon",
@@ -16610,9 +17397,13 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u043f\u0440\u0438\u043b\u0438\u0432\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "victideheadsummon"
       ],
-      "icon": "assets/icons/calamity/items/victideheadsummon.png"
+      "icon": "assets/icons/calamity/items/victideheadsummon.png",
+      "armorGroupKey": "VictideHeadSummon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/Vigilance",
@@ -16620,7 +17411,7 @@
       "internalName": "Vigilance",
       "displayName": "Vigilance",
       "displayNameRu": "\u041b\u0438\u043d\u0447\u0435\u0432\u0430\u043d\u0438\u0435",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -16646,7 +17437,7 @@
       "internalName": "VileFeeder",
       "displayName": "Vile Feeder",
       "displayNameRu": "\u0413\u043d\u0443\u0441\u043d\u044b\u0439 \u043a\u043e\u0440\u043c\u0438\u043b\u0435\u0446",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -16672,7 +17463,7 @@
       "internalName": "ViralSprout",
       "displayName": "Viral Sprout",
       "displayNameRu": "\u041f\u0430\u0440\u0430\u0437\u0438\u0442\u043d\u044b\u0439 \u0440\u043e\u0441\u0442\u043e\u043a",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -16685,7 +17476,7 @@
       "internalName": "ViridVanguard",
       "displayName": "Virid Vanguard",
       "displayNameRu": "\u0418\u0437\u0443\u043c\u0440\u0443\u0434\u043d\u044b\u0439 \u0430\u0432\u0430\u043d\u0433\u0430\u0440\u0434",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -16788,7 +17579,7 @@
       "internalName": "VoidConcentrationStaff",
       "displayName": "Void Concentration Staff",
       "displayNameRu": "\u041a\u043e\u043d\u0446\u0435\u043d\u0442\u0440\u0430\u0442\u043e\u0440 \u043f\u0443\u0441\u0442\u043e\u0442\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -16801,7 +17592,7 @@
       "internalName": "VoidEaterMarionette",
       "displayName": "Void Eater Marionette",
       "displayNameRu": "\u041c\u0430\u0440\u0438\u043e\u043d\u0435\u0442\u043a\u0430 \u041f\u043e\u0436\u0438\u0440\u0430\u0442\u0435\u043b\u044f \u043f\u0443\u0441\u0442\u043e\u0442\u044b",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -16991,7 +17782,7 @@
       "internalName": "WarloksMoonFist",
       "displayName": "Warloks Moon Fist",
       "displayNameRu": "\u041b\u0443\u043d\u043d\u044b\u0439 \u043a\u0443\u043b\u0430\u043a \u0447\u0435\u0440\u043d\u043e\u043a\u043d\u0438\u0436\u043d\u0438\u043a\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -17172,7 +17963,7 @@
       "internalName": "WitherBlossomsStaff",
       "displayName": "Wither Blossoms Staff",
       "displayNameRu": "\u041f\u043e\u0441\u043e\u0445 \u0443\u0432\u044f\u0434\u0448\u0435\u0433\u043e \u0441\u043e\u0446\u0432\u0435\u0442\u0438\u044f",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -17249,7 +18040,7 @@
       "internalName": "WulfrumController",
       "displayName": "Wulfrum Controller",
       "displayNameRu": "\u0412\u0443\u043b\u044c\u0444\u0440\u0443\u043c\u043e\u0432\u044b\u0439 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u043b\u0435\u0440",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -17290,10 +18081,14 @@
       "displayNameRu": "\u0412\u0443\u043b\u044c\u0444\u0440\u0443\u043c\u043e\u0432\u0430\u044f \u0448\u043b\u044f\u043f\u0430 \u0441 \u043e\u0447\u043a\u0430\u043c\u0438",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "wulfrum"
       ],
       "icon": "assets/icons/calamity/items/wulfrumhat.png",
-      "armorSetKey": "Wulfrum"
+      "armorSetKey": "Wulfrum",
+      "armorGroupKey": "Wulfrum",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/WulfrumJacket",
@@ -17303,9 +18098,13 @@
       "displayNameRu": "\u0412\u0443\u043b\u044c\u0444\u0440\u0443\u043c\u043e\u0432\u0430\u044f \u043a\u0443\u0440\u0442\u043a\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "wulfrumjacket"
       ],
-      "icon": "assets/icons/calamity/items/wulfrumjacket.png"
+      "icon": "assets/icons/calamity/items/wulfrumjacket.png",
+      "armorGroupKey": "WulfrumJacket",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/WulfrumKnife",
@@ -17340,9 +18139,13 @@
       "displayNameRu": "\u0412\u0443\u043b\u044c\u0444\u0440\u0443\u043c\u043e\u0432\u044b\u0439 \u043a\u043e\u043c\u0431\u0438\u043d\u0435\u0437\u043e\u043d",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "wulfrumoveralls"
       ],
-      "icon": "assets/icons/calamity/items/wulfrumoveralls.png"
+      "icon": "assets/icons/calamity/items/wulfrumoveralls.png",
+      "armorGroupKey": "WulfrumOveralls",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/WulfrumProsthesis",
@@ -17453,10 +18256,14 @@
       "displayNameRu": "\u041c\u0430\u0441\u043a\u0430 \u042f\u0440\u043e\u043d\u0430",
       "category": "armor",
       "tags": [
-        "armor"
+        "armor",
+        "armor-piece",
+        "yharon"
       ],
       "icon": "assets/icons/calamity/items/yharonmask.png",
-      "armorSetKey": "Yharon"
+      "armorSetKey": "Yharon",
+      "armorGroupKey": "Yharon",
+      "armorMode": "piece"
     },
     {
       "id": "CalamityMod/YharonsKindleStaff",
@@ -17464,7 +18271,7 @@
       "internalName": "YharonsKindleStaff",
       "displayName": "Yharons Kindle Staff",
       "displayNameRu": "\u0412\u043e\u0441\u043f\u043b\u0430\u043c\u0435\u043d\u044f\u044e\u0449\u0438\u0439 \u043f\u043e\u0441\u043e\u0445 \u042f\u0440\u043e\u043d\u0430",
-      "category": "buff",
+      "category": "weapon",
       "tags": [
         "buff",
         "summoner"
@@ -17579,7 +18386,7 @@
       "internalName": "Barinade",
       "displayName": "Barinade",
       "displayNameRu": "\u0411\u0430\u0440\u0438\u043d\u0430\u0434",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "ranged"
@@ -17592,7 +18399,7 @@
       "internalName": "Barinautical",
       "displayName": "Barinautical",
       "displayNameRu": "\u0411\u0430\u0440\u0438\u043d\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "ranged"
@@ -17605,7 +18412,7 @@
       "internalName": "BarracudaGun",
       "displayName": "Barracuda Gun",
       "displayNameRu": "\u041f\u0443\u0448\u043a\u0430 \u0431\u0430\u0440\u0440\u0430\u043a\u0443\u0434\u044b",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "ranged"
@@ -17618,7 +18425,7 @@
       "internalName": "BlastBarrel",
       "displayName": "Blast Barrel",
       "displayNameRu": "\u0412\u0437\u0440\u044b\u0432\u043d\u0430\u044f \u0431\u043e\u0447\u043a\u0430",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "rogue"
@@ -17631,7 +18438,7 @@
       "internalName": "BlissfulBombardier",
       "displayName": "Blissful Bombardier",
       "displayNameRu": "\u0411\u043b\u0430\u0436\u0435\u043d\u043d\u044b\u0439 \u0431\u043e\u043c\u0431\u0430\u0440\u0434\u0438\u0440",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "ranged"
@@ -17644,7 +18451,7 @@
       "internalName": "BrinyBaron",
       "displayName": "Briny Baron",
       "displayNameRu": "\u041c\u043e\u0440\u0441\u043a\u043e\u0439 \u0431\u0430\u0440\u043e\u043d",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "melee"
@@ -17783,7 +18590,7 @@
       "internalName": "IceBarrage",
       "displayName": "Ice Barrage",
       "displayNameRu": "\u041b\u0435\u0434\u044f\u043d\u043e\u0439 \u0448\u043a\u0432\u0430\u043b",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "magic"
@@ -17809,7 +18616,7 @@
       "internalName": "PhoenixFlameBarrage",
       "displayName": "Phoenix Flame Barrage",
       "displayNameRu": "\u0428\u043a\u0432\u0430\u043b \u043f\u043b\u0430\u043c\u0435\u043d\u0438 \u0444\u0435\u043d\u0438\u043a\u0441\u0430",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "magic"
@@ -17835,7 +18642,7 @@
       "internalName": "ShadecrystalBarrage",
       "displayName": "Shadecrystal Barrage",
       "displayNameRu": "\u0428\u043a\u0432\u0430\u043b \u0442\u0435\u043d\u0435\u0432\u044b\u0445 \u043a\u0440\u0438\u0441\u0442\u0430\u043b\u043b\u043e\u0432",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "material",
         "magic"
@@ -17928,7 +18735,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/cloud-elemental-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/CloudElemental",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/CragmawMire",
@@ -17940,7 +18749,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/cragmaw-mire-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/CragmawMire",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/EarthElemental",
@@ -17952,7 +18763,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/earth-elemental-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/EarthElemental",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/GiantClam",
@@ -17964,7 +18777,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/giant-clam-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/GiantClam",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/GreatSandShark",
@@ -17976,7 +18791,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/great-sand-shark-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/GreatSandShark",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/Mauler",
@@ -17988,7 +18805,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/mauler-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/Mauler",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/NuclearTerror",
@@ -18000,7 +18819,9 @@
         "miniboss"
       ],
       "icon": "assets/icons/calamity/bosses/nuclear-terror-wiki.png",
-      "bossPickerEligible": true
+      "bossPickerEligible": true,
+      "canonicalBossId": "CalamityMod/NuclearTerror",
+      "bossColumn": "miniboss"
     },
     {
       "id": "CalamityMod/AcidEel",
@@ -20735,7 +21556,7 @@
       "internalName": "BorealisBomber",
       "displayName": "Borealis Bomber",
       "displayNameRu": "\u0421\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u0431\u043e\u043c\u0431\u0430\u0440\u0434\u0438\u0440\u043e\u0432\u0449\u0438\u043a",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "summoner"
@@ -20748,7 +21569,7 @@
       "internalName": "CelestialClaymore",
       "displayName": "Celestial Claymore",
       "displayNameRu": "\u041d\u0435\u0437\u0435\u043c\u043d\u043e\u0439 \u043a\u043b\u0435\u0439\u043c\u043e\u0440",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "melee"
@@ -20786,7 +21607,7 @@
       "internalName": "DeepcoreGK2",
       "displayName": "Deepcore GK2",
       "displayNameRu": "Deepcore GK2",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "ranged"
@@ -20811,7 +21632,7 @@
       "internalName": "EntropicClaymore",
       "displayName": "Entropic Claymore",
       "displayNameRu": "\u042d\u043d\u0442\u0440\u043e\u043f\u0438\u0439\u043d\u044b\u0439 \u043a\u043b\u0435\u0439\u043c\u043e\u0440",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "melee"
@@ -20837,7 +21658,7 @@
       "internalName": "FeralthornClaymore",
       "displayName": "Feralthorn Claymore",
       "displayNameRu": "\u041a\u043b\u0435\u0439\u043c\u043e\u0440 \u0434\u0438\u043a\u0438\u0445 \u0448\u0438\u043f\u043e\u0432",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "melee"
@@ -21524,7 +22345,7 @@
       "internalName": "OldLordClaymore",
       "displayName": "Old Lord Claymore",
       "displayNameRu": "\u041a\u043b\u0435\u0439\u043c\u043e\u0440 \u0441\u0442\u0430\u0440\u043e\u0433\u043e \u043b\u043e\u0440\u0434\u0430",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "melee"
@@ -21550,7 +22371,7 @@
       "internalName": "PhosphorescentGauntlet",
       "displayName": "Phosphorescent Gauntlet",
       "displayNameRu": "\u0424\u043e\u0441\u0444\u043e\u0440\u0435\u0441\u0446\u0438\u0440\u0443\u044e\u0449\u0430\u044f \u043f\u0435\u0440\u0447\u0430\u0442\u043a\u0430",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "melee"
@@ -21612,7 +22433,7 @@
       "internalName": "SolsticeClaymore",
       "displayName": "Solstice Claymore",
       "displayNameRu": "\u041a\u043b\u0435\u0439\u043c\u043e\u0440 \u0441\u043e\u043b\u043d\u0446\u0435\u0441\u0442\u043e\u044f\u043d\u0438\u044f",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "melee"
@@ -21625,7 +22446,7 @@
       "internalName": "SporeKnife",
       "displayName": "Spore Knife",
       "displayNameRu": "\u0421\u043f\u043e\u0440\u043e\u0432\u044b\u0439 \u043d\u043e\u0436",
-      "category": "other",
+      "category": "weapon",
       "tags": [
         "ore",
         "rogue"
@@ -23140,7 +23961,7 @@
       "internalName": "AndroombaItem",
       "displayName": "Androomba Item",
       "displayNameRu": "\u0410\u043d\u0434\u0440\u043e\u0431\u043e\u0442-\u043f\u044b\u043b\u0435\u0441\u043e\u0441",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -23565,7 +24386,7 @@
       "internalName": "AridArtifact",
       "displayName": "Arid Artifact",
       "displayNameRu": "\u0410\u0440\u0442\u0435\u0444\u0430\u043a\u0442 \u0437\u0430\u0441\u0443\u0445\u0438",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other"
       ],
@@ -24648,7 +25469,7 @@
       "internalName": "BabyCannonballJellyfishBowl",
       "displayName": "Baby Cannonball Jellyfish Bowl",
       "displayNameRu": "\u0410\u043a\u0432\u0430\u0440\u0438\u0443\u043c \u0441 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u0439 \u043c\u0435\u0434\u0443\u0437\u043e\u0439-\u043f\u0443\u0448\u0435\u0447\u043d\u044b\u043c \u044f\u0434\u0440\u043e\u043c",
-      "category": "weapon",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -25711,7 +26532,7 @@
       "internalName": "CausticTear",
       "displayName": "Caustic Tear",
       "displayNameRu": "\u0415\u0434\u043a\u0430\u044f \u0441\u043b\u0435\u0437\u0430",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -26746,10 +27567,9 @@
       "internalName": "DecapoditaSprout",
       "displayName": "Decapodita Sprout",
       "displayNameRu": "\u0420\u0430\u043a\u043e\u043e\u0431\u0440\u0430\u0437\u043d\u044b\u0439 \u0440\u043e\u0441\u0442\u043e\u043a",
-      "category": "armor",
+      "category": "other",
       "tags": [
-        "other",
-        "armor"
+        "other"
       ],
       "icon": "assets/icons/calamity/items/decapoditasprout.png"
     },
@@ -28601,7 +29421,7 @@
       "internalName": "GlimmeringGemfish",
       "displayName": "Glimmering Gemfish",
       "displayNameRu": "\u041c\u0435\u0440\u0446\u0430\u044e\u0449\u0430\u044f \u0440\u044b\u0431\u0430-\u0434\u0440\u0430\u0433\u043e\u0446\u0435\u043d\u043d\u043e\u0441\u0442\u044c",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -28640,7 +29460,7 @@
       "internalName": "GrandMarquisBait",
       "displayName": "Grand Marquis Bait",
       "displayNameRu": "\u041d\u0430\u0436\u0438\u0432\u043a\u0430 \u0432\u0435\u043b\u0438\u043a\u043e\u0433\u043e \u043c\u0430\u0440\u043a\u0438\u0437\u0430",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -30298,10 +31118,9 @@
       "internalName": "MomentumCapacitor",
       "displayName": "Momentum Capacitor",
       "displayNameRu": "\u0418\u043c\u043f\u0443\u043b\u044c\u0441\u043d\u044b\u0439 \u043a\u043e\u043d\u0434\u0435\u043d\u0441\u0430\u0442\u043e\u0440",
-      "category": "armor",
+      "category": "other",
       "tags": [
-        "other",
-        "armor"
+        "other"
       ],
       "icon": "assets/icons/calamity/items/momentumcapacitor.png"
     },
@@ -31968,7 +32787,7 @@
       "internalName": "PlaguebringerGoliathBag",
       "displayName": "Plaguebringer Goliath Bag",
       "displayNameRu": "\u041c\u0435\u0448\u043e\u043a \u0441 \u0441\u043e\u043a\u0440\u043e\u0432\u0438\u0449\u0430\u043c\u0438 (\u041f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u0430 \u0447\u0443\u043c\u044b, \u0413\u043e\u043b\u0438\u0430\u0444)",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -31981,7 +32800,7 @@
       "internalName": "PlaguebringerGoliathRelic",
       "displayName": "Plaguebringer Goliath Relic",
       "displayNameRu": "\u0420\u0435\u043b\u0438\u043a\u0432\u0438\u044f \u041f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u044b \u0447\u0443\u043c\u044b, \u0413\u043e\u043b\u0438\u0430\u0444",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -31994,7 +32813,7 @@
       "internalName": "PlaguebringerGoliathTrophy",
       "displayName": "Plaguebringer Goliath Trophy",
       "displayNameRu": "\u0422\u0440\u043e\u0444\u0435\u0439 \u041f\u0440\u0435\u0434\u0432\u0435\u0441\u0442\u043d\u0438\u0446\u044b \u0447\u0443\u043c\u044b, \u0413\u043e\u043b\u0438\u0430\u0444",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -34039,7 +34858,7 @@
       "internalName": "Shellstone",
       "displayName": "Shellstone",
       "displayNameRu": "\u0420\u0430\u043a\u0443\u0448\u0435\u0447\u043d\u0438\u043a",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -34052,7 +34871,7 @@
       "internalName": "ShellstoneSlab",
       "displayName": "Shellstone Slab",
       "displayNameRu": "\u041f\u043b\u0438\u0442\u0430 \u0438\u0437 \u0440\u0430\u043a\u0443\u0448\u0435\u0447\u043d\u0438\u043a\u0430",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -34749,7 +35568,7 @@
       "internalName": "SolarVeil",
       "displayName": "Solar Veil",
       "displayNameRu": "\u0421\u043e\u043b\u043d\u0435\u0447\u043d\u0430\u044f \u0432\u0443\u0430\u043b\u044c",
-      "category": "accessory",
+      "category": "other",
       "tags": [
         "other"
       ],
@@ -35134,7 +35953,7 @@
       "internalName": "StealthHairDye",
       "displayName": "Stealth Hair Dye",
       "displayNameRu": "\u041a\u0440\u0430\u0441\u043a\u0430 \u0434\u043b\u044f \u0432\u043e\u043b\u043e\u0441 \u0446\u0432\u0435\u0442\u0430 \u0441\u043a\u0440\u044b\u0442\u043d\u043e\u0441\u0442\u0438",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -35509,7 +36328,7 @@
       "internalName": "StuffedFish",
       "displayName": "Stuffed Fish",
       "displayNameRu": "\u0424\u0430\u0440\u0448\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u0430\u044f \u0440\u044b\u0431\u0430",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other",
         "consumable"
@@ -36014,7 +36833,7 @@
       "internalName": "TorrentialTear",
       "displayName": "Torrential Tear",
       "displayNameRu": "\u041f\u0440\u043e\u043b\u0438\u0432\u043d\u0430\u044f \u0441\u043b\u0435\u0437\u0430",
-      "category": "buff",
+      "category": "other",
       "tags": [
         "other"
       ],
