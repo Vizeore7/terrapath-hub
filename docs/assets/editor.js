@@ -22,7 +22,7 @@ const CLASSES = [
 
 const GROUPS = [
   { key: "weapon", cats: ["weapon"], en: "Weapons", ru: "\u041e\u0440\u0443\u0436\u0438\u0435" },
-  { key: "armor", cats: ["armor"], en: "Armor sets", ru: "\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u044b \u0431\u0440\u043e\u043d\u0438" },
+  { key: "armor", cats: ["armor"], en: "Armor", ru: "\u0411\u0440\u043e\u043d\u044f" },
   { key: "accessory", cats: ["accessory"], en: "Accessories", ru: "\u0410\u043a\u0441\u0435\u0441\u0441\u0443\u0430\u0440\u044b" },
   { key: "buff", cats: ["buff"], en: "Buffs / Consumables", ru: "\u0411\u0430\u0444\u0444\u044b / \u0420\u0430\u0441\u0445\u043e\u0434\u043d\u0438\u043a\u0438" },
   { key: "other", cats: ["other"], en: "Other", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" }
@@ -30,7 +30,7 @@ const GROUPS = [
 
 const ERA_IDS = ["prehardmode", "hardmode", "postmoonlord"];
 const ITEM_PICKER_MIN_QUERY = 2;
-const PICKER_PREVIEW_STEP = 24;
+const PICKER_PREVIEW_STEP = 48;
 
 const ARMOR_SET_ALIASES = [
   { id: "Terraria/WoodHelmet", internalName: "WoodHelmet", displayName: "Wood armor set", displayNameRu: "\u0414\u0435\u0440\u0435\u0432\u044f\u043d\u043d\u044b\u0439 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0442 \u0431\u0440\u043e\u043d\u0438" },
@@ -74,16 +74,16 @@ const ARMOR_SET_ALIASES = [
 const ARMOR_SET_IDS = new Set(ARMOR_SET_ALIASES.map((entry) => entry.id));
 
 const CATEGORY_PATTERNS = {
-  armor: [/armor set/i],
-  accessory: [/ankh/i, /artifact/i, /badge/i, /balloon/i, /band/i, /bezoar/i, /boots/i, /booster/i, /bundle/i, /cell/i, /charm/i, /cloak/i, /cuffs/i, /emblem/i, /fins/i, /flipper/i, /flower/i, /gauntlet/i, /gear/i, /glove/i, /heart/i, /horseshoe/i, /insignia/i, /jelly/i, /jewel/i, /locket/i, /magiluminescence/i, /mirror/i, /mitten/i, /necklace/i, /pack/i, /pendant/i, /quiver/i, /ring/i, /rose/i, /scarf/i, /scope/i, /shackle/i, /shield/i, /shell/i, /sigil/i, /skates/i, /spurs/i, /star veil/i, /stone/i, /talisman/i, /veil/i, /wings/i],
-  buff: [/ale$/i, /ammo box/i, /bait/i, /beer$/i, /box$/i, /broth/i, /candle/i, /crate/i, /elixir/i, /fed/i, /feast/i, /flask/i, /food/i, /juice/i, /meal/i, /potion/i, /sake/i, /soup$/i, /stew$/i, /tea$/i, /wine$/i],
-  weapon: [/axe/i, /blade/i, /blaster/i, /boomerang/i, /bow/i, /cannon/i, /chakram/i, /dagger/i, /disc/i, /drill/i, /flail/i, /gun/i, /hamaxe/i, /hammer/i, /harpoon/i, /hatchet/i, /javelin/i, /knife/i, /lance/i, /launcher/i, /mace/i, /pike/i, /pickaxe/i, /pistol/i, /polearm/i, /revolver/i, /rifle/i, /saber/i, /scythe/i, /shotgun/i, /spear/i, /staff/i, /sword/i, /tome/i, /trident/i, /wand/i, /whip/i, /yoyo/i]
+  armor: [/armor set/i, /breastplate/i, /chainmail/i, /chestplate/i, /cowl/i, /greaves/i, /headgear/i, /headpiece/i, /helmet/i, /helm/i, /hood/i, /leggings/i, /mask/i, /platemail/i, /robe/i, /visage/i],
+  accessory: [/amulet/i, /ankh/i, /anklet/i, /badge/i, /balloon/i, /band/i, /bezoar/i, /boots/i, /bracelet/i, /bracer/i, /bundle/i, /charm/i, /cloak/i, /cuffs/i, /emblem/i, /fins/i, /flipper/i, /gauntlet/i, /glove/i, /horseshoe/i, /insignia/i, /magiluminescence/i, /mitten/i, /necklace/i, /pendant/i, /quiver/i, /ring/i, /scarf/i, /scope/i, /shackle/i, /shield/i, /shell/i, /sigil/i, /skates/i, /spurs/i, /talisman/i, /veil/i, /wings/i],
+  buff: [/ale$/i, /ammo box/i, /arrow/i, /beer$/i, /bewitching table/i, /bullet/i, /campfire/i, /candle/i, /crystal ball/i, /dart/i, /elixir/i, /feast/i, /flask/i, /food/i, /heart lantern/i, /meal/i, /peace candle/i, /potion/i, /rocket/i, /sake/i, /sharpening station/i, /slice of cake/i, /stew$/i, /sunflower/i, /tea$/i, /war table/i, /water candle/i, /wine$/i],
+  weapon: [/blade/i, /blaster/i, /boomerang/i, /bow/i, /cannon/i, /chakram/i, /dagger/i, /disc/i, /flail/i, /gun/i, /harpoon/i, /javelin/i, /knife/i, /lance/i, /launcher/i, /mace/i, /pistol/i, /polearm/i, /revolver/i, /rifle/i, /saber/i, /scythe/i, /shotgun/i, /spear/i, /staff/i, /sword/i, /tome/i, /trident/i, /wand/i, /whip/i, /yoyo/i]
 };
 
 const CATEGORY_EXCLUSIONS = {
-  accessory: [/banner/i, /bar$/i, /beam/i, /bed/i, /bookcase/i, /brick/i, /cage/i, /chair/i, /chandelier/i, /clock/i, /crate/i, /door/i, /dresser/i, /fence/i, /gate/i, /ore/i, /painting/i, /piano/i, /platform/i, /sand/i, /sink/i, /slab/i, /sofa/i, /statue/i, /table/i, /tile/i, /toilet/i, /torch/i, /wall/i, /work bench/i],
-  buff: [/banner/i, /bookcase/i, /brick/i, /cage/i, /chair/i, /chandelier/i, /clock/i, /door/i, /dresser/i, /ore/i, /painting/i, /piano/i, /platform/i, /sink/i, /sofa/i, /statue/i, /table/i, /toilet/i, /wall/i, /work bench/i],
-  weapon: [/banner/i, /bar$/i, /bathtub/i, /bed/i, /bookcase/i, /bowl/i, /brick/i, /cage/i, /candelabra/i, /candle/i, /chair/i, /chandelier/i, /clock/i, /crate/i, /cup/i, /door/i, /dresser/i, /fence/i, /gate/i, /lamp/i, /lantern/i, /ore/i, /painting/i, /piano/i, /platform/i, /sink/i, /sofa/i, /statue/i, /table/i, /toilet/i, /torch/i, /wall/i, /work bench/i]
+  accessory: [/ammo box/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /breastplate/i, /brick/i, /campfire/i, /candle/i, /chainmail/i, /chestplate/i, /crate/i, /crystal ball/i, /drill/i, /greaves/i, /hammer/i, /headgear/i, /headpiece/i, /helmet/i, /helm/i, /hood/i, /leggings/i, /mask/i, /ore/i, /pickaxe/i, /platemail/i, /robe/i, /sharpening station/i, /slice of cake/i, /statue/i, /sunflower/i, /tile/i, /visage/i, /wall/i, /work bench/i],
+  buff: [/accessory/i, /amulet/i, /anklet/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /bracelet/i, /bracer/i, /breastplate/i, /brick/i, /chainmail/i, /chestplate/i, /cloak/i, /drill/i, /emblem/i, /gauntlet/i, /glove/i, /greaves/i, /helmet/i, /hood/i, /leggings/i, /mask/i, /necklace/i, /ore/i, /pickaxe/i, /platemail/i, /quiver/i, /ring/i, /robe/i, /scarf/i, /scope/i, /shield/i, /shell/i, /skates/i, /spurs/i, /talisman/i, /veil/i, /visage/i, /wings/i],
+  weapon: [/accessory/i, /ammo box/i, /armor set/i, /bar$/i, /banner/i, /bookcase/i, /breastplate/i, /brick/i, /campfire/i, /candle/i, /chainmail/i, /chestplate/i, /crate/i, /crystal ball/i, /drill/i, /greaves/i, /hammer/i, /headgear/i, /headpiece/i, /helmet/i, /helm/i, /hood/i, /leggings/i, /mask/i, /ore/i, /pickaxe/i, /platemail/i, /quiver/i, /robe/i, /scarf/i, /scope/i, /sharpening station/i, /shield/i, /slice of cake/i, /statue/i, /sunflower/i, /tile/i, /visage/i, /wall/i, /work bench/i]
 };
 
 const ALLOWED_ITEM_CATEGORIES = new Set(GROUPS.flatMap((group) => group.cats));
@@ -501,20 +501,11 @@ function inferSearchCategory(entry) {
 }
 
 function applySupportEnhancements() {
-  ARMOR_SET_ALIASES.forEach((alias) => {
-    const previous = support.itemMap.get(alias.id) || {};
-    support.itemMap.set(alias.id, {
-      ...previous,
-      ...alias,
-      category: "armor",
-      icon: previous.icon || alias.icon || supportSearchIcon(alias.internalName)
-    });
-  });
-
   for (const [id, entry] of support.itemMap.entries()) {
+    const normalized = normalizePickerCategory(entry);
     support.itemMap.set(id, {
       ...entry,
-      category: inferSearchCategory(entry)
+      category: normalized || inferSearchCategory(entry)
     });
   }
 

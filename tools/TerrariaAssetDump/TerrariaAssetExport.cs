@@ -177,7 +177,7 @@ static class TerrariaAssetExport
         ["displayNameRu"] = russianName
       };
 
-      var category = categoryInspector.Infer(assetId);
+      var category = categoryInspector.Infer(assetId, internalName);
       if (!string.IsNullOrWhiteSpace(category))
       {
         itemNode["category"] = category;
@@ -324,11 +324,11 @@ static class TerrariaAssetExport
       }
     }
 
-    public string? Infer(int itemId)
+    public string? Infer(int itemId, string? internalName = null)
     {
       if (_itemInstance is null || _setDefaultsMethod is null)
       {
-        return null;
+        return InferFromName(internalName);
       }
 
       try
@@ -362,6 +362,8 @@ static class TerrariaAssetExport
         var consumable = ReadBool("consumable");
         var potion = ReadBool("potion");
         var defense = ReadInt("defense", 0);
+        var loweredName = (internalName ?? string.Empty).ToLowerInvariant();
+        var toolLike = pick > 0 || axe > 0 || hammer > 0 || fishingPole > 0;
 
         if (accessory)
         {
@@ -373,22 +375,185 @@ static class TerrariaAssetExport
           return "armor";
         }
 
-        if (ammo > 0 || buffType > 0 || healLife > 0 || healMana > 0 || potion || consumable && (healLife > 0 || healMana > 0))
+        if (ammo > 0 || buffType > 0 || healLife > 0 || healMana > 0 || potion || LooksBuffSupportItem(loweredName) || consumable && (healLife > 0 || healMana > 0))
         {
           return "buff";
         }
 
-        if (damage > 0 || pick > 0 || axe > 0 || hammer > 0 || fishingPole > 0)
+        if (toolLike)
+        {
+          return "other";
+        }
+
+        if (damage > 0)
         {
           return "weapon";
         }
       }
       catch
       {
+        return InferFromName(internalName);
+      }
+
+      return InferFromName(internalName);
+    }
+
+    private static bool LooksBuffSupportItem(string loweredName)
+    {
+      return loweredName.Contains("ammobox") ||
+             loweredName.Contains("bewitchingtable") ||
+             loweredName.Contains("campfire") ||
+             loweredName.Contains("crystalball") ||
+             loweredName.Contains("heartlantern") ||
+             loweredName.Contains("peacecandle") ||
+             loweredName.Contains("sharpeningstation") ||
+             loweredName.Contains("sliceofcake") ||
+             loweredName.Contains("sunflower") ||
+             loweredName.Contains("watercandle") ||
+             loweredName.Contains("wartable");
+    }
+
+    private static string? InferFromName(string? internalName)
+    {
+      var loweredName = (internalName ?? string.Empty).ToLowerInvariant();
+      if (string.IsNullOrWhiteSpace(loweredName))
+      {
         return null;
       }
 
-      return null;
+      if (loweredName.Contains("pickaxe") ||
+          loweredName.Contains("drill") ||
+          loweredName.Contains("hammer") ||
+          loweredName.Contains("hamaxe") ||
+          loweredName.Contains("fishingpole"))
+      {
+        return "other";
+      }
+
+      if (loweredName.Contains("helmet") ||
+          loweredName.Contains("helm") ||
+          loweredName.Contains("headgear") ||
+          loweredName.Contains("headpiece") ||
+          loweredName.Contains("hood") ||
+          loweredName.Contains("mask") ||
+          loweredName.Contains("breastplate") ||
+          loweredName.Contains("chestplate") ||
+          loweredName.Contains("chainmail") ||
+          loweredName.Contains("platemail") ||
+          loweredName.Contains("robe") ||
+          loweredName.Contains("greaves") ||
+          loweredName.Contains("leggings") ||
+          loweredName.Contains("visage"))
+      {
+        return "armor";
+      }
+
+      if (loweredName.Contains("amulet") ||
+          loweredName.Contains("ankh") ||
+          loweredName.Contains("anklet") ||
+          loweredName.Contains("badge") ||
+          loweredName.Contains("balloon") ||
+          loweredName.Contains("band") ||
+          loweredName.Contains("bezoar") ||
+          loweredName.Contains("boots") ||
+          loweredName.Contains("bracelet") ||
+          loweredName.Contains("bracer") ||
+          loweredName.Contains("bundle") ||
+          loweredName.Contains("charm") ||
+          loweredName.Contains("cloak") ||
+          loweredName.Contains("cuffs") ||
+          loweredName.Contains("emblem") ||
+          loweredName.Contains("fins") ||
+          loweredName.Contains("flipper") ||
+          loweredName.Contains("gauntlet") ||
+          loweredName.Contains("glove") ||
+          loweredName.Contains("horseshoe") ||
+          loweredName.Contains("insignia") ||
+          loweredName.Contains("magiluminescence") ||
+          loweredName.Contains("mitten") ||
+          loweredName.Contains("necklace") ||
+          loweredName.Contains("pendant") ||
+          loweredName.Contains("quiver") ||
+          loweredName.Contains("ring") ||
+          loweredName.Contains("scarf") ||
+          loweredName.Contains("scope") ||
+          loweredName.Contains("shackle") ||
+          loweredName.Contains("shield") ||
+          loweredName.Contains("shell") ||
+          loweredName.Contains("sigil") ||
+          loweredName.Contains("skates") ||
+          loweredName.Contains("spurs") ||
+          loweredName.Contains("talisman") ||
+          loweredName.Contains("veil") ||
+          loweredName.Contains("wings"))
+      {
+        return "accessory";
+      }
+
+      if (loweredName.Contains("ammobox") ||
+          loweredName.Contains("arrow") ||
+          loweredName.Contains("bewitchingtable") ||
+          loweredName.Contains("bullet") ||
+          loweredName.Contains("campfire") ||
+          loweredName.Contains("candle") ||
+          loweredName.Contains("crystalball") ||
+          loweredName.Contains("dart") ||
+          loweredName.Contains("elixir") ||
+          loweredName.Contains("feast") ||
+          loweredName.Contains("flask") ||
+          loweredName.Contains("food") ||
+          loweredName.Contains("heartlantern") ||
+          loweredName.Contains("meal") ||
+          loweredName.Contains("peacecandle") ||
+          loweredName.Contains("potion") ||
+          loweredName.Contains("rocket") ||
+          loweredName.Contains("sharpeningstation") ||
+          loweredName.Contains("sliceofcake") ||
+          loweredName.Contains("stew") ||
+          loweredName.Contains("sunflower") ||
+          loweredName.Contains("tea") ||
+          loweredName.Contains("wartable") ||
+          loweredName.Contains("watercandle"))
+      {
+        return "buff";
+      }
+
+      if (loweredName.Contains("blade") ||
+          loweredName.Contains("blaster") ||
+          loweredName.Contains("boomerang") ||
+          loweredName.Contains("bow") ||
+          loweredName.Contains("cannon") ||
+          loweredName.Contains("chakram") ||
+          loweredName.Contains("dagger") ||
+          loweredName.Contains("disc") ||
+          loweredName.Contains("flail") ||
+          loweredName.Contains("gun") ||
+          loweredName.Contains("harpoon") ||
+          loweredName.Contains("javelin") ||
+          loweredName.Contains("knife") ||
+          loweredName.Contains("lance") ||
+          loweredName.Contains("launcher") ||
+          loweredName.Contains("mace") ||
+          loweredName.Contains("pistol") ||
+          loweredName.Contains("polearm") ||
+          loweredName.Contains("revolver") ||
+          loweredName.Contains("rifle") ||
+          loweredName.Contains("saber") ||
+          loweredName.Contains("scythe") ||
+          loweredName.Contains("shotgun") ||
+          loweredName.Contains("spear") ||
+          loweredName.Contains("staff") ||
+          loweredName.Contains("sword") ||
+          loweredName.Contains("tome") ||
+          loweredName.Contains("trident") ||
+          loweredName.Contains("wand") ||
+          loweredName.Contains("whip") ||
+          loweredName.Contains("yoyo"))
+      {
+        return "weapon";
+      }
+
+      return "other";
     }
 
     private bool ReadBool(string name)

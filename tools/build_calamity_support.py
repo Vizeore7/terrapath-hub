@@ -39,6 +39,24 @@ BUFF_HINTS = (
     "ale", "beer", "wine", "sake", "ammo", "arrow", "bullet", "rocket", "dart", "solution",
     "bait", "crate", "box", "fed", "feast"
 )
+TOOL_HINTS = ("pickaxe", "drill", "hammer", "hamaxe", "axe", "fishing pole")
+ACCESSORY_HINTS = (
+    "amulet", "anklet", "badge", "balloon", "band", "bezoar", "boots", "booster", "bracelet",
+    "bracer", "bundle", "charm", "cloak", "cuffs", "emblem", "fins", "flipper", "gauntlet",
+    "glove", "horseshoe", "insignia", "magiluminescence", "mitten", "necklace", "pendant",
+    "quiver", "ring", "scarf", "scope", "shackle", "shield", "shell", "sigil", "skates",
+    "spurs", "talisman", "veil", "wings"
+)
+ARMOR_PIECE_HINTS = (
+    "helmet", "helm", "headgear", "headpiece", "mask", "hood", "visage", "cowl", "crown",
+    "cap", "hat", "breastplate", "chestplate", "chainmail", "platemail", "robe", "greaves",
+    "leggings", "cuisses"
+)
+BUFF_SUPPORT_HINTS = (
+    "ammo box", "bewitching table", "campfire", "crystal ball", "heart lantern",
+    "peace candle", "sharpening station", "slice of cake", "sunflower", "water candle",
+    "war table"
+)
 
 
 def default_export_dirs() -> list[Path]:
@@ -225,11 +243,20 @@ def normalize_item_category(raw: dict, entry: dict) -> str:
         if str(value or "").strip()
     )
 
-    if entry.get("armorSetKey") or raw.get("armorSetKey") or current == "armor":
+    if entry.get("armorSetKey") or raw.get("armorSetKey") or current == "armor" or any(hint in haystack for hint in ARMOR_PIECE_HINTS):
         return "armor"
 
-    if current == "accessory" or "accessory" in tags:
+    if current == "accessory" or "accessory" in tags or any(hint in haystack for hint in ACCESSORY_HINTS):
         return "accessory"
+
+    if any(hint in haystack for hint in TOOL_HINTS):
+        return "other"
+
+    if current == "buff" or current == "ammo":
+        return "buff"
+
+    if "buff" in tags or any(hint in haystack for hint in BUFF_HINTS) or any(hint in haystack for hint in BUFF_SUPPORT_HINTS):
+        return "buff"
 
     if current == "weapon" or {"melee", "ranged", "magic", "summoner", "rogue", "weapon"} & tags:
         return "weapon"
@@ -239,9 +266,6 @@ def normalize_item_category(raw: dict, entry: dict) -> str:
 
     if current in {"material", "ore"}:
         return "other"
-
-    if current == "buff":
-        return "buff" if any(hint in haystack for hint in BUFF_HINTS) else "other"
 
     if current in {"ammo", "mount", "pet", "tool", "furniture", "other"}:
         return "other"
@@ -441,7 +465,6 @@ def build_pack(export_dir: Path) -> tuple[dict, dict, dict]:
         if raw.get("id"):
             entries_by_id[raw["id"]] = build_raw_npc_entry(export_dir, raw)
 
-    apply_armor_set_aliases(raw_items, entries_by_id)
     apply_supplement(entries_by_id, supplement_entries)
     preserve_previous_localizations(entries_by_id, previous_entries)
     normalize_item_entries(raw_items, entries_by_id)

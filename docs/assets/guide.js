@@ -7,7 +7,7 @@ const progression = window.terraPathProgression;
 
 const GROUPS = [
   { key: "weapon", cats: ["weapon"], en: "Weapons", ru: "\u041e\u0440\u0443\u0436\u0438\u0435" },
-  { key: "armor", cats: ["armor"], en: "Armor sets", ru: "\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0442\u044b \u0431\u0440\u043e\u043d\u0438" },
+  { key: "armor", cats: ["armor"], en: "Armor", ru: "\u0411\u0440\u043e\u043d\u044f" },
   { key: "accessory", cats: ["accessory"], en: "Accessories", ru: "\u0410\u043a\u0441\u0435\u0441\u0441\u0443\u0430\u0440\u044b" },
   { key: "buff", cats: ["buff"], en: "Buffs / Consumables", ru: "\u0411\u0430\u0444\u0444\u044b / \u0420\u0430\u0441\u0445\u043e\u0434\u043d\u0438\u043a\u0438" },
   { key: "other", cats: ["other"], en: "Other", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" }
@@ -144,15 +144,6 @@ function normalizeGuideCategory(entry) {
 }
 
 function applySupportEnhancements() {
-  ARMOR_SET_ALIASES.forEach((alias) => {
-    const previous = supportIndex.itemMap.get(alias.id) || {};
-    supportIndex.itemMap.set(alias.id, {
-      ...previous,
-      ...alias,
-      icon: previous.icon || alias.icon || supportSearchIcon(alias.internalName)
-    });
-  });
-
   for (const [id, entry] of supportIndex.itemMap.entries()) {
     supportIndex.contentMap.set(id, {
       ...(supportIndex.contentMap.get(id) || {}),
